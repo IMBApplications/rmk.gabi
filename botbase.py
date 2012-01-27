@@ -170,7 +170,7 @@ class BotBase(object):
 		return self.conn
 
 
-	def join_room(self, room, nickname, username=None, password=Nonet)
+	def join_room(self, room, nickname, username=None, password=None)
 		"""Join the specified multi-user chat room
 
 		If username is NOT provided fallback to node part of JID"""
