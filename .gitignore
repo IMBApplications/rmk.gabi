@@ -1,0 +1,4 @@
+gabi.py
+*.pyc
+db/*
+logs/*
