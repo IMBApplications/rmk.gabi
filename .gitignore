@@ -1,4 +1,4 @@
 gabi.py
 *.pyc
-db/*
-logs/*
+db/*.csv
+logs/*.log
