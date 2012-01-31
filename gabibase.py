@@ -12,12 +12,15 @@ import re
 logging.basicConfig(filename='logs/gabi.log',level=logging.DEBUG)
 
 class GabiBase(BotBase):
-	def get_csv_admin_users_handler(self):
+	# This must be private!
+        def get_csv_admin_users_handler(self):
 		return open('db/admins.csv', 'rb')
 
+	# This must be private!
 	def get_handler_csv_urls_write(self):
 		return open('db/urls.csv', 'ab')
 
+	# This must be private!
 	def get_handler_csv_urls_read(self):
 		return open('db/urls.csv', 'rb')
 
