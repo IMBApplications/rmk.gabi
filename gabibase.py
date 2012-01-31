@@ -148,8 +148,8 @@ class GabiBase(BotBase):
 		jidSplit = '{0}'.format(jid).partition('/')
 		room = jidSplit[0]
 		user = jidSplit[2]
-		#hallo = 'Hi {0}'.format(user)
-		#self.send(room, hallo, None, 'groupchat')
+		hallo = 'Hi {0}'.format(user)
+		self.send(room, hallo, None, 'groupchat')
 
 	def on_gone_offline(self, jid):
 		jidSplit = '{0}'.format(jid).partition('/')
