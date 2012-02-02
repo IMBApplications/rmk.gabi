@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+from botbase import BotBase, botcmd
 from gabibase import GabiBase
 
 username = 'user@domain.tld'

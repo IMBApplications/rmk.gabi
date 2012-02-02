@@ -565,4 +565,3 @@ def botcmd(*args, **kwargs):
 		return decorate(args[0], **kwargs)
 	else:
 		return lambda func: decorate(func, **kwargs)
-

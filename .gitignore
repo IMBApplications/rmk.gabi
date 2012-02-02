@@ -2,3 +2,4 @@ gabi.py
 *.pyc
 db/*.csv
 logs/*.log
+xmpp/*
