@@ -96,6 +96,18 @@ class BotBase(object):
 		"""Get current show (status type like AWAY, DND etc.)."""
 		return self.__show
 
+	# This must become private!
+	def get_csv_admin_users_handler(self):
+                return open('db/admins.csv', 'rb')
+
+        # This must become private!
+        def get_handler_csv_urls_write(self):
+                return open('db/urls.csv', 'ab')
+
+        # This must become private!
+        def get_handler_csv_urls_read(self):
+                return open('db/urls.csv', 'rb')
+
 	status_message = property(fget=__get_status, fset=__set_status)
    	status_type = property(fget=__get_show, fset=__set_show)
 

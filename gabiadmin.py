@@ -5,18 +5,6 @@ from botbase import BotBase, botcmd
 import csv
 
 class GabiAdmin(BotBase):
-    # This must be private!
-    def get_csv_admin_users_handler(self):
-        return open('db/admins.csv', 'rb')
-
-    # This must be private!
-    def get_handler_csv_urls_write(self):
-        return open('db/urls.csv', 'ab')
-
-    # This must be private!
-    def get_handler_csv_urls_read(self):
-        return open('db/urls.csv', 'rb')
-
     @botcmd
     def kick (self, mess, args):
             """Kickt einen Nutzer aus dem aktuelle Channel"""
