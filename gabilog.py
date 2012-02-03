@@ -3,6 +3,8 @@
 from botbase import BotBase,botcmd
 from gabihelp import GabiHelp
 
+import csv
+
 class GabiLog(BotBase):
     @botcmd
     def urls (self, mess, args):
