@@ -3,6 +3,7 @@
 from botbase import BotBase, botcmd
 import re
 import csv
+import datetime
 
 class GabiCustom(BotBase):
     def on_not_a_command(self, mess):
