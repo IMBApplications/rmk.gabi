@@ -10,10 +10,10 @@ class GabiLog(BotBase):
     def urls (self, mess, args):
         """Fluestert dir alle URLS"""
         jid = mess.getFrom()
-        handler = self.get_handler_csv_urls_read()
+        """handler = self.get_handler_csv_urls_read()
         msg = ""
         for row in  csv.reader(handler, delimiter=';', quotechar='#'):
                 msg += '-\t' + str(row[0]) + " ( " + str(row[1]) + " ) " + row[2] + ' \n'
 
-        handler.close()
-        self.send(jid, msg, None, 'chat')
+        handler.close()"""
+        self.send(jid, "http://oxi.ch/csv-viewer/?file=urls.csv", None, 'chat')
