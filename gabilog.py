@@ -16,4 +16,4 @@ class GabiLog(BotBase):
                 msg += '-\t' + str(row[0]) + " ( " + str(row[1]) + " ) " + row[2] + ' \n'
 
         handler.close()"""
-        self.send(jid, "http://oxi.ch/csv-viewer/?file=urls.csv", None, 'chat')
+        self.send(jid, "http://chat.mmojunkies.net/csv-viewer/index.php?file=urls.csv", None, 'chat')
