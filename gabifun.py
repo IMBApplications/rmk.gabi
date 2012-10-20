@@ -8,8 +8,8 @@ class GabiFun(BotBase):
         """Lets fetz"""
         if len(args) > 0:
             return 'Fetzig? Hab ich fetzig gehoert? ' + args  + ' ist fetzig!';
-		else:
-		    return 'Fetzig? Hab ich fetzig gehoert? ICH bin fetzig!';
+        else:
+            return 'Fetzig? Hab ich fetzig gehoert? ICH bin fetzig!';
 
     @botcmd
     def imba (self, mess, args):
