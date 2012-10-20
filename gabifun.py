@@ -6,7 +6,10 @@ class GabiFun(BotBase):
     @botcmd
     def fetzig (self, mess, args='Aggravate'):
         """Lets fetz"""
-        return 'Fetzig? Hab ich fetzig gehoert? ' + args  + ' ist fetzig!';
+        if len(args) > 0:
+            return 'Fetzig? Hab ich fetzig gehoert? ' + args  + ' ist fetzig!';
+		else:
+		    return 'Fetzig? Hab ich fetzig gehoert? ICH bin fetzig!';
 
     @botcmd
     def imba (self, mess, args):
