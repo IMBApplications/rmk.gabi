@@ -21,7 +21,7 @@ class GabiCustom(BotBase):
         for reg in reg_ex_bb:
                 c = re.compile(reg)
                 if c.match(text) != None:
-                        self.send_simple_reply(mess, "Bis dann mal {0}".format(username))
+                        self.send_simple_reply(mess, "Hau raus, {0}!".format(username))
                         return
 
         #fangen wir mal an mit gucken ob wer penis sagt
