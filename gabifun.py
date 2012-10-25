@@ -37,9 +37,9 @@ class GabiFun(BotBase):
 
     @botcmd
     def wie (self, mess, args):
-        """be nice to her"""
+        """use wie gehts? to be nice to her"""
         if args == 'gehts?':
-            return 'Alle Parameter liegen innerhalb optimaler Bereiche, danke der Nachfrage.';
+            return 'Alle Systeme arbeiten innerhalb optimaler Parameter, danke der Nachfrage.';
 
     @botcmd
     def roll (self, mess, args):
