@@ -50,4 +50,4 @@ class GabiFun(BotBase):
     @botcmd
     def random (self, mess, args):
         """random test"""
-        return random.randint(1, 10);
+        return 'test ' + random.randint(1, 10);
