@@ -17,7 +17,7 @@ class GabiCustom(BotBase):
         reg_ex_bb = (r".*?bb$", r".*?bin mal weg.*?", r".*?baba")
         for reg in reg_ex_bb:
                 c = re.compile(reg)
-                if c.match(text) != None:
+                if c.match(text) != None and username != 'Gabi':
                         self.send_simple_reply(mess, "Bis dann mal {0}".format(username))
                         return
 
