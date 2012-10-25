@@ -13,6 +13,9 @@ class GabiCustom(BotBase):
         text = mess.getBody()
         username = self.get_sender_username(mess)
 
+        self.send_simple_reply(mess, "{0} sprach".format(jid))
+        self.send_simple_reply(mess, "und ich bin {0}".format(self.get_my_username()))
+
         if jid == self.get_my_username():
             return
 
