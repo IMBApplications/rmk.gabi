@@ -43,16 +43,13 @@ class GabiFun(BotBase):
 
     @botcmd
     def roll (self, mess, args):
-        try:
-            """she rolls dice"""
-            if len(args) > 0:
-                rmax = random.randint(1, int(args))
-                return rmax;
-            else:
-                rmax = random.randint(1, 6)
-                return rmax;
-        except:
-            return "Unexpected error:", sys.exc_info()[0]
+        """she rolls dice"""
+        if len(args) > 0:
+            rmax = random.randint(1, int(args))
+            return rmax;
+        else:
+            rmax = random.randint(1, 6)
+            return rmax;
 
     @botcmd
     def random (self, mess, args):
