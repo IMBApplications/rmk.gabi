@@ -46,12 +46,6 @@ class GabiFun(BotBase):
         """she rolls dice"""
         if len(args) > 0:
             rmax = random.randint(1, int(args))
-            return str(rmax);
         else:
             rmax = random.randint(1, 6)
-            return str(rmax);
-
-    @botcmd
-    def random (self, mess, args):
-        """random test"""
-        return 'test ' + str(random.randint(1, 10));
+        return str(rmax);
