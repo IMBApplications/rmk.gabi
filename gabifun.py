@@ -46,3 +46,8 @@ class GabiFun(BotBase):
         else:
             rmax = random.randint(1, 6)
             return rmax;
+
+    @botcmd
+    def random (self, mess, args):
+        """random test"""
+        return random.randint(1, 10);
