@@ -12,8 +12,8 @@ class GabiCustom(BotBase):
         props = mess.getProperties()
         text = mess.getBody()
         username = self.get_sender_username(mess)
-        if username == 'Gabi'
-        return
+        if username == self.__username:
+            return
 
         #fangen wir mal an mit gucken ob der bb oder was sagen will
         reg_ex_bb = (r".*?bb$", r".*?bin mal weg.*?", r".*?baba")
