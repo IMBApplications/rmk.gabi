@@ -27,6 +27,10 @@ class GabiFun(BotBase):
             return 'Senior ' + args  + ' no here.';
 
     @botcmd
+    def username (self, mess, args):
+        return self.get_my_username();
+
+    @botcmd
     def baby (self, mess, args):
         """she is nice to you"""
         return 'Ja Schatz, was kann ich fuer dich tun?';
