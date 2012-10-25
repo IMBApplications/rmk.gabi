@@ -18,3 +18,8 @@ class GabiFun(BotBase):
             return args  + ' ist IMBA!';
         else:
             return 'Ich bin IMBA!';
+
+    @botcmd
+    def afk (self, mess, args):
+        if len(args) > 0:
+            return 'Senior ' + args  + ' no here.';
