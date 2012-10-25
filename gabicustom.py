@@ -12,6 +12,8 @@ class GabiCustom(BotBase):
         props = mess.getProperties()
         text = mess.getBody()
         username = self.get_sender_username(mess)
+        if username == 'Gabi'
+        return
 
         #fangen wir mal an mit gucken ob der bb oder was sagen will
         reg_ex_bb = (r".*?bb$", r".*?bin mal weg.*?", r".*?baba")
@@ -25,7 +27,7 @@ class GabiCustom(BotBase):
         reg_ex_pn = (r".*?penis", r".*?Penis")
         for reg in reg_ex_pn:
                 c = re.compile(reg)
-                if c.match(text) != None and username != 'Gabi':
+                if c.match(text) != None:
                         self.send_simple_reply(mess, "Gnihihi, {0} hat Penis gesagt!".format(username))
                         return
 
