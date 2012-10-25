@@ -24,3 +24,13 @@ class GabiFun(BotBase):
         """user away"""
         if len(args) > 0:
             return 'Senior ' + args  + ' no here.';
+
+    @botcmd
+    def baby (self, mess):
+        """she's nice to you"""
+        return 'Ja, Schatz, was kann ich für dich tun?';
+
+    @botcmd
+    def wie gehts? (self, mess):
+        """be nice to her"""
+        return 'Alle Parameter liegen innerhalb optimaler Bereiche, danke der Nachfrage.';
