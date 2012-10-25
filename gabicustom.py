@@ -23,10 +23,10 @@ class GabiCustom(BotBase):
 
         #fangen wir mal an mit gucken ob wer penis sagt
         reg_ex_pn = (r".*?penis")
-            c = re.compile(reg)
-            if c.match(text) != None:
-                        self.send_simple_reply(mess, "Gnhihi, {0} hat Penis gesagt!".format(username))
-                        return
+        c = re.compile(reg)
+        if c.match(text) != None:
+            self.send_simple_reply(mess, "Gnhihi, {0} hat Penis gesagt!".format(username))
+            return
 
         #so jetzt alle URLS
         reg_ex_url = r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
