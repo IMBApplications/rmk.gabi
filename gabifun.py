@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import random
 from botbase import BotBase, botcmd
 
 class GabiFun(BotBase):   
@@ -28,10 +29,20 @@ class GabiFun(BotBase):
     @botcmd
     def baby (self, mess, args):
         """she is nice to you"""
-        return 'Ja, Schatz, was kann ich fuer dich tun?';
+        return 'Ja Schatz, was kann ich fuer dich tun?';
 
     @botcmd
     def wie (self, mess, args):
         """be nice to her"""
         if args == 'gehts?':
             return 'Alle Parameter liegen innerhalb optimaler Bereiche, danke der Nachfrage.';
+
+    @botcmd
+    def roll (self, mess, args):
+        """she rolls dice"""
+        if len(args) > 0:
+            rmax = random.randint(1, int(args))
+            return rmax;
+        else:
+            rmax = random.randint(1, 6)
+            return rmax;
