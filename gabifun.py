@@ -27,8 +27,8 @@ class GabiFun(BotBase):
 
     @botcmd
     def baby (self, mess):
-        """she's nice to you"""
-        return 'Ja, Schatz, was kann ich für dich tun?';
+        """she is nice to you"""
+        return 'Ja, Schatz, was kann ich fuer dich tun?';
 
     @botcmd
     def wie gehts? (self, mess):
