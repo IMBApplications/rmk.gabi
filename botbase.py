@@ -560,6 +560,8 @@ class BotBase(object):
 		"""plix overwrite me"""
 		self.log.debug("{0} gone offline".format(jid))
 
+	def get_my_username(self):
+		return self.__username
 
 
 ########## Decorator for Bot Command Functions ##########
