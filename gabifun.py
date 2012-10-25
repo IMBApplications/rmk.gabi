@@ -21,5 +21,6 @@ class GabiFun(BotBase):
 
     @botcmd
     def afk (self, mess, args):
+        """user away"""
         if len(args) > 0:
             return 'Senior ' + args  + ' no here.';
