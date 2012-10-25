@@ -12,7 +12,7 @@ class GabiCustom(BotBase):
         props = mess.getProperties()
         text = mess.getBody()
         username = self.get_sender_username(mess)
-        if username == self.__username:
+        if username == 'gabi':
             return
 
         #fangen wir mal an mit gucken ob der bb oder was sagen will
