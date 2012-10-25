@@ -183,6 +183,7 @@ class BotBase(object):
 
 
 	def join_room(self, room, nickname, username=None, password=None):
+		self.__nickname = nickname
 		"""Join the specified multi-user chat room
 
 		If username is NOT provided fallback to node part of JID"""
@@ -561,7 +562,7 @@ class BotBase(object):
 		self.log.debug("{0} gone offline".format(jid))
 
 	def get_my_username(self):
-		return self.__username
+		return self.__nickname
 
 
 ########## Decorator for Bot Command Functions ##########
