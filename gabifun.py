@@ -31,6 +31,7 @@ class GabiFun(BotBase):
         return 'Ja, Schatz, was kann ich fuer dich tun?';
 
     @botcmd
-    def wie gehts? (self, mess):
+    def wie (self, mess, args):
         """be nice to her"""
-        return 'Alle Parameter liegen innerhalb optimaler Bereiche, danke der Nachfrage.';
+        if args == 'gehts?':
+            return 'Alle Parameter liegen innerhalb optimaler Bereiche, danke der Nachfrage.';
