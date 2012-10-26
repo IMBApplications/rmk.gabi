@@ -49,3 +49,8 @@ class GabiFun(BotBase):
         else:
             rmax = random.randint(1, 6)
         return str(rmax);
+
+    @botcmd
+    def titten (self, mess, args):
+        """she flashes"""
+        return '( . )( . )';
