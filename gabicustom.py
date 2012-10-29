@@ -33,7 +33,7 @@ class GabiCustom(BotBase):
                         return
 
         #tippfehlerkontrolle
-        reg_ex_re = (r".*?amche", r".*?shcon")
+        reg_ex_re = (r".*?amche", r".*?shcon", r".*?acuh")
         autoCorr = { '.*?amche' : 'mache', '.*?shcon': 'schon', '.*?acuh': 'auch' }
         for reg in reg_ex_re:
                 c = re.compile(reg)
