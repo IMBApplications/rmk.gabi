@@ -35,8 +35,8 @@ class GabiCustom(BotBase):
         #tippfehlerkontrolle
         reg_ex_re = (r".*?amche", r".*?shcon")
         autoCorr = [
-        ['?amche', 'mache'],
-        ['?shcon', 'schon']]
+        ['amche', 'mache'],
+        ['shcon', 'schon']]
         for reg in reg_ex_re:
                 c = re.compile(reg)
                 if c.match(text) in autoCorr:
