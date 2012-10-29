@@ -36,7 +36,7 @@ class GabiCustom(BotBase):
         reg_ex_re = (r".*?amche", r".*?shcon")
         for reg in reg_ex_re:
                 c = re.compile(reg)
-                if c.match(text) == '?amche':
+                if c.match(text) == 'amche':
                     self.send_simple_reply(mess, username + ' meint "mache".')
                 elif c.match(text) == '?shcon':
                     self.send_simple_reply(mess, username + ' meint "schon".')
