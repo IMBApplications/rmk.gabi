@@ -38,7 +38,7 @@ class GabiCustom(BotBase):
         for reg in reg_ex_re:
                 c = re.compile(reg)
                 if c.match(text) != None:
-                    value = c.findall()[0]
+                    value = c.findall(text)[0]
                     #self.send_simple_reply(mess, username + ' meint ' + autoCorr[listind][1])
                     self.send_simple_reply(mess, value)
                     return
