@@ -23,8 +23,11 @@ class GabiFun(BotBase):
     @botcmd
     def afk (self, mess, args):
         """user away"""
+        username = self.get_sender_username(mess)
         if len(args) > 0:
-            return 'Senior ' + args  + ' no here.';
+            return 'Senior ' + username  + ' no here. He ' + args + '.';
+        else:
+            return 'Senior ' + username  + ' no here.';
 
     @botcmd
     def username (self, mess, args):
