@@ -40,7 +40,7 @@ class GabiCustom(BotBase):
                 if c.match(text) != None:
                     #value = c.findall(text)[0]
                     #self.send_simple_reply(mess, username + ' meint ' + autoCorr[value])                    
-                    self.send_simple_reply(mess, username + ' lern tippen!' + autoCorr[reg])                    
+                    self.send_simple_reply(mess, username + ' lern tippen! Du meinst "' + autoCorr[reg] + '"!')                    
                     
                     return
 
