@@ -39,8 +39,7 @@ class GabiCustom(BotBase):
                 c = re.compile(reg)
                 if c.match(text) != None:
                     value = c.findall(text)[0]
-                    #self.send_simple_reply(mess, username + ' meint ' + autoCorr[listind][1])
-                    self.send_simple_reply(mess, value)
+                    self.send_simple_reply(mess, username + ' meint ' + autoCorr[value])                    
                     return
 
         #fangen wir mal an mit gucken ob wer penis sagt
