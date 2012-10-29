@@ -36,9 +36,11 @@ class GabiCustom(BotBase):
         reg_ex_re = (r".*?amche", r".*?shcon")
         for reg in reg_ex_re:
                 c = re.compile(reg)
-                if c.match(text) != None:
-                        self.send_simple_reply(mess, '{0} meint "' + reg + '".'.format(username))
-                        return
+                if c.match(text) == '?amche':
+                    self.send_simple_reply(mess, username + ' meint "mache".')
+                elif c.match(text) == '?shcon':
+                    self.send_simple_reply(mess, username + ' meint "schon".'):
+                    return
 
         #fangen wir mal an mit gucken ob wer penis sagt
         reg_ex_pn = (r".*?penis", r".*?Penis")
