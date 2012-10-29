@@ -39,7 +39,7 @@ class GabiCustom(BotBase):
         ['shcon', 'schon']]
         for reg in reg_ex_re:
                 c = re.compile(reg)
-                if c.match(text) in autoCorr:
+                if c.match(text) != None:
                     #listind = autoCorr.index(value)
                     #self.send_simple_reply(mess, username + ' meint ' + autoCorr[listind][1])
                     self.send_simple_reply(mess, 'u rwong!')
