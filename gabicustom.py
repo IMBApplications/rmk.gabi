@@ -39,7 +39,7 @@ class GabiCustom(BotBase):
                 if c.match(text) == '?amche':
                     self.send_simple_reply(mess, username + ' meint "mache".')
                 elif c.match(text) == '?shcon':
-                    self.send_simple_reply(mess, username + ' meint "schon".'):
+                    self.send_simple_reply(mess, username + ' meint "schon".')
                     return
 
         #fangen wir mal an mit gucken ob wer penis sagt
