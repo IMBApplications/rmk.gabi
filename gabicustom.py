@@ -34,15 +34,13 @@ class GabiCustom(BotBase):
 
         #tippfehlerkontrolle
         reg_ex_re = (r".*?amche", r".*?shcon")
-        autoCorr = [
-        ['amche', 'mache'],
-        ['shcon', 'schon']]
+        autoCorr = { 'amche' : 'mache', 'shcon': 'schon' }
         for reg in reg_ex_re:
                 c = re.compile(reg)
                 if c.match(text) != None:
-                    #listind = autoCorr.index(value)
+                    value = c.findall()[0]
                     #self.send_simple_reply(mess, username + ' meint ' + autoCorr[listind][1])
-                    self.send_simple_reply(mess, 'u rwong!')
+                    self.send_simple_reply(mess, value)
                     return
 
         #fangen wir mal an mit gucken ob wer penis sagt
