@@ -32,6 +32,14 @@ class GabiCustom(BotBase):
                         self.send_simple_reply(mess, "wb {0}!".format(username))
                         return
 
+        #tippfehlerkontrolle
+        reg_ex_re = (r".*?amche", r".*?shcon")
+        for reg in reg_ex_re:
+                c = re.compile(reg)
+                if c.match(text) != None:
+                        self.send_simple_reply(mess, '{0} meint "' + c.match(text) + '".'.format(username))
+                        return
+
         #fangen wir mal an mit gucken ob wer penis sagt
         reg_ex_pn = (r".*?penis", r".*?Penis")
         for reg in reg_ex_pn:
