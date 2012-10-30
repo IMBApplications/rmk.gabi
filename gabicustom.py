@@ -24,12 +24,13 @@ class GabiCustom(BotBase):
                         self.send_simple_reply(mess, "Hau raus, {0}!".format(username))
                         return
 
-        #fangen wir mal an mit gucken ob wer re sagt
-        reg_ex_re = r"^re$"
-        c = re.compile(reg_ex_re)
-        if c.match(text) != None:
-            self.send_simple_reply(mess, "wb {0}!".format(username))
-            return
+        #fangen wir mal an mit gucken ob wer re sagt        
+        reg_ex_re = (r"^re$")
+        for reg in reg_ex_re:
+                c = re.compile(reg)
+                if c.match(text) != None:
+                        self.send_simple_reply(mess, "wb {0}!".format(username))
+                        return
 
         #tippfehlerkontrolle
         reg_ex_ac = (r".*?amche", r".*?shcon", r".*?acuh")
