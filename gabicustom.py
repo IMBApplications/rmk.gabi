@@ -25,17 +25,16 @@ class GabiCustom(BotBase):
                         return
 
         #fangen wir mal an mit gucken ob wer re sagt
-        reg_ex_re = (r".*?re")
-        for reg in reg_ex_re:
-                c = re.compile(reg)
-                if c.match(text) != None:
-                        self.send_simple_reply(mess, "wb {0}!".format(username))
-                        return
+        reg_ex_re = r"^re$"
+        c = re.compile(reg_ex_re)
+        if c.match(text) != None:
+            self.send_simple_reply(mess, "wb {0}!".format(username))
+            return
 
         #tippfehlerkontrolle
-        reg_ex_re = (r".*?amche", r".*?shcon", r".*?acuh")
+        reg_ex_ac = (r".*?amche", r".*?shcon", r".*?acuh")
         autoCorr = { '.*?amche' : 'mache', '.*?shcon': 'schon', '.*?acuh': 'auch' }
-        for reg in reg_ex_re:
+        for reg in reg_ex_ac:
                 c = re.compile(reg)
                 if c.match(text) != None:
                     #value = c.findall(text)[0]
