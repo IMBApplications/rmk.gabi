@@ -29,7 +29,7 @@ class GabiCustom(BotBase):
         for reg in reg_ex_re:
                 c = re.compile(reg)
                 if c.match(text) != None:
-                        self.send_simple_reply(mess, "wb {0}!".format(username))
+                        self.send_simple_reply(mess, "|c:8|wb {0}!".format(username))
                         return
 
         #tippfehlerkontrolle
