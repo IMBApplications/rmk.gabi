@@ -33,14 +33,12 @@ class GabiCustom(BotBase):
                         return
 
         #tippfehlerkontrolle
-        reg_ex_ac = (r".*?amche", r".*?shcon", r".*?acuh")
-        autoCorr = { '.*?amche' : 'mache', '.*?shcon': 'schon', '.*?acuh': 'auch' }
+        reg_ex_ac = (r".*?amche", r".*?shcon", r".*?acuh", r".*?dsa", r".*?cih")
+        autoCorr = { '.*?amche' : 'mache', '.*?shcon': 'schon', '.*?acuh': 'auch', '.*?dsa': 'das', '.*?cih': 'ich' }
         for reg in reg_ex_ac:
                 c = re.compile(reg)
                 if c.match(text) != None:
-                    #value = c.findall(text)[0]
-                    #self.send_simple_reply(mess, username + ' meint ' + autoCorr[value])                    
-                    self.send_simple_reply(mess, username + ' lern Tippen! Du meinst "' + autoCorr[reg] + '"!')                    
+                    self.send_simple_reply(mess, username + ' meinte "' + autoCorr[reg] + '".')                    
                     
                     return
 
