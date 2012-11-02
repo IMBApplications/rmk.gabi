@@ -208,7 +208,7 @@ class BotBase(object):
 
 	def send(self, user, text, in_reply_to=None, message_type='chat'):
 		"""Sends a simple message to the specified user."""
-		mess = self.build_message(text)
+		mess = '|c:7|' + self.build_message(text)
 		mess.setTo(user)
 
 		if in_reply_to:
