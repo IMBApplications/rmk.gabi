@@ -246,7 +246,7 @@ class BotBase(object):
 		if text_plain != text:
 			# Create body w stripped tags for reciptiens w/o xhtml-abilities
 			# FIXME unescape &quot; etc.
-			message = '|c:7|' + xmpp.protocol.Message(body=text_plain)
+			message = xmpp.protocol.Message(body='|c:7|' + text_plain)
 			# Start creating a xhtml body
 			html = xmpp.Node('html', \
 				{'xmlns': 'http://jabber.org/protocol/xhtml-im'})
@@ -263,7 +263,7 @@ class BotBase(object):
 				message = None
 		if message is None:
 		# Normal body
-			message = '|c:7|' + xmpp.protocol.Message(body=text)
+			message = xmpp.protocol.Message(body='|c:7|' + text)
 		return message
 
 	def broadcast(self, message, only_available=False):
