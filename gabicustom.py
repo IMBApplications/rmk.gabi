@@ -25,7 +25,7 @@ class GabiCustom(BotBase):
                         return
 
         #fangen wir mal an mit gucken ob wer re sagt        
-        reg_ex_re = (r"^\|c\:[0-9]\|re$", r"^rehor$", r"^\|c\:[0-9]\|rehor$", r"^re$")
+        reg_ex_re = (r"^\|c\:[0-9]\|re$", r"^rehor$", r"^\|c\:[0-9]\|rehor$", r"^re$", r"^rehör$", r"^\|c\:[0-9]\|rehör$")
         for reg in reg_ex_re:
                 c = re.compile(reg)
                 if c.match(text) != None:
