@@ -208,7 +208,7 @@ class BotBase(object):
 
 	def send(self, user, text, in_reply_to=None, message_type='chat'):
 		"""Sends a simple message to the specified user."""
-		mess = '|c:7|' + self.build_message(text)
+		mess = self.build_message(text)
 		mess.setTo(user)
 
 		if in_reply_to:
@@ -246,7 +246,7 @@ class BotBase(object):
 		if text_plain != text:
 			# Create body w stripped tags for reciptiens w/o xhtml-abilities
 			# FIXME unescape &quot; etc.
-			message = xmpp.protocol.Message(body=text_plain)
+			message = '|c:7|' + xmpp.protocol.Message(body=text_plain)
 			# Start creating a xhtml body
 			html = xmpp.Node('html', \
 				{'xmlns': 'http://jabber.org/protocol/xhtml-im'})
@@ -263,7 +263,7 @@ class BotBase(object):
 				message = None
 		if message is None:
 		# Normal body
-			message = xmpp.protocol.Message(body=text)
+			message = '|c:7|' + xmpp.protocol.Message(body=text)
 		return message
 
 	def broadcast(self, message, only_available=False):
