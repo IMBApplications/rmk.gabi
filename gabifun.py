@@ -39,6 +39,11 @@ class GabiFun(BotBase):
         return 'Ja Schatz, was kann ich fuer dich tun?';
 
     @botcmd
+    def rage (self, mess, args):
+        """she is nice to you"""
+        return 'AARRRG! DRECKSVERWANZTEHURENSCHEISSMISTPIMMELKACKE!';
+
+    @botcmd
     def wie (self, mess, args):
         """use wie gehts? to be nice to her"""
         if args == 'gehts?':
