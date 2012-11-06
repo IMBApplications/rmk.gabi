@@ -42,7 +42,7 @@ class GabiFun(BotBase):
     def rage (self, mess, args):
         """she rages for you"""
         if len(args) > 0:
-            return 'Scheiß ' + args + '! Verkackter Mist, stinkiger!';
+            return 'Scheiss ' + args + '! Verkackter Mist, stinkiger!';
         else:
             return 'AARRRG! DRECKSVERWANZTEHURENSCHEISSMISTPIMMELKACKE!';
 
