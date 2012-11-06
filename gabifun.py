@@ -40,8 +40,11 @@ class GabiFun(BotBase):
 
     @botcmd
     def rage (self, mess, args):
-        """she is nice to you"""
-        return 'AARRRG! DRECKSVERWANZTEHURENSCHEISSMISTPIMMELKACKE!';
+        """she rages for you"""
+        if len(args) > 0:
+            return 'Scheiß ' + args + '! Verkackter Mist, stinkiger!';
+        else:
+            return 'AARRRG! DRECKSVERWANZTEHURENSCHEISSMISTPIMMELKACKE!';
 
     @botcmd
     def wie (self, mess, args):
