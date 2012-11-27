@@ -49,6 +49,14 @@ class GabiCustom(BotBase):
                 if c.match(text) != None:
                         self.send_simple_reply(mess, "Gnihihi, {0} hat Penis gesagt!".format(username))
                         return
+                    
+        #fangen wir mal an mit gucken ob wer Guten Morgen sagt
+        reg_ex_pn = (r".*?Guten Morgen", r".*?guten morgen")
+        for reg in reg_ex_pn:
+                c = re.compile(reg)
+                if c.match(text) != None:
+                        self.send_simple_reply(mess, "FUCK YOU, {0}! Guck ma auf die Uhr!".format(username))
+                        return
 
         #so jetzt alle URLS
         reg_ex_url = r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
