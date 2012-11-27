@@ -25,7 +25,7 @@ class GabiFun(BotBase):
         """user away"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
-            return 'Bis später, ' + username  + '. Viel Spaß beim ' + args + '.';
+            return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + args + '.';
         else:
             return 'Seniorita ' + username  + ' no here.';
 
