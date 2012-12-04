@@ -19,6 +19,15 @@ class GabiFun(BotBase):
             return args  + ' ist IMBA!';
         else:
             return 'Ich bin IMBA!';
+            
+    @botcmd
+    def haha (self, mess, args):
+        """gabi lacht"""
+        username = self.get_sender_username(mess)
+        if len(args) > 0:
+            return 'Hahahaha, ' + args + ' is zum totlachen!';
+        else:
+            return 'Hahahaha! Man, ' + username  + ', du bist so witzig, ich lach mich tot!';
 
     @botcmd
     def afk (self, mess, args):
