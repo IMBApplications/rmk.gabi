@@ -55,7 +55,11 @@ class GabiCustom(BotBase):
         for reg in reg_ex_pn:
                 c = re.compile(reg)
                 if c.match(text) != None:
+                    now = datetime.datetime.now()
+                    if now.hour > 10:
                         self.send_simple_reply(mess, "FUCK YOU, {0}! Guck ma auf die Uhr!".format(username))
+                    else:
+                        self.send_simple_reply(mess, "Guten Morgen, {0}. Schoen, dass du da bist.".format(username))
                         return
 
         #so jetzt alle URLS
