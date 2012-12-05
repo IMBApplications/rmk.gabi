@@ -8,6 +8,11 @@ class GabiHelp(BotBase):
     def time( self, mess, args):
         """Zeigt die aktuelle Serverzeit an"""
         return str(datetime.datetime.now())
+        
+    @botcmd
+    def testtime( self, mess, args):
+        """Zeigt die aktuelle Serverzeit an"""
+        return str(datetime.time(hour))
 
     @botcmd
     def ping (self, mess, args):
