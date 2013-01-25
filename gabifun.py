@@ -37,8 +37,7 @@ class GabiFun(BotBase):
             self.afkList[username] = username + ' - ' + args;
             return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + args + '.';
         else:
-            alle = ''.join(afkList)
-            return alle;
+            return 'fix me';
 
     @botcmd
     def username (self, mess, args):
@@ -71,7 +70,7 @@ class GabiFun(BotBase):
     def paste (self, mess, args):
         """sagt, was sie sich gemerkt hat"""
         username = self.get_sender_username(mess)
-        if len(self.memList[username]) > 0:
+        if username in self.memList:
             return 'Habe mir: "' + self.memList[username] + '" gemerkt.';
         else:
             return 'Na ah';
