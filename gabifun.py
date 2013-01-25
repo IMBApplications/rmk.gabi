@@ -77,6 +77,12 @@ class GabiFun(BotBase):
             return 'Na ah';
 
     @botcmd
+    def afkalle (self, mess, args):
+        """sagt, was sie sich gemerkt hat"""
+        alle = ''.join(afkList)
+        return alle;
+
+    @botcmd
     def afktest (self, mess, args):
         """sagt, was sie sich gemerkt hat"""
         username = self.get_sender_username(mess)
