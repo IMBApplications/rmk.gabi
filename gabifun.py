@@ -81,8 +81,8 @@ class GabiFun(BotBase):
         """sagt, was sie sich gemerkt hat"""
         ret = ''
         for item in self.afkList:
-            ret = ret + "\n" + item;
-            return ret;
+            ret = ret + "\n" + item
+        return ret;
 
     @botcmd
     def afktest (self, mess, args):
