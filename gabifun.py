@@ -73,6 +73,12 @@ class GabiFun(BotBase):
             return 'Habe mir: "' + self.memList[username] + '" gemerkt.';
         else:
             return 'Fuer dich habe ich nichts.';
+
+    @botcmd
+    def listtest (self, mess, args):
+        """sagt, was sie sich gemerkt hat"""
+        username = self.get_sender_username(mess)
+        return self.memList[username];
             
     @botcmd
     def wie (self, mess, args):
