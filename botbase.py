@@ -53,6 +53,7 @@ class BotBase(object):
 		self.__lastping = time.time()
 		self.__privatedomain = privatedomain
 		self.__acceptownmsgs = acceptownmsgs
+		self.memList = {}
 
 		self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
