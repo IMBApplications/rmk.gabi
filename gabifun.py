@@ -66,6 +66,15 @@ class GabiFun(BotBase):
             return 'Ja, was denn?';
 
     @botcmd
+    def paste (self, mess, args):
+        """sagt, was sie sich gemerkt hat"""
+        username = self.get_sender_username(mess)
+        if len(self.memList[username]) > 0:
+            return 'Habe mir: "' + self.memList[username] + '" gemerkt.';
+        else:
+            return 'Fuer dich habe ich nichts.';
+            
+    @botcmd
     def wie (self, mess, args):
         """use wie gehts? to be nice to her"""
         if args == 'gehts?':
