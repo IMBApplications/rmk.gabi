@@ -34,7 +34,7 @@ class GabiFun(BotBase):
         """user away"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
-            self.afkList[username] = args;
+            self.afkList[username] = unsername + ' - ' + args;
             return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + args + '.';
         else:
             return self.memList;
