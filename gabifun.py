@@ -37,9 +37,8 @@ class GabiFun(BotBase):
             self.afkList[username] = username + ' - ' + args;
             return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + args + '.';
         else:
-            for item in self.afkList:
-                self.send_simple_reply(mess, item)
-                return
+            alle = ''.join(afkList)
+            return alle;
 
     @botcmd
     def username (self, mess, args):
