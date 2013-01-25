@@ -69,10 +69,10 @@ class GabiFun(BotBase):
     def paste (self, mess, args):
         """sagt, was sie sich gemerkt hat"""
         username = self.get_sender_username(mess)
-        if len(self.memList[username]) <> NULL:
+        if len(self.memList[username]) > 0:
             return 'Habe mir: "' + self.memList[username] + '" gemerkt.';
         else:
-            return 'Fuer dich habe ich nichts.';
+            return 'Na ah';
 
     @botcmd
     def listtest (self, mess, args):
