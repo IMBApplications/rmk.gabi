@@ -79,7 +79,7 @@ class GabiFun(BotBase):
     def afkalle (self, mess, args):
         """sagt, was sie sich gemerkt hat"""
         ret = ''
-        for item in self.afkList:
+        for item in self.afkList.keys():
             ret = ret + "\n" + item
         return ret;
 
