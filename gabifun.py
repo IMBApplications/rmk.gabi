@@ -80,7 +80,7 @@ class GabiFun(BotBase):
         """sagt, was sie sich gemerkt hat"""
         ret = ''
         for item in self.afkList.keys():
-            ret = ret + "\n" + item
+            ret = ret + "\n" + self.afkList[item]
         return ret;
 
     @botcmd
