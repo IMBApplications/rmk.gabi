@@ -39,7 +39,7 @@ class GabiFun(BotBase):
         else:
             ret = ''
             for item in self.afkList.keys():
-                ret = ret + "\n" + self.afkList[item]
+                ret = ret + "\r\n" + self.afkList[item]
             return ret;
 
     @botcmd
