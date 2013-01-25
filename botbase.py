@@ -54,6 +54,7 @@ class BotBase(object):
 		self.__privatedomain = privatedomain
 		self.__acceptownmsgs = acceptownmsgs
 		self.memList = {}
+		self.afkList = {}
 
 		self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
