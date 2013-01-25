@@ -73,7 +73,7 @@ class GabiFun(BotBase):
         if username in self.memList:
             return 'Habe mir: "' + self.memList[username] + '" gemerkt.';
         else:
-            return 'Na ah';
+            return 'Kein Memo vorhanden.';
 
     @botcmd
     def afkalle (self, mess, args):
