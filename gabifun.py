@@ -59,10 +59,11 @@ class GabiFun(BotBase):
     def copy (self, mess, args):
         """sie merkt sich was"""
         if len(args) > 0:
-            memo = args;
+            username = self.get_sender_username(mess)
+            self.memList[username] = args;
             return 'Merke mir: "' + args + '".';
         else:
-            return 'Ja was denn?';
+            return 'Ja, was denn?';
 
     @botcmd
     def wie (self, mess, args):
