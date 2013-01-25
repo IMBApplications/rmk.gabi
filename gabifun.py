@@ -54,6 +54,15 @@ class GabiFun(BotBase):
             return 'Scheiss ' + args + '! Verkackter Mist, stinkiger!';
         else:
             return 'AARRRG! DRECKSVERWANZTEHURENSCHEISSMISTPIMMELKACKE!';
+            
+    @botcmd
+    def copy (self, mess, args):
+        """sie merkt sich was"""
+        if len(args) > 0:
+            memo = args;
+            return 'Merke mir: "' + args + '".';
+        else:
+            return 'Ja was denn?';
 
     @botcmd
     def wie (self, mess, args):
