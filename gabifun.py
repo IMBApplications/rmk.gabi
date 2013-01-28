@@ -35,11 +35,11 @@ class GabiFun(BotBase):
         """user away"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
-            self.afkList[username] = (username, args);
+            self.afkList[username] = [username, args];
             return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + args + '.';
         else:
             for item in self.afkList.keys():
-                (username, message) = item
+                [username, message] = item
                 self.send_simple_reply(mess, "%s: %s" % (username, message))
             return
 
