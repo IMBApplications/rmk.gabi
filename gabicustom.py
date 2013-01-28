@@ -30,7 +30,7 @@ class GabiCustom(BotBase):
                 c = re.compile(reg)
                 if c.match(text) != None:
                     if username in self.afkList:
-                        self.send_simple_reply(mess, "wb " + username + "! Wie wars beim " + self.afkList[username] + "?"
+                        self.send_simple_reply(mess, "wb " + username + "! Wie wars beim " + self.afkList[username] + "?")
                         del self.afkList[username];
                     else:
                         self.send_simple_reply(mess, "wb {0}!".format(username))
