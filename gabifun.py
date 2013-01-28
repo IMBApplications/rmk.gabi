@@ -19,14 +19,7 @@ class GabiFun(BotBase):
             return args  + ' ist IMBA!';
         else:
             return 'Ich bin IMBA!';
-            
-    @botcmd
-    def cls (self, mess, args):
-        i = 0
-        for i < 10:
-            self.send_simple_reply(mess, i)
-            i ++;
-        return
+
             
     @botcmd
     def haha (self, mess, args):
