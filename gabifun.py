@@ -21,6 +21,13 @@ class GabiFun(BotBase):
             return 'Ich bin IMBA!';
             
     @botcmd
+    def cls (self, mess, args):
+        for i < 10:
+            self.send_simple_reply(mess, i)
+            i ++
+        return
+            
+    @botcmd
     def haha (self, mess, args):
         """gabi lacht"""
         username = self.get_sender_username(mess)
