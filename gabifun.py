@@ -71,34 +71,16 @@ class GabiFun(BotBase):
             return 'Ja, was denn?';
 
     @botcmd
-    def paste (self, mess, args):
+    def werafk (self, mess, args):
         """sagt, was sie sich gemerkt hat"""
-        username = self.get_sender_username(mess)
-        if username in self.memList:
-            return 'Habe mir: "' + self.memList[username] + '" gemerkt.';
+        if len(self.afkList) > 0:
+            ret = ''
+            for username in self.afkList.keys():
+                ret = ret + "\n%-10s: %s" % (username, self.afkList[username])
+            return ret;
         else:
-            return 'Kein Memo vorhanden.';
+            return 'Es hat sich niemand abgemeldet.'
 
-    @botcmd
-    def afkalle (self, mess, args):
-        """sagt, was sie sich gemerkt hat"""
-        ret = ''
-        for username in self.afkList.keys():
-            ret = ret + "\n%-10s: %s" % (username, self.afkList[username])
-        return ret;
-
-    @botcmd
-    def afktest (self, mess, args):
-        """sagt, was sie sich gemerkt hat"""
-        username = self.get_sender_username(mess)
-        return self.afkList[username]
-
-    @botcmd
-    def listtest (self, mess, args):
-        """sagt, was sie sich gemerkt hat"""
-        username = self.get_sender_username(mess)
-        return self.memList[username];
-            
     @botcmd
     def wie (self, mess, args):
         """use wie gehts? to be nice to her"""
