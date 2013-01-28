@@ -35,12 +35,11 @@ class GabiFun(BotBase):
         """user away"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
-            self.afkList[username] = (username, args);
+            self.afkList[username] = args;
             return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + args + '.';
         else:
-            for item in self.afkList.keys():
-                (username, message) = self.afkListe[item]
-                self.send_simple_reply(mess, "%s: %s" % (username, message))
+            for username in self.afkList.keys():
+                self.send_simple_reply(mess, "%s: %s" % (username, self.afkListe[item]))
             return
 
     @botcmd
@@ -85,15 +84,15 @@ class GabiFun(BotBase):
     def afkalle (self, mess, args):
         """sagt, was sie sich gemerkt hat"""
         ret = ''
-        for item in self.afkList.keys():
-            ret = ret + "\n" + self.afkList[item]
+        for username in self.afkList.keys():
+            ret = ret + "\n%-10s: %s" % (username, self.afkList[username])
         return ret;
 
     @botcmd
     def afktest (self, mess, args):
         """sagt, was sie sich gemerkt hat"""
         username = self.get_sender_username(mess)
-        return self.afkList[username][0,1];
+        return self.afkList[username]
 
     @botcmd
     def listtest (self, mess, args):
