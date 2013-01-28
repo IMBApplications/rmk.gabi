@@ -22,6 +22,7 @@ class GabiFun(BotBase):
             
     @botcmd
     def cls (self, mess, args):
+        i = 0
         for i < 10:
             self.send_simple_reply(mess, i)
             i ++
