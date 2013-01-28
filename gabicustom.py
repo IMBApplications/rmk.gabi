@@ -29,9 +29,11 @@ class GabiCustom(BotBase):
         for reg in reg_ex_re:
                 c = re.compile(reg)
                 if c.match(text) != None:
-                        self.send_simple_reply(mess, "wb {0}!".format(username))
-                        if len(self.afkList[username]) > 0:
-                            del self.afkList[username];
+                            if username in self.afkList:
+                                self.send_simple_reply(mess, "wb {0}! Wie wars beim {1}".format(username, self.afkList[username]))
+                                del self.afkList[username];
+                            else:
+                                self.send_simple_reply(mess, "wb {0}!".format(username))
                         return
 
         #tippfehlerkontrolle
