@@ -25,7 +25,7 @@ class GabiFun(BotBase):
         i = 0
         for i < 10:
             self.send_simple_reply(mess, i)
-            i ++
+            i ++;
         return
             
     @botcmd
