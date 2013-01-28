@@ -93,7 +93,7 @@ class GabiFun(BotBase):
     def afktest (self, mess, args):
         """sagt, was sie sich gemerkt hat"""
         username = self.get_sender_username(mess)
-        return self.afkList[username];
+        return self.afkList[username][0,1];
 
     @botcmd
     def listtest (self, mess, args):
