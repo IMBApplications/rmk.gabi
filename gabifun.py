@@ -59,12 +59,14 @@ class GabiFun(BotBase):
             return 'AARRRG! DRECKSVERWANZTEHURENSCHEISSMISTPIMMELKACKE!';
             
     @botcmd
-    def copy (self, mess, args):
+    def memo (self, mess, args):
         """sie merkt sich was"""
+        username = self.get_sender_username(mess)
         if len(args) > 0:
-            username = self.get_sender_username(mess)
             self.memList[username] = args;
             return 'Merke mir: "' + args + '".';
+        elif username in self.memList:
+            return 'Habe mir: "' + self.memList[username] + '" gemerkt.';
         else:
             return 'Ja, was denn?';
 
