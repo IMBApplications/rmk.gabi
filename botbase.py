@@ -273,7 +273,7 @@ class BotBase(object):
 			if self.candy_colors:
 				message_text = '|c:7|' + text
 			else:
-				message_text = texta
+				message_text = text
 			message = xmpp.protocol.Message(body=message_text)
 		return message
 
