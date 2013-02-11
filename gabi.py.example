@@ -8,6 +8,6 @@ nickname = 'Gabi'
 room = ''
 candy_colors = False
 
-bot = GabiBase(username,password)
+bot = GabiBase(username, password, candy_colors)
 bot.join_room(room, nickname)
 bot.serve_forever()

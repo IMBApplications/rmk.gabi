@@ -36,7 +36,7 @@ class BotBase(object):
 	PING_TIMEOUT = 2 # Seconds to wait for a response.
 
 	########## Constructor ##########	
-	def __init__(self, username, password, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
+	def __init__(self, username, password, candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
 		# TODO sort this initialisation thematically
 		self.__debug = debug
 		self.log = logging.getLogger(__name__)
@@ -53,6 +53,7 @@ class BotBase(object):
 		self.__lastping = time.time()
 		self.__privatedomain = privatedomain
 		self.__acceptownmsgs = acceptownmsgs
+		self.candy_colors = candy_colors
 		self.memList = {}
 		self.afkList = {}
 
@@ -248,7 +249,11 @@ class BotBase(object):
 		if text_plain != text:
 			# Create body w stripped tags for reciptiens w/o xhtml-abilities
 			# FIXME unescape &quot; etc.
-			message = xmpp.protocol.Message(body='|c:7|' + text_plain)
+			if self.candy_colors:
+				message_text = '|c:7|' + text_plain
+			else:
+				message_text = text_plain
+			message = xmpp.protocol.Message(body=message_text)
 			# Start creating a xhtml body
 			html = xmpp.Node('html', \
 				{'xmlns': 'http://jabber.org/protocol/xhtml-im'})
@@ -265,7 +270,11 @@ class BotBase(object):
 				message = None
 		if message is None:
 		# Normal body
-			message = xmpp.protocol.Message(body='|c:7|' + text)
+			if self.candy_colors:
+				message_text = '|c:7|' + text
+			else:
+				message_text = texta
+			message = xmpp.protocol.Message(body=message_text)
 		return message
 
 	def broadcast(self, message, only_available=False):
