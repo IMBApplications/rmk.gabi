@@ -1,0 +1,13 @@
+#!/usr/bin/python
+
+from gabibase import GabiBase
+
+username = ''
+password = ''
+nickname = 'Gabi'
+room = ''
+candy_colors = False
+
+bot = GabiBase(username,password)
+bot.join_room(room, nickname)
+bot.serve_forever()
