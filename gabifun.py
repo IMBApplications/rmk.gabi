@@ -84,6 +84,7 @@ class GabiFun(BotBase):
 
         else:
             ret_message = "Du musst einen namen gefolgt von der nachricht angeben."
+            print self.reminderDict
         return ret_message
 
     @botcmd
