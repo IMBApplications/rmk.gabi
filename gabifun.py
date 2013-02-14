@@ -148,4 +148,4 @@ class GabiFun(BotBase):
     @botcmd
     def penis (self, mess, args):
         """she flashes her ... aehm ... penis?"""
-        return '8=========D'
+        return '8=========>'
