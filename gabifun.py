@@ -31,6 +31,15 @@ class GabiFun(BotBase):
             return 'Hahahaha! Man, ' + username  + ', du bist so witzig, ich lach mich tot!';
 
     @botcmd
+    def sih (self, mess, args):
+        """gabi schiesst wem in den hals"""
+        username = self.get_sender_username(mess)
+        if len(args) > 0:
+            return args + ', schiess dir in den Hals!';
+        else:
+            return username  + ', wem soll ich in den Hals schiessen?';
+
+    @botcmd
     def afk (self, mess, args):
         """user away"""
         username = self.get_sender_username(mess)

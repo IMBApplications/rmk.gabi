@@ -3,3 +3,4 @@ gabi.py
 db/*.csv
 logs/*.log
 xmpp/*
+*.sublime-*
