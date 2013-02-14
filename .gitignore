@@ -4,3 +4,4 @@ db/*.csv
 logs/*.log
 xmpp/*
 *.sublime-*
+rmkgabi.py
