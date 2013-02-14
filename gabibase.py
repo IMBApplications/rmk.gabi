@@ -6,6 +6,7 @@ from gabicustom import GabiCustom
 from gabifun import GabiFun
 from gabilog import GabiLog
 from gabihelp import GabiHelp
+from gabihate import GabiHate
 
 import logging
 
