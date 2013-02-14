@@ -38,8 +38,17 @@ class GabiFun(BotBase):
             return args + ', schiess dir in den Hals!'
         else:
             return username  + ', wem soll ich in den Hals schiessen?'
-    @botcmd
 
+    @botcmd
+    def getaids (self, mess, args):
+        """gabi wuenscht wem aids"""
+        username = self.get_sender_username(mess)
+        if len(args) > 0:
+            return args + ', get AIDS!'
+        else:
+            return username  + ', wem soll ich AIDS wuenschen?'
+
+    @botcmd
     def slap (self, mess, args):
         """gabi gibt wem eine ohrfeige"""
         username = self.get_sender_username(mess)
@@ -62,16 +71,16 @@ class GabiFun(BotBase):
     @botcmd
     def remind (self, mess, args):
         """remind a user with something when he comes back"""
-        username = self.get_sender_username(mess)
+        from_username = self.get_sender_username(mess)
         if len(args) > 1:
             target_user = args[0]
             target_message = args[1:]
 
-            for contact in self.roster.getItems():
-                print ('  %s' % contact)
             ret_message = "nix"
 
-            # self.reminderDict[target_user] = target_message
+
+
+            # self.reminderDict[target_user].apend((from_username, target_message))
         else:
             ret_message = "Du musst einen namen gefolgt von der nachricht angeben."
         return ret_message
