@@ -56,6 +56,9 @@ class BotBase(object):
 		self.candy_colors = candy_colors
 		self.memList = {}
 		self.afkList = {}
+		self.reminderDict = {}
+
+		#FIXME load saved lists
 
 		self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
