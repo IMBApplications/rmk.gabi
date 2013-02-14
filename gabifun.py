@@ -77,11 +77,11 @@ class GabiFun(BotBase):
         if len(args) > 1:
             target_user = new_args[0]
             target_message = new_args[1:]
-
-            ret_message = "Ich werde " + target_user + " ausrichten dass: " + target_message
+            
+            ret_message = "Ich werde " + target_user.encode('ascii', 'replace') + " ausrichten dass: " + target_message.encode('ascii', 'replace')
 
             try:
-                self.reminderDict[target_user].apend((from_username, target_message))
+                self.reminderDict[target_user.encode('ascii', 'replace')].apend((from_username.encode('ascii', 'replace'), target_message.encode('ascii', 'replace')))
                 # if isinstance(self.reminderDict[target_user], list):
                 #     self.reminderDict[target_user] = []
             except Exception as e:
