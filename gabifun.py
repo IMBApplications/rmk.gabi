@@ -78,9 +78,14 @@ class GabiFun(BotBase):
 
             ret_message = "Ich werde " + target_user + " ausrichten dass: " + target_message
 
-            if not isinstance(self.reminderDict[target_user], list):
-                self.reminderDict[target_user] = []
-            self.reminderDict[target_user].apend((from_username, target_message))
+            try:
+                self.reminderDict[target_user].apend((from_username, target_message))
+                # if isinstance(self.reminderDict[target_user], list):
+                #     self.reminderDict[target_user] = []
+            except Exception as e:
+                print e
+
+            
 
         else:
             ret_message = "Du musst einen namen gefolgt von der nachricht angeben."
