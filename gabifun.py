@@ -40,7 +40,7 @@ class GabiFun(BotBase):
             return username  + ', wem soll ich in den Hals schiessen?'
 
     @botcmd
-    def getaids (self, mess, args):
+    def aids (self, mess, args):
         """gabi wuenscht wem aids"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
