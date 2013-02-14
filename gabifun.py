@@ -73,8 +73,8 @@ class GabiFun(BotBase):
         """remind a user with something when he comes back"""
         from_username = self.get_sender_username(mess)
         if len(args) > 1:
-            target_user = args[0]
-            target_message = args[1:]
+            target_user = args[0].encode('ascii', 'replace'))
+            target_message = args[1:].encode('ascii', 'replace'))
 
             ret_message = "Ich werde " + target_user + " ausrichten dass: " + target_message
 
