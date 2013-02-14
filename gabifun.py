@@ -67,7 +67,8 @@ class GabiFun(BotBase):
             target_user = args[0]
             target_message = args[1:]
 
-            print self.roster
+            for contact in self.roster.getItems():
+                print ('  %s' % contact)
             ret_message = "nix"
 
             # self.reminderDict[target_user] = target_message
