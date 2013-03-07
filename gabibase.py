@@ -17,6 +17,6 @@ import re
 logging.basicConfig()
 #logging.basicConfig(filename='logs/gabi.log',level=logging.DEBUG)
 
-class GabiBase(GabiAdmin, GabiCustom, GabiFun, GabiHelp, GabiLog):
+class GabiBase(GabiAdmin, GabiCustom, GabiFun, GabiHelp, GabiLog, GabiHate):
     def test(self):
         print "test"
