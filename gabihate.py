@@ -31,4 +31,4 @@ class GabiHate(BotBase):
     @botcmd
     def zoidberg (self, mess, args):
         """she draws zoidberg"""
-        return '(\/) (°,,,°) (\/)'
+        return '(\/) (^,,,^) (\/)'
