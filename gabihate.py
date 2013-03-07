@@ -27,3 +27,8 @@ class GabiHate(BotBase):
     def penis (self, mess, args):
         """she flashes her ... aehm ... penis?"""
         return '8=========>'
+
+    @botcmd
+    def zoidberg (self, mess, args):
+        """she draws zoidberg"""
+        return '(\/) (°,,,°) (\/)'
