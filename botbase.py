@@ -10,6 +10,7 @@ import inspect
 import logging
 import traceback
 import atexit
+import json
 
 try:
     import xmpp
@@ -55,13 +56,15 @@ class BotBase(object):
         self.__privatedomain = privatedomain
         self.__acceptownmsgs = acceptownmsgs
         self.candy_colors = candy_colors
-        self.memList = {}
-        self.afkList = {}
-        self.reminderDict = {}
 
-        atexit.register(self.saveLists)
+        self.memList = loadJSON('save_memo.dat')
+        atexit.register(self.saveJSON, 'save_memo.dat', self.memList)
 
-        #FIXME load saved lists
+        self.afkList = loadJSON('save_afk.dat')
+        atexit.register(self.saveJSON, 'save_afk.dat', self.afkList)
+
+        self.reminderDict = loadJSON('save_reminder.dat')
+        atexit.register(self.saveJSON, 'save_reminder.dat', self.reminderDict)
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
@@ -75,21 +78,26 @@ class BotBase(object):
 
         self.roster = None
 
-    ########## Save Function ##########
-    def saveLists(self):
-        self.memList = {}
-        self.afkList = {}
-        self.reminderDict = {}
+    ########## Save / Load Functions ##########
+    def saveJSON(self, filename, content):
+        try:
+            file = open(filename, 'w')
+            file.write(json.dumps(content))
+            file.close()
+            self.log.debug("Saving to %s" % (filename))
+        except IOError:
+            self.log.warning("Could not safe data to file %s!" % (filename))
 
-        # try:
-        #     file = open(self.command_cron_file, 'w')
-        #     file.write(json.dumps(self.cron_list))
-        #     file.close()
-        #     self.logger.debug("Saving crontab to %s" % (self.command_cron_file))
-        # except IOError:
-        #     self.logger.warning("Could not safe cron tab to file!")
-
-        pass
+    def loadJSON(self, filename):
+        try:
+            file = open(filename, 'r')
+            # self.cron_list = self.utils.convert_from_unicode(json.loads(file.read()))
+            values = json.loads(file.read())
+            file.close()
+            self.log.debug("Loading data from %s" % (filename))
+            return values
+        except IOError:
+            return {}
 
     ########## Class Methods ##########
     def _send_status(self):
