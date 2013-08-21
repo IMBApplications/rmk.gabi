@@ -130,5 +130,5 @@ class GabiCustom(BotBase):
         hallo = 'Und da ist {0} weg'.format(user)
         self.lastSeen[user] = int(time.time())
 
-        self.send(room, hallo, None, 'groupchat')
+        #self.send(room, hallo, None, 'groupchat')
     
