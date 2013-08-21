@@ -111,7 +111,7 @@ class GabiCustom(BotBase):
         try:
             hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, getAge(self.lastSeen[user]))
         except:
-            hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein für hilfe.'.format(user)
+            hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
 
         self.lastSeen[user] = time.time()
         #self.send(room, hallo, None, 'groupchat')
