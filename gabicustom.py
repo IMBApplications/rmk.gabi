@@ -104,10 +104,11 @@ class GabiCustom(BotBase):
             self.send(room, hallo, None, 'groupchat')
 
     def on_gone_offline(self, jid):
+        strJID = '%s' % jid
+        room = self.list_unicode_cleanup(strJID.split('@'))[0]
+        user = self.list_unicode_cleanup(strJID.split('/'))[1]
+        
         if user != self.get_my_username():
-            strJID = '%s' % jid
-            room = self.list_unicode_cleanup(strJID.split('@'))[0]
-            user = self.list_unicode_cleanup(strJID.split('/'))[1]
             hallo = 'Und da ist {0} weg'.format(user)
             self.lastSeen[user] = int(time.time())
 
