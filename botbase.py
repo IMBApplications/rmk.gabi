@@ -9,6 +9,7 @@ import time
 import inspect
 import logging
 import traceback
+import atexit
 
 try:
     import xmpp
