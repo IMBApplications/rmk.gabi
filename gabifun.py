@@ -135,3 +135,17 @@ class GabiFun(BotBase):
     def titten (self, mess, args):
         """she flashes her titties"""
         return '( . )( . )'
+
+    @botcmd
+    def lastSeen (self, mess, args):
+        """Gibt dir an, wann ein Benutzer zuletzt gesehen wurde"""
+        lastSeen = 0
+        for (name, timestamp) in self.lastSeen[user]:
+            if username.lower() == args.lower():
+                lastSeen = timestamp
+                userName = name
+
+        if lastSeen > 0:
+            return username + ' habe ich zuletzt vor ' + self.getAge(lastSeen) + 'gesehen.'
+        else:
+            return args + ' habe ich noch nie gesehen.'

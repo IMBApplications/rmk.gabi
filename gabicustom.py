@@ -6,43 +6,7 @@ import csv
 import datetime
 import time
 
-def getAge(timestamp):
-    age = int(time.time() - timestamp)
-
-    if age < 0:
-        age = age * -1
-
-    if age == 0:
-        return ''
-    elif age < 60:
-        return '%s Sekunde(n)' % (age)
-    elif age > 59 and age < 3600:
-        return '%s Minute(n)' % (int(age / 60))
-    elif age >= 3600 and age < 86400:
-        return '%s Stunde(n)' % (int(age / 3600))
-    elif age >= 86400 and age < 604800:
-        return '%s Tage(n)' % (int(age / 86400))
-    elif age >= 604800 and age < 31449600:
-        return '%s Woche(n)' % (int(age / 604800))
-    else:
-        return '%s Jahre(n)' % (int(age / 31449600))
-
 class GabiCustom(BotBase):
-    
-    @botcmd
-    def lastSeen (self, mess, args):
-        """Gibt dir an, wann ein Benutzer zuletzt gesehen wurde"""
-        lastSeen = 0
-        for (name, timestamp) in self.lastSeen[user]:
-            if username.lower() == args.lower():
-                lastSeen = timestamp
-                userName = name
-
-        if lastSeen > 0:
-            return username + ' habe ich zuletzt vor ' + getAge(lastSeen) + 'gesehen.'
-        else:
-            return args + ' habe ich noch nie gesehen.'
-
     def on_not_a_command(self, mess):
         type = mess.getType()
         jid = mess.getFrom()
@@ -131,7 +95,7 @@ class GabiCustom(BotBase):
             pass        
 
         if age > 0:
-            hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, getAge(age))
+            hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age))
         else:
             hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
 
