@@ -83,6 +83,14 @@ class GabiCustom(BotBase):
             handler.close()
 
     def on_came_online(self, jid):
+        try:
+            unicode(jid, "ascii")
+        except UnicodeError:
+            jid = unicode(jid, "utf-8")
+        else:
+            # value was valid ASCII data
+            pass
+            
         jidSplit = '{0}'.format(jid).partition('/')
         room = jidSplit[0]
         user = jidSplit[2]
