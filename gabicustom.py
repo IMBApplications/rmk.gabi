@@ -114,7 +114,7 @@ class GabiCustom(BotBase):
             hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
 
         self.lastSeen[user] = time.time()
-        #self.send(room, hallo, None, 'groupchat')
+        self.send(room, hallo, None, 'groupchat')
 
     def on_gone_offline(self, jid):
         jidSplit = '{0}'.format(jid).partition('/')
@@ -123,5 +123,5 @@ class GabiCustom(BotBase):
         hallo = 'Und da ist {0} weg'.format(user)
         self.lastSeen[user] = time.time()
 
-        #self.send(room, hallo, None, 'groupchat')
+        self.send(room, hallo, None, 'groupchat')
     
