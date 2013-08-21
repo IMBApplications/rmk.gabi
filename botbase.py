@@ -630,6 +630,16 @@ class BotBase(object):
         else:
             return '%s Jahre(n)' % (int(age / 31449600))
 
+    def convert_from_unicode(self, data):
+        if isinstance(data, unicode):
+            return str(data)
+        elif isinstance(data, collections.Mapping):
+            return dict(map(self.convert_from_unicode, data.iteritems()))
+        elif isinstance(data, collections.Iterable):
+            return type(data)(map(self.convert_from_unicode, data))
+        else:
+            return data
+
 
 ########## Decorator for Bot Command Functions ##########
 def botcmd(*args, **kwargs):
