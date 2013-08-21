@@ -80,6 +80,7 @@ class BotBase(object):
 
     ########## Save / Load Functions ##########
     def saveJSON(self, filename, content):
+        """Saves the given content to the given filename as JSON"""
         try:
             file = open(filename, 'w')
             file.write(json.dumps(content))
@@ -89,6 +90,7 @@ class BotBase(object):
             self.log.warning("Could not safe data to file %s!" % (filename))
 
     def loadJSON(self, filename, default):
+        """Loads content from the given filename as JSON. If no file could be read, it returns the default."""
         try:
             file = open(filename, 'r')
             # self.cron_list = self.utils.convert_from_unicode(json.loads(file.read()))
