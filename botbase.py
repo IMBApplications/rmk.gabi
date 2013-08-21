@@ -57,14 +57,14 @@ class BotBase(object):
         self.__acceptownmsgs = acceptownmsgs
         self.candy_colors = candy_colors
 
-        self.memList = self.loadJSON('save_memo.dat')
-        atexit.register(self.saveJSON, 'save_memo.dat', self.memList)
+        self.memList = self.loadJSON('db/save_memo.dat')
+        atexit.register(self.saveJSON, 'db/save_memo.dat', self.memList)
 
-        self.afkList = self.loadJSON('save_afk.dat')
-        atexit.register(self.saveJSON, 'save_afk.dat', self.afkList)
+        self.afkList = self.loadJSON('db/save_afk.dat')
+        atexit.register(self.saveJSON, 'db/save_afk.dat', self.afkList)
 
-        self.reminderDict = self.loadJSON('save_reminder.dat')
-        atexit.register(self.saveJSON, 'save_reminder.dat', self.reminderDict)
+        self.reminderDict = self.loadJSON('db/save_reminder.dat')
+        atexit.register(self.saveJSON, 'db/save_reminder.dat', self.reminderDict)
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
