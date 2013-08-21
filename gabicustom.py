@@ -84,6 +84,7 @@ class GabiCustom(BotBase):
 
     def on_came_online(self, jid):
         jidSplit = self.list_unicode_cleanup(repr(jid).split('/'))
+        print jidSplit
         # jidSplit = '{0}'.format(self.convert_from_unicode(jid)).partition('/')
         room = jidSplit[0]
         user = jidSplit[2]
