@@ -155,8 +155,7 @@ class BotBase(object):
             #connection attempt
             conres = conn.connect()
             if not conres:
-                self.log.error('unable to connect to server %s.' %
-          self.jid.getDomain())
+                self.log.error('unable to connect to server %s.' % self.jid.getDomain())
                 return None
             if conres != 'tls':
                 self.log.warning('unable to establish secure connection '\
