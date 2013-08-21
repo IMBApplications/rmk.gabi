@@ -87,7 +87,7 @@ class GabiCustom(BotBase):
         room = jidSplit[0]
         user = jidSplit[2]
 
-        if user != self.__nickname:
+        if user != self.get_my_username():
             age = 0
             try:
                 if self.lastSeen[user] > 0:
@@ -104,7 +104,7 @@ class GabiCustom(BotBase):
             self.send(room, hallo, None, 'groupchat')
 
     def on_gone_offline(self, jid):
-        if user != self.__nickname:
+        if user != self.get_my_username():
             jidSplit = '{0}'.format(jid).partition('/')
             room = jidSplit[0]
             user = jidSplit[2]
