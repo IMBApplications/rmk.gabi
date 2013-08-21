@@ -28,6 +28,21 @@ def getAge(timestamp):
         return '%s Jahre(n)' % (int(age / 31449600))
 
 class GabiCustom(BotBase):
+    
+    @botcmd
+    def lastSeen (self, mess, args):
+        """Tells you, when the user was last here"""
+        lastSeen = 0
+        for (name, timestamp) in self.lastSeen[user]:
+            if username.lower() == args.lower():
+                lastSeen = timestamp
+                userName = name
+
+        if lastSeen > 0:
+            return username + ' habe ich zuletzt vor ' + getAge(lastSeen) + 'gesehen.'
+        else:
+            return args + ' habe ich noch nie gesehen.'
+                
     def on_not_a_command(self, mess):
         type = mess.getType()
         jid = mess.getFrom()
@@ -131,17 +146,3 @@ class GabiCustom(BotBase):
         self.lastSeen[user] = int(time.time())
 
         #self.send(room, hallo, None, 'groupchat')
-    
-    @botcmd
-    def lastSeen (self, mess, args):
-        """Tells you, when the user was last here"""
-        lastSeen = 0
-        for (name, timestamp) in self.lastSeen[user]:
-            if username.lower() == args.lower():
-                lastSeen = timestamp
-                userName = name
-
-        if lastSeen > 0:
-            return username + ' habe ich zuletzt vor ' + getAge(lastSeen) + 'gesehen.'
-        else:
-            return args + ' habe ich noch nie gesehen.'
