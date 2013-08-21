@@ -116,7 +116,7 @@ class GabiCustom(BotBase):
     def zuletzt (self, mess, args):
         """Gibt dir an, wann ein Benutzer zuletzt gesehen wurde"""
         lastSeen = 0
-        for (name, timestamp) in self.lastSeen[user]:
+        for (name, timestamp) in self.lastSeen:
             if username.lower() == args.lower():
                 lastSeen = timestamp
                 userName = name
