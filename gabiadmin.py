@@ -37,5 +37,6 @@ class GabiAdmin(BotBase):
     @botcmd
     def quit (self, mess, args):
         """Beendet/Restartet Gabi"""
-        exit()
+        # exit()
+        self.quit()
         return 'Exiting/Restarting...'  
