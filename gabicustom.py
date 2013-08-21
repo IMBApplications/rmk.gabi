@@ -84,15 +84,8 @@ class GabiCustom(BotBase):
 
     def on_came_online(self, jid):
         strJID = '%s' % jid
-        print strJID
         room = self.list_unicode_cleanup(strJID.split('@'))[0]
         user = self.list_unicode_cleanup(strJID.split('/'))[1]
-
-        # jidSplit = self.list_unicode_cleanup(jid.split('/'))
-        # print jidSplit
-        # jidSplit = '{0}'.format(self.convert_from_unicode(jid)).partition('/')
-        # room = jidSplit[0]
-        # user = jidSplit[2]
 
         if user != self.get_my_username():
             age = 0
@@ -112,14 +105,13 @@ class GabiCustom(BotBase):
 
     def on_gone_offline(self, jid):
         if user != self.get_my_username():
-            jidSplit = '{0}'.format(jid).partition('/')
-            room = jidSplit[0]
-            user = jidSplit[2]
+            strJID = '%s' % jid
+            room = self.list_unicode_cleanup(strJID.split('@'))[0]
+            user = self.list_unicode_cleanup(strJID.split('/'))[1]
             hallo = 'Und da ist {0} weg'.format(user)
             self.lastSeen[user] = int(time.time())
 
             #self.send(room, hallo, None, 'groupchat')
-
 
     @botcmd
     def zuletzt (self, mess, args):
