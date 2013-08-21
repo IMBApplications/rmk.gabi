@@ -85,12 +85,14 @@ class GabiCustom(BotBase):
     def on_came_online(self, jid):
         strJID = '%s' % jid
         print strJID
-        
-        jidSplit = self.list_unicode_cleanup(jid.split('/'))
-        print jidSplit
+        room = self.list_unicode_cleanup(strJID.split('@'))[0]
+        user = self.list_unicode_cleanup(strJID.split('/'))[1]
+
+        # jidSplit = self.list_unicode_cleanup(jid.split('/'))
+        # print jidSplit
         # jidSplit = '{0}'.format(self.convert_from_unicode(jid)).partition('/')
-        room = jidSplit[0]
-        user = jidSplit[2]
+        # room = jidSplit[0]
+        # user = jidSplit[2]
 
         if user != self.get_my_username():
             age = 0
