@@ -641,6 +641,11 @@ class BotBase(object):
         else:
             return data
 
+    def list_unicode_cleanup(self, data):
+        args = [s.encode('utf-8', errors='ignore').strip() for s in data]
+        args = filter(lambda s: s != '', args)
+        return args
+
 
 ########## Decorator for Bot Command Functions ##########
 def botcmd(*args, **kwargs):
