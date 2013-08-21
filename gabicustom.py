@@ -87,29 +87,31 @@ class GabiCustom(BotBase):
         room = jidSplit[0]
         user = jidSplit[2]
 
-        age = 0
-        try:
-            if self.lastSeen[user] > 0:
-                age = self.lastSeen[user]
-        except Exception:
-            pass        
+        if user != self.__nickname:
+            age = 0
+            try:
+                if self.lastSeen[user] > 0:
+                    age = self.lastSeen[user]
+            except Exception:
+                pass        
 
-        if age > 0:
-            hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age))
-        else:
-            hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
+            if age > 0:
+                hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age))
+            else:
+                hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
 
-        self.lastSeen[user] = int(time.time())
-        self.send(room, hallo, None, 'groupchat')
+            self.lastSeen[user] = int(time.time())
+            self.send(room, hallo, None, 'groupchat')
 
     def on_gone_offline(self, jid):
-        jidSplit = '{0}'.format(jid).partition('/')
-        room = jidSplit[0]
-        user = jidSplit[2]
-        hallo = 'Und da ist {0} weg'.format(user)
-        self.lastSeen[user] = int(time.time())
+        if user != self.__nickname:
+            jidSplit = '{0}'.format(jid).partition('/')
+            room = jidSplit[0]
+            user = jidSplit[2]
+            hallo = 'Und da ist {0} weg'.format(user)
+            self.lastSeen[user] = int(time.time())
 
-        #self.send(room, hallo, None, 'groupchat')
+            #self.send(room, hallo, None, 'groupchat')
 
 
     @botcmd
