@@ -75,6 +75,21 @@ class BotBase(object):
 
         self.roster = None
 
+    ########## Save Function ##########
+    def saveLists(self):
+        self.memList = {}
+        self.afkList = {}
+        self.reminderDict = {}
+
+        # try:
+        #     file = open(self.command_cron_file, 'w')
+        #     file.write(json.dumps(self.cron_list))
+        #     file.close()
+        #     self.logger.debug("Saving crontab to %s" % (self.command_cron_file))
+        # except IOError:
+        #     self.logger.warning("Could not safe cron tab to file!")
+
+        pass
 
     ########## Class Methods ##########
     def _send_status(self):
@@ -596,19 +611,3 @@ def botcmd(*args, **kwargs):
         return decorate(args[0], **kwargs)
     else:
         return lambda func: decorate(func, **kwargs)
-
-########## Save Functions ##########
-def saveLists(self):
-    self.memList = {}
-    self.afkList = {}
-    self.reminderDict = {}
-
-    # try:
-    #     file = open(self.command_cron_file, 'w')
-    #     file.write(json.dumps(self.cron_list))
-    #     file.close()
-    #     self.logger.debug("Saving crontab to %s" % (self.command_cron_file))
-    # except IOError:
-    #     self.logger.warning("Could not safe cron tab to file!")
-
-    pass
