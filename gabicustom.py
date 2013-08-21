@@ -31,7 +31,7 @@ class GabiCustom(BotBase):
     
     @botcmd
     def lastSeen (self, mess, args):
-        """Tells you, when the user was last here"""
+        """Gibt dir an, wann ein Benutzer zuletzt gesehen wurde"""
         lastSeen = 0
         for (name, timestamp) in self.lastSeen[user]:
             if username.lower() == args.lower():
@@ -42,7 +42,7 @@ class GabiCustom(BotBase):
             return username + ' habe ich zuletzt vor ' + getAge(lastSeen) + 'gesehen.'
         else:
             return args + ' habe ich noch nie gesehen.'
-                
+
     def on_not_a_command(self, mess):
         type = mess.getType()
         jid = mess.getFrom()
