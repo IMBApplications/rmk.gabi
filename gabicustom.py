@@ -83,7 +83,7 @@ class GabiCustom(BotBase):
             handler.close()
 
     def on_came_online(self, jid):
-        jidRet = jid
+        jidRet = str(jid)
         try:
             unicode(jidRet, "ascii")
         except UnicodeError:
