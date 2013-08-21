@@ -118,7 +118,7 @@ class GabiCustom(BotBase):
         if not args:
             ret = ''
             for name in self.lastSeen.keys():
-                ret += self.lastSeen[name] + ' vor ' + self.getAge(self.lastSeen[name]) + '\n'
+                ret = ret + self.lastSeen[name] + ' vor ' + self.getAge(self.lastSeen[name]) + '\n'
             return ret
         else:
             lastSeen = 0
