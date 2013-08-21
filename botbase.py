@@ -11,6 +11,7 @@ import logging
 import traceback
 import atexit
 import json
+import collections
 
 try:
     import xmpp
