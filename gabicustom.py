@@ -116,7 +116,10 @@ class GabiCustom(BotBase):
     def zuletzt (self, mess, args):
         """Gibt dir an, wann ein Benutzer zuletzt gesehen wurde"""
         if not args:
-            return self.get_sender_username(mess) + ', bitte gib einen Benutzer an'
+            ret = ''
+            for name in self.lastSeen.keys():
+                ret += self.lastSeen[name] + ' vor ' + self.getAge(self.lastSeen[name]) + '\n'
+            return ret
         else:
             lastSeen = 0
             for name in self.lastSeen.keys():
