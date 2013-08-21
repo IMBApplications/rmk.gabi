@@ -608,6 +608,28 @@ class BotBase(object):
     def get_my_username(self):
         return self.__nickname
 
+    ###### Helper methods ########
+    def getAge(self, timestamp):
+        age = int(time.time() - timestamp)
+
+        if age < 0:
+            age = age * -1
+
+        if age == 0:
+            return ''
+        elif age < 60:
+            return '%s Sekunde(n)' % (age)
+        elif age > 59 and age < 3600:
+            return '%s Minute(n)' % (int(age / 60))
+        elif age >= 3600 and age < 86400:
+            return '%s Stunde(n)' % (int(age / 3600))
+        elif age >= 86400 and age < 604800:
+            return '%s Tage(n)' % (int(age / 86400))
+        elif age >= 604800 and age < 31449600:
+            return '%s Woche(n)' % (int(age / 604800))
+        else:
+            return '%s Jahre(n)' % (int(age / 31449600))
+
 
 ########## Decorator for Bot Command Functions ##########
 def botcmd(*args, **kwargs):
