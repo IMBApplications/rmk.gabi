@@ -57,13 +57,13 @@ class BotBase(object):
         self.__acceptownmsgs = acceptownmsgs
         self.candy_colors = candy_colors
 
-        self.memList = self.loadJSON('db/save_memo.dat')
+        self.memList = self.loadJSON('db/save_memo.dat', {})
         atexit.register(self.saveJSON, 'db/save_memo.dat', self.memList)
 
-        self.afkList = self.loadJSON('db/save_afk.dat')
+        self.afkList = self.loadJSON('db/save_afk.dat', {})
         atexit.register(self.saveJSON, 'db/save_afk.dat', self.afkList)
 
-        self.reminderDict = self.loadJSON('db/save_reminder.dat')
+        self.reminderDict = self.loadJSON('db/save_reminder.dat', {})
         atexit.register(self.saveJSON, 'db/save_reminder.dat', self.reminderDict)
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
@@ -88,7 +88,7 @@ class BotBase(object):
         except IOError:
             self.log.warning("Could not safe data to file %s!" % (filename))
 
-    def loadJSON(self, filename):
+    def loadJSON(self, filename, default):
         try:
             file = open(filename, 'r')
             # self.cron_list = self.utils.convert_from_unicode(json.loads(file.read()))
@@ -97,7 +97,7 @@ class BotBase(object):
             self.log.debug("Loading data from %s" % (filename))
             return values
         except IOError:
-            return {}
+            return default
 
     ########## Class Methods ##########
     def _send_status(self):
