@@ -127,4 +127,4 @@ class GabiCustom(BotBase):
             if lastSeen > 0:
                 return userName + ' habe ich zuletzt vor ' + self.getAge(lastSeen) + ' gesehen.'
             else:
-                return args + ' habe ich noch nie gesehen.'
+                return self.get_sender_username(mess) + ', ' + args + ' habe ich noch nie gesehen.'
