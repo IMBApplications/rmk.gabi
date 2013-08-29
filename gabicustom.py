@@ -105,7 +105,7 @@ class GabiCustom(BotBase):
 
             self.lastSeen[user] = int(time.time())
             print "%s, %s, none, groupchat" % (room, hallo)
-            self.send(room, hallo, user, 'groupchat')
+            self.send(room, hallo, jid, 'groupchat')
 
     def on_gone_offline(self, jid):
         strJID = '%s' % jid
