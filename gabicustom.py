@@ -89,7 +89,6 @@ class GabiCustom(BotBase):
         print "%s came online" % strJID
 
         if user != self.get_my_username():
-            print " its not me"
             age = 0
             try:
                 if self.lastSeen[user] > 0:
@@ -106,7 +105,7 @@ class GabiCustom(BotBase):
 
             self.lastSeen[user] = int(time.time())
             print "%s, %s, none, groupchat" % (room, hallo)
-            self.send(room, hallo, None, 'groupchat')
+            self.send(room, hallo, user, 'groupchat')
 
     def on_gone_offline(self, jid):
         strJID = '%s' % jid
