@@ -89,6 +89,7 @@ class GabiCustom(BotBase):
         print "%s came online" % strJID
 
         if user != self.get_my_username():
+            print " its not me"
             age = 0
             try:
                 if self.lastSeen[user] > 0:
@@ -97,8 +98,10 @@ class GabiCustom(BotBase):
                 pass        
 
             if age > 0:
+                print "age > 0"
                 hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age))
             else:
+                print "else"
                 hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
 
             self.lastSeen[user] = int(time.time())
