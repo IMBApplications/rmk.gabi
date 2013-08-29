@@ -234,7 +234,7 @@ class BotBase(object):
         pres = xmpp.Presence(to=my_room_JID)
         if password is not None:
             pres.setTag('x',namespace=NS_MUC).setTagData('password',password)
-        print self.connect().send(pres)
+        self.connect().send(pres)
 
     def quit(self):
        self.__finished = True
