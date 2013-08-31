@@ -89,6 +89,8 @@ class GabiCustom(BotBase):
 
         if user != self.get_my_username():
             age = 0
+            if not self.usersNowOffline.has_key(user):
+                self.usersNowOffline[user] = True
             userWasOffile = self.usersNowOffline[user]
             self.usersNowOffline[user] = False
 
