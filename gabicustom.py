@@ -89,14 +89,12 @@ class GabiCustom(BotBase):
 
         if user != self.get_my_username():
             age = 0
-            userNotAfk = False
 
             try:
-                if self.usersNowOffline[user] > 0:
-                    userNotAfk = True
-                    self.usersNowOffline.pop(user, None)
+                if self.usersNowOffline:
+                    self.usersNowOffline[user] = False
             except Exception:
-                pass
+                self.usersNowOffline[user] = False
 
             try:
                 if self.lastSeen[user] > 0:
@@ -104,7 +102,7 @@ class GabiCustom(BotBase):
             except Exception:
                 pass
 
-            if userNotAfk:
+            if not self.usersNowOffline[user]:
                 hallo = False
                 if age > 0:
                     if (int(time.time()) - age) > 300:
@@ -123,10 +121,10 @@ class GabiCustom(BotBase):
         user = self.list_unicode_cleanup(strJID.split('/'))[1]
 
         if user != self.get_my_username():
-            hallo = 'Und da ist {0} weg'.format(user)
+            # hallo = 'Und da ist {0} weg'.format(user)
 
             self.lastSeen[user] = int(time.time())
-            self.usersNowOffline[user] = int(time.time())
+            self.usersNowOffline[user] = True
 
             #self.send(room, hallo, None, 'groupchat')
 
