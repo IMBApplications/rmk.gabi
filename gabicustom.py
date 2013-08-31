@@ -224,7 +224,7 @@ class GabiCustom(BotBase):
         if len(args) > 1:
             # target_user = str(new_args[0]).encode('ascii', 'replace')
             # target_message = str(new_args[1:]).encode('ascii', 'replace')
-            target_user = ' '.join(self.list_unicode_cleanup(new_args[0]))
+            target_user = str(self.list_unicode_cleanup(new_args[0]))
             target_message = ' '.join(self.list_unicode_cleanup(new_args[1:]))
             print target_message
 
