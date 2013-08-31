@@ -87,6 +87,7 @@ class GabiCustom(BotBase):
         room = self.list_unicode_cleanup(strJID.split('/'))[0]
         user = self.list_unicode_cleanup(strJID.split('/'))[1]
         print "jid: %s, user: %s" % (jid, user)
+        print self.usersNowOffline
 
         if user != self.get_my_username():
             age = 0
