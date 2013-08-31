@@ -140,7 +140,7 @@ class GabiCustom(BotBase):
                 if len(self.reminderDict[user.lower()]) > 0:
                     reminderMessage = '%s, ich soll dir folgendes ausrichten:\n' % user
                     for (sender, message, timestamp) in self.reminderDict[user.lower()]:
-                        reminderMessage += 'Von %s: %s\n' % (sender, message)
+                        reminderMessage += 'Von %s vor %s: %s\n' % (sender, self.getAge(timestamp), message)
 
                     self.reminderDict[user.lower()] = []
                     self.send(room, reminderMessage, None, 'groupchat')
