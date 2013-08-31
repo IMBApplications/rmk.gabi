@@ -5,6 +5,7 @@ import re
 import csv
 import datetime
 import time
+import atexit
 
 class GabiCustom(BotBase):
 
