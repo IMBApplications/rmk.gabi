@@ -9,7 +9,7 @@ import time
 class GabiCustom(BotBase):
 
     def __init__(self, username, password, candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
-        super(BotBase, self).__init__(username, password, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
+        super(GabiCustom, self).__init__(username, password, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
 
         self.lastSeen = self.loadJSON('db/save_lastSeen.dat', {})
         atexit.register(self.saveJSON, 'db/save_lastSeen.dat', self.lastSeen)
