@@ -141,7 +141,7 @@ class GabiCustom(BotBase):
                 for (sender, message, timestamp) in self.reminderDict[user.lower()]:
                     reminderMessage += 'Von %s: %s\n' % (sender, message)
 
-                #self.reminderDict[user.lower()] = []
+                self.reminderDict[user.lower()] = []
                 self.send(room, reminderMessage, None, 'groupchat')
                     
 
@@ -220,16 +220,10 @@ class GabiCustom(BotBase):
         """remind a user with something when he comes back"""
         from_username = self.get_sender_username(mess)
         new_args = args.split(" ")
-        # print ' '.join(new_args[1:])
 
         if len(args) > 1:
             target_user = new_args[0]
             target_message = ' '.join(new_args[1:])
-            # target_message = str(new_args[1:]).encode('utf8', 'replace')
-            # target_user = self.convert_from_unicode(new_args[0]).encode('utf8', 'replace')
-            # target_message = ' '.join(self.list_unicode_cleanup(new_args[1:])).encode('latin-1', 'replace')
-            # target_message = ' '.join(self.list_unicode_cleanup(new_args[1:]))
-            print target_message
 
             ret_message = "Ich werde " + target_user + " ausrichten dass: " + target_message
 
@@ -239,5 +233,4 @@ class GabiCustom(BotBase):
 
         else:
             ret_message = "Du musst einen namen gefolgt von der nachricht angeben."
-            print self.reminderDict
         return ret_message
