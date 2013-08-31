@@ -69,7 +69,7 @@ class BotBase(object):
 
         self.lastSeen = self.loadJSON('db/save_lastSeen.dat', {})
         atexit.register(self.saveJSON, 'db/save_lastSeen.dat', self.lastSeen)
-        self.usersNowOnline = []
+        self.usersNowOffline = {}
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
