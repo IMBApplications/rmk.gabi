@@ -92,6 +92,8 @@ class BotBase(object):
             return values
         except IOError:
             return default
+        except ValueError:
+            return default
 
     ########## Class Methods ##########
     def _send_status(self):
