@@ -89,19 +89,26 @@ class GabiCustom(BotBase):
 
         if user != self.get_my_username():
             age = 0
+            userNotAfk = False
+
             try:
                 if self.usersNowOffline[user] > 0:
-                    if self.lastSeen[user] > 0:
-                        age = self.lastSeen[user]
-                        self.usersNowOffline.pop(user, None)
-
+                    userNotAfk = True
+                    self.usersNowOffline.pop(user, None)
             except Exception:
                 pass
 
-            if age > 0:
-                hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age))
-            else:
-                hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
+            try:
+                if self.lastSeen[user] > 0:
+                    age = self.lastSeen[user]
+            except Exception:
+                pass
+
+            if userNotAfk:
+                if age > 0:
+                    hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age))
+                else:
+                    hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
 
             self.lastSeen[user] = int(time.time())
 
