@@ -86,6 +86,7 @@ class GabiCustom(BotBase):
         strJID = '%s' % jid
         room = self.list_unicode_cleanup(strJID.split('/'))[0]
         user = self.list_unicode_cleanup(strJID.split('/'))[1]
+        print "jid: %s, user: %s" % (jid, user)
 
         if user != self.get_my_username():
             age = 0
@@ -101,7 +102,7 @@ class GabiCustom(BotBase):
                 pass
 
             self.lastSeen[user] = int(time.time())
-            
+
             if userWasOffline:
                 if age > 0:
                     if (int(time.time()) - age) > 300:
