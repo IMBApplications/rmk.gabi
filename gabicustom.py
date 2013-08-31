@@ -224,14 +224,13 @@ class GabiCustom(BotBase):
             target_user = str(new_args[0]).encode('ascii', 'replace')
             target_message = str(new_args[1:]).encode('ascii', 'replace')
 
-            ret_message = "Ich werde " + target_user + " ausrichten dass: " + target_message
+            ret_message = "Ich werde " + target_user + " ausrichten dass: " + ' '.join(target_message)
 
-            try:
-                self.reminderDict[target_user.lower()].apend((from_username, target_message))
-                # if isinstance(self.reminderDict[target_user], list):
-                #     self.reminderDict[target_user] = []
-            except Exception as e:
-                print e
+            if not self.reminderDict.has_key(target_user.lower()):
+                self.reminderDict[target_user.lower()] = []
+            self.reminderDict[target_user.lower()].apend((from_username, ' '.join(target_message)))
+            # if isinstance(self.reminderDict[target_user], list):
+            #     self.reminderDict[target_user] = []
 
         else:
             ret_message = "Du musst einen namen gefolgt von der nachricht angeben."
