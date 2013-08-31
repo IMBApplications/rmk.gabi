@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 from botbase import BotBase, botcmd
 from gabiadmin import GabiAdmin

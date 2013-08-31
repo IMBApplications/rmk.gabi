@@ -1,9 +1,26 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import random
+import atexit
+import json
+import collections
+
 from botbase import BotBase, botcmd
 
-class GabiFun(BotBase):   
+class GabiFun(BotBase):
+
+    def __init__(self, username, password, candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
+        super(GabiFun, self).__init__(username, password, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
+
+        self.memList = self.loadJSON('db/save_memo.dat', {})
+        atexit.register(self.saveJSON, 'db/save_memo.dat', self.memList)
+
+        self.afkList = self.loadJSON('db/save_afk.dat', {})
+        atexit.register(self.saveJSON, 'db/save_afk.dat', self.afkList)
+
+        self.reminderDict = self.loadJSON('db/save_reminder.dat', {})
+        atexit.register(self.saveJSON, 'db/save_reminder.dat', self.reminderDict)
+
     @botcmd
     def fetzig (self, mess, args='Aggravate'):
         """Lets fetz"""

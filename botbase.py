@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import os
 import re
@@ -57,19 +57,6 @@ class BotBase(object):
         self.__privatedomain = privatedomain
         self.__acceptownmsgs = acceptownmsgs
         self.candy_colors = candy_colors
-
-        self.memList = self.loadJSON('db/save_memo.dat', {})
-        atexit.register(self.saveJSON, 'db/save_memo.dat', self.memList)
-
-        self.afkList = self.loadJSON('db/save_afk.dat', {})
-        atexit.register(self.saveJSON, 'db/save_afk.dat', self.afkList)
-
-        self.reminderDict = self.loadJSON('db/save_reminder.dat', {})
-        atexit.register(self.saveJSON, 'db/save_reminder.dat', self.reminderDict)
-
-        # self.lastSeen = self.loadJSON('db/save_lastSeen.dat', {})
-        # atexit.register(self.saveJSON, 'db/save_lastSeen.dat', self.lastSeen)
-        # self.usersNowOffline = {}
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
