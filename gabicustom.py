@@ -108,7 +108,7 @@ class GabiCustom(BotBase):
                     if (int(time.time()) - age) > 300:
                         hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age))
                     else:
-                        hallo = False
+                        hallo = None
                         print "no hallo (user: %s)" % user
                 else:
                     hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
