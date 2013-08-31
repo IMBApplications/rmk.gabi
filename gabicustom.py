@@ -220,13 +220,14 @@ class GabiCustom(BotBase):
         """remind a user with something when he comes back"""
         from_username = self.get_sender_username(mess)
         new_args = args.split(" ")
+        print ' '.join(new_args[1:])
 
         if len(args) > 1:
-            print ' '.join(new_args[1:])
-            target_user = str(new_args[0]).encode('latin-1', 'replace')
+            target_user = "oXi"
+            target_message = ' '.join(new_args[1:])
             # target_message = str(new_args[1:]).encode('utf8', 'replace')
             # target_user = self.convert_from_unicode(new_args[0]).encode('utf8', 'replace')
-            target_message = ' '.join(self.list_unicode_cleanup(new_args[1:])).encode('latin-1', 'replace')
+            # target_message = ' '.join(self.list_unicode_cleanup(new_args[1:])).encode('latin-1', 'replace')
             # target_message = ' '.join(self.list_unicode_cleanup(new_args[1:]))
             print target_message
 
