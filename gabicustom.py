@@ -220,10 +220,10 @@ class GabiCustom(BotBase):
         """remind a user with something when he comes back"""
         from_username = self.get_sender_username(mess)
         new_args = args.split(" ")
-        print ' '.join(new_args[1:])
+        # print ' '.join(new_args[1:])
 
         if len(args) > 1:
-            target_user = "oXi"
+            target_user = new_args[0]
             target_message = ' '.join(new_args[1:])
             # target_message = str(new_args[1:]).encode('utf8', 'replace')
             # target_user = self.convert_from_unicode(new_args[0]).encode('utf8', 'replace')
@@ -235,9 +235,7 @@ class GabiCustom(BotBase):
 
             if not self.reminderDict.has_key(target_user.lower()):
                 self.reminderDict[target_user.lower()] = []
-            self.reminderDict[target_user.lower()].append((from_username, ' '.join(target_message), int(time.time())))
-            # if isinstance(self.reminderDict[target_user], list):
-            #     self.reminderDict[target_user] = []
+            self.reminderDict[target_user.lower()].append((from_username, target_message, int(time.time())))
 
         else:
             ret_message = "Du musst einen namen gefolgt von der nachricht angeben."
