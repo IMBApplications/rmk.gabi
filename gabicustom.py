@@ -19,6 +19,14 @@ class GabiCustom(BotBase):
         atexit.register(self.saveJSON, 'db/save_lastSeen.dat', self.lastSeen)
         self.usersNowOffline = {}
 
+        self.memList = self.loadJSON('db/save_memo.dat', {})
+        atexit.register(self.saveJSON, 'db/save_memo.dat', self.memList)
+
+        self.afkList = self.loadJSON('db/save_afk.dat', {})
+        atexit.register(self.saveJSON, 'db/save_afk.dat', self.afkList)
+
+        self.reminderDict = self.loadJSON('db/save_reminder.dat', {})
+        atexit.register(self.saveJSON, 'db/save_reminder.dat', self.reminderDict)
 
     def on_not_a_command(self, mess):
         type = mess.getType()
@@ -101,6 +109,8 @@ class GabiCustom(BotBase):
         user = self.list_unicode_cleanup(strJID.split('/'))[1]
 
         if user != self.get_my_username():
+
+            # LastSeen
             age = 0
             if not self.usersNowOffline.has_key(user):
                 self.usersNowOffline[user] = True
@@ -124,6 +134,14 @@ class GabiCustom(BotBase):
 
                 if hallo:
                     self.send(room, hallo, None, 'groupchat')
+
+            # Reminder
+            if self.reminderDict.has_key(user.lower()):
+                reminderMessage += 'Ich soll dir folgendes ausrichten:\n'
+                for (sender, message) in self.reminderDict[user.lower()]:
+                    reminderMessage += 'Von %s: %s\n' % (sender, message)
+
+                self.send(room, reminderMessage, None, 'groupchat')
                     
 
     def on_gone_offline(self, jid):
@@ -138,6 +156,7 @@ class GabiCustom(BotBase):
             # hallo = 'Und da ist {0} weg'.format(user)
             #self.send(room, hallo, None, 'groupchat')
 
+    # LastSeen Methods
     @botcmd
     def zuletzt (self, mess, args):
         """Gibt dir an, wann ein Benutzer zuletzt gesehen wurde"""
@@ -157,3 +176,64 @@ class GabiCustom(BotBase):
                 return userName + ' habe ich zuletzt vor ' + self.getAge(lastSeen) + ' gesehen.'
             else:
                 return self.get_sender_username(mess) + ', ' + args + ' habe ich noch nie gesehen.'
+
+    # Memo Methods
+    @botcmd
+    def memo (self, mess, args):
+        """sie merkt sich was"""
+        username = self.get_sender_username(mess)
+        if len(args) > 0:
+            self.memList[username] = args;
+            return 'Merke mir: "' + args + '".'
+        elif username in self.memList:
+            return 'Habe mir: "' + self.memList[username] + '" gemerkt.'
+        else:
+            return 'Ja, was denn?'
+
+    #AFK Methods
+    @botcmd
+    def afk (self, mess, args):
+        """user away"""
+        username = self.get_sender_username(mess)
+        if len(args) > 0:
+            message = args
+        else:
+            message = "AFK"
+        self.afkList[username] = message
+        return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + message + '.'
+
+    @botcmd
+    def werafk (self, mess, args):
+        """sagt, was sie sich gemerkt hat"""
+        if len(self.afkList) > 0:
+            ret = ''
+            for username in self.afkList.keys():
+                ret = ret + "\n%-10s: %s" % (username, self.afkList[username])
+            return ret;
+        else:
+            return 'Es hat sich niemand abgemeldet.'
+
+    #Reminder Methods
+    @botcmd
+    def remind (self, mess, args):
+        """remind a user with something when he comes back"""
+        from_username = self.get_sender_username(mess)
+        new_args = args.split(" ")
+
+        if len(args) > 1:
+            target_user = str(new_args[0]).encode('ascii', 'replace')
+            target_message = str(new_args[1:]).encode('ascii', 'replace')
+
+            ret_message = "Ich werde " + target_user + " ausrichten dass: " + target_message
+
+            try:
+                self.reminderDict[target_user.lower()].apend((from_username, target_message))
+                # if isinstance(self.reminderDict[target_user], list):
+                #     self.reminderDict[target_user] = []
+            except Exception as e:
+                print e
+
+        else:
+            ret_message = "Du musst einen namen gefolgt von der nachricht angeben."
+            print self.reminderDict
+        return ret_message

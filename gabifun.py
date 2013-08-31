@@ -1,26 +1,10 @@
 #!/usr/bin/env python
 
 import random
-import atexit
-import json
-import collections
 
 from botbase import BotBase, botcmd
 
 class GabiFun(BotBase):
-
-    def __init__(self, username, password, candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
-        super(GabiFun, self).__init__(username, password, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
-
-        self.memList = self.loadJSON('db/save_memo.dat', {})
-        atexit.register(self.saveJSON, 'db/save_memo.dat', self.memList)
-
-        self.afkList = self.loadJSON('db/save_afk.dat', {})
-        atexit.register(self.saveJSON, 'db/save_afk.dat', self.afkList)
-
-        self.reminderDict = self.loadJSON('db/save_reminder.dat', {})
-        atexit.register(self.saveJSON, 'db/save_reminder.dat', self.reminderDict)
-
     @botcmd
     def fetzig (self, mess, args='Aggravate'):
         """Lets fetz"""
@@ -36,7 +20,6 @@ class GabiFun(BotBase):
             return args  + ' ist IMBA!'
         else:
             return 'Ich bin IMBA!'
-
             
     @botcmd
     def haha (self, mess, args):
@@ -57,43 +40,6 @@ class GabiFun(BotBase):
             return username  + ', wen soll ich ohrfeigen?'
 
     @botcmd
-    def afk (self, mess, args):
-        """user away"""
-        username = self.get_sender_username(mess)
-        if len(args) > 0:
-            message = args
-        else:
-            message = "AFK"
-        self.afkList[username] = message
-        return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + message + '.'
-
-    @botcmd
-    def remind (self, mess, args):
-        """remind a user with something when he comes back"""
-        from_username = self.get_sender_username(mess)
-        new_args = args.split(" ")
-
-        if len(args) > 1:
-            target_user = str(new_args[0]).encode('ascii', 'replace')
-            target_message = str(new_args[1:]).encode('ascii', 'replace')
-
-            ret_message = "Ich werde " + target_user + " ausrichten dass: " + target_message
-
-            try:
-                self.reminderDict[target_user].apend((from_username, target_message))
-                # if isinstance(self.reminderDict[target_user], list):
-                #     self.reminderDict[target_user] = []
-            except Exception as e:
-                print e
-
-            
-
-        else:
-            ret_message = "Du musst einen namen gefolgt von der nachricht angeben."
-            print self.reminderDict
-        return ret_message
-
-    @botcmd
     def username (self, mess, args):
         return self.get_my_username()
 
@@ -109,29 +55,6 @@ class GabiFun(BotBase):
             return 'Scheiss ' + args + '! Verkackter Mist, stinkiger!'
         else:
             return 'AARRRG! DRECKSVERWANZTEHURENSCHEISSMISTPIMMELKACKE!'
-            
-    @botcmd
-    def memo (self, mess, args):
-        """sie merkt sich was"""
-        username = self.get_sender_username(mess)
-        if len(args) > 0:
-            self.memList[username] = args;
-            return 'Merke mir: "' + args + '".'
-        elif username in self.memList:
-            return 'Habe mir: "' + self.memList[username] + '" gemerkt.'
-        else:
-            return 'Ja, was denn?'
-
-    @botcmd
-    def werafk (self, mess, args):
-        """sagt, was sie sich gemerkt hat"""
-        if len(self.afkList) > 0:
-            ret = ''
-            for username in self.afkList.keys():
-                ret = ret + "\n%-10s: %s" % (username, self.afkList[username])
-            return ret;
-        else:
-            return 'Es hat sich niemand abgemeldet.'
 
     @botcmd
     def wie (self, mess, args):
