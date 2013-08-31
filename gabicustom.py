@@ -105,7 +105,7 @@ class GabiCustom(BotBase):
 
             if userWasOffline:
                 if age > 0:
-                    if (int(time.time()) - age) > 300:
+                    if (int(time.time()) - age) > 10:
                         hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age))
                         print "hallo %s" % user
                     else:
