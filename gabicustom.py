@@ -119,8 +119,6 @@ class GabiCustom(BotBase):
         room = self.list_unicode_cleanup(strJID.split('/'))[0]
         user = self.list_unicode_cleanup(strJID.split('/'))[1]
 
-        print "user %s weg" % user
-
         if user != self.get_my_username():
             hallo = 'Und da ist {0} weg'.format(user)
 
