@@ -91,6 +91,7 @@ class GabiCustom(BotBase):
             age = 0
 
             try:
+                self.usersNowOffline[user]
                 if self.usersNowOffline:
                     self.usersNowOffline[user] = False
             except Exception:
