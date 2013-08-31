@@ -228,7 +228,7 @@ class GabiCustom(BotBase):
 
             if not self.reminderDict.has_key(target_user.lower()):
                 self.reminderDict[target_user.lower()] = []
-            self.reminderDict[target_user.lower()].apend((from_username, ' '.join(target_message)))
+            self.reminderDict[target_user.lower()].append((from_username, ' '.join(target_message)))
             # if isinstance(self.reminderDict[target_user], list):
             #     self.reminderDict[target_user] = []
 
