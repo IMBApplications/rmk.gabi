@@ -137,12 +137,13 @@ class GabiCustom(BotBase):
 
             # Reminder
             if self.reminderDict.has_key(user.lower()):
-                reminderMessage = '%s, ich soll dir folgendes ausrichten:\n' % user
-                for (sender, message, timestamp) in self.reminderDict[user.lower()]:
-                    reminderMessage += 'Von %s: %s\n' % (sender, message)
+                if len(self.reminderDict[user.lower()]) > 0:
+                    reminderMessage = '%s, ich soll dir folgendes ausrichten:\n' % user
+                    for (sender, message, timestamp) in self.reminderDict[user.lower()]:
+                        reminderMessage += 'Von %s: %s\n' % (sender, message)
 
-                self.reminderDict[user.lower()] = []
-                self.send(room, reminderMessage, None, 'groupchat')
+                    self.reminderDict[user.lower()] = []
+                    self.send(room, reminderMessage, None, 'groupchat')
                     
 
     def on_gone_offline(self, jid):
