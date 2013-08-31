@@ -89,13 +89,8 @@ class GabiCustom(BotBase):
 
         if user != self.get_my_username():
             age = 0
-
-            try:
-                self.usersNowOffline[user]
-                if self.usersNowOffline:
-                    self.usersNowOffline[user] = False
-            except Exception:
-                self.usersNowOffline[user] = False
+            userWasOffile = self.usersNowOffline[user]
+            self.usersNowOffline[user] = False
 
             try:
                 if self.lastSeen[user] > 0:
@@ -103,7 +98,7 @@ class GabiCustom(BotBase):
             except Exception:
                 pass
 
-            if not self.usersNowOffline[user]:
+            if not userWasOffile:
                 hallo = False
                 if age > 0:
                     if (int(time.time()) - age) > 300:
