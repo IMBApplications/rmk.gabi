@@ -101,7 +101,6 @@ class GabiCustom(BotBase):
                     age = self.lastSeen[user]
             except Exception:
                 pass
-
             self.lastSeen[user] = int(time.time())
 
             if userWasOffline:
@@ -110,6 +109,7 @@ class GabiCustom(BotBase):
                         hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age))
                     else:
                         hallo = False
+                        print "no hallo (user: %s)" % user
                 else:
                     hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
 
@@ -119,15 +119,14 @@ class GabiCustom(BotBase):
 
     def on_gone_offline(self, jid):
         strJID = '%s' % jid
-        room = self.list_unicode_cleanup(strJID.split('/'))[0]
+        # room = self.list_unicode_cleanup(strJID.split('/'))[0]
         user = self.list_unicode_cleanup(strJID.split('/'))[1]
 
         if user != self.get_my_username():
-            # hallo = 'Und da ist {0} weg'.format(user)
-
             self.lastSeen[user] = int(time.time())
             self.usersNowOffline[user] = True
 
+            # hallo = 'Und da ist {0} weg'.format(user)
             #self.send(room, hallo, None, 'groupchat')
 
     @botcmd
