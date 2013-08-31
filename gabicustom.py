@@ -91,7 +91,7 @@ class GabiCustom(BotBase):
             age = 0
             if not self.usersNowOffline.has_key(user):
                 self.usersNowOffline[user] = True
-            userWasOffile = self.usersNowOffline[user]
+            userWasOffline = self.usersNowOffline[user]
             self.usersNowOffline[user] = False
 
             try:
@@ -100,18 +100,20 @@ class GabiCustom(BotBase):
             except Exception:
                 pass
 
-            if not userWasOffile:
-                hallo = False
+            self.lastSeen[user] = int(time.time())
+            
+            if userWasOffline:
                 if age > 0:
                     if (int(time.time()) - age) > 300:
                         hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age))
+                    else:
+                        hallo = False
                 else:
                     hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
 
-                self.lastSeen[user] = int(time.time())
-
                 if hallo:
                     self.send(room, hallo, None, 'groupchat')
+                    
 
     def on_gone_offline(self, jid):
         strJID = '%s' % jid
