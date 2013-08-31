@@ -7,6 +7,15 @@ import datetime
 import time
 
 class GabiCustom(BotBase):
+
+    def __init__(self, username, password, candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
+        super(BotBase, self).__init__(username, password, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
+
+        self.lastSeen = self.loadJSON('db/save_lastSeen.dat', {})
+        atexit.register(self.saveJSON, 'db/save_lastSeen.dat', self.lastSeen)
+        self.usersNowOffline = {}
+
+
     def on_not_a_command(self, mess):
         type = mess.getType()
         jid = mess.getFrom()
@@ -86,8 +95,6 @@ class GabiCustom(BotBase):
         strJID = '%s' % jid
         room = self.list_unicode_cleanup(strJID.split('/'))[0]
         user = self.list_unicode_cleanup(strJID.split('/'))[1]
-        print "jid: %s, user: %s" % (jid, user)
-        print self.usersNowOffline
 
         if user != self.get_my_username():
             age = 0
@@ -104,19 +111,14 @@ class GabiCustom(BotBase):
             self.lastSeen[user] = int(time.time())
 
             if userWasOffline:
+                hallo = None
                 if age > 0:
-                    if (int(time.time()) - age) > 10:
+                    if (int(time.time()) - age) > 300:
                         hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age))
-                        print "hallo %s" % user
-                    else:
-                        hallo = None
-                        print "no hallo (user: %s)" % user
                 else:
                     hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
-                    print "first hallo %s" % user
 
                 if hallo:
-                    print "send hallo"
                     self.send(room, hallo, None, 'groupchat')
                     
 
