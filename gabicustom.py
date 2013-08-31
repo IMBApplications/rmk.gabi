@@ -137,7 +137,7 @@ class GabiCustom(BotBase):
 
             # Reminder
             if self.reminderDict.has_key(user.lower()):
-                reminderMessage += 'Ich soll dir folgendes ausrichten:\n'
+                reminderMessage = 'Ich soll dir folgendes ausrichten:\n'
                 for (sender, message) in self.reminderDict[user.lower()]:
                     reminderMessage += 'Von %s: %s\n' % (sender, message)
 
