@@ -137,8 +137,8 @@ class GabiCustom(BotBase):
 
             # Reminder
             if self.reminderDict.has_key(user.lower()):
-                reminderMessage = 'Ich soll dir folgendes ausrichten:\n'
-                for (sender, message) in self.reminderDict[user.lower()]:
+                reminderMessage = '%s, ich soll dir folgendes ausrichten:\n' % user
+                for (sender, message, timestamp) in self.reminderDict[user.lower()]:
                     reminderMessage += 'Von %s: %s\n' % (sender, message)
 
                 self.send(room, reminderMessage, None, 'groupchat')
@@ -228,7 +228,7 @@ class GabiCustom(BotBase):
 
             if not self.reminderDict.has_key(target_user.lower()):
                 self.reminderDict[target_user.lower()] = []
-            self.reminderDict[target_user.lower()].append((from_username, ' '.join(target_message)))
+            self.reminderDict[target_user.lower()].append((from_username, ' '.join(target_message), int(time.time())))
             # if isinstance(self.reminderDict[target_user], list):
             #     self.reminderDict[target_user] = []
 
