@@ -224,8 +224,8 @@ class GabiCustom(BotBase):
         if len(args) > 1:
             # target_user = str(new_args[0]).encode('ascii', 'replace')
             # target_message = str(new_args[1:]).encode('ascii', 'replace')
-            target_user = self.convert_from_unicode(new_args[0]).encode('ascii', 'replace')
-            target_message = ' '.join(self.list_unicode_cleanup(new_args[1:])).encode('ascii', 'replace')
+            target_user = self.convert_from_unicode(new_args[0]).encode('utf8', 'replace')
+            target_message = ' '.join(self.list_unicode_cleanup(new_args[1:])).encode('utf8', 'replace')
             print target_message
 
             ret_message = "Ich werde " + target_user + " ausrichten dass: " + target_message
