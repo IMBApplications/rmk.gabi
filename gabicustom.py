@@ -225,7 +225,7 @@ class GabiCustom(BotBase):
             target_user = str(new_args[0]).encode('latin-1', 'replace')
             # target_message = str(new_args[1:]).encode('utf8', 'replace')
             # target_user = self.convert_from_unicode(new_args[0]).encode('utf8', 'replace')
-            target_message = ' '.join(self.list_unicode_cleanup(new_args[1:])).encode('latin-1', 'replace')
+            target_message = ' '.join(new_args[1:]).encode('latin-1', 'replace')
             # target_message = ' '.join(self.list_unicode_cleanup(new_args[1:]))
             print target_message
 
