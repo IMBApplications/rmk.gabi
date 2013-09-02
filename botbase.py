@@ -447,6 +447,7 @@ class BotBase(object):
         if text[0:3] == '|c:':
             text = text[5:]
 
+        # FIXME: add listen to name to config (don't hardcode gabi)
         if (jid_string != botname1) and (jid_string != botname2):
             if text[0:4] == 'gabi':
                 text_without_gabi = text[5:]
