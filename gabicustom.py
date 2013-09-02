@@ -251,10 +251,10 @@ class GabiCustom(BotBase):
         # self.cowntdownDict
 
         if len(args) > 1:
-            ret_message = "Geht noch nicht. Sorry"
+            ret_message = "Geht noch nicht, sorry."
         else:
             ret_message  = "Du musst einen namen gefolgt von Zeit/Datum und dann das Event angeben. Beispiele:\n"
-            ret_message += "gabi cowntdown 18:15 Es ist viertel nach 6"
+            ret_message += "gabi cowntdown 18:15 Es ist viertel nach 6\n"
             ret_message += "gabi cowntdown 2013-31-12 23:59 Das alte Jahr ist Geschichte"
         return ret_message
 
