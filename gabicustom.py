@@ -15,18 +15,21 @@ class GabiCustom(BotBase):
     def __init__(self, username, password, candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
         super(GabiCustom, self).__init__(username, password, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
 
-        self.lastSeen = self.loadJSON('db/save_lastSeen.dat', {})
-        atexit.register(self.saveJSON, 'db/save_lastSeen.dat', self.lastSeen)
+        self.lastSeenDict = self.loadJSON('db/save_lastSeen.dat', {})
+        atexit.register(self.saveJSON, 'db/save_lastSeen.dat', self.lastSeenDict)
         self.usersNowOffline = {}
 
-        self.memList = self.loadJSON('db/save_memo.dat', {})
-        atexit.register(self.saveJSON, 'db/save_memo.dat', self.memList)
+        self.memDict = self.loadJSON('db/save_memo.dat', {})
+        atexit.register(self.saveJSON, 'db/save_memo.dat', self.memDict)
 
-        self.afkList = self.loadJSON('db/save_afk.dat', {})
-        atexit.register(self.saveJSON, 'db/save_afk.dat', self.afkList)
+        self.afkDict = self.loadJSON('db/save_afk.dat', {})
+        atexit.register(self.saveJSON, 'db/save_afk.dat', self.afkDict)
 
         self.reminderDict = self.loadJSON('db/save_reminder.dat', {})
         atexit.register(self.saveJSON, 'db/save_reminder.dat', self.reminderDict)
+
+        self.cowntdownDict = self.loadJSON('db/save_cowntdown.dat', {})
+        atexit.register(self.saveJSON, 'db/save_cowntdown.dat', self.cowntdownDict)
 
         self.afkRejoinTime = 300
 
@@ -53,9 +56,9 @@ class GabiCustom(BotBase):
         for reg in reg_ex_re:
             c = re.compile(reg)
             if c.match(text) != None:
-                if username in self.afkList:
-                    self.send_simple_reply(mess, "wb " + username + "! Wie wars beim " + self.afkList[username] + "?")
-                    del self.afkList[username];
+                if username in self.afkDict:
+                    self.send_simple_reply(mess, "wb " + username + "! Wie wars beim " + self.afkDict[username] + "?")
+                    del self.afkDict[username];
                 else:
                     self.send_simple_reply(mess, "wb {0}!".format(username))
                 return
@@ -120,11 +123,11 @@ class GabiCustom(BotBase):
             self.usersNowOffline[user] = False
 
             try:
-                if self.lastSeen[user] > 0:
-                    age = self.lastSeen[user]
+                if self.lastSeenDict[user] > 0:
+                    age = self.lastSeenDict[user]
             except Exception:
                 pass
-            self.lastSeen[user] = int(time.time())
+            self.lastSeenDict[user] = int(time.time())
 
             if userWasOffline:
                 hallo = None
@@ -154,7 +157,7 @@ class GabiCustom(BotBase):
         user = self.list_unicode_cleanup(strJID.split('/'))[1]
 
         if user != self.get_my_username():
-            self.lastSeen[user] = int(time.time())
+            self.lastSeenDict[user] = int(time.time())
             self.usersNowOffline[user] = True
 
             # hallo = 'Und da ist {0} weg'.format(user)
@@ -166,14 +169,14 @@ class GabiCustom(BotBase):
         """Gibt dir an, wann ein Benutzer zuletzt gesehen wurde"""
         if not args:
             ret = ''
-            for name in self.lastSeen.keys():
-                ret = ret + name + ' vor ' + self.getAge(self.lastSeen[name]) + '\n'
+            for name in self.lastSeenDict.keys():
+                ret = ret + name + ' vor ' + self.getAge(self.lastSeenDict[name]) + '\n'
             return ret
         else:
             lastSeen = 0
-            for name in self.lastSeen.keys():
+            for name in self.lastSeenDict.keys():
                 if name.lower() == args.lower():
-                    lastSeen = self.lastSeen[name]
+                    lastSeen = self.lastSeenDict[name]
                     userName = name
 
             if lastSeen > 0:
@@ -187,10 +190,10 @@ class GabiCustom(BotBase):
         """sie merkt sich was"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
-            self.memList[username] = args;
+            self.memDict[username] = args;
             return 'Merke mir: "' + args + '".'
-        elif username in self.memList:
-            return 'Habe mir: "' + self.memList[username] + '" gemerkt.'
+        elif username in self.memDict:
+            return 'Habe mir: "' + self.memDict[username] + '" gemerkt.'
         else:
             return 'Ja, was denn?'
 
@@ -203,16 +206,16 @@ class GabiCustom(BotBase):
             message = args
         else:
             message = "AFK"
-        self.afkList[username] = message
+        self.afkDict[username] = message
         return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + message + '.'
 
     @botcmd
     def werafk (self, mess, args):
         """sagt, was sie sich gemerkt hat"""
-        if len(self.afkList) > 0:
+        if len(self.afkDict) > 0:
             ret = ''
-            for username in self.afkList.keys():
-                ret = ret + "\n%-10s: %s" % (username, self.afkList[username])
+            for username in self.afkDict.keys():
+                ret = ret + "\n%-10s: %s" % (username, self.afkDict[username])
             return ret;
         else:
             return 'Es hat sich niemand abgemeldet.'
