@@ -238,5 +238,24 @@ class GabiCustom(BotBase):
             self.reminderDict[target_user.lower()].append((from_username, target_message, int(time.time())))
 
         else:
-            ret_message = "Du musst einen namen gefolgt von der nachricht angeben."
+            ret_message = "Du musst einen Namen gefolgt von der Nachricht angeben."
         return ret_message
+
+    #Cowntdown Methods
+    @botcmd
+    def cowntdown (self, mess, args):
+        """Saves a cowntdown to a specified date/time"""
+        from_username = self.get_sender_username(mess)
+        new_args = args.split(" ")
+
+        # self.cowntdownDict
+
+        if len(args) > 1:
+            ret_message = "Geht noch nicht. Sorry"
+        else:
+            ret_message  = "Du musst einen namen gefolgt von Zeit/Datum und dann das Event angeben. Beispiele:\n"
+            ret_message += "gabi cowntdown 18:15 Es ist viertel nach 6"
+            ret_message += "gabi cowntdown 2013-31-12 23:59 Das alte Jahr ist Geschichte"
+        return ret_message
+
+        pass
