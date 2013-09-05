@@ -28,8 +28,8 @@ class GabiCustom(BotBase):
         self.reminderDict = self.loadJSON('db/save_reminder.dat', {})
         atexit.register(self.saveJSON, 'db/save_reminder.dat', self.reminderDict)
 
-        self.cowntdownDict = self.loadJSON('db/save_cowntdown.dat', {})
-        atexit.register(self.saveJSON, 'db/save_cowntdown.dat', self.cowntdownDict)
+        self.cowntdownList = self.loadJSON('db/save_count.dat', [])
+        atexit.register(self.saveJSON, 'db/save_count.dat', self.cowntdownList)
 
         self.afkRejoinTime = 300
 
@@ -252,12 +252,13 @@ class GabiCustom(BotBase):
 
     #Cowntdown Methods
     @botcmd
-    def cowntdown (self, mess, args):
+    def count (self, mess, args):
         """Saves a cowntdown to a specified date/time"""
         from_username = self.get_sender_username(mess)
         new_args = args.split(" ")
 
-        # self.cowntdownDict
+        # self.cowntdownList
+        # count add, remove, 
 
         if len(args) > 1:
             ret_message = "Geht noch nicht, sorry."
