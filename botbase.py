@@ -45,7 +45,7 @@ class BotBase(object):
         self.log = logging.getLogger(__name__)
         self.__username = username
         self.__password = password
-        self.__timezone = timezone
+        self.timezone = timezone
         self.jid = xmpp.JID(self.__username)
         self.res = (res or self.__class__.__name__)
         self.conn = None

@@ -259,7 +259,7 @@ class GabiCustom(BotBase):
         args = args.split(" ")
 
         if args[0].lower() == "add":
-            target_time = datetime.datetime.now(pytz.timezone(self.__timezone))
+            target_time = datetime.datetime.now(pytz.timezone(self.timezone))
             day = 0
             month = 0
             year = 0
