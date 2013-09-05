@@ -274,7 +274,7 @@ class GabiCustom(BotBase):
             if not target_timestamp:
 
                 try:
-                    time_date = self.utils.date_string2values(args[0])
+                    time_date = self.date_string2values(args[0])
                     target_time = target_time.replace(year  = time_date[0])
                     target_time = target_time.replace(month = time_date[1])
                     target_time = target_time.replace(day   = time_date[2])
@@ -283,7 +283,7 @@ class GabiCustom(BotBase):
                     pass
 
                 try:
-                    time_sec = self.utils.time_string2seconds(args[0])
+                    time_sec = self.time_string2seconds(args[0])
                     hour = int(time_sec / 3600)
                     minute = int((time_sec - hour * 3600) / 60)
                     second = int(time_sec % 60)
