@@ -256,7 +256,53 @@ class GabiCustom(BotBase):
     def count (self, mess, args):
         """Saves a cowntdown to a specified date/time"""
         from_username = self.get_sender_username(mess)
-        new_args = args.split(" ")
+        args = args.split(" ")
+
+        if args[0].lower() == "add":
+            target_time = datetime.datetime.now(pytz.timezone(self.__timezone))
+            day = 0
+            month = 0
+            year = 0
+            target_timestamp = None
+            try:
+                target_timestamp = int(args[0])
+                args = args[1:]
+            except Exception as e:
+                pass
+
+            if not target_timestamp:
+                try:
+                    time_sec = self.utils.time_string2seconds(args[0])
+                    hour = int(time_sec / 3600)
+                    minute = int((time_sec - hour * 3600) / 60)
+                    second = int(time_sec % 60)
+                    target_time = target_time.replace(hour   = hour)
+                    target_time = target_time.replace(minute = minute)
+                    target_time = target_time.replace(second = second)
+                    args = args[1:]
+                except Exception as e:
+                    pass
+
+                try:
+                    time_date = self.utils.date_string2values(args[0])
+                    target_time = target_time.replace(year  = time_date[0])
+                    target_time = target_time.replace(month = time_date[1])
+                    target_time = target_time.replace(day   = time_date[2])
+                    args = args[1:]
+                except Exception as e:
+                    pass
+
+                target_timestamp = int(target_time.strftime('%s'))
+
+                return "timestamp: %s" % target_timestamp
+
+            # if target_timestamp > 0 and len(args) > 0:
+            #     return [self.timer_at(target_timestamp, args)]
+            # else:
+            #     return ["Invalid syntax. Use timestamp or hh:mm[:ss] [dd-mm-yyyy]"]
+
+
+
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser)
         # count add, remove, list
