@@ -211,6 +211,11 @@ class GabiCustom(BotBase):
         else:
             message = "AFK"
         self.afkDict[username] = message
+
+        if username != self.get_my_username():
+            self.lastSeenDict[username] = int(time.time())
+            self.usersNowOffline[username] = True
+            
         return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + message + '.'
 
     @botcmd
