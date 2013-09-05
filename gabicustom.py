@@ -294,12 +294,11 @@ class GabiCustom(BotBase):
 
                 target_timestamp = int(target_time.strftime('%s'))
 
-                return "timestamp: %s" % target_timestamp
-
-            # if target_timestamp > 0 and len(args) > 0:
-            #     return [self.timer_at(target_timestamp, args)]
-            # else:
-            #     return ["Invalid syntax. Use timestamp or hh:mm[:ss] [dd-mm-yyyy]"]
+                if target_timestamp > 0 and len(args) > 0:
+                    # return [self.timer_at(target_timestamp, args)]
+                    return "timestamp: %s" % target_timestamp
+                else:
+                    return "Invalid syntax."
 
 
 
