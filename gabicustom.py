@@ -259,8 +259,7 @@ class GabiCustom(BotBase):
         new_args = args.split(" ")
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser)
-        # count add, remove, list
-
+        # count add, remove, list
 
         if len(args) > 1:
             ret_message = "Geht noch nicht, sorry."
