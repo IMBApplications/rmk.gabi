@@ -296,7 +296,7 @@ class GabiCustom(BotBase):
 
                 if target_timestamp > 0 and len(args) > 0:
                     # return [self.timer_at(target_timestamp, args)]
-                    return "timestamp: %s" % target_timestamp
+                    return "timestamp: %s aka %s" % (target_timestamp, target_time.strftime("%a, %d %b %Y %H:%M:%S"))
                 else:
                     return "Invalid syntax."
 
