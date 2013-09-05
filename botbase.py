@@ -676,9 +676,9 @@ class BotBase(object):
         return (hours * 3600 + minutes * 60 + int(seconds))
 
     def date_string2values(self, arg):
-        # converts dd-mm-yyyy into [yyyy, mm, dd]
+        # converts dd.mm.yyyy into [yyyy, mm, dd]
         try:
-            data = arg.split('-')
+            data = arg.split('.')
             if int(data[0]) > 0 and int(data[0]) < 13:
                 if int(data[1]) > 0 and int(data[1]) < 32:
                     if int(data[2]) > 2012:
