@@ -31,7 +31,7 @@ class GabiCustom(BotBase):
         self.cowntdownDict = self.loadJSON('db/save_cowntdown.dat', {})
         atexit.register(self.saveJSON, 'db/save_cowntdown.dat', self.cowntdownDict)
 
-        self.afkRejoinTime = 10
+        self.afkRejoinTime = 300
 
     def on_not_a_command(self, mess):
         type = mess.getType()
@@ -215,7 +215,7 @@ class GabiCustom(BotBase):
         if username != self.get_my_username():
             self.lastSeenDict[username] = int(time.time())
             self.usersNowOffline[username] = True
-            
+
         return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + message + '.'
 
     @botcmd
