@@ -679,9 +679,9 @@ class BotBase(object):
         # converts dd.mm.yyyy into [yyyy, mm, dd]
         try:
             data = arg.split('.')
-            if int(data[0]) > 0 and int(data[0]) < 13:
-                if int(data[1]) > 0 and int(data[1]) < 32:
-                    if int(data[2]) > 2012:
+            if int(data[0]) > 0 and int(data[0]) < 32:
+                if int(data[1]) > 0 and int(data[1]) < 13:
+                    if int(data[2]) > 1969:
                         return [int(data[2]), int(data[1]), int(data[0])]
         except Exception as e:
             return False
