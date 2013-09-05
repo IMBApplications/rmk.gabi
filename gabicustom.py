@@ -300,7 +300,6 @@ class GabiCustom(BotBase):
                 if target_timestamp > 0 and len(args) > 0:
                     # return [self.timer_at(target_timestamp, args)]
                     self.cowntdownList.append((target_timestamp, longtermm, from_username, ' '.join(args)))
-                    # return "timestamp: %s aka %s" % (target_timestamp, target_time.strftime("%a, %d %b %Y %H:%M:%S"))
                     return "Zaehler gespeichert fuer '%s' (%s)" % (' '.join(args), target_time.strftime("%a, %d %b %Y %H:%M:%S"))
                 else:
                     args = []
