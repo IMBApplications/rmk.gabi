@@ -139,7 +139,7 @@ class GabiCustom(BotBase):
                     hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
 
                 if user in self.afkDict:
-                    hallo += "\nWie wars beim " + self.afkDict[user] + "?"
+                    hallo = hallo + "\nWie wars beim " + self.afkDict[user] + "?"
                     del self.afkDict[user];
 
                 if hallo:
@@ -272,11 +272,13 @@ class GabiCustom(BotBase):
                 pass
 
             if not target_timestamp:
+                longterm = False
                 try:
                     time_date = self.date_string2values(args[0])
                     target_time = target_time.replace(year  = time_date[0])
                     target_time = target_time.replace(month = time_date[1])
                     target_time = target_time.replace(day   = time_date[2])
+                    longterm = True
                     args = args[1:]
                 except Exception as e:
                     pass
@@ -297,14 +299,23 @@ class GabiCustom(BotBase):
 
                 if target_timestamp > 0 and len(args) > 0:
                     # return [self.timer_at(target_timestamp, args)]
-                    return "timestamp: %s aka %s" % (target_timestamp, target_time.strftime("%a, %d %b %Y %H:%M:%S"))
+                    self.cowntdownList.append((target_timestamp, longtermm, from_username, ' '.join(args)))
+                    # return "timestamp: %s aka %s" % (target_timestamp, target_time.strftime("%a, %d %b %Y %H:%M:%S"))
+                    return "Zaehler gespeichert fuer '%s' (%s)" % (' '.join(args), target_time.strftime("%a, %d %b %Y %H:%M:%S"))
                 else:
-                    return "Invalid syntax."
+                    args = []
+        elif args[0].lower() == "list":
+            pass
+        elif args[0].lower() == "remove":
+            pass
+        else:
+            #show counts
+            pass
 
 
 
 
-        # self.cowntdownList = (targetTime, longterm (y/n), fromuser)
+        # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
         # count add, remove, list
 
         if len(args) > 1:
