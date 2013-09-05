@@ -139,7 +139,7 @@ class GabiCustom(BotBase):
                     hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
 
                 if user in self.afkDict:
-                    if hallo not "":
+                    if hallo != "":
                         hallo += "\n"
                     hallo += "Wie wars beim " + self.afkDict[user] + "?"
                     del self.afkDict[user];
