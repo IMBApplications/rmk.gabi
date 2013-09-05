@@ -131,21 +131,20 @@ class GabiCustom(BotBase):
             self.lastSeenDict[user] = int(time.time())
 
             if userWasOffline:
-                hallo = ""
+                hallo = []
                 if age > 0:
                     if (int(time.time()) - age) > self.afkRejoinTime:
-                        hallo = 'Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age))
+                        hallo.append('Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age)))
                 else:
-                    hallo = 'Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter. Gib "gabi help" ein fuer hilfe.'.format(user)
+                    hallo.append('Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter.')
+                    hallo.append('Gib "gabi help" ein fuer hilfe.'.format(user)
 
                 if user in self.afkDict:
-                    if hallo != "":
-                        hallo += "\n"
-                    hallo += "Wie wars beim " + self.afkDict[user] + "?"
+                    hallo.append("Wie wars beim " + self.afkDict[user] + "?")
                     del self.afkDict[user];
 
-                if not "":
-                    self.send(room, hallo, None, 'groupchat')
+                if len(hallo) > 0:
+                    self.send(room, '\n'.join(hallo), None, 'groupchat')
 
             # Reminder
             if self.reminderDict.has_key(user.lower()):
