@@ -272,7 +272,6 @@ class GabiCustom(BotBase):
                 pass
 
             if not target_timestamp:
-
                 try:
                     time_date = self.date_string2values(args[0])
                     target_time = target_time.replace(year  = time_date[0])
@@ -313,7 +312,7 @@ class GabiCustom(BotBase):
         else:
             ret_message  = "Du musst einen namen gefolgt von Zeit/Datum und dann das Event angeben. Beispiele:\n"
             ret_message += "gabi count 18:15 Es ist viertel nach 6\n"
-            ret_message += "gabi count 2013-31-12 23:59 Das alte Jahr ist Geschichte"
+            ret_message += "gabi count 31.12.2013 23:59 Das alte Jahr ist Geschichte"
         return ret_message
 
         pass
