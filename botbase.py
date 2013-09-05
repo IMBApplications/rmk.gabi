@@ -39,7 +39,7 @@ class BotBase(object):
     PING_TIMEOUT = 2 # Seconds to wait for a response.
 
     ########## Constructor ##########   
-    def __init__(self, username, password, candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
+    def __init__(self, username, password, timezone='UTC', candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
         # TODO sort this initialisation thematically
         self.__debug = debug
         self.log = logging.getLogger(__name__)
@@ -600,7 +600,7 @@ class BotBase(object):
     def get_my_username(self):
         return self.__nickname
 
-    ###### Helper methods ########
+    ###### Helper methods (mostly taken from JamesII https://github.com/oxivanisher/JamesII/blob/master/src/james/jamesutils.py) ########
     def getAge(self, timestamp):
         age = int(time.time() - timestamp)
 
@@ -655,6 +655,35 @@ class BotBase(object):
         args = filter(lambda s: s != '', args)
         return args
 
+    def time_string2seconds(self, arg):
+        # converts 12:22 and 12:22:33 into seconds
+        seconds = 0
+        minutes = 0
+        hours = 0
+        try:
+            if arg.count(':') == 2:
+                data = arg.split(':')
+                seconds = int(data[2])
+                minutes = int(data[1])
+                hours = int(data[0])
+            elif arg.count(':') == 1:
+                data = arg.split(':')
+                minutes = int(data[1])
+                hours = int(data[0])
+        except Exception as e:
+            pass
+        return (hours * 3600 + minutes * 60 + int(seconds))
+
+    def date_string2values(self, arg):
+        # converts dd-mm-yyyy into [yyyy, mm, dd]
+        try:
+            data = arg.split('-')
+            if int(data[0]) > 0 and int(data[0]) < 13:
+                if int(data[1]) > 0 and int(data[1]) < 32:
+                    if int(data[2]) > 2012:
+                        return [int(data[2]), int(data[1]), int(data[0])]
+        except Exception as e:
+            return False
 
 ########## Decorator for Bot Command Functions ##########
 def botcmd(*args, **kwargs):

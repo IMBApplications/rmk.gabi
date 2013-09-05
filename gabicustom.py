@@ -7,13 +7,14 @@ import time
 import atexit
 import json
 import collections
+import pytz
 
 from botbase import BotBase, botcmd
 
 class GabiCustom(BotBase):
 
-    def __init__(self, username, password, candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
-        super(GabiCustom, self).__init__(username, password, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
+    def __init__(self, username, password, timezone='UTC', candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
+        super(GabiCustom, self).__init__(username, password, timezone, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
 
         self.lastSeenDict = self.loadJSON('db/save_lastSeen.dat', {})
         atexit.register(self.saveJSON, 'db/save_lastSeen.dat', self.lastSeenDict)
@@ -257,15 +258,16 @@ class GabiCustom(BotBase):
         from_username = self.get_sender_username(mess)
         new_args = args.split(" ")
 
-        # self.cowntdownList
-        # count add, remove, 
+        # self.cowntdownList = (targetTime, longterm (y/n), fromuser)
+        # count add, remove, list
+
 
         if len(args) > 1:
             ret_message = "Geht noch nicht, sorry."
         else:
             ret_message  = "Du musst einen namen gefolgt von Zeit/Datum und dann das Event angeben. Beispiele:\n"
-            ret_message += "gabi cowntdown 18:15 Es ist viertel nach 6\n"
-            ret_message += "gabi cowntdown 2013-31-12 23:59 Das alte Jahr ist Geschichte"
+            ret_message += "gabi count 18:15 Es ist viertel nach 6\n"
+            ret_message += "gabi count 2013-31-12 23:59 Das alte Jahr ist Geschichte"
         return ret_message
 
         pass

@@ -6,8 +6,9 @@ username = ''
 password = ''
 nickname = 'Gabi'
 room = ''
+timezone = 'Europe/Zurich'
 candy_colors = False
 
-bot = GabiBase(username, password, candy_colors)
+bot = GabiBase(username, password, timezone, candy_colors)
 bot.join_room(room, nickname)
 bot.serve_forever()
