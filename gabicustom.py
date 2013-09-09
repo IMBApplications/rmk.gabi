@@ -32,7 +32,7 @@ class GabiCustom(BotBase):
         self.cowntdownList = self.loadJSON('db/save_count.dat', [])
         atexit.register(self.saveJSON, 'db/save_count.dat', self.cowntdownList)
 
-        self.afkRejoinTime = 300
+        self.afkRejoinTime = 900
 
     def on_not_a_command(self, mess):
         type = mess.getType()
