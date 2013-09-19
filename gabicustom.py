@@ -307,9 +307,10 @@ class GabiCustom(BotBase):
         elif args[0].lower() == "list":
             ret = ['Folgende Zaehler sind gesetzt:']
             for (timestamp, longterm, user, message) in self.cowntdownList:
+                print timestamp
                 target_time = datetime.date.fromtimestamp(timestamp)
 
-                ret.append('%s\t"%s" von %s' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
+                ret.append('%s\t"%s" von "%s"' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
             return '\n'.join(ret)
         elif args[0].lower() == "remove":
             pass
