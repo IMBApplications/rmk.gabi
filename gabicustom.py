@@ -305,6 +305,11 @@ class GabiCustom(BotBase):
                 else:
                     args = []
         elif args[0].lower() == "list":
+            ret = ''
+            for (timestamp, longterm, user, message) in self.cowntdownList:
+                target_time = datetime.date.fromtimestamp(timestamp)
+
+                ret += '%s' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"))
             pass
         elif args[0].lower() == "remove":
             pass
