@@ -325,7 +325,7 @@ class GabiCustom(BotBase):
             ret_message = '\n'.join(ret)
         elif args[0].lower() == "del":
             try:
-                self.cowntdownList.pop(args[1] - 1)
+                self.cowntdownList.pop(int(args[1]) - 1)
             except IndexError:
                 ret_message = "Unbekannter index. Bitte gib einen zulaessigen index an (count list)."
             print self.cowntdownList
