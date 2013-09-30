@@ -327,7 +327,7 @@ class GabiCustom(BotBase):
             try:
                 self.cowntdownList.pop(args[1] - 1)
             except IndexError:
-                ret_message = "Unbekannter index. Bitte gieb einen zulaessigen index an (count list)."
+                ret_message = "Unbekannter index. Bitte gib einen zulaessigen index an (count list)."
             print self.cowntdownList
         else:
             ret_message  = "Die Befehle fuer count sind:\n"
