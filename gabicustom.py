@@ -306,7 +306,7 @@ class GabiCustom(BotBase):
                 if target_timestamp > 0 and len(args) > 0:
                     # return [self.timer_at(target_timestamp, args)]
                     self.cowntdownList.append((target_timestamp, longterm, from_username, ' '.join(args)))
-                    return "Zaehler gespeichert fuer '%s' (%s)" % (' '.join(args), target_time.strftime("%a, %d %b %Y %H:%M:%S"))
+                    ret_message = "Zaehler gespeichert fuer '%s' (%s)" % (' '.join(args), target_time.strftime("%a, %d %b %Y %H:%M:%S"))
                 else:
                     args = []
                     ret_message  = "Du musst einen namen gefolgt von Zeit/Datum und dann das Event angeben. Beispiele:\n"
@@ -322,29 +322,19 @@ class GabiCustom(BotBase):
                 print target_time
 
                 ret.append('%s\t%s\t"%s" von "%s"' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
-            return '\n'.join(ret)
+            ret_message = '\n'.join(ret)
         elif args[0].lower() == "del":
             try:
                 self.cowntdownList.pop(args[1] - 1)
             except IndexError:
                 ret_message = "Unbekannter index. Bitte gieb einen zulaessigen index an (count list)."
             print self.cowntdownList
-            pass
         else:
-            #show counts
-            pass
-
-
+            ret_message  = "Die Befehle fuer count sind:\n"
+            ret_message += "add, list, del\n"
 
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
         # count add, remove, list
-
-        if len(args) > 1:
-            ret_message = "Geht noch nicht, sorry."
-        else:
-            ret_message  = "Die Befehle fuer count sind:\n"
-            ret_message += "add, list, del\n"
         return ret_message
-
         pass
