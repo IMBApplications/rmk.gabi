@@ -263,6 +263,7 @@ class GabiCustom(BotBase):
         """Saves a cowntdown to a specified date/time"""
         from_username = self.get_sender_username(mess)
         args = args.split(" ")
+        ret_message = "Die Befehle fuer count sind: add, list, del\n"        
 
         if args[0].lower() == "add":
             args = args[1:]
@@ -329,10 +330,6 @@ class GabiCustom(BotBase):
             except IndexError:
                 ret_message = "Unbekannter index. Bitte gib einen zulaessigen index an (count list)."
             print self.cowntdownList
-        else:
-            ret_message  = "Die Befehle fuer count sind:\n"
-            ret_message += "add, list, del\n"
-
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
         # count add, remove, list
