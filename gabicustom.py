@@ -326,7 +326,10 @@ class GabiCustom(BotBase):
             ret_message = '\n'.join(ret)
         elif args[0].lower() == "del":
             try:
-                self.cowntdownList.pop(int(args[1]) - 1)
+                delIndex = int(args[1]) - 1
+                (timestamp, longterm, user, message) = self.cowntdownList[delIndex]
+                ret_message = '%s\t%s\t"%s" von "%s" wurde entfernt.' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user)
+                self.cowntdownList.pop(delIndex)
             except IndexError:
                 ret_message = "Unbekannter index. Bitte gib einen zulaessigen index an (count list)."
             print self.cowntdownList
