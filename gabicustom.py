@@ -110,6 +110,11 @@ class GabiCustom(BotBase):
             handler.close()
 
     def on_came_online(self, jid):
+
+        #ignore if we just started up
+        if (self.readyTs + 3) > time.time():
+            return
+
         strJID = '%s' % jid
         room = self.list_unicode_cleanup(strJID.split('/'))[0]
         user = self.list_unicode_cleanup(strJID.split('/'))[1]

@@ -49,6 +49,7 @@ class BotBase(object):
         self.jid = xmpp.JID(self.__username)
         self.res = (res or self.__class__.__name__)
         self.conn = None
+        self.readyTs = 0
         self.__finished = False
         self.__show = None
         self.__status = None
@@ -226,6 +227,7 @@ class BotBase(object):
         if password is not None:
             pres.setTag('x',namespace=NS_MUC).setTagData('password',password)
         self.connect().send(pres)
+        self.readyTs = time.time()
 
     def quit(self):
        self.__finished = True
