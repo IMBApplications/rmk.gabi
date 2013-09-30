@@ -309,6 +309,9 @@ class GabiCustom(BotBase):
                     return "Zaehler gespeichert fuer '%s' (%s)" % (' '.join(args), target_time.strftime("%a, %d %b %Y %H:%M:%S"))
                 else:
                     args = []
+                    ret_message  = "Du musst einen namen gefolgt von Zeit/Datum und dann das Event angeben. Beispiele:\n"
+                    ret_message += "gabi count add 18:15 Es ist viertel nach 6\n"
+                    ret_message += "gabi count add 31.12.2013 23:59 Das alte Jahr ist Geschichte"
         elif args[0].lower() == "list":
             ret = ['Folgende Zaehler sind gesetzt:']
             count = 0
@@ -320,7 +323,8 @@ class GabiCustom(BotBase):
 
                 ret.append('%s\t%s\t"%s" von "%s"' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
             return '\n'.join(ret)
-        elif args[0].lower() == "remove":
+        elif args[0].lower() == "del":
+            self.cowntdownList.pop(args[1] - 1)
             pass
         else:
             #show counts
@@ -335,9 +339,8 @@ class GabiCustom(BotBase):
         if len(args) > 1:
             ret_message = "Geht noch nicht, sorry."
         else:
-            ret_message  = "Du musst einen namen gefolgt von Zeit/Datum und dann das Event angeben. Beispiele:\n"
-            ret_message += "gabi count 18:15 Es ist viertel nach 6\n"
-            ret_message += "gabi count 31.12.2013 23:59 Das alte Jahr ist Geschichte"
+            ret_message  = "Die Befehle fuer count sind:\n"
+            ret_message += "add, list, del\n"
         return ret_message
 
         pass
