@@ -324,7 +324,11 @@ class GabiCustom(BotBase):
                 ret.append('%s\t%s\t"%s" von "%s"' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
             return '\n'.join(ret)
         elif args[0].lower() == "del":
-            self.cowntdownList.pop(args[1] - 1)
+            try:
+                self.cowntdownList.pop(args[1] - 1)
+            except IndexError:
+                ret_message = "Unbekannter index. Bitte gieb einen zulaessigen index an (count list)."
+            print self.cowntdownList
             pass
         else:
             #show counts
