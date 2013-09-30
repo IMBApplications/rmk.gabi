@@ -336,6 +336,9 @@ class GabiCustom(BotBase):
             except IndexError:
                 pass
             print self.cowntdownList
+        else:
+            #do the counting and add to ret_message
+            pass
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
         # count add, remove, list
