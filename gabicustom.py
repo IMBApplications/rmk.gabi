@@ -311,6 +311,7 @@ class GabiCustom(BotBase):
                 count += 1
                 print timestamp
                 target_time = datetime.date.fromtimestamp(timestamp)
+                print target_time
 
                 ret.append('%s\t%s\t"%s" von "%s"' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
             return '\n'.join(ret)
