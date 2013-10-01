@@ -338,14 +338,29 @@ class GabiCustom(BotBase):
             for (timestamp, longterm, user, message) in self.cowntdownList:
                 # target_time = datetime.datetime.fromtimestamp(timestamp)
                 # ret_message.append('%s\t"%s" von "%s"' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
+
+                age = now - timestamp
+                future = True
+                if age < 0:
+                    future = False
+                    age = age * -1
+
+                secs = age
+                mins = int(age / 60)
+                hours = int(age / 3600)
+                days = int(age / 86400)
+                weeks = int(age / 604800)
+                months = int(age / 2419200)
+                years = int(age / 31449600)
+
                 if timestamp == now:
-                    ret_message.append("Jetzt! %s" % (message))
+                    ret_message.append("Jetzt!\n%s" % (message))
                 elif timestamp > now:
                     # future
-                    ret_message.append("Future! %s" % (message))
+                    ret_message.append("In: %s %s %s %s %s %s %s\n%s" % (secs, mins, hours, days, weeks, months, years, message))
                 else:
                     # past
-                    ret_message.append("Past! %s" % (message))
+                    ret_message.append("Vor: %s %s %s %s %s %s %s\n%s" % (secs, mins, hours, days, weeks, months, years, message))
 
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
