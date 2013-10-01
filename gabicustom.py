@@ -319,7 +319,7 @@ class GabiCustom(BotBase):
             for (timestamp, longterm, user, message) in self.cowntdownList:
                 count += 1
                 print timestamp
-                target_time = datetime.date.fromtimestamp(timestamp)
+                target_time = datetime.datetime.fromtimestamp(timestamp)
                 print target_time
 
                 ret.append('%s\t%s\t"%s" von "%s"' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
@@ -330,7 +330,7 @@ class GabiCustom(BotBase):
                 delIndex = int(args[1]) - 1
                 if delIndex >= 0:
                     (timestamp, longterm, user, message) = self.cowntdownList[delIndex]
-                    target_time = datetime.date.fromtimestamp(timestamp)
+                    target_time = datetime.datetime.fromtimestamp(timestamp)
                     ret_message = '%s\t"%s" von "%s" wurde entfernt.' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user)
                     self.cowntdownList.pop(delIndex)
             except IndexError:
