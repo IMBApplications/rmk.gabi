@@ -339,13 +339,13 @@ class GabiCustom(BotBase):
                 # target_time = datetime.datetime.fromtimestamp(timestamp)
                 # ret_message.append('%s\t"%s" von "%s"' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
                 if timestamp == now:
-                    ret_message.append("Jetzt! %s von %s" % (message, user))
+                    ret_message.append("Jetzt! %s" % (message))
                 elif timestamp > now:
                     # future
-                    ret_message.append("Future! %s von %s" % (message, user))
+                    ret_message.append("Future! %s" % (message))
                 else:
                     # past
-                    ret_message.append("Past! %s von %s" % (message, user))
+                    ret_message.append("Past! %s" % (message))
 
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
