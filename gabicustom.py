@@ -334,9 +334,19 @@ class GabiCustom(BotBase):
             print self.cowntdownList
         else:
             #do the counting and add to ret_message
+            now = int(time.time())
             for (timestamp, longterm, user, message) in self.cowntdownList:
-                target_time = datetime.datetime.fromtimestamp(timestamp)
-                ret_message.append('%s\t"%s" von "%s"' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
+                # target_time = datetime.datetime.fromtimestamp(timestamp)
+                # ret_message.append('%s\t"%s" von "%s"' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
+                if timestamp == now:
+                    ret_message.append("Jetzt! %s von %s" % (message, user))
+                elif timestamp > now:
+                    # future
+                    ret_message.append("Future! %s von %s" % (message, user))
+                else:
+                    # past
+                    ret_message.append("Past! %s von %s" % (message, user))
+
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
         # count add, remove, list
