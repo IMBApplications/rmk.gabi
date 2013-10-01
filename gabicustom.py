@@ -357,10 +357,10 @@ class GabiCustom(BotBase):
                     ret_message.append("Jetzt!\n%s" % (message))
                 elif timestamp > now:
                     # future
-                    ret_message.append("In: %s %s %s %s %s %s %s\n%s" % (secs, mins, hours, days, weeks, months, years, message))
+                    ret_message.append("In %s %s %s %s %s %s %s\n%s" % (secs, mins, hours, days, weeks, months, years, message))
                 else:
                     # past
-                    ret_message.append("Vor: %s %s %s %s %s %s %s\n%s" % (secs, mins, hours, days, weeks, months, years, message))
+                    ret_message.append("Vor %s %s %s %s %s %s %s\n%s" % (secs, mins, hours, days, weeks, months, years, message))
 
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
