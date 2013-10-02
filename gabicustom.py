@@ -18,7 +18,7 @@ def formatTimeText(var, singular, plural):
     elif var > 1:
         return ("%s %s" % (var, plural))
     else:
-        return ""
+        return False
 
 class GabiCustom(BotBase):
 
@@ -356,12 +356,30 @@ class GabiCustom(BotBase):
                     age = age * -1
 
                 ret_line.append("%s Sekunden" % age)
-                ret_line.append(formatTimeText(int(age / 60), "Minute", "Minuten"))
-                ret_line.append(formatTimeText(int(age / 3600), "Stunde", "Stunden"))
-                ret_line.append(formatTimeText(int(age / 86400), "Tag", "Tage"))
-                ret_line.append(formatTimeText(int(age / 604800), "Woche", "Wochen"))
-                ret_line.append(formatTimeText(int(age / 2419200), "Monat", "Monate"))
-                ret_line.append(formatTimeText(int(age / 31449600), "Jahr", "Jahre"))
+
+                mins = formatTimeText(int(age / 60), "Minute", "Minuten")
+                if mins:
+                    ret_line.append(mins)
+
+                hours = formatTimeText(int(age / 3600), "Stunde", "Stunden")
+                if hours:
+                    ret_line.append(hours)
+
+                days = formatTimeText(int(age / 86400), "Tag", "Tage")
+                if days:
+                    ret_line.append(days)
+
+                weeks = formatTimeText(int(age / 604800), "Woche", "Wochen")
+                if weeks:
+                    ret_line.append(weeks)
+
+                months = formatTimeText(int(age / 2419200), "Monat", "Monate")
+                if months:
+                    ret_line.append(months)
+
+                years = formatTimeText(int(age / 31449600), "Jahr", "Jahre")
+                if years:
+                    ret_line.append(years)
 
                 if timestamp == now:
                     ret_message.append('Jetzt! %s' & message)
