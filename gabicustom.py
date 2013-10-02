@@ -15,9 +15,10 @@ from botbase import BotBase, botcmd
 def formatTimeText(var, singular, plural):
     if var == 1:
         return ("%s %s" % (var, singular))
-    if var > 1:
+    elif var > 1:
         return ("%s %s" % (var, plural))
-    return
+    else:
+        return ""
 
 class GabiCustom(BotBase):
 
