@@ -411,13 +411,13 @@ class GabiCustom(BotBase):
                         if showMe:
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
-                        elif (now - timestamp) < 3600 and (now - self.periodicCountCheckTs[timestamp]) < 600:
+                        elif (now - timestamp) < 3600 and (now - self.periodicCountCheckTs[timestamp]) > 600:
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
-                        elif (now - timestamp) < 1800 and (now - self.periodicCountCheckTs[timestamp]) < 300:
+                        elif (now - timestamp) < 1800 and (now - self.periodicCountCheckTs[timestamp]) > 300:
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
-                        elif (now - timestamp) < 900 and (now - self.periodicCountCheckTs[timestamp]) < 60:
+                        elif (now - timestamp) < 900 and (now - self.periodicCountCheckTs[timestamp]) > 60:
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
 
