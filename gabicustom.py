@@ -347,7 +347,7 @@ class GabiCustom(BotBase):
             #do the counting and add to ret_message
             now = int(time.time())
             for (timestamp, longterm, user, message) in self.cowntdownList:
-                ret_message.append(self.createTimeReturn(timestamp, longterm, user, message))
+                ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
         # count add, remove, list
@@ -369,7 +369,7 @@ class GabiCustom(BotBase):
                     # check for same date to check yearly stuff
             pass
 
-    def createTimeReturn(self, timestamp, longterm, user, message):
+    def createTimeReturn(self, now, timestamp, longterm, user, message):
         age = now - timestamp
         if age < 0:
             age = age * -1
