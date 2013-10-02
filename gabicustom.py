@@ -407,7 +407,7 @@ class GabiCustom(BotBase):
                         if showMe:
                             ret_message.append("In %s Jahren: %s" % (yearsFuture, message))
                     else:
-                        if (now - timestamp) < 3600 and ((now - timestamp) % 60):
+                        if (now - timestamp) < 3600 and ((now - timestamp) % 60) == 0:
                             #FIXME this is not nice!
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
 
