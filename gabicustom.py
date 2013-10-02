@@ -347,44 +347,62 @@ class GabiCustom(BotBase):
             #do the counting and add to ret_message
             now = int(time.time())
             for (timestamp, longterm, user, message) in self.cowntdownList:
-                age = now - timestamp
-                if age < 0:
-                    age = age * -1
-
-                ret_line = ["%s Sekunden" % age]
-
-                mins = formatTimeText(int(age / 60), "Minute", "Minuten")
-                if mins:
-                    ret_line.append(mins)
-
-                hours = formatTimeText(int(age / 3600), "Stunde", "Stunden")
-                if hours:
-                    ret_line.append(hours)
-
-                days = formatTimeText(int(age / 86400), "Tag", "Tage")
-                if days:
-                    ret_line.append(days)
-
-                weeks = formatTimeText(int(age / 604800), "Woche", "Wochen")
-                if weeks:
-                    ret_line.append(weeks)
-
-                months = formatTimeText(int(age / 2419200), "Monat", "Monate")
-                if months:
-                    ret_line.append(months)
-
-                years = formatTimeText(int(age / 31449600), "Jahr", "Jahre")
-                if years:
-                    ret_line.append(years)
-
-                if timestamp == now:
-                    ret_message.append('Jetzt! %s' & message)
-                elif timestamp > now:
-                    ret_message.append('In %s: %s' % (' oder '.join(ret_line), message))
-                else:
-                    ret_message.append('Vor %s: %s' % (' oder '.join(ret_line), message))
+                ret_message.append(self.createTimeReturn(timestamp, longterm, user, message))
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
         # count add, remove, list
         return '\n'.join(ret_message)
         pass
+
+    """ Support Methods """
+    def periodicCheckCount(self):
+        now = time.time()
+        ret_message = []
+        for (timestamp, longterm, user, message) in self.cowntdownList:
+            if timestamp <= now:
+                #the event happend
+                if not longterm:
+                    ret_message.append("Jetzt! %s von %s" % (message, user))
+                    self.cowntdownList.remove(timestamp, longterm, user, message))
+                else:
+                    target_time = datetime.datetime.fromtimestamp(timestamp)
+                    # check for same date to check yearly stuff
+            pass
+
+    def createTimeReturn(self, timestamp, longterm, user, message):
+        age = now - timestamp
+        if age < 0:
+            age = age * -1
+
+        ret_line = ["%s Sekunden" % age]
+
+        mins = formatTimeText(int(age / 60), "Minute", "Minuten")
+        if mins:
+            ret_line.append(mins)
+
+        hours = formatTimeText(int(age / 3600), "Stunde", "Stunden")
+        if hours:
+            ret_line.append(hours)
+
+        days = formatTimeText(int(age / 86400), "Tag", "Tage")
+        if days:
+            ret_line.append(days)
+
+        weeks = formatTimeText(int(age / 604800), "Woche", "Wochen")
+        if weeks:
+            ret_line.append(weeks)
+
+        months = formatTimeText(int(age / 2419200), "Monat", "Monate")
+        if months:
+            ret_line.append(months)
+
+        years = formatTimeText(int(age / 31449600), "Jahr", "Jahre")
+        if years:
+            ret_line.append(years)
+
+        if timestamp == now:
+            return 'Jetzt! %s' % message
+        elif timestamp > now:
+            return 'In %s: %s' % (' oder '.join(ret_line), message)
+        else:
+            return 'Vor %s: %s' % (' oder '.join(ret_line), message)
