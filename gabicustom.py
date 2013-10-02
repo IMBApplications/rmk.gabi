@@ -307,7 +307,6 @@ class GabiCustom(BotBase):
                     target_time = target_time.replace(hour   = hour)
                     target_time = target_time.replace(minute = minute)
                     target_time = target_time.replace(second = second)
-                    print "%s:%s:%s" % (hour, minute, second)
                     if (hour + minute + second) != 0:
                         args = args[1:]
                 except Exception as e:
@@ -357,15 +356,19 @@ class GabiCustom(BotBase):
 
     """ Support Methods """
     def periodicCheckCount(self):
+        print "pcheck"
         now = time.time()
         ret_message = []
         for (timestamp, longterm, user, message) in self.cowntdownList:
+            print "elementcheck"
             if timestamp <= now:
                 #the event happend
                 if not longterm:
+                    print "notlongterm"
                     ret_message.append("Jetzt! %s von %s" % (message, user))
                     self.cowntdownList.remove(timestamp, longterm, user, message)
                 else:
+                    print "longterm"
                     target_time = datetime.datetime.fromtimestamp(timestamp)
                     now_time = datetime.datetime.now()
                     if now_time.date == target_time.date:
