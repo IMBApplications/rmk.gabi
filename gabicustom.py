@@ -350,7 +350,7 @@ class GabiCustom(BotBase):
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
         # count add, remove, list
-        self.periodicCheckCount()
+        ret_message = ret_message + self.periodicCheckCount()
         return '\n'.join(ret_message)
         pass
 
@@ -371,10 +371,9 @@ class GabiCustom(BotBase):
                     print "longterm"
                     target_time = datetime.datetime.fromtimestamp(timestamp)
                     now_time = datetime.datetime.now()
-                    print now_time.day
-                    print target_time.day
-                    if now_time.day == target_time.day:
-                        print "same date"
+                    if now_time.day == target_time.day and now_time.month == target_time.month:
+                        yearsPast = now_time.year - target_time.year
+                        ret_message.append("Vor %s Jahren: %s von %s" % (yearsPast, message, user))
                     # check for same date to check yearly stuff
             pass
 
