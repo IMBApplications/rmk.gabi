@@ -372,7 +372,7 @@ class GabiCustom(BotBase):
                 ret_line.append(formatTimeText(int(age / 2419200), "Monat", "Monate"))
                 ret_line.append(formatTimeText(int(age / 31449600), "Jahr", "Jahre"))
                 ret_line.append(message)
-                ret_message = ''.join(ret_line)
+                ret_message.append(''.join(ret_line))
 
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
