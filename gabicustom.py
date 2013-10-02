@@ -345,17 +345,11 @@ class GabiCustom(BotBase):
             #do the counting and add to ret_message
             now = int(time.time())
             for (timestamp, longterm, user, message) in self.cowntdownList:
-                # target_time = datetime.datetime.fromtimestamp(timestamp)
-                # ret_message.append('%s\t"%s" von "%s"' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
-
-                ret_line = []
                 age = now - timestamp
-                future = True
                 if age < 0:
-                    future = False
                     age = age * -1
 
-                ret_line.append("%s Sekunden" % age)
+                ret_line = ["%s Sekunden" % age]
 
                 mins = formatTimeText(int(age / 60), "Minute", "Minuten")
                 if mins:
@@ -384,11 +378,9 @@ class GabiCustom(BotBase):
                 if timestamp == now:
                     ret_message.append('Jetzt! %s' & message)
                 elif timestamp > now:
-                    # future
-                    ret_message.append('In %s %s' % (' oder '.join(ret_line), message))
+                    ret_message.append('In %s: %s' % (' oder '.join(ret_line), message))
                 else:
-                    # past
-                    ret_message.append('Vor %s %s' % (' oder '.join(ret_line), message))
+                    ret_message.append('Vor %s: %s' % (' oder '.join(ret_line), message))
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
         # count add, remove, list
