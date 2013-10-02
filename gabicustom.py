@@ -371,9 +371,9 @@ class GabiCustom(BotBase):
                     print "longterm"
                     target_time = datetime.datetime.fromtimestamp(timestamp)
                     now_time = datetime.datetime.now()
-                    print now_time.date
-                    print target_time.date
-                    if now_time.date == target_time.date:
+                    print now_time.day
+                    print target_time.day
+                    if now_time.day == target_time.day:
                         print "same date"
                     # check for same date to check yearly stuff
             pass
