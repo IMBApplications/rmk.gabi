@@ -343,7 +343,7 @@ class GabiCustom(BotBase):
                 pass
             print self.cowntdownList
         elif args[0].lower() == "per":
-            return '\n'.join(self.periodicCheckCount())
+            ret_message = self.periodicCheckCount()
         else:
             #do the counting and add to ret_message
             now = int(time.time())
