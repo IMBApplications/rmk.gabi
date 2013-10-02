@@ -350,7 +350,6 @@ class GabiCustom(BotBase):
                     self.cowntdownList.pop(delIndex)
             except IndexError:
                 pass
-            print self.cowntdownList
         elif args[0].lower() == "per":
             self.periodicCountLastCheck = 0
             ret_message = self.periodicCheckCount()
@@ -379,21 +378,24 @@ class GabiCustom(BotBase):
             elif timestamp < now:
                 #the event happend
                 if not longterm:
-                    ret_message.append("Jetzt! %s von %s" % (message, user))
+                    ret_message.append("Heute: %s von %s" % (message, user))
                     self.cowntdownList.remove(timestamp, longterm, user, message)
                 else:
                     target_time = datetime.datetime.fromtimestamp(timestamp)
                     now_time = datetime.datetime.now()
                     if now_time.day == target_time.day and now_time.month == target_time.month:
                         yearsPast = now_time.year - target_time.year
-                        ret_message.append("Vor %s Jahren: %s von %s" % (yearsPast, message, user))
+                        if yearsPast == 0:
+                            ret_message.append("Heute: %s von %s" % (message, user))
+                        else:
+                            ret_message.append("Vor %s Jahren: %s von %s" % (yearsPast, message, user))
                     # check for same date to check yearly stuff
             else:
                 # it is in the future
                 target_time = datetime.datetime.fromtimestamp(timestamp)
                 now_time = datetime.datetime.now()
                 if now_time.day == target_time.day and now_time.month == target_time.month:
-                    yearsFuture = now_time.year - target_time.year
+                    yearsFuture = target_time.year - now_time.year
                     ret_message.append("Heute in %s Jahren: %s von %s" % (yearsFuture, message, user))
 
         self.periodicCountLastCheck = time.time()
