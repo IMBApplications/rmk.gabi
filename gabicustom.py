@@ -401,7 +401,7 @@ class GabiCustom(BotBase):
                     if longterm:
                         ret_message.append("In %s Jahren: %s" % (yearsFuture, message))
                     else:
-                        ret_message.append("In %s: %s" % (self.getAge(timestamp), message))
+                        ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
 
         self.periodicCountLastCheck = time.time()
         return ret_message
