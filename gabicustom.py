@@ -308,6 +308,7 @@ class GabiCustom(BotBase):
                     target_time = target_time.replace(minute = minute)
                     target_time = target_time.replace(second = second)
                     args = args[1:]
+                    print "%s:%s:%s" % (hour, minute, second)
                 except Exception as e:
                     pass
 
