@@ -365,8 +365,9 @@ class GabiCustom(BotBase):
 
     """ Support Methods """
     def periodicCheckCount(self):
+        showMe = True
         if (time.time() - self.periodicCountLastCheck) < self.periodicCountWaitTime:
-            return
+            showMe = False
 
         self.periodicCountLastCheck = time.time()
         now = int(time.time())
@@ -374,23 +375,27 @@ class GabiCustom(BotBase):
         for (timestamp, longterm, user, message) in self.cowntdownList:
             if timestamp == now:
                 #NOW!
-                ret_message.append("Jetzt: %s" % (message))
-                if not longterm:
-                    self.cowntdownList.remove(timestamp, longterm, user, message)
+                if showMe:
+                    ret_message.append("Jetzt: %s" % (message))
+                    if not longterm:
+                        self.cowntdownList.remove(timestamp, longterm, user, message)
             elif timestamp < now:
                 #the event happend
                 if not longterm:
-                    ret_message.append("Vor %s: %s" % (self.getAge(timestamp), message))
-                    self.cowntdownList.remove(timestamp, longterm, user, message)
+                    if showMe:
+                        ret_message.append("Vor %s: %s" % (self.getAge(timestamp), message))
+                        self.cowntdownList.remove(timestamp, longterm, user, message)
                 else:
                     target_time = datetime.datetime.fromtimestamp(timestamp)
                     now_time = datetime.datetime.now()
                     if now_time.day == target_time.day and now_time.month == target_time.month:
                         yearsPast = now_time.year - target_time.year
                         if yearsPast == 0:
-                            ret_message.append("Heute: %s von %s" % (message, user))
+                            if showMe:
+                                ret_message.append("Heute: %s von %s" % (message, user))
                         else:
-                            ret_message.append("Vor %s Jahren: %s" % (yearsPast, message))
+                            if showMe:
+                                ret_message.append("Vor %s Jahren: %s" % (yearsPast, message))
                     # check for same date to check yearly stuff
             else:
                 # it is in the future
@@ -399,9 +404,12 @@ class GabiCustom(BotBase):
                 if now_time.day == target_time.day and now_time.month == target_time.month:
                     yearsFuture = target_time.year - now_time.year
                     if longterm:
-                        ret_message.append("In %s Jahren: %s" % (yearsFuture, message))
+                        if showMe:
+                            ret_message.append("In %s Jahren: %s" % (yearsFuture, message))
                     else:
-                        ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
+                        if (now - timestamp) < 3600 and ((now - timestamp) % 60):
+                            #FIXME this is not nice!
+                            ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
 
         self.periodicCountLastCheck = time.time()
         return ret_message
