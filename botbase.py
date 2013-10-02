@@ -59,6 +59,7 @@ class BotBase(object):
         self.__privatedomain = privatedomain
         self.__acceptownmsgs = acceptownmsgs
         self.candy_colors = candy_colors
+        self.currentTopic = ""
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
@@ -555,6 +556,7 @@ class BotBase(object):
         self.connect().send(iq)
 
     def do_topic(self, room, topic):
+        self.currentTopic = topic
         subject = xmpp.simplexml.Node('subject', payload=set([topic]))
         mess = xmpp.Message(to=room, xmlns=None, typ='groupchat', payload=set([subject]))
         self.connect().send(mess)

@@ -380,7 +380,7 @@ class GabiCustom(BotBase):
             elif timestamp < now:
                 #the event happend
                 if not longterm:
-                    ret_message.append("Heute vor %s: %s" % (self.getAge(timestamp), message))
+                    ret_message.append("Vor %s: %s" % (self.getAge(timestamp), message))
                     self.cowntdownList.remove(timestamp, longterm, user, message)
                 else:
                     target_time = datetime.datetime.fromtimestamp(timestamp)
@@ -390,7 +390,7 @@ class GabiCustom(BotBase):
                         if yearsPast == 0:
                             ret_message.append("Heute: %s von %s" % (message, user))
                         else:
-                            ret_message.append("Heute vor %s Jahren: %s" % (yearsPast, message))
+                            ret_message.append("Vor %s Jahren: %s" % (yearsPast, message))
                     # check for same date to check yearly stuff
             else:
                 # it is in the future
@@ -399,9 +399,9 @@ class GabiCustom(BotBase):
                 if now_time.day == target_time.day and now_time.month == target_time.month:
                     yearsFuture = target_time.year - now_time.year
                     if longterm:
-                        ret_message.append("Heute in %s Jahren: %s" % (yearsFuture, message))
+                        ret_message.append("In %s Jahren: %s" % (yearsFuture, message))
                     else:
-                        ret_message.append("Heute in %s: %s" % (self.getAge(timestamp), message))
+                        ret_message.append("In %s: %s" % (self.getAge(timestamp), message))
 
         self.periodicCountLastCheck = time.time()
         return ret_message
