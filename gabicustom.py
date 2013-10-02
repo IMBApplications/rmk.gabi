@@ -14,9 +14,9 @@ from botbase import BotBase, botcmd
 
 def formatTimeText(var, singular, plural):
     if var == 1:
-        return ("%s %s" % (var, singular))
+        return (" %s %s," % (var, singular))
     elif var > 1:
-        return ("%s %s" % (var, plural))
+        return (" %s %s," % (var, plural))
     else:
         return ""
 
@@ -364,8 +364,7 @@ class GabiCustom(BotBase):
                     # past
                     ret_line.append("Vor")
 
-                secs = age
-
+                ret_line.append("%s Sekunden" % age)
                 ret_line.append(formatTimeText(int(age / 60), "Minute", "Minuten"))
                 ret_line.append(formatTimeText(int(age / 3600), "Stunde", "Stunden"))
                 ret_line.append(formatTimeText(int(age / 86400), "Tag", "Tage"))
@@ -373,7 +372,7 @@ class GabiCustom(BotBase):
                 ret_line.append(formatTimeText(int(age / 2419200), "Monat", "Monate"))
                 ret_line.append(formatTimeText(int(age / 31449600), "Jahr", "Jahre"))
                 ret_line.append(message)
-                print ' '.join(ret_line)
+                ret_message = ''.join(ret_line)
 
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
