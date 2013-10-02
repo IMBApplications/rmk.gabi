@@ -43,6 +43,9 @@ class GabiCustom(BotBase):
 
         self.afkRejoinTime = 900
 
+        self.periodicCountLastCheck = 0
+        self.periodicCountWaitTime = 3600
+
     def on_not_a_command(self, mess):
         type = mess.getType()
         jid = mess.getFrom()
@@ -117,6 +120,11 @@ class GabiCustom(BotBase):
 
         if writer != None:
             handler.close()
+
+        # haben wir einen coun zum anzeigen?
+        periodicCount = self.periodicCheckCount()
+        if periodicCount:
+            self.send_simple_reply(mess, '\n'.join(periodicCount))
 
     def on_came_online(self, jid):
 
@@ -269,6 +277,7 @@ class GabiCustom(BotBase):
     #Cowntdown Methods
     @botcmd
     def count (self, mess, args):
+        # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
         """Saves a cowntdown to a specified date/time"""
         from_username = self.get_sender_username(mess)
         args = args.split(" ")
@@ -343,6 +352,7 @@ class GabiCustom(BotBase):
                 pass
             print self.cowntdownList
         elif args[0].lower() == "per":
+            self.periodicCountLastCheck = 0
             ret_message = self.periodicCheckCount()
         else:
             #do the counting and add to ret_message
@@ -350,32 +360,43 @@ class GabiCustom(BotBase):
             for (timestamp, longterm, user, message) in self.cowntdownList:
                 ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
 
-        # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
-        # count add, remove, list
+
         return '\n'.join(ret_message)
         pass
 
     """ Support Methods """
     def periodicCheckCount(self):
-        print "pcheck"
+        if (time.time() - self.periodicCountLastCheck) < self.periodicCountWaitTime:
+            return
+
+        self.periodicCountLastCheck = time.time()
         now = time.time()
         ret_message = []
         for (timestamp, longterm, user, message) in self.cowntdownList:
-            print "elementcheck"
-            if timestamp <= now:
+            if timestamp == now:
+                #NOW!
+                ret_message.append("Jetzt")
+            elif timestamp < now:
                 #the event happend
                 if not longterm:
-                    print "notlongterm"
                     ret_message.append("Jetzt! %s von %s" % (message, user))
                     self.cowntdownList.remove(timestamp, longterm, user, message)
                 else:
-                    print "longterm"
                     target_time = datetime.datetime.fromtimestamp(timestamp)
                     now_time = datetime.datetime.now()
                     if now_time.day == target_time.day and now_time.month == target_time.month:
                         yearsPast = now_time.year - target_time.year
                         ret_message.append("Vor %s Jahren: %s von %s" % (yearsPast, message, user))
                     # check for same date to check yearly stuff
+            else:
+                # it is in the future
+                target_time = datetime.datetime.fromtimestamp(timestamp)
+                now_time = datetime.datetime.now()
+                if now_time.day == target_time.day and now_time.month == target_time.month:
+                    yearsFuture = now_time.year - target_time.year
+                    ret_message.append("Heute in %s Jahren: %s von %s" % (yearsFuture, message, user))
+
+        self.periodicCountLastCheck = time.time()
         return ret_message
 
     def createTimeReturn(self, now, timestamp, longterm, user, message):
