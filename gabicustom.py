@@ -366,18 +366,11 @@ class GabiCustom(BotBase):
                 secs = age
 
                 ret_line.append(formatTimeText(int(age / 60), "Minute", "Minuten"))
-                # mins = int(age / 60)
-                # if mins == 1:
-                #     ret_line.append("%s Minute" % mins)
-                # if mins > 1:
-                #     ret_line.append("%s Minuten" % mins)
-
-                hours = int(age / 3600)
-                days = int(age / 86400)
-                weeks = int(age / 604800)
-                months = int(age / 2419200)
-                years = int(age / 31449600)
-
+                ret_line.append(formatTimeText(int(age / 3600), "Stunde", "Stunden"))
+                ret_line.append(formatTimeText(int(age / 86400), "Tag", "Tage"))
+                ret_line.append(formatTimeText(int(age / 604800), "Woche", "Wochen"))
+                ret_line.append(formatTimeText(int(age / 2419200), "Monat", "Monate"))
+                ret_line.append(formatTimeText(int(age / 31449600), "Jahr", "Jahre"))
                 ret_line.append(message)
                 print ' '.join(ret_line)
 
