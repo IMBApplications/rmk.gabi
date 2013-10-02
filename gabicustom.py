@@ -11,6 +11,14 @@ import pytz
 
 from botbase import BotBase, botcmd
 
+
+def formatTimeText(var, singular, plural):
+    if var == 1:
+        return ("%s %s" % (var, singular))
+    if var > 1:
+        return ("%s %s" % (var, plural))
+    return
+
 class GabiCustom(BotBase):
 
     def __init__(self, username, password, timezone='UTC', candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
@@ -339,28 +347,39 @@ class GabiCustom(BotBase):
                 # target_time = datetime.datetime.fromtimestamp(timestamp)
                 # ret_message.append('%s\t"%s" von "%s"' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
 
+                ret_line = []
                 age = now - timestamp
                 future = True
                 if age < 0:
                     future = False
                     age = age * -1
 
+                if timestamp == now:
+                    ret_line.append("Jetzt!")
+                elif timestamp > now:
+                    # future
+                    ret_line.append("In")
+                else:
+                    # past
+                    ret_line.append("Vor")
+
                 secs = age
-                mins = int(age / 60)
+
+                ret_line.append(formatTimeText(int(age / 60)))
+                # mins = int(age / 60)
+                # if mins == 1:
+                #     ret_line.append("%s Minute" % mins)
+                # if mins > 1:
+                #     ret_line.append("%s Minuten" % mins)
+
                 hours = int(age / 3600)
                 days = int(age / 86400)
                 weeks = int(age / 604800)
                 months = int(age / 2419200)
                 years = int(age / 31449600)
 
-                if timestamp == now:
-                    ret_message.append("Jetzt!\n%s" % (message))
-                elif timestamp > now:
-                    # future
-                    ret_message.append("In %s %s %s %s %s %s %s\n%s" % (secs, mins, hours, days, weeks, months, years, message))
-                else:
-                    # past
-                    ret_message.append("Vor %s %s %s %s %s %s %s\n%s" % (secs, mins, hours, days, weeks, months, years, message))
+                ret_line.append(message)
+                print ' '.join(ret_line)
 
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
