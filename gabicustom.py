@@ -365,7 +365,7 @@ class GabiCustom(BotBase):
 
                 secs = age
 
-                ret_line.append(formatTimeText(int(age / 60)))
+                ret_line.append(formatTimeText(int(age / 60), "Minute", "Minuten"))
                 # mins = int(age / 60)
                 # if mins == 1:
                 #     ret_line.append("%s Minute" % mins)
