@@ -369,7 +369,7 @@ class GabiCustom(BotBase):
             return
 
         self.periodicCountLastCheck = time.time()
-        now = time.time()
+        now = int(time.time())
         ret_message = []
         for (timestamp, longterm, user, message) in self.cowntdownList:
             if timestamp == now:
