@@ -374,11 +374,13 @@ class GabiCustom(BotBase):
         for (timestamp, longterm, user, message) in self.cowntdownList:
             if timestamp == now:
                 #NOW!
-                ret_message.append("Jetzt: %s von %s" % (message, user))
+                ret_message.append("Jetzt: %s" % (message))
+                if not longterm:
+                    self.cowntdownList.remove(timestamp, longterm, user, message)
             elif timestamp < now:
                 #the event happend
                 if not longterm:
-                    ret_message.append("Heute vor %s: %s von %s" % (self.getAge(timestamp), message, user))
+                    ret_message.append("Heute vor %s: %s" % (self.getAge(timestamp), message))
                     self.cowntdownList.remove(timestamp, longterm, user, message)
                 else:
                     target_time = datetime.datetime.fromtimestamp(timestamp)
@@ -388,7 +390,7 @@ class GabiCustom(BotBase):
                         if yearsPast == 0:
                             ret_message.append("Heute: %s von %s" % (message, user))
                         else:
-                            ret_message.append("Heute vor %s Jahren: %s von %s" % (yearsPast, message, user))
+                            ret_message.append("Heute vor %s Jahren: %s" % (yearsPast, message))
                     # check for same date to check yearly stuff
             else:
                 # it is in the future
@@ -397,9 +399,9 @@ class GabiCustom(BotBase):
                 if now_time.day == target_time.day and now_time.month == target_time.month:
                     yearsFuture = target_time.year - now_time.year
                     if longterm:
-                        ret_message.append("Heute in %s Jahren: %s von %s" % (yearsFuture, message, user))
+                        ret_message.append("Heute in %s Jahren: %s" % (yearsFuture, message))
                     else:
-                        ret_message.append("Heute in %s" % self.getAge(timestamp))
+                        ret_message.append("Heute in %s: %s" % (self.getAge(timestamp), message))
 
         self.periodicCountLastCheck = time.time()
         return ret_message
