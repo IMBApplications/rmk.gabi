@@ -363,7 +363,7 @@ class GabiCustom(BotBase):
                 #the event happend
                 if not longterm:
                     ret_message.append("Jetzt! %s von %s" % (message, user))
-                    self.cowntdownList.remove(timestamp, longterm, user, message))
+                    self.cowntdownList.remove(timestamp, longterm, user, message)
                 else:
                     target_time = datetime.datetime.fromtimestamp(timestamp)
                     # check for same date to check yearly stuff
