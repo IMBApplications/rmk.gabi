@@ -45,6 +45,7 @@ class GabiCustom(BotBase):
 
         self.periodicCountLastCheck = 0
         self.periodicCountWaitTime = 3600
+        self.periodicCountCheckTs = {}
 
     def on_not_a_command(self, mess):
         type = mess.getType()
@@ -407,11 +408,12 @@ class GabiCustom(BotBase):
                         if showMe:
                             ret_message.append("In %s Jahren: %s" % (yearsFuture, message))
                     else:
-                        #FIXME this is not nice!
                         if showMe:
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
-                        elif (now - timestamp) < 3600 and ((now - timestamp) % 60) == 0:
+                            self.periodicCountCheckTs[timestamp] = now
+                        elif (now - timestamp) < 3600 and self.periodicCountCheckTs[timestamp] < 60:
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
+                            self.periodicCountCheckTs[timestamp] = now
 
         self.periodicCountLastCheck = time.time()
         return ret_message
