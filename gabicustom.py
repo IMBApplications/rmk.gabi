@@ -14,9 +14,9 @@ from botbase import BotBase, botcmd
 
 def formatTimeText(var, singular, plural):
     if var == 1:
-        return (" %s %s," % (var, singular))
+        return ("%s %s" % (var, singular))
     elif var > 1:
-        return (" %s %s," % (var, plural))
+        return ("%s %s" % (var, plural))
     else:
         return ""
 
@@ -355,15 +355,6 @@ class GabiCustom(BotBase):
                     future = False
                     age = age * -1
 
-                if timestamp == now:
-                    ret_line.append("Jetzt!")
-                elif timestamp > now:
-                    # future
-                    ret_line.append("In")
-                else:
-                    # past
-                    ret_line.append("Vor")
-
                 ret_line.append("%s Sekunden" % age)
                 ret_line.append(formatTimeText(int(age / 60), "Minute", "Minuten"))
                 ret_line.append(formatTimeText(int(age / 3600), "Stunde", "Stunden"))
@@ -371,9 +362,15 @@ class GabiCustom(BotBase):
                 ret_line.append(formatTimeText(int(age / 604800), "Woche", "Wochen"))
                 ret_line.append(formatTimeText(int(age / 2419200), "Monat", "Monate"))
                 ret_line.append(formatTimeText(int(age / 31449600), "Jahr", "Jahre"))
-                ret_line.append(message)
-                ret_message.append(''.join(ret_line))
 
+                if timestamp == now:
+                    ret_message.append('Jetzt! %s' & message)
+                elif timestamp > now:
+                    # future
+                    ret_message.append('In %s %s' % (' oder '.join(ret_line), message))
+                else:
+                    # past
+                    ret_message.append('Vor %s %s' % (' oder '.join(ret_line), message))
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
         # count add, remove, list
