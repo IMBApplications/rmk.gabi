@@ -375,7 +375,7 @@ class GabiCustom(BotBase):
                         yearsPast = now_time.year - target_time.year
                         ret_message.append("Vor %s Jahren: %s von %s" % (yearsPast, message, user))
                     # check for same date to check yearly stuff
-            pass
+        return ret_message
 
     def createTimeReturn(self, now, timestamp, longterm, user, message):
         age = now - timestamp
