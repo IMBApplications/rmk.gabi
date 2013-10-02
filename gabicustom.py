@@ -342,6 +342,8 @@ class GabiCustom(BotBase):
             except IndexError:
                 pass
             print self.cowntdownList
+        elif args[0].lower() == "per":
+            return '\n'.join(self.periodicCheckCount())
         else:
             #do the counting and add to ret_message
             now = int(time.time())
@@ -350,7 +352,6 @@ class GabiCustom(BotBase):
 
         # self.cowntdownList = (targetTime, longterm (y/n), fromuser, what)
         # count add, remove, list
-        ret_message = ret_message + self.periodicCheckCount()
         return '\n'.join(ret_message)
         pass
 
