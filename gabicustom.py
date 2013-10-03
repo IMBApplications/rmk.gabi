@@ -318,13 +318,13 @@ class GabiCustom(BotBase):
                     target_time = target_time.replace(hour   = hour)
                     target_time = target_time.replace(minute = minute)
                     target_time = target_time.replace(second = second)
-                    print "%sh %sm %ss" % (hour, minute, second)
+                    # print "%sh %sm %ss" % (hour, minute, second)
                     if (hour + minute + second) != 0:
                         args = args[1:]
                         if not longterm:
                             targetTs = calendar.timegm(target_time.utctimetuple())
-                            print targetTs
-                            print now
+                            # print targetTs
+                            # print now
                             if targetTs < now:
                                 target_time.fromtimestamp(targetTs + 86400)
 
@@ -337,7 +337,7 @@ class GabiCustom(BotBase):
                     # return [self.timer_at(target_timestamp, args)]
                     self.cowntdownList.append((target_timestamp, longterm, from_username, ' '.join(args)))
                     ret_message.append("Zaehler gespeichert fuer '%s' (%s)" % (' '.join(args), target_time.strftime("%a, %d %b %Y %H:%M:%S")))
-                    print target_time.strftime("%s")
+                    # print target_time.strftime("%s")
                 else:
                     args = []
                     ret_message.append("Du musst einen namen gefolgt von Zeit/Datum und dann das Event angeben. Beispiele:")
@@ -350,7 +350,7 @@ class GabiCustom(BotBase):
                 count += 1
                 target_time = datetime.datetime.fromtimestamp(timestamp)
                 ret_message.append('%s\t%s\t"%s" von "%s"' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
-                print target_time.strftime("%s")
+                # print target_time.strftime("%s")
             if count == 0:
                 ret_message = ['Es sind keine Zaehler gesetzt.']
         elif args[0].lower() == "del":
