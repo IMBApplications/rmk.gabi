@@ -424,6 +424,10 @@ class GabiCustom(BotBase):
                         if showMe:
                             ret_message.append("In %s Jahren: %s" % (yearsFuture, message))
                     else:
+                        try:
+                            self.periodicCountCheckTs[timestamp]
+                        except KeyError:
+                            self.periodicCountCheckTs[timestamp] = 0
                         if showMe:
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
