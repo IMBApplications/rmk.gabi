@@ -443,8 +443,8 @@ class GabiCustom(BotBase):
 
             if removeMe:
                 myIndex = [y[0] for y in self.cowntdownList].index(timestamp)
-                print myIndex
-                print self.cowntdownList.pop(myIndex)
+                # print myIndex
+                # print self.cowntdownList.pop(myIndex)
                 #newPeriodicCountLastCheck.append((timestamp, longterm, user, message))
 
         #self.cowntdownList = newPeriodicCountLastCheck
