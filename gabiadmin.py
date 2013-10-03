@@ -9,6 +9,9 @@ class GabiAdmin(BotBase):
         super(GabiAdmin, self).__init__(username, password, timezone, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
         self.userTopic = []
 
+        self.userTopic = self.loadJSON('db/topic.dat', {})
+        atexit.register(self.saveJSON, 'db/topic.dat', self.userTopic)
+
     @botcmd
     def kick (self, mess, args):
         """Kickt einen Nutzer aus dem aktuelle Channel"""
