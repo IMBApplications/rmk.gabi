@@ -287,7 +287,7 @@ class GabiCustom(BotBase):
 
         if args[0].lower() == "add":
             args = args[1:]
-            target_time = datetime.datetime.now(pytz.timezone(self.timezone))
+            target_time = datetime.datetime.now()
             day = 0
             month = 0
             year = 0
@@ -326,7 +326,7 @@ class GabiCustom(BotBase):
                             print targetTs
                             print now
                             if targetTs < now:
-                                target_time.fromtimestamp(targetTs + 86400, pytz.timezone(self.timezone))
+                                target_time.fromtimestamp(targetTs + 86400)
 
                 except Exception as e:
                     pass
@@ -348,7 +348,7 @@ class GabiCustom(BotBase):
             count = 0
             for (timestamp, longterm, user, message) in self.cowntdownList:
                 count += 1
-                target_time = datetime.datetime.fromtimestamp(timestamp, pytz.timezone(self.timezone))
+                target_time = datetime.datetime.fromtimestamp(timestamp)
                 ret_message.append('%s\t%s\t"%s" von "%s"' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
                 print target_time.strftime("%s")
             if count == 0:
@@ -359,7 +359,7 @@ class GabiCustom(BotBase):
                 delIndex = int(args[1]) - 1
                 if delIndex >= 0:
                     (timestamp, longterm, user, message) = self.cowntdownList[delIndex]
-                    target_time = datetime.datetime.fromtimestamp(timestamp, pytz.timezone(self.timezone))
+                    target_time = datetime.datetime.fromtimestamp(timestamp)
                     ret_message.append('%s\t"%s" von "%s" wurde entfernt.' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
                     self.cowntdownList.pop(delIndex)
             except IndexError:
@@ -386,11 +386,11 @@ class GabiCustom(BotBase):
 
         self.periodicCountLastCheck = time.time()
         now = int(time.time())
-        now_time = datetime.datetime.fromtimestamp(now, pytz.timezone(self.timezone))
+        now_time = datetime.datetime.fromtimestamp(now)
         ret_message = []
         for (timestamp, longterm, user, message) in self.cowntdownList:
             removeMe = False
-            target_time = datetime.datetime.fromtimestamp(timestamp, pytz.timezone(self.timezone))
+            target_time = datetime.datetime.fromtimestamp(timestamp)
             if timestamp == now:
                 #NOW!
                 if showMe:
