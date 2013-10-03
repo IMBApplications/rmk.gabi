@@ -337,6 +337,7 @@ class GabiCustom(BotBase):
                     # return [self.timer_at(target_timestamp, args)]
                     self.cowntdownList.append((target_timestamp, longterm, from_username, ' '.join(args)))
                     ret_message.append("Zaehler gespeichert fuer '%s' (%s)" % (' '.join(args), target_time.strftime("%a, %d %b %Y %H:%M:%S")))
+                    print target_time.strftime("%s")
                 else:
                     args = []
                     ret_message.append("Du musst einen namen gefolgt von Zeit/Datum und dann das Event angeben. Beispiele:")
