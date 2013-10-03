@@ -390,6 +390,7 @@ class GabiCustom(BotBase):
         now = int(time.time())
         now_time = datetime.datetime.fromtimestamp(now)
         ret_message = []
+        self.countTopic = []
         for (timestamp, longterm, user, message) in self.cowntdownList:
             removeMe = False
             target_time = datetime.datetime.fromtimestamp(timestamp)
