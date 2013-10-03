@@ -442,7 +442,7 @@ class GabiCustom(BotBase):
                             self.periodicCountCheckTs[timestamp] = now
 
             if removeMe:
-                myIndex = [y[0] for y in tuple_list].index(timestamp)
+                myIndex = [y[0] for y in self.cowntdownList].index(timestamp)
                 print myIndex
                 print self.cowntdownList.pop(myIndex)
                 #newPeriodicCountLastCheck.append((timestamp, longterm, user, message))
