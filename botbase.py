@@ -556,7 +556,7 @@ class BotBase(object):
         self.connect().send(iq)
 
     def do_topic(self, room):
-        print "do_topic"
+        print "do_topic (%s / %s)" % (self.userTopic, self.countTopic)
         newTopic = []
         newTopic = [self.userTopic] + self.countTopic
 
