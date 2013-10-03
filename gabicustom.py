@@ -414,7 +414,9 @@ class GabiCustom(BotBase):
                         yearsPast = now_time.year - target_time.year
                         if yearsPast == 0:
                             if showMe:
-                                ret_message.append("Heute: %s von %s" % (message, user))
+                                countMessage = "Heute: %s von %s" % (message, user)
+                                ret_message.append(countMessage)
+                                self.countTopic.append(countMessage)
                         else:
                             if showMe:
                                 countMessage = "Vor %s Jahren: %s" % (yearsPast, message)
