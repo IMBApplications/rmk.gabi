@@ -555,11 +555,16 @@ class BotBase(object):
             item.setTagData('reason',reason)
         self.connect().send(iq)
 
-    def do_topic(self, room, topic):
-        self.currentTopic = topic
-        subject = xmpp.simplexml.Node('subject', payload=set([topic]))
-        mess = xmpp.Message(to=room, xmlns=None, typ='groupchat', payload=set([subject]))
-        self.connect().send(mess)
+    def do_topic(self, room):
+        newTopic = []
+        newTopic = self.userTopic + self.countTopic
+
+        if newTopic != self.currentTopic:
+            self.currentTopic = newTopic
+
+            subject = xmpp.simplexml.Node('subject', payload=set(newTopic))
+            mess = xmpp.Message(to=room, xmlns=None, typ='groupchat', payload=set([subject]))
+            self.connect().send(mess)
 
     def do_invite(self, room, jid, reason=None):
         """Invites user to muc.

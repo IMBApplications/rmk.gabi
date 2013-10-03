@@ -48,6 +48,8 @@ class GabiCustom(BotBase):
         self.periodicCountWaitTime = 3600
         self.periodicCountCheckTs = {}
 
+        self.countTopic = []
+
     def on_not_a_command(self, mess):
         type = mess.getType()
         jid = mess.getFrom()
@@ -124,7 +126,7 @@ class GabiCustom(BotBase):
             handler.close()
 
         # haben wir einen count zum anzeigen?
-        periodicCount = self.periodicCheckCount()
+        periodicCount = self.periodicCheckCount(mess)
         if periodicCount:
             self.send_simple_reply(mess, '\n'.join(periodicCount))
 
@@ -366,7 +368,7 @@ class GabiCustom(BotBase):
                 pass
         elif args[0].lower() == "per":
             self.periodicCountLastCheck = 0
-            ret_message = self.periodicCheckCount()
+            ret_message = self.periodicCheckCount(mess)
         else:
             #do the counting and add to ret_message
             now = int(time.time())
@@ -378,7 +380,7 @@ class GabiCustom(BotBase):
         pass
 
     """ Support Methods """
-    def periodicCheckCount(self):
+    def periodicCheckCount(self, mess):
         showMe = True
         #newPeriodicCountLastCheck = []
         if (time.time() - self.periodicCountLastCheck) < self.periodicCountWaitTime:
@@ -414,7 +416,9 @@ class GabiCustom(BotBase):
                                 ret_message.append("Heute: %s von %s" % (message, user))
                         else:
                             if showMe:
-                                ret_message.append("Vor %s Jahren: %s" % (yearsPast, message))
+                                countMessage = "Vor %s Jahren: %s" % (yearsPast, message)
+                                ret_message.append(countMessage)
+                                self.countTopic.append(countMessage)
                     # check for same date to check yearly stuff
             else:
                 # it is in the future
@@ -449,6 +453,9 @@ class GabiCustom(BotBase):
 
         #self.cowntdownList = newPeriodicCountLastCheck
         self.periodicCountLastCheck = time.time()
+
+        self.do_topic(mess.getFrom().getStripped())
+
         return ret_message
 
     def createTimeReturn(self, now, timestamp, longterm, user, message):
