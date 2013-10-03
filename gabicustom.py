@@ -362,7 +362,7 @@ class GabiCustom(BotBase):
                 if delIndex >= 0:
                     (timestamp, longterm, user, message) = self.cowntdownList[delIndex]
                     target_time = datetime.datetime.fromtimestamp(timestamp)
-                    ret_message.append('%s\t"%s" von "%s" wurde entfernt.' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
+                    ret_message = ['%s\t"%s" von "%s" wurde entfernt.' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user)]
                     self.cowntdownList.pop(delIndex)
             except IndexError:
                 pass
