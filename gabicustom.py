@@ -349,6 +349,8 @@ class GabiCustom(BotBase):
                 count += 1
                 target_time = datetime.datetime.fromtimestamp(timestamp, pytz.timezone(self.timezone))
                 ret_message.append('%s\t%s\t"%s" von "%s"' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
+            if count == 0:
+                ret_message = ['Es sind keine Zaehler gesetzt.']
         elif args[0].lower() == "del":
             ret_message = ["Unbekannter index. Bitte gib einen zulaessigen index an (count list)."]
             try:
