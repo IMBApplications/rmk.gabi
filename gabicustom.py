@@ -318,6 +318,7 @@ class GabiCustom(BotBase):
                     target_time = target_time.replace(hour   = hour)
                     target_time = target_time.replace(minute = minute)
                     target_time = target_time.replace(second = second)
+                    print "%sh %sm %ss" % (hour, minute, second)
                     if (hour + minute + second) != 0:
                         args = args[1:]
                         if not longterm:
