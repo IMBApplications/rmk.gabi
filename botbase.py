@@ -556,14 +556,13 @@ class BotBase(object):
         self.connect().send(iq)
 
     def do_topic(self, room):
-        print "do_topic (%s / %s)" % (self.userTopic, self.countTopic)
-        newTopic = []
+        print "do_topic (%s + %s | %s)" % (self.userTopic, self.countTopic, self.currentTopic)
         newTopic = [self.userTopic] + self.countTopic
 
         if newTopic != self.currentTopic:
-            self.currentTopic = newTopic
             newTmpTopic = ' | '.join(newTopic)
-            print "to: %s (%s)" % (newTopic, newTmpTopic)
+            self.currentTopic = newTopic
+            print "setting toppic to: %s" % (newTmpTopic)
 
             subject = xmpp.simplexml.Node('subject', payload=set([newTmpTopic]))
             mess = xmpp.Message(to=room, xmlns=None, typ='groupchat', payload=set([subject]))
