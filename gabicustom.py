@@ -375,7 +375,6 @@ class GabiCustom(BotBase):
     """ Support Methods """
     def periodicCheckCount(self):
         showMe = True
-        removeMe = False
         newPeriodicCountLastCheck = []
         if (time.time() - self.periodicCountLastCheck) < self.periodicCountWaitTime:
             showMe = False
@@ -385,6 +384,7 @@ class GabiCustom(BotBase):
         now_time = datetime.datetime.fromtimestamp(now)
         ret_message = []
         for (timestamp, longterm, user, message) in self.cowntdownList:
+            removeMe = False
             target_time = datetime.datetime.fromtimestamp(timestamp)
             if timestamp == now:
                 #NOW!
