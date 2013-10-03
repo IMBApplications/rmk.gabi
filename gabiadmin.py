@@ -7,7 +7,7 @@ import csv
 class GabiAdmin(BotBase):
     def __init__(self, username, password, timezone='UTC', candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
         super(GabiAdmin, self).__init__(username, password, timezone, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
-        self.userTopic = ""
+        self.userTopic = []
 
     @botcmd
     def kick (self, mess, args):
@@ -19,7 +19,7 @@ class GabiAdmin(BotBase):
     def topic (self, mess, args):
         """Setzt die Ueberschrift im aktuellen Channel"""
         room = mess.getFrom().getStripped()
-        self.userTopic = args
+        self.userTopic.append(args)
         self.do_topic(room)
 
     @botcmd
