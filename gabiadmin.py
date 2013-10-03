@@ -23,7 +23,7 @@ class GabiAdmin(BotBase):
     def topic (self, mess, args):
         """Setzt die Ueberschrift im aktuellen Channel"""
         room = mess.getFrom().getStripped()
-        self.userTopic = [args]
+        self.userTopic = args
         self.do_topic(room)
 
     @botcmd

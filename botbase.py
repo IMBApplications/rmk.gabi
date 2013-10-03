@@ -557,7 +557,7 @@ class BotBase(object):
 
     def do_topic(self, room):
         newTopic = []
-        newTopic = self.userTopic + self.countTopic
+        newTopic = [self.userTopic] + self.countTopic
 
         if newTopic != self.currentTopic:
             self.currentTopic = newTopic
