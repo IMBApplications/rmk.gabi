@@ -123,7 +123,7 @@ class GabiCustom(BotBase):
         if writer != None:
             handler.close()
 
-        # haben wir einen coun zum anzeigen?
+        # haben wir einen count zum anzeigen?
         periodicCount = self.periodicCheckCount()
         if periodicCount:
             self.send_simple_reply(mess, '\n'.join(periodicCount))
@@ -376,7 +376,7 @@ class GabiCustom(BotBase):
     """ Support Methods """
     def periodicCheckCount(self):
         showMe = True
-        newPeriodicCountLastCheck = []
+        #newPeriodicCountLastCheck = []
         if (time.time() - self.periodicCountLastCheck) < self.periodicCountWaitTime:
             showMe = False
 
@@ -433,10 +433,11 @@ class GabiCustom(BotBase):
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
 
-            if not removeMe:
-                newPeriodicCountLastCheck.append((timestamp, longterm, user, message))
+            if removeMe:
+                print self.cowntdownList.index((timestamp, longterm, user, message))
+                #newPeriodicCountLastCheck.append((timestamp, longterm, user, message))
 
-        self.cowntdownList = newPeriodicCountLastCheck
+        #self.cowntdownList = newPeriodicCountLastCheck
         self.periodicCountLastCheck = time.time()
         return ret_message
 
