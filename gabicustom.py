@@ -376,6 +376,7 @@ class GabiCustom(BotBase):
     def periodicCheckCount(self):
         showMe = True
         removeMe = False
+        newPeriodicCountLastCheck = []
         if (time.time() - self.periodicCountLastCheck) < self.periodicCountWaitTime:
             showMe = False
 
@@ -431,9 +432,10 @@ class GabiCustom(BotBase):
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
 
-            if removeMe:
-                self.cowntdownList.remove((timestamp, longterm, user, message))
+            if not removeMe:
+                newPeriodicCountLastCheck.append((timestamp, longterm, user, message))
 
+        self.cowntdownList = newPeriodicCountLastCheck
         self.periodicCountLastCheck = time.time()
         return ret_message
 
