@@ -4,6 +4,7 @@ import re
 import csv
 import datetime
 import time
+import calendar
 import atexit
 import json
 import collections
@@ -319,6 +320,13 @@ class GabiCustom(BotBase):
                     target_time = target_time.replace(second = second)
                     if (hour + minute + second) != 0:
                         args = args[1:]
+                        if not longterm:
+                            targetTs = calendar.timegm(target_time.utctimetuple())
+                            print targetTs
+                            print now
+                            if targetTs < now:
+                                target_time.fromtimestamp(targetTs + 86400)
+
                 except Exception as e:
                     pass
 
@@ -367,28 +375,32 @@ class GabiCustom(BotBase):
     """ Support Methods """
     def periodicCheckCount(self):
         showMe = True
+        removeMe = False
         if (time.time() - self.periodicCountLastCheck) < self.periodicCountWaitTime:
             showMe = False
 
         self.periodicCountLastCheck = time.time()
         now = int(time.time())
+        now_time = datetime.datetime.fromtimestamp(now)
         ret_message = []
         for (timestamp, longterm, user, message) in self.cowntdownList:
+            target_time = datetime.datetime.fromtimestamp(timestamp)
             if timestamp == now:
                 #NOW!
                 if showMe:
                     ret_message.append("Jetzt: %s" % (message))
                     if not longterm:
-                        self.cowntdownList.remove(timestamp, longterm, user, message)
+                        removeMe = True
             elif timestamp < now:
                 #the event happend
                 if not longterm:
-                    if showMe:
-                        ret_message.append("Vor %s: %s" % (self.getAge(timestamp), message))
-                        self.cowntdownList.remove(timestamp, longterm, user, message)
+                    if target_time.day < now_time.day:
+                        removeMe = True
+                    else:
+                        if showMe:
+                            ret_message.append("Vor %s: %s" % (self.getAge(timestamp), message))
+                            removeMe = True
                 else:
-                    target_time = datetime.datetime.fromtimestamp(timestamp)
-                    now_time = datetime.datetime.now()
                     if now_time.day == target_time.day and now_time.month == target_time.month:
                         yearsPast = now_time.year - target_time.year
                         if yearsPast == 0:
@@ -400,8 +412,6 @@ class GabiCustom(BotBase):
                     # check for same date to check yearly stuff
             else:
                 # it is in the future
-                target_time = datetime.datetime.fromtimestamp(timestamp)
-                now_time = datetime.datetime.now()
                 if now_time.day == target_time.day and now_time.month == target_time.month:
                     yearsFuture = target_time.year - now_time.year
                     if longterm:
@@ -420,6 +430,9 @@ class GabiCustom(BotBase):
                         elif (now - timestamp) < 900 and (now - self.periodicCountCheckTs[timestamp]) > 60:
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
+
+            if removeMe:
+                self.cowntdownList.remove((timestamp, longterm, user, message))
 
         self.periodicCountLastCheck = time.time()
         return ret_message
