@@ -382,12 +382,12 @@ class GabiCustom(BotBase):
     """ Support Methods """
     def periodicCheckCount(self, mess):
         showMe = True
-        #newPeriodicCountLastCheck = []
-        if (time.time() - self.periodicCountLastCheck) < self.periodicCountWaitTime:
-            showMe = False
-
-        self.periodicCountLastCheck = time.time()
         now = int(time.time())
+        #newPeriodicCountLastCheck = []
+        if (now - self.periodicCountLastCheck) < self.periodicCountWaitTime:
+            showMe = False
+        self.periodicCountLastCheck = now
+
         now_time = datetime.datetime.fromtimestamp(now)
         ret_message = []
         self.countTopic = []
@@ -436,15 +436,19 @@ class GabiCustom(BotBase):
                         except KeyError:
                             self.periodicCountCheckTs[timestamp] = 0
                         if showMe:
+                            print "showme %s" % message
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
                         elif (now - timestamp) < 3600 and (now - self.periodicCountCheckTs[timestamp]) > 600:
+                            print "3600 %s" % message
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
                         elif (now - timestamp) < 1800 and (now - self.periodicCountCheckTs[timestamp]) > 300:
+                            print "1800 %s" % message
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
                         elif (now - timestamp) < 900 and (now - self.periodicCountCheckTs[timestamp]) > 60:
+                            print "900 %s" % message
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
 
