@@ -435,24 +435,17 @@ class GabiCustom(BotBase):
                             self.periodicCountCheckTs[timestamp]
                         except KeyError:
                             self.periodicCountCheckTs[timestamp] = 0
-                        if showMe:
-                            print "showme true %s (now: %s, ts: %s)" % (message, now, timestamp)
-                            ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
-                            self.periodicCountCheckTs[timestamp] = now
-                        elif (timestamp - now) < 3600 and (now - self.periodicCountCheckTs[timestamp]) > 600:
-                            print "3600 %s (now: %s, ts: %s)" % (message, now, timestamp)
-                            ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
-                            self.periodicCountCheckTs[timestamp] = now
+
+                        if (timestamp - now) < 3600 and (now - self.periodicCountCheckTs[timestamp]) > 600:
+                            showMe = True
                         elif (timestamp - now) < 1800 and (now - self.periodicCountCheckTs[timestamp]) > 300:
-                            print "1800 %s (now: %s, ts: %s)" % (message, now, timestamp)
-                            ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
-                            self.periodicCountCheckTs[timestamp] = now
+                            showMe = True
                         elif (timestamp - now) < 900 and (now - self.periodicCountCheckTs[timestamp]) > 180:
-                            print "900 %s (now: %s, ts: %s)" % (message, now, timestamp)
-                            ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
-                            self.periodicCountCheckTs[timestamp] = now
+                            showMe = True
                         elif (timestamp - now) < 60 and (now - self.periodicCountCheckTs[timestamp]) > 10:
-                            print "60 %s (now: %s, ts: %s)" % (message, now, timestamp)
+                            showMe = True
+
+                        if showMe:
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
 
