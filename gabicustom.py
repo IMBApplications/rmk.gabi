@@ -452,12 +452,12 @@ class GabiCustom(BotBase):
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
                 elif futureTimeDiff < (dayInSecs * 14):
-                    target_time.hour = 0
-                    target_time.minute = 0
-                    target_time.second = 0
-                    now_time.hour = 0
-                    now_time.minute = 0
-                    now_time.second = 0
+                    target_time.replace(hour = 0)
+                    target_time.replace(minute = 0)
+                    target_time.replace(second = 0)
+                    now_time.replace(hour = 0)
+                    now_time.replace(minute = 0)
+                    now_time.replace(second = 0)
                     futureTimeDiff = int(target_time.strftime("%s")) - int(now_time.strftime("%s"))
 
                     if futureTimeDiff < (dayInSecs * 2):
