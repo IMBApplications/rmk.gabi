@@ -557,7 +557,9 @@ class BotBase(object):
 
     def do_topic(self, room):
         print "do_topic (%s + %s | %s)" % (self.userTopic, self.countTopic, self.currentTopic)
-        newTopic = [self.userTopic] + self.countTopic
+        newTopic = [self.userTopic]
+        for topic in sorted(self.countTopic):
+            newTopic.append(topic)
 
         if newTopic != self.currentTopic:
             newTmpTopic = ' | '.join(newTopic)

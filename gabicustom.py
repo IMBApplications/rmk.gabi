@@ -414,12 +414,12 @@ class GabiCustom(BotBase):
                         yearsPast = now_time.year - target_time.year
                         if yearsPast == 0:
                             countMessage = "Heute: %s von %s" % (message, user)
-                            self.countTopic.append(countMessage)
+                            self.countTopic.append((timestamp, countMessage))
                             if showMe:
                                 ret_message.append(countMessage)
                         else:
                             countMessage = "Vor %s Jahren: %s" % (yearsPast, message)
-                            self.countTopic.append(countMessage)
+                            self.countTopic.append((timestamp, countMessage))
                             if showMe:
                                 ret_message.append(countMessage)
                     # check for same date to check yearly stuff
@@ -461,9 +461,9 @@ class GabiCustom(BotBase):
                     futureTimeDiff = int(target_time.strftime("%s")) - int(now_time.strftime("%s"))
 
                     if futureTimeDiff < (dayInSecs * 2):
-                        self.countTopic.append("Morgen: %s" % (message))
+                        self.countTopic.append((timestamp, "Morgen: %s" % (message)))
                     elif futureTimeDiff < (dayInSecs * 14):
-                        self.countTopic.append("In %s Tagen: %s" % (int(futureTimeDiff / dayInSecs) + 1, message))
+                        self.countTopic.append((timestamp, "In %s Tagen: %s" % (int(futureTimeDiff / dayInSecs) + 1, message)))
 
 
             if removeMe:
