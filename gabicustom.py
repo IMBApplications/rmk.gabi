@@ -351,7 +351,7 @@ class GabiCustom(BotBase):
             for (timestamp, longterm, user, message) in self.cowntdownList:
                 count += 1
                 target_time = datetime.datetime.fromtimestamp(timestamp)
-                ret_message.append('%s\t%s\t"%s" von "%s"<br />' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
+                ret_message.append('%s\t%s\t"%s" von "%s"<br>' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
                 # print target_time.strftime("%s")
             if count == 0:
                 ret_message = ['Es sind keine Zaehler gesetzt.']
