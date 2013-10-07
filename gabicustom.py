@@ -465,7 +465,7 @@ class GabiCustom(BotBase):
                         self.countTopic.append((timestamp, "In %s Tagen: %s" % (int(futureTimeDiff / dayInSecs) + 1, message)))
                     elif futureTimeDiff == (dayInSecs * 7):
                         self.countTopic.append((timestamp, "In 1 Woche: %s" % (message)))
-                    elif (futureTimeDiff % (dayInSecs * 7)) == 0 and futureTimeDiff % (dayInSecs * 7)) < 5:
+                    elif (futureTimeDiff % (dayInSecs * 7)) == 0 and (futureTimeDiff % (dayInSecs * 7)) < 5:
                         self.countTopic.append((timestamp, "In %s Wochen: %s" % (int(futureTimeDiff / (dayInSecs * 7)), message)))
 
             if removeMe:
