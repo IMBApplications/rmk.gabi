@@ -557,7 +557,11 @@ class BotBase(object):
 
     def do_topic(self, room):
         newTopic = [self.userTopic]
+        count = 0
         for (ts, topic) in sorted(self.countTopic):
+            count += 1
+            if count > 4:
+                break
             newTopic.append(topic)
 
         if newTopic != self.currentTopic:
