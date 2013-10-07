@@ -382,6 +382,7 @@ class GabiCustom(BotBase):
     """ Support Methods """
     def periodicCheckCount(self, mess):
         showMe = True
+        dayInSecs = 86400
         now = int(time.time())
         #newPeriodicCountLastCheck = []
         if (now - self.periodicCountLastCheck) < self.periodicCountWaitTime:
@@ -425,8 +426,6 @@ class GabiCustom(BotBase):
                     # check for same date to check yearly stuff
             else:
                 # it is in the future
-                futureTimeDiff = int(target_time.strftime("%s")) - int(now_time.strftime("%s"))
-                dayInSecs = 86400
                 if now_time.day == target_time.day and now_time.month == target_time.month:
                     yearsFuture = target_time.year - now_time.year
                     if longterm:
@@ -451,7 +450,7 @@ class GabiCustom(BotBase):
                         if showMe:
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
-                elif futureTimeDiff < (dayInSecs * 14):
+                else:
                     target_time.replace(hour = 0)
                     target_time.replace(minute = 0)
                     target_time.replace(second = 0)
@@ -462,9 +461,12 @@ class GabiCustom(BotBase):
 
                     if futureTimeDiff < (dayInSecs * 2):
                         self.countTopic.append((timestamp, "Morgen: %s" % (message)))
-                    elif futureTimeDiff < (dayInSecs * 14):
+                    elif futureTimeDiff < (dayInSecs * 7):
                         self.countTopic.append((timestamp, "In %s Tagen: %s" % (int(futureTimeDiff / dayInSecs) + 1, message)))
-
+                    elif futureTimeDiff == (dayInSecs * 7):
+                        self.countTopic.append((timestamp, "In 1 Woche: %s" % (message)))
+                    elif (futureTimeDiff % (dayInSecs * 7)) == 0 and futureTimeDiff % (dayInSecs * 7)) < 5:
+                        self.countTopic.append((timestamp, "In %s Wochen: %s" % (int(futureTimeDiff / (dayInSecs * 7)), message)))
 
             if removeMe:
                 myIndex = [y[0] for y in self.cowntdownList].index(timestamp)
