@@ -451,8 +451,8 @@ class GabiCustom(BotBase):
                         if showMe:
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
-                elif futureTimeDiff < (dayInSecs * 30):
-                    self.countTopic.append(self.createTimeReturn(now, timestamp, longterm, user, message))
+                elif futureTimeDiff < (dayInSecs * 14):
+                    self.countTopic.append("In %s Tagen: %s" % (int(futureTimeDiff / dayInSecs), message))
 
 
             if removeMe:
