@@ -432,6 +432,7 @@ class GabiCustom(BotBase):
                     if longterm:
                         if showMe:
                             ret_message.append("In %s Jahren: %s" % (yearsFuture, message))
+                            self.countTopic.append("In %s Jahren: %s" % (yearsFuture, message))
                     else:
                         try:
                             self.periodicCountCheckTs[timestamp]
@@ -451,7 +452,7 @@ class GabiCustom(BotBase):
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
                 elif futureTimeDiff < (dayInSecs * 30):
-                    ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
+                    self.countTopic.append(self.createTimeReturn(now, timestamp, longterm, user, message))
 
 
             if removeMe:
