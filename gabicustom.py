@@ -459,9 +459,10 @@ class GabiCustom(BotBase):
                     now_time.replace(second = 0)
                     futureTimeDiff = int(target_time.strftime("%s")) - int(now_time.strftime("%s"))
 
+                    print "%s : %s" % (futureTimeDiff, message)
                     if futureTimeDiff < (dayInSecs * 2):
                         self.countTopic.append((timestamp, "Morgen: %s" % (message)))
-                    elif futureTimeDiff < (dayInSecs * 7):
+                    elif futureTimeDiff == (dayInSecs * 7):
                         self.countTopic.append((timestamp, "In 1 Woche: %s" % (message)))
                     elif futureTimeDiff < (dayInSecs * 13):
                         self.countTopic.append((timestamp, "In %s Tagen: %s" % (int(futureTimeDiff / dayInSecs) + 1, message)))
