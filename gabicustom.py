@@ -425,6 +425,8 @@ class GabiCustom(BotBase):
                     # check for same date to check yearly stuff
             else:
                 # it is in the future
+                futureTimeDiff = int(target_time.strftime("%s")) - int(now_time.strftime("%s"))
+                dayInSecs = 86400
                 if now_time.day == target_time.day and now_time.month == target_time.month:
                     yearsFuture = target_time.year - now_time.year
                     if longterm:
@@ -448,6 +450,9 @@ class GabiCustom(BotBase):
                         if showMe:
                             ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
                             self.periodicCountCheckTs[timestamp] = now
+                elif futureTimeDiff < (dayInSecs * 30):
+                    ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
+
 
             if removeMe:
                 myIndex = [y[0] for y in self.cowntdownList].index(timestamp)
