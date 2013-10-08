@@ -564,9 +564,9 @@ class BotBase(object):
                 break
             newTopic.append(topic)
 
-        if newTopic != self.currentTopic:
-            newTmpTopic = ' | '.join(newTopic)
-            self.currentTopic = newTopic
+        newTmpTopic = ' | '.join(newTopic)
+        if newTmpTopic != self.currentTopic:
+            self.currentTopic = newTmpTopic
 
             subject = xmpp.simplexml.Node('subject', payload=set([newTmpTopic]))
             mess = xmpp.Message(to=room, xmlns=None, typ='groupchat', payload=set([subject]))
