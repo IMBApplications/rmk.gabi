@@ -430,8 +430,8 @@ class GabiCustom(BotBase):
                     yearsFuture = target_time.year - now_time.year
                     if longterm:
                         if showMe:
-                            ret_message.append("In %s Jahren: %s" % (yearsFuture, message))
-                            self.countTopic.append("In %s Jahren: %s" % (yearsFuture, message))
+                            ret_message.append((timestamp, "In %s Jahren: %s" % (yearsFuture, message)))
+                            self.countTopic.append((timestamp, "In %s Jahren: %s" % (yearsFuture, message)))
                     else:
                         try:
                             self.periodicCountCheckTs[timestamp]
