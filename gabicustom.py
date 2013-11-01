@@ -412,8 +412,8 @@ class GabiCustom(BotBase):
                             removeMe = True
                 else:
                     if now_time.day == target_time.day and now_time.month == target_time.month:
-                        yearsPast = now_time.year - target_time.year
-                        if yearsPast == 0:
+                        yearsPast = now_time.year - target_time.year - 1
+                        if yearsPast <= 0:
                             countMessage = "Heute: %s von %s" % (message, user)
                             self.countTopic.append((timestamp, countMessage))
                             if showMe:
