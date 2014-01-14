@@ -41,4 +41,4 @@ class GabiHelp(BotBase):
             else:
                 usage = self.MSG_HELP_UNDEFINED_COMMAND
 
-        return ''.join(filter(None, [description, usage]))
+        return self.build_reply(''.join(filter(None, [description, usage])))
