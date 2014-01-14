@@ -253,7 +253,7 @@ class BotBase(object):
 
     def send_simple_reply(self, mess, text, private=False):
         """Send a simple response to a message"""
-        self.send_message(self.build_reply(mess, self.build_message(text), private))
+        self.send_message(self.build_reply(mess, text, private))
 
     def build_reply(self, mess, text=None, private=False):
         """Build a message for responding to another message.
@@ -273,12 +273,13 @@ class BotBase(object):
         If input is not valid xhtml-im fallback to normal."""
         message = None # init message variable
         # Try to determine if text has xhtml-tags - TODO needs improvement
-        text_plain = re.sub(r'<[^>]+>', '', text)
+        # text_plain = re.sub(r'<[^>]+>', '', text)
         # if text_plain != text:
         if self.text_color:
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
-            message = xmpp.protocol.Message(body=text_plain)
+            # message = xmpp.protocol.Message(body=text_plain)
+            message = xmpp.protocol.Message(body=text)
             # Start creating a xhtml body
             html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
             try:
