@@ -273,7 +273,7 @@ class BotBase(object):
         If input is not valid xhtml-im fallback to normal."""
         message = None # init message variable
         # Try to determine if text has xhtml-tags - TODO needs improvement
-        # text_plain = re.sub(r'<[^>]+>', '', text)
+        text_plain = re.sub(r'<[^>]+>', '', text)
         # if text_plain != text:
         if self.text_color:
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
