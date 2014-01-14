@@ -275,7 +275,8 @@ class BotBase(object):
         # Try to determine if text has xhtml-tags - TODO needs improvement
         text_plain = re.sub(r'<[^>]+>', '', text)
         print "if: %s != %s" % (text_plain, text)
-        if text_plain != text:
+        # if text_plain != text:
+        if self.text_color:
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
             message = xmpp.protocol.Message(body=text_plain)
@@ -284,12 +285,12 @@ class BotBase(object):
             try:
                 print "try"
 
-                if self.text_color:
-                    print "yes"
-                    newContent = "<span style='color: #%s'>" % self.text_color + text.encode('utf-8') + "</span>"
-                else:
-                    print "no"
-                    newContent = text.encode('utf-8')
+                # if self.text_color:
+                #     print "yes"
+                newContent = "<span style='color: #%s'>" % self.text_color + text.encode('utf-8') + "</span>"
+                # else:
+                #     print "no"
+                #     newContent = text.encode('utf-8')
 
                 html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
                 message.addChild(node=html)
