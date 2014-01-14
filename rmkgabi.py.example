@@ -7,7 +7,7 @@ password = ''
 nickname = 'Gabi'
 room = ''
 timezone = 'Europe/Zurich'
-text_color = False
+text_color = None #or HTML HEY Colorcode
 
 bot = GabiBase(username, password, timezone, text_color)
 bot.join_room(room, nickname)
