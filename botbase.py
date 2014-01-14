@@ -277,7 +277,7 @@ class BotBase(object):
         if text_plain != text:
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
-            if self.text_color not None:
+            if self.text_color:
                 message_text = "<span style='color: #%s'>" % self.text_color + text_plain + "</span>"
             else:
                 message_text = text_plain
@@ -298,7 +298,7 @@ class BotBase(object):
                 message = None
         if message is None:
         # Normal body
-            if self.text_color not None:
+            if self.text_color:
                 message_text = "<span style='color: #%s'>" % self.text_color + text_plain + "</span>"
             else:
                 message_text = text
