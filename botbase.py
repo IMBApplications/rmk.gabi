@@ -39,7 +39,7 @@ class BotBase(object):
     PING_TIMEOUT = 2 # Seconds to wait for a response.
 
     ########## Constructor ##########   
-    def __init__(self, username, password, timezone='UTC', candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
+    def __init__(self, username, password, timezone='UTC', text_color=None, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
         # TODO sort this initialisation thematically
         self.__debug = debug
         self.log = logging.getLogger(__name__)
@@ -58,7 +58,7 @@ class BotBase(object):
         self.__lastping = time.time()
         self.__privatedomain = privatedomain
         self.__acceptownmsgs = acceptownmsgs
-        self.candy_colors = candy_colors
+        self.text_color = text_color
         self.currentTopic = ""
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
@@ -277,8 +277,8 @@ class BotBase(object):
         if text_plain != text:
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
-            if self.candy_colors:
-                message_text = '|c:7|' + text_plain
+            if self.text_color not None:
+                message_text = "<span style='color: #%s'>" % self.text_color + text_plain + "</span>"
             else:
                 message_text = text_plain
             message = xmpp.protocol.Message(body=message_text)
@@ -298,8 +298,8 @@ class BotBase(object):
                 message = None
         if message is None:
         # Normal body
-            if self.candy_colors:
-                message_text = '|c:7|' + text
+            if self.text_color not None:
+                message_text = "<span style='color: #%s'>" % self.text_color + text_plain + "</span>"
             else:
                 message_text = text
             message = xmpp.protocol.Message(body=message_text)
