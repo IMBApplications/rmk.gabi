@@ -277,18 +277,17 @@ class BotBase(object):
         if text_plain != text:
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
-            if self.text_color:
-                message_text = "<span style='color: #%s'>" % self.text_color + text_plain + "</span>"
-            else:
-                message_text = text_plain
-            message = xmpp.protocol.Message(body=message_text)
+            message = xmpp.protocol.Message(body=text_plain)
             # Start creating a xhtml body
-            html = xmpp.Node('html', \
-                {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
+            html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
             try:
-                html.addChild(node=xmpp.simplexml.XML2Node( \
-                    "<body xmlns='http://www.w3.org/1999/xhtml'>" + \
-                    text.encode('utf-8') + "</body>"))
+
+                if self.text_color:
+                    newContent = "<span style='color: #%s'>" % self.text_color + text.encode('utf-8') + "</span>"
+                else:
+                    newContent = text.encode('utf-8')
+
+                html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
                 message.addChild(node=html)
             except Exception, e:
                 # Didn't work, incorrect markup or something.
@@ -298,11 +297,7 @@ class BotBase(object):
                 message = None
         if message is None:
         # Normal body
-            if self.text_color:
-                message_text = "<span style='color: #%s'>" % self.text_color + text_plain + "</span>"
-            else:
-                message_text = text
-            message = xmpp.protocol.Message(body=message_text)
+            message = xmpp.protocol.Message(body=text)
         return message
 
     def broadcast(self, message, only_available=False):
