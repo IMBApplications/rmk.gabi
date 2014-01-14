@@ -274,6 +274,7 @@ class BotBase(object):
         message = None # init message variable
         # Try to determine if text has xhtml-tags - TODO needs improvement
         text_plain = re.sub(r'<[^>]+>', '', text)
+        print "if: %s != %s" % (text_plain, text)
         if text_plain != text:
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
