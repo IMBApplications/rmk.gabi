@@ -253,7 +253,7 @@ class BotBase(object):
 
     def send_simple_reply(self, mess, text, private=False):
         """Send a simple response to a message"""
-        self.send_message(self.build_reply(mess, text, private))
+        self.send_message(self.build_reply(mess, self.build_message(text), private))
 
     def build_reply(self, mess, text=None, private=False):
         """Build a message for responding to another message.
@@ -436,10 +436,6 @@ class BotBase(object):
         channel = jid_string.split('/')[0]
         botname1 = '{0}/{1}'.format(channel, self.__username)
         botname2 = '{0}/{1}'.format(channel, self.__username.split('@')[0])
-
-        """ remove colors """
-        if text[0:3] == '|c:':
-            text = text[5:]
 
         # FIXME: add listen to name to config (don't hardcode gabi)
         if (jid_string != botname1) and (jid_string != botname2):
