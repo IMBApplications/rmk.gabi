@@ -273,8 +273,7 @@ class BotBase(object):
         If input is not valid xhtml-im fallback to normal."""
         message = None # init message variable
         # Try to determine if text has xhtml-tags - TODO needs improvement
-        text_plain = re.sub(r'<[^>]+>', '', text)
-        print "if: %s != %s" % (text_plain, text)
+        # text_plain = re.sub(r'<[^>]+>', '', text)
         # if text_plain != text:
         if self.text_color:
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
@@ -283,27 +282,16 @@ class BotBase(object):
             # Start creating a xhtml body
             html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
             try:
-                print "try"
-
-                # if self.text_color:
-                #     print "yes"
                 newContent = "<span style='color: #%s'>" % self.text_color + text.encode('utf-8') + "</span>"
-                # else:
-                #     print "no"
-                #     newContent = text.encode('utf-8')
-
                 html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
                 message.addChild(node=html)
             except Exception, e:
-                print "exception"
                 # Didn't work, incorrect markup or something.
-                self.log.debug('An error while building a xhtml message. '\
-                'Fallback to normal messagebody')
+                self.log.debug('An error while building a xhtml message. Fallback to normal messagebody')
                 # Fallback - don't sanitize invalid input. User is responsible!
                 message = None
         if message is None:
         # Normal body
-            print "normal body"
             message = xmpp.protocol.Message(body=text)
         return message
 
