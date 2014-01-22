@@ -32,7 +32,7 @@ class GabiHelp(BotBase):
                         and not command._jabberbot_command_hidden
             ])
             #usage = '\n\n' + '\n\n'.join(filter(None, [usage, self.MSG_HELP_TAIL]))
-            usage = filter(None, [usage, self.MSG_HELP_TAIL])
+            usage = usage + [self.MSG_HELP_TAIL]
         else:
             description = ''
             if args in self.commands:
