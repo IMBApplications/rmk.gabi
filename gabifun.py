@@ -75,3 +75,8 @@ class GabiFun(BotBase):
     def titten (self, mess, args):
         """she flashes her titties"""
         return '( . )( . )'
+
+    @botcmd
+    def zoidberg (self, mess, args):
+        """she draws zoidberg"""
+        return '(\/) (^,,,^) (\/)'

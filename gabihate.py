@@ -22,13 +22,3 @@ class GabiHate(BotBase):
             return args + ', get AIDS!'
         else:
             return username  + ', wem soll ich AIDS wuenschen?'
-
-    @botcmd
-    def penis (self, mess, args):
-        """she flashes her ... aehm ... penis?"""
-        return '8=========>'
-
-    @botcmd
-    def zoidberg (self, mess, args):
-        """she draws zoidberg"""
-        return '(\/) (^,,,^) (\/)'
