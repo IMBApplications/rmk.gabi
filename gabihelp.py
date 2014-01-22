@@ -39,6 +39,6 @@ class GabiHelp(BotBase):
                 usage = (self.commands[args].__doc__ or \
                         'undocumented').strip()
             else:
-                usage = self.MSG_HELP_UNDEFINED_COMMAND
+                usage = [self.MSG_HELP_UNDEFINED_COMMAND]
 
-        return filter(None, [description, usage])
+        return description + usage
