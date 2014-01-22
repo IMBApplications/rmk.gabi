@@ -376,8 +376,7 @@ class GabiCustom(BotBase):
                 ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
 
 
-        return '\n'.join(ret_message)
-        pass
+        return ret_message
 
     """ Support Methods """
     def periodicCheckCount(self, mess):
