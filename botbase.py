@@ -433,19 +433,18 @@ class BotBase(object):
         # FIXME i am not threadsafe
         self.__threads[jid] = mess.getThread()
 
-        jid_string = '{0}'.format(jid)
+        jid_string = '{0}'.format(jid).lower()
         channel = jid_string.split('/')[0]
-        botname1 = '{0}/{1}'.format(channel, self.__username)
-        botname2 = '{0}/{1}'.format(channel, self.__username.split('@')[0])
+        botname1 = '{0}/{1}'.format(channel, self.__username).lower()
+        botname2 = '{0}/{1}'.format(channel, self.__username.split('@')[0]).lower()
 
-        # FIXME: add listen to name to config (don't hardcode gabi)
         if (jid_string != botname1) and (jid_string != botname2):
-            if text[0:4] == 'gabi':
-                text_without_gabi = text[5:]
-                if ' ' in text_without_gabi:
-                    command, args = text_without_gabi.split(' ', 1)
+            if text[0:4] == self.__nickname.lower():
+                text_without_nickname = text[5:]
+                if ' ' in text_without_nickname:
+                    command, args = text_without_nickname.split(' ', 1)
                 else:
-                    command, args = text_without_gabi, ''
+                    command, args = text_without_nickname, ''
 
                 cmd = command.lower()
 
