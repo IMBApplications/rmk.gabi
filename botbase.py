@@ -77,7 +77,7 @@ class BotBase(object):
     ########## Save / Load Functions ##########
     def saveJSON(self, filename, content):
         """Saves the given content to the given filename as JSON"""
-        dstfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db/', self.__nickname.lower(), '_', filename)
+        dstfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.__nickname.lower() + '_' + filename)
         try:
             file = open(dstfile, 'w')
             file.write(json.dumps(content))
@@ -88,7 +88,7 @@ class BotBase(object):
 
     def loadJSON(self, filename, default):
         """Loads content from the given filename as JSON. If no file could be read, it returns the default."""
-        dstfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db/', self.__nickname.lower(), '_', filename)
+        dstfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.__nickname.lower() + '_' + filename)
         try:
             file = open(dstfile, 'r')
             # self.cron_list = self.utils.convert_from_unicode(json.loads(file.read()))
@@ -132,15 +132,15 @@ class BotBase(object):
 
     # This must become private!
     def get_csv_admin_users_handler(self):
-        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db/', self.__nickname.lower(), '_', 'admins.csv'), 'rb')
+        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.__nickname.lower() + '_admins.csv'), 'rb')
 
     # This must become private!
     def get_handler_csv_urls_write(self):
-        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db/', self.__nickname.lower(), '_', 'urls.csv'), 'ab')
+        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.__nickname.lower() + '_urls.csv'), 'ab')
 
     # This must become private!
     def get_handler_csv_urls_read(self):
-        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db/', self.__nickname.lower(), '_', 'urls.csv'), 'rb')
+        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.__nickname.lower() + '_urls.csv'), 'rb')
 
     status_message = property(fget=__get_status, fset=__set_status)
     status_type = property(fget=__get_show, fset=__set_show)
