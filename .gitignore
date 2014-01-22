@@ -6,5 +6,6 @@ xmpp/*
 
 #bot configs
 gabi.py
-rmkgabi.py
+gabibase.py
 shiny.py
+shinybase.py

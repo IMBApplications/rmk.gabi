@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from gabibase import GabiBase
+from rmkgabibase import GabiBase
 
 username = ''
 password = ''
