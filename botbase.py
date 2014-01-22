@@ -12,6 +12,7 @@ import traceback
 import atexit
 import json
 import collections
+import cgi
 
 try:
     import xmpp
@@ -279,9 +280,11 @@ class BotBase(object):
         # if text_plain != text:
         if self.text_color:
             if isinstance(text, list):
-                newText = '<br />'.join(text)
+                newText = ""
+                for line in text:
+                    newText += cgi.escape(line).encode('ascii', 'xmlcharrefreplace') + '<br />'
             else:
-                newText = text
+                newText = cgi.escape(text).encode('ascii', 'xmlcharrefreplace')
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
             # message = xmpp.protocol.Message(body=text_plain)
