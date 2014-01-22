@@ -3,8 +3,6 @@
 from botbase import BotBase,botcmd
 from gabihelp import GabiHelp
 
-import csv
-
 class GabiStarCitizen(BotBase):
     @botcmd
     def sctest(self):
