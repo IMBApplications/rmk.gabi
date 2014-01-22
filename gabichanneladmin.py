@@ -2,7 +2,6 @@
 
 from botbase import BotBase, botcmd
 
-import csv
 import atexit
 
 class GabiChannelAdmin(BotBase):
