@@ -131,15 +131,15 @@ class BotBase(object):
 
     # This must become private!
     def get_csv_admin_users_handler(self):
-        return open('db/admins.csv', 'rb')
+        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db/', self.__nickname.lower(), '_', 'admins.csv'), 'rb')
 
     # This must become private!
     def get_handler_csv_urls_write(self):
-        return open('db/urls.csv', 'ab')
+        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db/', self.__nickname.lower(), '_', 'urls.csv'), 'ab')
 
     # This must become private!
     def get_handler_csv_urls_read(self):
-        return open('db/urls.csv', 'rb')
+        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db/', self.__nickname.lower(), '_', 'urls.csv'), 'rb')
 
     status_message = property(fget=__get_status, fset=__set_status)
     status_type = property(fget=__get_show, fset=__set_show)
