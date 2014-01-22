@@ -285,7 +285,7 @@ class BotBase(object):
             # Start creating a xhtml body
             html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
             try:
-                newContent = "<span style='color: #%s'>" % self.text_color + text.encode('utf-8') + "</span>"
+                newContent = "<span style='color: #%s'>" % self.text_color + '<br>'.join(text.encode('utf-8')) + "</span>"
                 html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
                 message.addChild(node=html)
             except Exception, e:

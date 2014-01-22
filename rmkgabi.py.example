@@ -9,6 +9,6 @@ room = ''
 timezone = 'Europe/Zurich'
 text_color = None #or HTML HEY Colorcode
 
-bot = GabiBase(username, password, timezone, text_color)
-bot.join_room(room, nickname)
+bot = GabiBase(username, password, nickname, timezone, text_color)
+bot.join_room(room)
 bot.serve_forever()
