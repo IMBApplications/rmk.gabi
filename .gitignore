@@ -1,7 +1,10 @@
-gabi.py
 *.pyc
 db/*.csv
 logs/*.log
 xmpp/*
 *.sublime-*
+
+#bot configs
+gabi.py
 rmkgabi.py
+shiny.py
