@@ -39,12 +39,13 @@ class BotBase(object):
     PING_TIMEOUT = 2 # Seconds to wait for a response.
 
     ########## Constructor ##########   
-    def __init__(self, username, password, timezone='UTC', text_color=None, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
+    def __init__(self, username, password, nickname=None, timezone='UTC', text_color=None, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
         # TODO sort this initialisation thematically
         self.__debug = debug
         self.log = logging.getLogger(__name__)
         self.__username = username
         self.__password = password
+        self.__nickname = nickname
         self.timezone = timezone
         self.jid = xmpp.JID(self.__username)
         self.res = (res or self.__class__.__name__)
@@ -214,14 +215,13 @@ class BotBase(object):
         return self.conn
 
 
-    def join_room(self, room, nickname, username=None, password=None):
-        self.__nickname = nickname
+    def join_room(self, room, username=None, password=None):
         """Join the specified multi-user chat room
 
         If username is NOT provided fallback to node part of JID"""
         # TODO fix namespacestrings and history settings
         NS_MUC = 'http://jabber.org/protocol/muc'
-        username = nickname
+        username = self.__nickname
         if username is None:
         # TODO use xmpppy function getNode
             username = self.__username.split('@')[0]
