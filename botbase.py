@@ -554,6 +554,10 @@ class BotBase(object):
         self.connect().send(iq)
 
     def do_topic(self, room):
+        try:
+            self.userTopic
+        except:
+            self.userTopic = []
         newTopic = [self.userTopic]
         count = 0
         for (ts, topic) in sorted(self.countTopic):
