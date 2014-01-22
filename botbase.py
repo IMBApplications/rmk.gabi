@@ -303,6 +303,8 @@ class BotBase(object):
                 message = None
         if message is None:
         # Normal body
+            if isinstance(text, list):
+                '\n'.join(text)
             message = xmpp.protocol.Message(body=text)
         return message
 
