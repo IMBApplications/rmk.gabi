@@ -475,7 +475,8 @@ class GabiCustom(BotBase):
         #self.cowntdownList = newPeriodicCountLastCheck
         self.periodicCountLastCheck = time.time()
 
-        self.do_topic(mess.getFrom().getStripped())
+        if self.AdminAvail:
+            self.do_topic(mess.getFrom().getStripped())
 
         return ret_message
 
