@@ -16,14 +16,6 @@ class GabiChannelAdmin(BotBase):
         self.do_kick(room, args)
 
     @botcmd
-    def topic (self, mess, args):
-        """Sets the current topic"""
-        room = mess.getFrom().getStripped()
-        self.userTopic = args
-        self.saveJSON('topic.dat', self.userTopic)
-        self.do_topic(room)
-
-    @botcmd
     def invite (self, mess, args):
         """Invites a user to the current channel (JID)"""
         room = mess.getFrom().getStripped()
