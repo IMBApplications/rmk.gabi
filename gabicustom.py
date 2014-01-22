@@ -162,8 +162,8 @@ class GabiCustom(BotBase):
                     if (int(time.time()) - age) > self.afkRejoinTime:
                         hallo.append('Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age)))
                 else:
-                    hallo.append('Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin Gabi der Roboter-Mensch-Kontakter.'.format(user))
-                    hallo.append('Gib "gabi help" ein fuer hilfe.')
+                    hallo.append('Hallo %s, dich sehe ich zum ersten mal hier. Ich bin %s der Roboter-Mensch-Kontakter.' % (user, self.__nickname))
+                    hallo.append('Gib "%s help" ein fuer hilfe.' % self.__nickname)
 
                 if user in self.afkDict:
                     hallo.append("Wie wars beim " + self.afkDict[user] + "?")
@@ -285,7 +285,7 @@ class GabiCustom(BotBase):
         """Saves a cowntdown to a specified date/time"""
         from_username = self.get_sender_username(mess)
         args = args.split(" ")
-        ret_message = ["Die Befehle fuer count sind: add, list, del"]
+        ret_message = ["Commands for count are: add, list, del"]
 
         if args[0].lower() == "add":
             args = args[1:]
@@ -338,37 +338,34 @@ class GabiCustom(BotBase):
                 if target_timestamp > 0 and len(args) > 0:
                     # return [self.timer_at(target_timestamp, args)]
                     self.cowntdownList.append((target_timestamp, longterm, from_username, ' '.join(args)))
-                    ret_message.append("Zaehler gespeichert fuer '%s' (%s)" % (' '.join(args), target_time.strftime("%a, %d %b %Y %H:%M:%S")))
+                    ret_message.append("Count saved for '%s' (%s)" % (' '.join(args), target_time.strftime("%a, %d %b %Y %H:%M:%S")))
                     # print target_time.strftime("%s")
                 else:
                     args = []
-                    ret_message.append("Du musst einen namen gefolgt von Zeit/Datum und dann das Event angeben. Beispiele:")
-                    ret_message.append("gabi count add 18:15 Es ist viertel nach 6")
-                    ret_message.append("gabi count add 31.12.2013 23:59 Das alte Jahr ist Geschichte")
+                    ret_message.append("You have to enter time/date and an event. Examples:")
+                    ret_message.append("%s count add 18:15 It is a quarter past 6" % self.__nickname)
+                    ret_message.append("%s count add 31.12.2014 23:59 The old year is history" % self.__nickname)
         elif args[0].lower() == "list":
-            ret_message = ['Folgende Zaehler sind gesetzt:']
+            ret_message = ['The following counts are set:']
             count = 0
             for (timestamp, longterm, user, message) in self.cowntdownList:
                 count += 1
                 target_time = datetime.datetime.fromtimestamp(timestamp)
-                ret_message.append('%s\t%s\t"%s" von "%s"' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
+                ret_message.append('%s\t%s\t"%s" set by "%s"' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
                 # print target_time.strftime("%s")
             if count == 0:
-                ret_message = ['Es sind keine Zaehler gesetzt.']
+                ret_message = ['There are no counts.']
         elif args[0].lower() == "del":
-            ret_message = ["Unbekannter index. Bitte gib einen zulaessigen index an (count list)."]
+            ret_message = ["Unknown index. Please specify a valid index: (%s count list)." % self.__nickname]
             try:
                 delIndex = int(args[1]) - 1
                 if delIndex >= 0:
                     (timestamp, longterm, user, message) = self.cowntdownList[delIndex]
                     target_time = datetime.datetime.fromtimestamp(timestamp)
-                    ret_message = ['%s\t"%s" von "%s" wurde entfernt.' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user)]
+                    ret_message = ['%s\t"%s" set by "%s" has been removed.' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user)]
                     self.cowntdownList.pop(delIndex)
             except IndexError:
                 pass
-        elif args[0].lower() == "per":
-            self.periodicCountLastCheck = 0
-            ret_message = self.periodicCheckCount(mess)
         else:
             #do the counting and add to ret_message
             now = int(time.time())
