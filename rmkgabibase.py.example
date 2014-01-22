@@ -2,6 +2,7 @@
 
 from botbase import BotBase, botcmd
 from gabiadmin import GabiAdmin
+from gabichanneladmin import GabiChannelAdmin
 from gabicustom import GabiCustom
 from gabifun import GabiFun
 from gabilog import GabiLog
@@ -20,3 +21,4 @@ logging.basicConfig()
 class GabiBase(GabiAdmin, GabiCustom, GabiFun, GabiHelp, GabiLog, GabiHate):
     def test(self):
         print "test"
+        
