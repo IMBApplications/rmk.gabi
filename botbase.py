@@ -297,7 +297,7 @@ class BotBase(object):
                 html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
                 message.addChild(node=html)
             except Exception, e:
-                print "error: %s" % e
+                print "error: %s, %s" % (e, newContent[102])
                 # Didn't work, incorrect markup or something.
                 self.log.debug('An error while building a xhtml message. Fallback to normal messagebody')
                 # Fallback - don't sanitize invalid input. User is responsible!
