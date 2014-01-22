@@ -279,7 +279,10 @@ class BotBase(object):
         # if text_plain != text:
         if self.text_color:
             if isinstance(text, list):
-                text = '\n'.join(text)
+                newText = ""
+                for line in text:
+                    newText += "<p>" + line + "</p>"
+                text = newText
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
             # message = xmpp.protocol.Message(body=text_plain)
