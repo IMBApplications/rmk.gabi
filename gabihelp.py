@@ -6,17 +6,17 @@ import datetime
 class GabiHelp(BotBase):
     @botcmd
     def time( self, mess, args):
-        """Zeigt die aktuelle Serverzeit an"""
+        """Shows the current time"""
         return str(datetime.datetime.now())
         
     @botcmd
     def ping (self, mess, args):
-        """Antwortet mit einem pong"""
+        """Answers with a pong"""
         return 'pong'
     
     @botcmd
     def help(self, mess, args):
-        """   Returns a help string listing available options.
+        """Returns a help string listing available options.
 
         Automatically assigned to the "help" command."""
         if not args:

@@ -8,7 +8,7 @@ import csv
 class GabiLog(BotBase):
     @botcmd
     def urls (self, mess, args):
-        """Fluestert dir alle URLS"""
+        """Whispers you all URLs that where posted"""
         jid = mess.getFrom()
         """handler = self.get_handler_csv_urls_read()
         msg = ""
