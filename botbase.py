@@ -282,16 +282,17 @@ class BotBase(object):
                 newText = ""
                 for line in text:
                     newText += line + "<br />"
-                text = newText
+            else:
+                newText = text
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
             # message = xmpp.protocol.Message(body=text_plain)
-            message = xmpp.protocol.Message(body=text)
+            message = xmpp.protocol.Message(body=newText)
             # Start creating a xhtml body
             html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
             try:
-                text = text.replace('\n', '<br / >')
-                newContent = "<span style='color: #%s'>" % self.text_color + text.encode('utf-8') + "</span>"
+                newText = newText.replace('\n', '<br / >')
+                newContent = "<span style='color: #%s'>" % self.text_color + newText.encode('utf-8') + "</span>"
                 html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
                 message.addChild(node=html)
             except Exception, e:
