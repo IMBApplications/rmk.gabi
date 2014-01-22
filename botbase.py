@@ -299,7 +299,7 @@ class BotBase(object):
             except Exception, e:
                 print "error: %s, %s" % (e, newContent[102])
                 # Didn't work, incorrect markup or something.
-                self.log.debug('An error while building a xhtml message. Fallback to normal messagebody')
+                self.log.warning('An error while building a xhtml message. Fallback to normal messagebody. <%s>' % e)
                 # Fallback - don't sanitize invalid input. User is responsible!
                 message = None
         if message is None:
