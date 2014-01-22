@@ -76,22 +76,24 @@ class BotBase(object):
     ########## Save / Load Functions ##########
     def saveJSON(self, filename, content):
         """Saves the given content to the given filename as JSON"""
+        dstfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db/', self.__nickname.lower(), '_', filename)
         try:
-            file = open(filename, 'w')
+            file = open(dstfile, 'w')
             file.write(json.dumps(content))
             file.close()
-            self.log.debug("Saving to %s" % (filename))
+            self.log.debug("Saving to %s" % (dstfile))
         except IOError:
-            self.log.warning("Could not safe data to file %s!" % (filename))
+            self.log.warning("Could not safe data to file %s!" % (dstfile))
 
     def loadJSON(self, filename, default):
         """Loads content from the given filename as JSON. If no file could be read, it returns the default."""
+        dstfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db/', self.__nickname.lower(), '_', filename)
         try:
-            file = open(filename, 'r')
+            file = open(dstfile, 'r')
             # self.cron_list = self.utils.convert_from_unicode(json.loads(file.read()))
             values = json.loads(file.read())
             file.close()
-            self.log.debug("Loading data from %s" % (filename))
+            self.log.debug("Loading data from %s" % (dstfile))
             return values
         except IOError:
             return default

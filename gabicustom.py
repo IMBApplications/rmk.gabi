@@ -26,21 +26,21 @@ class GabiCustom(BotBase):
     def __init__(self, username, password, timezone='UTC', candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
         super(GabiCustom, self).__init__(username, password, timezone, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
 
-        self.lastSeenDict = self.loadJSON('db/save_lastSeen.dat', {})
-        atexit.register(self.saveJSON, 'db/save_lastSeen.dat', self.lastSeenDict)
+        self.lastSeenDict = self.loadJSON('save_lastSeen.dat', {})
+        atexit.register(self.saveJSON, 'save_lastSeen.dat', self.lastSeenDict)
         self.usersNowOffline = {}
 
-        self.memDict = self.loadJSON('db/save_memo.dat', {})
-        atexit.register(self.saveJSON, 'db/save_memo.dat', self.memDict)
+        self.memDict = self.loadJSON('save_memo.dat', {})
+        atexit.register(self.saveJSON, 'save_memo.dat', self.memDict)
 
-        self.afkDict = self.loadJSON('db/save_afk.dat', {})
-        atexit.register(self.saveJSON, 'db/save_afk.dat', self.afkDict)
+        self.afkDict = self.loadJSON('save_afk.dat', {})
+        atexit.register(self.saveJSON, 'save_afk.dat', self.afkDict)
 
-        self.reminderDict = self.loadJSON('db/save_reminder.dat', {})
-        atexit.register(self.saveJSON, 'db/save_reminder.dat', self.reminderDict)
+        self.reminderDict = self.loadJSON('save_reminder.dat', {})
+        atexit.register(self.saveJSON, 'save_reminder.dat', self.reminderDict)
 
-        self.cowntdownList = self.loadJSON('db/save_count.dat', [])
-        atexit.register(self.saveJSON, 'db/save_count.dat', self.cowntdownList)
+        self.cowntdownList = self.loadJSON('save_count.dat', [])
+        atexit.register(self.saveJSON, 'save_count.dat', self.cowntdownList)
 
         self.afkRejoinTime = 900
 

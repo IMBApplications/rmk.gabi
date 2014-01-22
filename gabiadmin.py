@@ -9,7 +9,15 @@ class GabiAdmin(BotBase):
     def __init__(self, username, password, timezone='UTC', candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
         super(GabiAdmin, self).__init__(username, password, timezone, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
 
-        self.userTopic = self.loadJSON('db/topic.dat', [])
+        self.userTopic = self.loadJSON('topic.dat', [])
+
+    @botcmd
+    def topic (self, mess, args):
+        """Sets the current topic"""
+        room = mess.getFrom().getStripped()
+        self.userTopic = args
+        self.saveJSON('topic.dat', self.userTopic)
+        self.do_topic(room)
 
     @botcmd
     def admins (self, mess, args):
