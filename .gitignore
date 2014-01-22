@@ -1,5 +1,6 @@
 *.pyc
 db/*.csv
+db/*.dat
 logs/*.log
 xmpp/*
 *.sublime-*
