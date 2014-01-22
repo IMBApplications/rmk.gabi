@@ -281,7 +281,7 @@ class BotBase(object):
             if isinstance(text, list):
                 newText = ""
                 for line in text:
-                    newText += "<p>" + line + "</p>"
+                    newText += line + "<br />"
                 text = newText
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
