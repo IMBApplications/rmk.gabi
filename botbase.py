@@ -279,9 +279,7 @@ class BotBase(object):
         # if text_plain != text:
         if self.text_color:
             if isinstance(text, list):
-                newText = ""
-                for line in text:
-                    newText += line + "<br />"
+                newText = '<br />'.join(text)
             else:
                 newText = text
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
@@ -304,7 +302,7 @@ class BotBase(object):
         if message is None:
         # Normal body
             if isinstance(text, list):
-                '\n'.join(text)
+                text = '\n'.join(text)
             message = xmpp.protocol.Message(body=text)
         return message
 
