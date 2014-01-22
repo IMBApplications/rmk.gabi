@@ -25,8 +25,8 @@ class GabiHelp(BotBase):
             else:
                 description = 'Available commands:'
 
-            usage = join(sorted(['%s:\t%s' % (name, (command.__doc__ or \
-                                '(undocumented)').strip().split('\n', 1)[0])
+            usage = sorted(['%s:\t%s' % (name, (command.__doc__ or \
+                                '(undocumented)').strip().split('\n', 1)[0]
                     for (name, command) in self.commands.iteritems() \
                         if name != 'help' \
                         and not command._jabberbot_command_hidden
