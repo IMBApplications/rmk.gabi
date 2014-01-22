@@ -62,7 +62,6 @@ class BotBase(object):
         self.__acceptownmsgs = acceptownmsgs
         self.text_color = text_color
         self.currentTopic = ""
-        self.AdminAvail = False
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
