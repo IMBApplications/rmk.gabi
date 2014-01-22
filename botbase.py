@@ -282,9 +282,9 @@ class BotBase(object):
             if isinstance(text, list):
                 newText = ""
                 for line in text:
-                    newText += cgi.escape(unicode(line)).encode('ascii', 'xmlcharrefreplace') + '<br />'
+                    newText += cgi.escape(unicode(line, "utf-8")).encode('ascii', 'xmlcharrefreplace') + '<br />'
             else:
-                newText = cgi.escape(unicode(text)).encode('ascii', 'xmlcharrefreplace')
+                newText = cgi.escape(unicode(text, "utf-8")).encode('ascii', 'xmlcharrefreplace')
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
             # message = xmpp.protocol.Message(body=text_plain)
@@ -297,9 +297,8 @@ class BotBase(object):
                 html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
                 message.addChild(node=html)
             except Exception, e:
-                print "error: %s, %s" % (e, newContent[102])
                 # Didn't work, incorrect markup or something.
-                self.log.warning('An error while building a xhtml message. Fallback to normal messagebody. <%s>' % e)
+                self.log.warning('An error while building a xhtml message: %s' % e)
                 # Fallback - don't sanitize invalid input. User is responsible!
                 message = None
         if message is None:
