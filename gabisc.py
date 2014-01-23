@@ -8,3 +8,4 @@ class GabiStarCitizen(BotBase):
     def sctest(self):
         print "sc test ok"
 
+# ideas: google, image (google)

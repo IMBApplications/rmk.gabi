@@ -212,27 +212,27 @@ class GabiCustom(BotBase):
                     userName = name
 
             if lastSeen > 0:
-                return userName + ' habe ich zuletzt vor ' + self.getAge(lastSeen) + ' gesehen.'
+                return _('{0} was last seen {1} ago.').format(userName, self.getAge(lastSeen))
             else:
-                return self.get_sender_username(mess) + ', ' + args + ' habe ich noch nie gesehen.'
+                return  _('{0}, I did never see {1}.').format(self.get_sender_username(mess), args)
 
     # Memo Methods
     @botcmd
     def memo (self, mess, args):
-        """sie merkt sich was"""
+        """Memorize something"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
             self.memDict[username] = args;
-            return 'Merke mir: "' + args + '".'
+            return _('I memorized now: "{0}".').format(args)
         elif username in self.memDict:
-            return 'Habe mir: "' + self.memDict[username] + '" gemerkt.'
+            return _('Your memo: "{0}".').format(self.memDict[username])
         else:
-            return 'Ja, was denn?'
+            return _('What should i memorize?')
 
     #AFK Methods
     @botcmd
     def afk (self, mess, args):
-        """user away"""
+        """Save AFK message"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
             message = args
@@ -244,23 +244,23 @@ class GabiCustom(BotBase):
             self.lastSeenDict[username] = int(time.time())
             self.usersNowOffline[username] = True
 
-        return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + message + '.'
+        return _('See you later, {0}. Have fun at {1}.').format(username, message)
 
     @botcmd
     def whoafk (self, mess, args):
-        """sagt, was sie sich gemerkt hat"""
+        """Show AFK message"""
         if len(self.afkDict) > 0:
             ret = ''
             for username in self.afkDict.keys():
                 ret = ret + "\n%-10s: %s" % (username, self.afkDict[username])
             return ret;
         else:
-            return 'Es hat sich niemand abgemeldet.'
+            return _('Nobody left any message.')
 
     #Reminder Methods
     @botcmd
     def remind (self, mess, args):
-        """remind a user with something when he comes back"""
+        """Remind a user with something when he comes back"""
         from_username = self.get_sender_username(mess)
         new_args = args.split(" ")
 
@@ -268,14 +268,14 @@ class GabiCustom(BotBase):
             target_user = new_args[0]
             target_message = ' '.join(new_args[1:])
 
-            ret_message = "Ich werde " + target_user + " ausrichten dass: " + target_message
+            ret_message = _('I will tell {0}: {1}').format(target_user, target_message)
 
             if not self.reminderDict.has_key(target_user.lower()):
                 self.reminderDict[target_user.lower()] = []
             self.reminderDict[target_user.lower()].append((from_username, target_message, int(time.time())))
 
         else:
-            ret_message = "Du musst einen Namen gefolgt von der Nachricht angeben."
+            ret_message = _("You have to enter a name followed by the message.")
         return ret_message
 
     #Cowntdown Methods
@@ -285,7 +285,7 @@ class GabiCustom(BotBase):
         """Saves a cowntdown to a specified date/time"""
         from_username = self.get_sender_username(mess)
         args = args.split(" ")
-        ret_message = ["Commands for count are: add, list, del"]
+        ret_message = [_("Commands for count are: add, list, del")]
 
         if args[0].lower() == "add":
             args = args[1:]
@@ -338,31 +338,31 @@ class GabiCustom(BotBase):
                 if target_timestamp > 0 and len(args) > 0:
                     # return [self.timer_at(target_timestamp, args)]
                     self.cowntdownList.append((target_timestamp, longterm, from_username, ' '.join(args)))
-                    ret_message.append("Count saved for '%s' (%s)" % (' '.join(args), target_time.strftime("%a, %d %b %Y %H:%M:%S")))
+                    ret_message.append(_("Count saved for '{0}' ({1})").format(' '.join(args), target_time.strftime("%a, %d %b %Y %H:%M:%S")))
                     # print target_time.strftime("%s")
                 else:
                     args = []
-                    ret_message.append("You have to enter time/date and an event. Examples:")
-                    ret_message.append("%s count add 18:15 It is a quarter past 6" % self.__nickname)
-                    ret_message.append("%s count add 31.12.2014 23:59 The old year is history" % self.__nickname)
+                    ret_message.append(_("You have to enter time/date and an event. Examples:"))
+                    ret_message.append(_("{0} count add 18:15 It is a quarter past 6").format(self.__nickname))
+                    ret_message.append(_("{0} count add 31.12.2014 23:59 The old year is history").format(self.__nickname))
         elif args[0].lower() == "list":
-            ret_message = ['The following counts are set:']
+            ret_message = [_('The following counts are set:')]
             count = 0
             for (timestamp, longterm, user, message) in self.cowntdownList:
                 count += 1
                 target_time = datetime.datetime.fromtimestamp(timestamp)
-                ret_message.append('%s\t%s\t"%s" set by "%s"' % (count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
+                ret_message.append(_('{0}\t{1}\t"{2}" set by "{3}"').format(count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
                 # print target_time.strftime("%s")
             if count == 0:
-                ret_message = ['There are no counts.']
+                ret_message = [_('There are no counts saved.')]
         elif args[0].lower() == "del":
-            ret_message = ["Unknown index. Please specify a valid index: (%s count list)." % self.__nickname]
+            ret_message = [_("Unknown index. Please specify a valid index: ({0} count list).").format(self.__nickname)]
             try:
                 delIndex = int(args[1]) - 1
                 if delIndex >= 0:
                     (timestamp, longterm, user, message) = self.cowntdownList[delIndex]
                     target_time = datetime.datetime.fromtimestamp(timestamp)
-                    ret_message = ['%s\t"%s" set by "%s" has been removed.' % (target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user)]
+                    ret_message = [_('{0}\t"{1}" set by "{2}" has been removed.').format(target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user)]
                     self.cowntdownList.pop(delIndex)
             except IndexError:
                 pass
@@ -394,7 +394,7 @@ class GabiCustom(BotBase):
             if timestamp == now:
                 #NOW!
                 if showMe:
-                    ret_message.append("Jetzt: %s" % (message))
+                    ret_message.append(_("Now: {0}").format(message))
                     if not longterm:
                         removeMe = True
             elif timestamp < now:
@@ -404,18 +404,18 @@ class GabiCustom(BotBase):
                         removeMe = True
                     else:
                         if showMe:
-                            ret_message.append("Vor %s: %s" % (self.getAge(timestamp), message))
+                            ret_message.append(_("{0} ago: {1}").format(self.getAge(timestamp), message))
                             removeMe = True
                 else:
                     if now_time.day == target_time.day and now_time.month == target_time.month:
                         yearsPast = now_time.year - target_time.year
                         if yearsPast == 0:
-                            countMessage = "Heute: %s von %s" % (message, user)
+                            countMessage = _("Today: {0} from {1}").format(message, user)
                             self.countTopic.append((timestamp, countMessage))
                             if showMe:
                                 ret_message.append(countMessage)
                         else:
-                            countMessage = "Vor %s Jahren: %s" % (yearsPast, message)
+                            countMessage = _("{0} years ago: {1}").format(yearsPast, message)
                             self.countTopic.append((timestamp, countMessage))
                             if showMe:
                                 ret_message.append(countMessage)
@@ -425,9 +425,10 @@ class GabiCustom(BotBase):
                 if now_time.day == target_time.day and now_time.month == target_time.month:
                     yearsFuture = target_time.year - now_time.year
                     if longterm:
-                        self.countTopic.append((timestamp, "In %s Jahren: %s" % (yearsFuture, message)))
+                        tmpMessage = _("In {0} years: {1}").format(yearsFuture, message)
+                        self.countTopic.append((timestamp, tmpMessage))
                         if showMe:
-                            ret_message.append("In %s Jahren: %s" % (yearsFuture, message))
+                            ret_message.append(tmpMessage)
                     else:
                         try:
                             self.periodicCountCheckTs[timestamp]
@@ -452,15 +453,15 @@ class GabiCustom(BotBase):
                     futureTimeDiff = int(targetDate.strftime("%s")) - int(nowDate.strftime("%s"))
 
                     if futureTimeDiff < (dayInSecs * 2):
-                        self.countTopic.append((timestamp, "Morgen: %s" % (message)))
+                        self.countTopic.append((timestamp, _("Tomorrow: {0}").format(message)))
                     elif futureTimeDiff < (dayInSecs * 7):
-                        self.countTopic.append((timestamp, "In %s Tagen: %s" % (int(futureTimeDiff / dayInSecs) + 1, message)))
+                        self.countTopic.append((timestamp, _("In {0} days: {1}").format(int(futureTimeDiff / dayInSecs) + 1, message)))
                     elif futureTimeDiff < (dayInSecs * 8):
-                        self.countTopic.append((timestamp, "In 1 Woche: %s" % (message)))
+                        self.countTopic.append((timestamp, _("In 1 week: {0}").format(message)))
                     elif (futureTimeDiff % (dayInSecs * 7)) == 0 and (futureTimeDiff % (dayInSecs * 7)) < 9:
-                        self.countTopic.append((timestamp, "In %s Wochen: %s" % (int(futureTimeDiff / (dayInSecs * 7)), message)))
+                        self.countTopic.append((timestamp, _("In {0} weeks: {1}").format(int(futureTimeDiff / (dayInSecs * 7)), message)))
                     elif futureTimeDiff < (dayInSecs * 50):
-                        self.countTopic.append((timestamp, "In %s Tagen: %s" % (int(futureTimeDiff / dayInSecs) + 1, message)))
+                        self.countTopic.append((timestamp, _("In {0} days: {1}").format(int(futureTimeDiff / dayInSecs) + 1, message)))
 
 
             if removeMe:
@@ -481,35 +482,35 @@ class GabiCustom(BotBase):
         if age < 0:
             age = age * -1
 
-        ret_line = ["%s Sekunden" % age]
+        ret_line = [_("{0} seconds").format(age)]
 
-        mins = formatTimeText(int(age / 60), "Minute", "Minuten")
+        mins = formatTimeText(int(age / 60), _("minute"), _("minutes"))
         if mins:
             ret_line.append(mins)
 
-        hours = formatTimeText(int(age / 3600), "Stunde", "Stunden")
+        hours = formatTimeText(int(age / 3600), _("hour"), _("hours"))
         if hours:
             ret_line.append(hours)
 
-        days = formatTimeText(int(age / 86400), "Tag", "Tage")
+        days = formatTimeText(int(age / 86400), _("day"), _("days"))
         if days:
             ret_line.append(days)
 
-        weeks = formatTimeText(int(age / 604800), "Woche", "Wochen")
+        weeks = formatTimeText(int(age / 604800), _("week"), _("weeks"))
         if weeks:
             ret_line.append(weeks)
 
-        months = formatTimeText(int(age / 2419200), "Monat", "Monate")
+        months = formatTimeText(int(age / 2419200), _("month"), _("months"))
         if months:
             ret_line.append(months)
 
-        years = formatTimeText(int(age / 31449600), "Jahr", "Jahre")
+        years = formatTimeText(int(age / 31449600), _("year"), _("years"))
         if years:
             ret_line.append(years)
 
         if timestamp == now:
-            return 'Jetzt! %s' % message
+            return _('Now! {0}').format(message)
         elif timestamp > now:
-            return 'In %s: %s' % (' oder '.join(ret_line), message)
+            return _('In {0}: {1}').format(_(' or ').join(ret_line), message)
         else:
-            return 'Vor %s: %s' % (' oder '.join(ret_line), message)
+            return _('{0} ago: {1}').format(_(' or ').join(ret_line), message)
