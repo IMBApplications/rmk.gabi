@@ -13,6 +13,7 @@ import atexit
 import json
 import collections
 import cgi
+import gettext
 
 try:
     import xmpp
@@ -74,6 +75,9 @@ class BotBase(object):
                 self.commands[name] = value
 
         self.roster = None
+
+        trans = gettext.translation("rmk.gabi", "locale", ["de"]) 
+        trans.install()
 
     ########## Save / Load Functions ##########
     def saveJSON(self, filename, content):
@@ -627,9 +631,9 @@ class BotBase(object):
             return ''
 
         elif age == 1:
-            return '1 Sekunde'
+            return _('1 second')
         elif age < 60:
-            return '%s Sekunden' % (age)
+            return _('%s seconds' % (age))
 
         elif age == 60:
             return '1 Minute'

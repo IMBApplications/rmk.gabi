@@ -197,7 +197,7 @@ class GabiCustom(BotBase):
 
     # LastSeen Methods
     @botcmd
-    def zuletzt (self, mess, args):
+    def last (self, mess, args):
         """Gibt dir an, wann ein Benutzer zuletzt gesehen wurde"""
         if not args:
             ret = ''
@@ -247,7 +247,7 @@ class GabiCustom(BotBase):
         return 'Bis spaeter, ' + username  + '. Viel Spass beim ' + message + '.'
 
     @botcmd
-    def werafk (self, mess, args):
+    def whoafk (self, mess, args):
         """sagt, was sie sich gemerkt hat"""
         if len(self.afkDict) > 0:
             ret = ''
