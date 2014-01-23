@@ -50,7 +50,7 @@ class GabiFun(BotBase):
         if len(args) > 0:
             return _('Fuck {0}! Shit fuck crap!')
         else:
-            return _('AARRRGH! DIRTYFECESPENISPOOPCRAPSHITFUCK!')
+            return _('AARRRGH! DIRTYFECESPENISPOOPBITCHCRAPSHITFUCK!')
 
     @botcmd
     def how (self, mess, args):
