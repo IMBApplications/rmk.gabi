@@ -18,7 +18,7 @@ msgstr ""
 
 #: gabihelp.py:26
 msgid "Available commands:"
-msgstr "Verfuegbare Befehle:"
+msgstr "Verfügbare Befehle:"
 
 #: gabicustom.py:68
 msgid "Have fun, {0}!"
@@ -42,7 +42,7 @@ msgstr "Morgen? Guck ma auf die Uhr, {0}!"
 
 #: gabicustom.py:110
 msgid "Good morning, {0}. Nice to see you here."
-msgstr "Guten Morgen, {0}. Schoen, dass du da bist."
+msgstr "Guten Morgen, {0}. Schön, dass du da bist."
 
 #: gabicustom.py:163
 msgid "Welcome back {0}, i saw you last {1} ago."
@@ -57,7 +57,7 @@ msgstr ""
 
 #: gabicustom.py:166
 msgid "Enter \"{0} help\" for help."
-msgstr "Gib \"{0} help\" ein fuer hilfe."
+msgstr "Gib \"{0} help\" ein für hilfe."
 
 #: gabicustom.py:169
 msgid "How was {0}?"
@@ -97,7 +97,7 @@ msgstr "Was soll ich mir merken?"
 
 #: gabicustom.py:247
 msgid "See you later, {0}. Have fun at {1}."
-msgstr "Bis spaeter, {0}. Viel Spass beim {1}."
+msgstr "Bis später, {0}. Viel Spass beim {1}."
 
 #: gabicustom.py:258
 msgid "Nobody left any message."
@@ -265,7 +265,7 @@ msgstr "{0}, krieg AIDS!"
 
 #: gabihate.py:24
 msgid "{0}, who should get AIDS?"
-msgstr "{0}, wem soll ich AIDS wuenschen?"
+msgstr "{0}, wem soll ich AIDS wünschen?"
 
 #: botbase.py:635
 msgid "1 second"
@@ -317,11 +317,11 @@ msgstr "Fahre herunter."
 
 #: gabifun.py:12
 msgid "Groovy? Did i hear groovy? {0} is groovy!"
-msgstr "Fetzig? Hab ich fetzig gehoert? {0} ist fetzig!"
+msgstr "Fetzig? Hab ich fetzig gehört? {0} ist fetzig!"
 
 #: gabifun.py:14
 msgid "Groovy? Did i hear groovy? I am groovy!"
-msgstr "Fetzig? Hab ich fetzig gehoert? ICH bin fetzig!"
+msgstr "Fetzig? Hab ich fetzig gehört? ICH bin fetzig!"
 
 #: gabifun.py:20
 msgid "{0} is IMBA!"
@@ -349,7 +349,7 @@ msgstr "Wen soll ich ohrfeigen, {0}?"
 
 #: gabifun.py:45
 msgid "Yes honey, what can i do for you?"
-msgstr "Ja Schatz, was kann ich fuer dich tun?"
+msgstr "Ja Schatz, was kann ich für dich tun?"
 
 #: gabifun.py:51
 msgid "Fuck {0}! Shit fuck crap!"
