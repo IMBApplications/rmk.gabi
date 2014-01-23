@@ -160,13 +160,13 @@ class GabiCustom(BotBase):
                 hallo = []
                 if age > 0:
                     if (int(time.time()) - age) > self.afkRejoinTime:
-                        hallo.append('Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen.'.format(user, self.getAge(age)))
+                        hallo.append(_('Welcome back {0}, i saw you last {1} ago.').format(user, self.getAge(age)))
                 else:
-                    hallo.append('Hallo %s, dich sehe ich zum ersten mal hier. Ich bin %s der Roboter-Mensch-Kontakter.' % (user, self.__nickname))
-                    hallo.append('Gib "%s help" ein fuer hilfe.' % self.__nickname)
+                    hallo.append(_('Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter.').format(user, self.__nickname))
+                    hallo.append(_('Enter "{0} help" for help.').format(self.__nickname))
 
                 if user in self.afkDict:
-                    hallo.append("Wie wars beim " + self.afkDict[user] + "?")
+                    hallo.append(_("How was {0}?").format(self.afkDict[user]))
                     del self.afkDict[user];
 
                 if len(hallo) > 0:
@@ -175,9 +175,9 @@ class GabiCustom(BotBase):
             # Reminder
             if self.reminderDict.has_key(user.lower()):
                 if len(self.reminderDict[user.lower()]) > 0:
-                    reminderMessage = '%s, ich soll dir folgendes ausrichten:\n' % user
+                    reminderMessage = _('{0}, I have to tell you:').format(user) + '\n'
                     for (sender, message, timestamp) in self.reminderDict[user.lower()]:
-                        reminderMessage += 'Von %s vor %s: %s\n' % (sender, self.getAge(timestamp), message)
+                        reminderMessage += _('From {0} {1} ago: {2}').format(sender, self.getAge(timestamp), message) + '\n'
 
                     self.reminderDict[user.lower()] = []
                     self.send(room, reminderMessage, None, 'groupchat')
@@ -198,11 +198,11 @@ class GabiCustom(BotBase):
     # LastSeen Methods
     @botcmd
     def last (self, mess, args):
-        """Gibt dir an, wann ein Benutzer zuletzt gesehen wurde"""
+        """When was a user last seen"""
         if not args:
             ret = ''
             for name in self.lastSeenDict.keys():
-                ret = ret + name + ' vor ' + self.getAge(self.lastSeenDict[name]) + '\n'
+                ret = ret + _('{0} {1} ago').format(name, self.getAge(self.lastSeenDict[name])) + '\n'
             return ret
         else:
             lastSeen = 0

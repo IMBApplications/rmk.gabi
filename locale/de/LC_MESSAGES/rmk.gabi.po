@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-23 16:27+0100\n"
+"POT-Creation-Date: 2014-01-23 16:42+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: German <aegnor@mittelerde.ch>\n"
@@ -104,6 +104,44 @@ msgstr "Morgen? Guck ma auf die Uhr, {0}!"
 msgid "Good morning, {0}. Nice to see you here."
 msgstr "Guten Morgen, {0}. Schoen, dass du da bist."
 
+#: gabicustom.py:163
+#, python-brace-format
+msgid "Welcome back {0}, i saw you last {1} ago."
+msgstr "Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen."
+
+#: gabicustom.py:165
+#, python-brace-format
+msgid ""
+"Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter."
+msgstr ""
+"Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin {1} der Roboter-Mensch-"
+"Kontakter."
+
+#: gabicustom.py:166
+#, python-brace-format
+msgid "Enter \"{0} help\" for help."
+msgstr "Gib \"{0} help\" ein fuer hilfe."
+
+#: gabicustom.py:169
+#, python-brace-format
+msgid "How was {0}?"
+msgstr "Wie war es beim {0}?"
+
+#: gabicustom.py:178
+#, python-brace-format
+msgid "{0}, I have to tell you:"
+msgstr "{0}, ich soll dir folgendes ausrichten:"
+
+#: gabicustom.py:180
+#, python-brace-format
+msgid "From {0} {1} ago: {2}"
+msgstr "Von {0} vor {1}: {2}"
+
+#: gabicustom.py:205
+#, python-brace-format
+msgid "{0} {1} ago"
+msgstr "{0} vor {1}"
+
 #: gabifun.py:12
 #, python-brace-format
 msgid "Groovy? Did i hear groovy? {0} is groovy!"
@@ -157,7 +195,8 @@ msgstr "AARRRGH! DRECKSVERWANZTEHURENSCHEISSMISTPIMMELKACKE!"
 
 #: gabifun.py:58
 msgid "All systems are in perfect condition, thanks for asking."
-msgstr "Alle Systeme arbeiten innerhalb optimaler Parameter, danke der Nachfrage."
+msgstr ""
+"Alle Systeme arbeiten innerhalb optimaler Parameter, danke der Nachfrage."
 
 #: gabihate.py:13
 #, python-brace-format

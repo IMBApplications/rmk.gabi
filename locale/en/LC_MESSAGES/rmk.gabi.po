@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-23 16:27+0100\n"
+"POT-Creation-Date: 2014-01-23 16:42+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: English <aegnor@mittelerde.ch>\n"
@@ -102,6 +102,42 @@ msgstr ""
 #: gabicustom.py:110
 #, python-brace-format
 msgid "Good morning, {0}. Nice to see you here."
+msgstr ""
+
+#: gabicustom.py:163
+#, python-brace-format
+msgid "Welcome back {0}, i saw you last {1} ago."
+msgstr ""
+
+#: gabicustom.py:165
+#, python-brace-format
+msgid ""
+"Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter."
+msgstr ""
+
+#: gabicustom.py:166
+#, python-brace-format
+msgid "Enter \"{0} help\" for help."
+msgstr ""
+
+#: gabicustom.py:169
+#, python-brace-format
+msgid "How was {0}?"
+msgstr ""
+
+#: gabicustom.py:178
+#, python-brace-format
+msgid "{0}, I have to tell you:"
+msgstr ""
+
+#: gabicustom.py:180
+#, python-brace-format
+msgid "From {0} {1} ago: {2}"
+msgstr ""
+
+#: gabicustom.py:205
+#, python-brace-format
+msgid "{0} {1} ago"
 msgstr ""
 
 #: gabifun.py:12
