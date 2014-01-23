@@ -41,7 +41,7 @@ class BotBase(object):
     PING_TIMEOUT = 2 # Seconds to wait for a response.
 
     ########## Constructor ##########   
-    def __init__(self, username, password, nickname=None, timezone='UTC', text_color=None, localization=None, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
+    def __init__(self, username, password, nickname=None, timezone='UTC', text_color=None, localization="", res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
         # TODO sort this initialisation thematically
         self.__debug = debug
         self.log = logging.getLogger(__name__)
