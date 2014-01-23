@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-23 15:21+0100\n"
+"POT-Creation-Date: 2014-01-23 15:29+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: English <aegnor@mittelerde.ch>\n"
@@ -26,8 +26,8 @@ msgid "%s seconds"
 msgstr ""
 
 #: gabifun.py:20
-#, python-format
-msgid "%s is IMBA!"
+#, python-brace-format
+msgid "{0} is IMBA!"
 msgstr ""
 
 #: gabifun.py:22
@@ -35,21 +35,21 @@ msgid "I am IMBA!"
 msgstr ""
 
 #: gabifun.py:29
-#, python-format
-msgid "%s is so funny I'm gonna die!"
+#, python-brace-format
+msgid "{0} is so funny I'm gonna die!"
 msgstr ""
 
 #: gabifun.py:31
-#, python-format
-msgid "*ROFL* %s, you are so funny I'm gonna die!"
+#, python-brace-format
+msgid "*ROFL* {0}, you are so funny I'm gonna die!"
 msgstr ""
 
 #: gabifun.py:38
-#, python-format
-msgid "/me slaps %s"
+#, python-brace-format
+msgid "/me slaps {0}"
 msgstr ""
 
 #: gabifun.py:40
-#, python-format
-msgid "Who should i slap, %s?"
+#, python-brace-format
+msgid "Who should i slap, {0}?"
 msgstr ""
