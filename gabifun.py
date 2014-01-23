@@ -26,18 +26,18 @@ class GabiFun(BotBase):
         """gabi lacht"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
-            return 'Hahahaha, ' + args + ' is zum totlachen!'
+            return _("%s is so funny I'm gonna die!" % args)
         else:
-            return 'Hahahaha! Man, ' + username  + ', du bist so witzig, ich lach mich tot!'
+            return _("*ROFL* %s, you are so funny I'm gonna die!" % username)
 
     @botcmd
     def slap (self, mess, args):
         """gabi gibt wem eine ohrfeige"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
-            return 'Betrachte dich als geohrfeigt, ' + args + '!'
+            return _('/me slaps %s' % args)
         else:
-            return username  + ', wen soll ich ohrfeigen?'
+            return _('Who should i slap, %s?' % username)
 
     @botcmd
     def baby (self, mess, args):
