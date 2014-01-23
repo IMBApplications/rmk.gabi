@@ -15,11 +15,11 @@ class GabiFun(BotBase):
 
     @botcmd
     def imba (self, mess, args):
-        """Etwas ist IMBA"""
+        """Something is IMBA"""
         if len(args) > 0:
-            return args  + ' ist IMBA!'
+            return args  + _(' is IMBA!')
         else:
-            return 'Ich bin IMBA!'
+            return _('I am IMBA!')
             
     @botcmd
     def haha (self, mess, args):
