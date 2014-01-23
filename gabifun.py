@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import random
 
@@ -54,12 +55,12 @@ class GabiFun(BotBase):
 
     @botcmd
     def how (self, mess, args):
-        """How are you?"""
+        """How am I?"""
         return _('All systems are in perfect condition, thanks for asking.')
         
     @botcmd
     def roll (self, mess, args):
-        """Rolls dice"""
+        """Rolling dice"""
         if len(args) > 0:
             rmax = random.randint(1, int(args))
         else:
@@ -67,11 +68,6 @@ class GabiFun(BotBase):
         return str(rmax);
 
     @botcmd
-    def titties (self, mess, args):
-        """she flashes her titties"""
-        return '( . )( . )'
-
-    @botcmd
     def zoidberg (self, mess, args):
-        """she draws zoidberg"""
+        """Drawing Zoidberg"""
         return '(\/) (^,,,^) (\/)'
