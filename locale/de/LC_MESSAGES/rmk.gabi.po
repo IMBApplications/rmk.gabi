@@ -24,3 +24,11 @@ msgstr "1 Sekunde"
 #, python-format
 msgid "%s seconds"
 msgstr "%s Sekunden"
+
+#: gabifun.py:20
+msgid " is IMBA!"
+msgstr " ist IMBA"
+
+#: gabifun.py:22
+msgid "I am IMBA!"
+msgstr "Ich bin IMBA!"
