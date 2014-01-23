@@ -452,7 +452,7 @@ class BotBase(object):
 
         if (jid_string != botname1) and (jid_string != botname2):
             if text[0:len(self.__nickname)].lower() == self.__nickname.lower() or \
-                text[0:(len(self.__nickname) + 1)].lower() == '@' + self.__nickname.lower():
+                text[1:(len(self.__nickname) + 1)].lower() == self.__nickname.lower():
                 text_without_nickname = text[(len(self.__nickname) + 1):]
                 if ' ' in text_without_nickname:
                     command, args = text_without_nickname.split(' ', 1)
