@@ -7,18 +7,18 @@ class GabiHate(BotBase):
 
     @botcmd
     def sih (self, mess, args):
-        """gabi schiesst wem in den hals"""
+        """Shoot someone trough the throat"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
-            return args + ', schiess dir in den Hals!'
+            return _('{0}, shoot trough your throat!').format(args)
         else:
-            return username  + ', wem soll ich in den Hals schiessen?'
+            return _('{0}, who should i shoot trough the throat?').format(username)
 
     @botcmd
     def aids (self, mess, args):
-        """gabi wuenscht wem aids"""
+        """Get AIDS"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
-            return args + ', get AIDS!'
+            return _('{0}, get AIDS!').format(args)
         else:
-            return username  + ', wem soll ich AIDS wuenschen?'
+            return _('{0}, who should get AIDS?').format(username)

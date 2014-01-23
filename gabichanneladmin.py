@@ -10,12 +10,12 @@ class GabiChannelAdmin(BotBase):
 
     @botcmd
     def kick (self, mess, args):
-        """Kicks a user from the channel"""
+        """Kick a user from the channel"""
         room = mess.getFrom().getStripped()
         self.do_kick(room, args)
 
     @botcmd
     def invite (self, mess, args):
-        """Invites a user to the current channel (JID)"""
+        """Invite a user to the current channel (JID)"""
         room = mess.getFrom().getStripped()
         self.do_invite(room, args)

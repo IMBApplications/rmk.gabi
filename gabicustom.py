@@ -65,7 +65,7 @@ class GabiCustom(BotBase):
         for reg in reg_ex_bb:
             c = re.compile(reg)
             if c.match(text) != None:
-                self.send_simple_reply(mess, "Hau raus, {0}!".format(username))
+                self.send_simple_reply(mess, _("Have fun, {0}!").format(username))
                 return
 
         #fangen wir mal an mit gucken ob wer re sagt        
@@ -74,7 +74,7 @@ class GabiCustom(BotBase):
             c = re.compile(reg)
             if c.match(text) != None:
                 if username in self.afkDict:
-                    self.send_simple_reply(mess, "wb " + username + "! Wie wars beim " + self.afkDict[username] + "?")
+                    self.send_simple_reply(mess, _("wb {0}! How was {1}?").format(username, self.afkDict[username]))
                     del self.afkDict[username];
                 else:
                     self.send_simple_reply(mess, "wb {0}!".format(username))
@@ -86,7 +86,7 @@ class GabiCustom(BotBase):
         for reg in reg_ex_ac:
             c = re.compile(reg)
             if c.match(text) != None:
-                self.send_simple_reply(mess, username + ' meinte "' + autoCorr[reg] + '".')                    
+                self.send_simple_reply(mess, _('{0} wanted to say "{1}".').format(username, autoCorr[reg]))                    
                     
                 return
 
@@ -95,19 +95,19 @@ class GabiCustom(BotBase):
         for reg in reg_ex_pn:
             c = re.compile(reg)
             if c.match(text) != None:
-                self.send_simple_reply(mess, "Gnihihi, {0} hat Penis gesagt!".format(username))
+                self.send_simple_reply(mess, _("Hihihi, {0} said penis!").format(username))
                 return
                     
         #fangen wir mal an mit gucken ob wer Guten Morgen sagt
-        reg_ex_pn = (r".*?Guten Morgen", r".*?guten morgen", r".*?Moinz", r".*?moinz")
+        reg_ex_pn = (r".*?Guten Morgen", r".*?guten morgen", r".*?Moinz", r".*?moinz", r".*?morning", r".*?good morning")
         for reg in reg_ex_pn:
             c = re.compile(reg)
             if c.match(text) != None:
                 now = datetime.datetime.now(pytz.timezone(self.timezone))
                 if now.hour > 10:
-                    self.send_simple_reply(mess, "FUCK YOU, {0}! Guck ma auf die Uhr!".format(username))
+                    self.send_simple_reply(mess, _("Morning? Check your clock, {0}!").format(username))
                 else:
-                    self.send_simple_reply(mess, "Guten Morgen, {0}. Schoen, dass du da bist.".format(username))
+                    self.send_simple_reply(mess, _("Good morning, {0}. Nice to see you here.").format(username))
                     return
 
         #so jetzt alle URLS

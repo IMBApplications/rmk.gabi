@@ -67,7 +67,7 @@ class GabiFun(BotBase):
         return str(rmax);
 
     @botcmd
-    def titten (self, mess, args):
+    def titties (self, mess, args):
         """she flashes her titties"""
         return '( . )( . )'
 

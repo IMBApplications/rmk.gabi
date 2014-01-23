@@ -34,4 +34,4 @@ class GabiAdmin(BotBase):
     def quit (self, mess, args):
         """Shut me down."""
         exit()
-        return 'Shutting down'  
+        return _('Shutting down.')

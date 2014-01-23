@@ -23,7 +23,7 @@ class GabiHelp(BotBase):
             if self.__doc__:
                 description = self.__doc__.strip()
             else:
-                description = 'Available commands:'
+                description = _('Available commands:')
 
             usage = sorted(['%s:\t%s' % (name, (command.__doc__ or \
                                 '(undocumented)').strip().split('\n', 1)[0])
