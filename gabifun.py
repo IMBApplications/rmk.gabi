@@ -17,7 +17,7 @@ class GabiFun(BotBase):
     def imba (self, mess, args):
         """Something is IMBA"""
         if len(args) > 0:
-            return _('%s is IMBA!' % args)
+            return _('{0} is IMBA!').format(args)
         else:
             return _('I am IMBA!')
             
@@ -26,18 +26,18 @@ class GabiFun(BotBase):
         """gabi lacht"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
-            return _("%s is so funny I'm gonna die!" % args)
+            return _("{0} is so funny I'm gonna die!").format(args)
         else:
-            return _("*ROFL* %s, you are so funny I'm gonna die!" % username)
+            return _("*ROFL* {0}, you are so funny I'm gonna die!").format(username)
 
     @botcmd
     def slap (self, mess, args):
         """gabi gibt wem eine ohrfeige"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
-            return _('/me slaps %s' % args)
+            return _('/me slaps {0}').format(args)
         else:
-            return _('Who should i slap, %s?' % username)
+            return _('Who should i slap, {0}?').format(username)
 
     @botcmd
     def baby (self, mess, args):
