@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /Users/urbenm/dev/rmk.gabi/locale/../botbase.py:634
+#: botbase.py:634
 msgid "1 second"
 msgstr "1 Sekunde"
 
-#: /Users/urbenm/dev/rmk.gabi/locale/../botbase.py:636
+#: botbase.py:636
 #, python-format
 msgid "%s seconds"
 msgstr "%s Sekunden"
