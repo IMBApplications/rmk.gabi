@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-23 15:07+0100\n"
+"POT-Creation-Date: 2014-01-23 15:21+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: German <aegnor@mittelerde.ch>\n"
@@ -26,8 +26,9 @@ msgid "%s seconds"
 msgstr "%s Sekunden"
 
 #: gabifun.py:20
-msgid " is IMBA!"
-msgstr " ist IMBA!"
+#, python-format
+msgid "%s is IMBA!"
+msgstr "%s ist IMBA!"
 
 #: gabifun.py:22
 msgid "I am IMBA!"

@@ -17,7 +17,7 @@ class GabiFun(BotBase):
     def imba (self, mess, args):
         """Something is IMBA"""
         if len(args) > 0:
-            return args  + _(' is IMBA!')
+            return _('%s is IMBA!' % args)
         else:
             return _('I am IMBA!')
             

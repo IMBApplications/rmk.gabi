@@ -7,6 +7,6 @@ do
 	basename=$(basename $FILE)
 	filename="${basename%.*}"
 
-	echo "Compiling $FILE"
+	echo "Compiling $dirname"
 	msgfmt -cv -o $dirname/$filename.mo $FILE
 done
