@@ -451,7 +451,8 @@ class BotBase(object):
         botname2 = '{0}/{1}'.format(channel, self.__username.split('@')[0]).lower()
 
         if (jid_string != botname1) and (jid_string != botname2):
-            if text[0:len(self.__nickname)].lower() == (self.__nickname.lower() or '@' + self.__nickname.lower()):
+            if text[0:len(self.__nickname)].lower() == self.__nickname.lower() or \
+                text[0:(len(self.__nickname) + 1)].lower() == '@' + self.__nickname.lower():
                 text_without_nickname = text[(len(self.__nickname) + 1):]
                 if ' ' in text_without_nickname:
                     command, args = text_without_nickname.split(' ', 1)
