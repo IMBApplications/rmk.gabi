@@ -6,12 +6,12 @@ from botbase import BotBase, botcmd
 
 class GabiFun(BotBase):
     @botcmd
-    def fetzig (self, mess, args='Aggravate'):
-        """Lets fetz"""
+    def groovy (self, mess, args='Aggravate'):
+        """Lets groove"""
         if len(args) > 0:
-            return 'Fetzig? Hab ich fetzig gehoert? ' + args  + ' ist fetzig!'
+            return _('Groovy? Did i hear groovy? {0} is groovy!').format(args)
         else:
-            return 'Fetzig? Hab ich fetzig gehoert? ICH bin fetzig!'
+            return _('Groovy? Did i hear groovy? I am groovy!')
 
     @botcmd
     def imba (self, mess, args):
@@ -23,7 +23,7 @@ class GabiFun(BotBase):
             
     @botcmd
     def haha (self, mess, args):
-        """gabi lacht"""
+        """Laughs"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
             return _("{0} is so funny I'm gonna die!").format(args)
@@ -32,7 +32,7 @@ class GabiFun(BotBase):
 
     @botcmd
     def slap (self, mess, args):
-        """gabi gibt wem eine ohrfeige"""
+        """Slaps someone"""
         username = self.get_sender_username(mess)
         if len(args) > 0:
             return _('/me slaps {0}').format(args)
@@ -41,26 +41,25 @@ class GabiFun(BotBase):
 
     @botcmd
     def baby (self, mess, args):
-        """she is nice to you"""
-        return 'Ja Schatz, was kann ich fuer dich tun?'
+        """Is nice to you"""
+        return _('Yes honey, what can i do for you?')
 
     @botcmd
     def rage (self, mess, args):
-        """she rages for you"""
+        """Rages for you"""
         if len(args) > 0:
-            return 'Scheiss ' + args + '! Verkackter Mist, stinkiger!'
+            return _('Fuck {0}! Shit fuck crap!')
         else:
-            return 'AARRRG! DRECKSVERWANZTEHURENSCHEISSMISTPIMMELKACKE!'
+            return _('AARRRGH! DIRTYFECESPENISPOOPCRAPSHITFUCK!')
 
     @botcmd
-    def wie (self, mess, args):
-        """use wie gehts? to be nice to her"""
-        if args == 'gehts?':
-            return 'Alle Systeme arbeiten innerhalb optimaler Parameter, danke der Nachfrage.'
-
+    def how (self, mess, args):
+        """How are you?"""
+        return _('All systems are in perfect condition, thanks for asking.')
+        
     @botcmd
     def roll (self, mess, args):
-        """she rolls dice"""
+        """Rolls dice"""
         if len(args) > 0:
             rmax = random.randint(1, int(args))
         else:

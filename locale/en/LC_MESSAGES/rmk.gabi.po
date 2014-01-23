@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-23 15:29+0100\n"
+"POT-Creation-Date: 2014-01-23 15:51+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: English <aegnor@mittelerde.ch>\n"
@@ -16,13 +16,67 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: botbase.py:634
+#: botbase.py:635
 msgid "1 second"
 msgstr ""
 
-#: botbase.py:636
-#, python-format
-msgid "%s seconds"
+#: botbase.py:637
+#, python-brace-format
+msgid "{0} seconds"
+msgstr ""
+
+#: botbase.py:640
+msgid "1 minute"
+msgstr ""
+
+#: botbase.py:642
+#, python-brace-format
+msgid "{0} minutes"
+msgstr ""
+
+#: botbase.py:645
+msgid "1 hour"
+msgstr ""
+
+#: botbase.py:647
+#, python-brace-format
+msgid "{0} hours"
+msgstr ""
+
+#: botbase.py:650
+msgid "1 day"
+msgstr ""
+
+#: botbase.py:652
+#, python-brace-format
+msgid "{0} days"
+msgstr ""
+
+#: botbase.py:655
+msgid "1 week"
+msgstr ""
+
+#: botbase.py:657
+#, python-brace-format
+msgid "{0} weeks"
+msgstr ""
+
+#: botbase.py:660
+msgid "1 year"
+msgstr ""
+
+#: botbase.py:662
+#, python-brace-format
+msgid "{0} years"
+msgstr ""
+
+#: gabifun.py:12
+#, python-brace-format
+msgid "Groovy? Did i hear groovy? {0} is groovy!"
+msgstr ""
+
+#: gabifun.py:14
+msgid "Groovy? Did i hear groovy? I am groovy!"
 msgstr ""
 
 #: gabifun.py:20
@@ -52,4 +106,21 @@ msgstr ""
 #: gabifun.py:40
 #, python-brace-format
 msgid "Who should i slap, {0}?"
+msgstr ""
+
+#: gabifun.py:45
+msgid "Yes honey, what can i do for you?"
+msgstr ""
+
+#: gabifun.py:51
+#, python-brace-format
+msgid "Fuck {0}! Shit fuck crap!"
+msgstr ""
+
+#: gabifun.py:53
+msgid "AARRRGH! DIRTYFECESPENISPOOPBITCHCRAPSHITFUCK!"
+msgstr ""
+
+#: gabifun.py:58
+msgid "All systems are in perfect condition, thanks for asking."
 msgstr ""

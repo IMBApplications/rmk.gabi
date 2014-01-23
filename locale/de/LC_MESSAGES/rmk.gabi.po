@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-23 15:29+0100\n"
+"POT-Creation-Date: 2014-01-23 15:51+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: German <aegnor@mittelerde.ch>\n"
@@ -16,14 +16,68 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: botbase.py:634
+#: botbase.py:635
 msgid "1 second"
 msgstr "1 Sekunde"
 
-#: botbase.py:636
-#, python-format
-msgid "%s seconds"
-msgstr "%s Sekunden"
+#: botbase.py:637
+#, python-brace-format
+msgid "{0} seconds"
+msgstr "{0} Sekunden"
+
+#: botbase.py:640
+msgid "1 minute"
+msgstr "1 Minute"
+
+#: botbase.py:642
+#, python-brace-format
+msgid "{0} minutes"
+msgstr "{0} Minuten"
+
+#: botbase.py:645
+msgid "1 hour"
+msgstr "1 Stunde"
+
+#: botbase.py:647
+#, python-brace-format
+msgid "{0} hours"
+msgstr "{0} Stunden"
+
+#: botbase.py:650
+msgid "1 day"
+msgstr "1 Tag"
+
+#: botbase.py:652
+#, python-brace-format
+msgid "{0} days"
+msgstr "{0} Tage"
+
+#: botbase.py:655
+msgid "1 week"
+msgstr "1 Woche"
+
+#: botbase.py:657
+#, python-brace-format
+msgid "{0} weeks"
+msgstr "{0} Wochen"
+
+#: botbase.py:660
+msgid "1 year"
+msgstr "1 Jahr"
+
+#: botbase.py:662
+#, python-brace-format
+msgid "{0} years"
+msgstr "{0} Jahre"
+
+#: gabifun.py:12
+#, python-brace-format
+msgid "Groovy? Did i hear groovy? {0} is groovy!"
+msgstr "Fetzig? Hab ich fetzig gehoert? {0} ist fetzig!"
+
+#: gabifun.py:14
+msgid "Groovy? Did i hear groovy? I am groovy!"
+msgstr "Fetzig? Hab ich fetzig gehoert? ICH bin fetzig!"
 
 #: gabifun.py:20
 #, python-brace-format
@@ -53,3 +107,21 @@ msgstr "/me ohrfeigt {0}"
 #, python-brace-format
 msgid "Who should i slap, {0}?"
 msgstr "Wen soll ich ohrfeigen, {0}?"
+
+#: gabifun.py:45
+msgid "Yes honey, what can i do for you?"
+msgstr "Ja Schatz, was kann ich fuer dich tun?"
+
+#: gabifun.py:51
+#, python-brace-format
+msgid "Fuck {0}! Shit fuck crap!"
+msgstr "Scheiss {0}! Verkackter Mist, stinkiger!"
+
+#: gabifun.py:53
+msgid "AARRRGH! DIRTYFECESPENISPOOPBITCHCRAPSHITFUCK!"
+msgstr "AARRRGH! DRECKSVERWANZTEHURENSCHEISSMISTPIMMELKACKE!"
+
+#: gabifun.py:58
+msgid "All systems are in perfect condition, thanks for asking."
+msgstr ""
+"Alle Systeme arbeiten innerhalb optimaler Parameter, danke der Nachfrage."

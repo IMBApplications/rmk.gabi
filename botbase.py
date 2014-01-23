@@ -634,32 +634,32 @@ class BotBase(object):
         elif age == 1:
             return _('1 second')
         elif age < 60:
-            return _('%s seconds' % (age))
+            return _('{0} seconds').format(age)
 
         elif age == 60:
-            return '1 Minute'
+            return _('1 minute')
         elif age > 60 and age < 3600:
-            return '%s Minuten' % (int(age / 60))
+            return _('{0} minutes').format(int(age / 60))
 
         elif age >= 3600 and age < 7200:
-            return '1 Stunde'
+            return _('1 hour')
         elif age >= 7200 and age < 86400:
-            return '%s Stunden' % (int(age / 3600))
+            return _('{0} hours').format(int(age / 3600))
 
         elif age >= 86400 and age < 172300:
-            return '1 Tag'
+            return _('1 day')
         elif age >= 172300 and age < 604800:
-            return '%s Tagen' % (int(age / 86400))
+            return _('{0} days').format(int(age / 86400))
 
         elif age >= 604800 and age < 1209600:
-            return '1 Woche'
+            return _('1 week')
         elif age >= 1209600 and age < 31449600:
-            return '%s Wochen' % (int(age / 604800))
+            return _('{0} weeks').format(int(age / 604800))
 
         elif age >= 31449600 and age < 62899200:
-            return '1 Jahr'
+            return _('1 year')
         else:
-            return '%s Jahren' % (int(age / 31449600))
+            return _('{0} years').format(int(age / 31449600))
 
     def convert_from_unicode(self, data):
         if isinstance(data, unicode):
