@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-24 15:12+0100\n"
+"POT-Creation-Date: 2014-01-24 15:23+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: English <aegnor@mittelerde.ch>\n"
@@ -106,7 +106,7 @@ msgstr ""
 
 #: gabicustom.py:135
 #, python-brace-format
-msgid "URL title from {0}: <a href='{2}' target='_blank'>{1}</a>."
+msgid "URL title from {0}: {1} ({2})"
 msgstr ""
 
 #: gabicustom.py:180
