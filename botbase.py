@@ -265,7 +265,7 @@ class BotBase(object):
 
     def send_simple_reply(self, mess, text, private=False):
         """Send a simple response to a message"""
-        self.send_message(self.build_reply(mess, text, private))
+        self.send_message(self.build_reply(self.build_message(mess), text, private))
 
     def build_reply(self, mess, text=None, private=False):
         """Build a message for responding to another message.
