@@ -64,6 +64,7 @@ class BotBase(object):
         self.__acceptownmsgs = acceptownmsgs
         self.text_color = text_color
         self.currentTopic = ""
+        self.localization = "en"
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
@@ -77,7 +78,9 @@ class BotBase(object):
 
         self.roster = None
         if not localization:
-            localization = "en"
+            localization = self.localization
+        else:
+            self.localization = localization
         trans = gettext.translation("rmk.gabi", "locale", [localization]) 
         trans.install()
 

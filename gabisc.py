@@ -4,9 +4,9 @@
 from botbase import BotBase,botcmd
 from gabihelp import GabiHelp
 
-import sys, getopt
+
 import urllib
-import simplejson
+from xml.dom.minidom import parse
 
 class GabiStarCitizen(BotBase):
     @botcmd
@@ -23,34 +23,20 @@ class GabiStarCitizen(BotBase):
         """Google something"""
         return 'nothing'
 
-   	def google_search(searchFor):
-	    url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=large&%s" % (searchFor)
-	    result = urllib.urlopen(url)
-	    json = simplejson.loads(result.read())
-	    status = json["responseStatus"]
-	    if status == 200:
-	        results = json["responseData"]["results"]
-	        cursor = json["responseData"]["cursor"]
-	        pages = cursor["pages"]
-	        for r in results:
-	            i = results.index(r) + (index -1) * len(results) + 1
-	            u = r["unescapedUrl"]
-	            rs.append(u)
-	            if not quiet:
-	                print("%3d. %s" % (i, u))
-	        next_index  = None
-	        next_offset = None
-	        for p in pages:
-	            if p["label"] == index:
-	                i = pages.index(p)
-	                if i < len(pages) - 1:
-	                    next_index  = pages[i+1]["label"]
-	                    next_offset = pages[i+1]["start"]
-	                break
-	        if next_index != None and next_offset != None:
-	            if int(next_offset) < min_count:
-	                search(query, next_index, next_offset, min_count, quiet, rs)
-	    return rs
+    def google_search(searchFor):
+         
+        # &cx=00255077836266642015:u-scht7a-8i
+        # &start=10
+        xmlurl = 'http://www.google.com/search?'
+        xmlsearch = 'q=' + searchFor + '&hl=' + self.localization + '&num=1&output=xml_no_dtd&client=google-csbe'
+
+        try:
+            xml = urllib.urlopen(xmlsearch)
+            dom = parse(xml)
+        except e as Exception:
+            print(e)
+
+        print dom
 
 # def print_usage():
 #     s = "usage: " + sys.argv[0] + " "
