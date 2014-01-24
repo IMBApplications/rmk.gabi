@@ -118,14 +118,21 @@ class GabiCustom(BotBase):
         writer = None
         handler = None
 
-        htmlTitle = None
+        
         for url in c.findall(text):
 
-            response = urllib2.urlopen(url)
-            html = response.read()
+            htmlTitle = None
+            try:
+                response = urllib2.urlopen(url)
+                html = response.read()
 
-            titleRE = re.compile("<title>(.+?)</title>")
-            htmlTitle = titleRE.search(html).group(1)
+                titleRE = re.compile("<title>(.+?)</title>")
+                htmlTitle = titleRE.search(html).group(1)
+            except:
+                pass
+                
+            if htmlTitle:
+                self.send_simple_reply(mess, _("URL title from {0}: {1}.").format(username, titleRE))
 
             if writer == None:
                 handler = self.get_handler_csv_urls_write()
@@ -134,9 +141,6 @@ class GabiCustom(BotBase):
 
         if writer != None:
             handler.close()
-
-        if htmlTitle:
-            self.send_simple_reply(mess, _("URL title from {0}: {1}.").format(username, title))
 
         # haben wir einen count zum anzeigen?
         periodicCount = self.periodicCheckCount(mess)
