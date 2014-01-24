@@ -125,7 +125,7 @@ class GabiCustom(BotBase):
             html = response.read()
 
             titleRE = re.compile("<title>(.+?)</title>")
-            title = titleRE.search(html).group(1)
+            htmlTitle = titleRE.search(html).group(1)
 
             if writer == None:
                 handler = self.get_handler_csv_urls_write()
