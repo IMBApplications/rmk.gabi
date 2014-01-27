@@ -330,13 +330,20 @@ class BotBase(object):
             # newText = ""
             for line in text:
                 # newText += self.encode_message(line) + '<br />'
-                span.addChild(xmpp.Node('p', self.encode_message(line).encode('utf-8') + '<br />'))
+                try:
+                    span.addChild(xmpp.simplexml.XML2Node(self.encode_message(line).encode('utf-8') + '<br />'))
+                except Exception, e:
+                    self.log.warning('Error while building XHTML message: %s' % e)
+                    message = None
         else:
             # newText = self.encode_message(text)
 
             # newContent = newText.encode('utf-8')
-
-            span.addChild(xmpp.Node('p', self.encode_message(text).encode('utf-8')))
+            try:
+                span.addChild(xmpp.simplexml.XML2Node(self.encode_message(text).encode('utf-8')))
+            except Exception, e:
+                self.log.warning('Error while building XHTML message: %s' % e)
+                message = None
 
         # html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
         # html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
