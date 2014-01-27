@@ -346,9 +346,6 @@ class BotBase(object):
 
         # html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
         # html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
-        body.addChild(node=span)
-        html.addChild(node=body)
-        message.addChild(node=html)
 
         # except Exception, e:
         #     # Didn't work, incorrect markup or something.
@@ -361,6 +358,10 @@ class BotBase(object):
             if isinstance(text, list):
                 text = '\n'.join(text)
             message = xmpp.protocol.Message(body=text)
+        else:
+            body.addChild(node=span)
+            html.addChild(node=body)
+            message.addChild(node=html)
         return message
 
     def broadcast(self, message, only_available=False):
