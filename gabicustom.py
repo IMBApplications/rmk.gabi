@@ -167,7 +167,7 @@ class GabiCustom(BotBase):
                     html = response.read()
                     titleRE = re.compile("<title>(.+?)</title>")
                     htmlTitle = titleRE.search(html).group(1)
-                except:
+                except urllib2.HTTPError as e:
                     self.log.warning("URL Error %s on URL: %s" % (e.code, url))
                     if e.code == 404:
                         continue
