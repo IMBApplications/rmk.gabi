@@ -7,7 +7,7 @@ from botbase import BotBase, botcmd
 
 class GabiFun(BotBase):
     @botcmd
-    def groovy (self, mess, args='Aggravate'):
+    def groovy (self, mess, args):
         """Lets groove"""
         if len(args) > 0:
             return _('Groovy? Did i hear groovy? {0} is groovy!').format(args)
@@ -49,7 +49,7 @@ class GabiFun(BotBase):
     def rage (self, mess, args):
         """Rages for you"""
         if len(args) > 0:
-            return _('Fuck {0}! Shit fuck crap!')
+            return _('Fuck {0}! Shit fuck crap!').format(args)
         else:
             return _('AARRRGH! DIRTYFECESPENISPOOPBITCHCRAPSHITFUCK!')
 
