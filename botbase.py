@@ -302,32 +302,54 @@ class BotBase(object):
         # text_plain = re.sub(r'<[^>]+>', '', text)
         # if text_plain != text:
 
-        if isinstance(text, list):
-            newText = ""
-            for line in text:
-                newText += self.encode_message(line) + '<br />'
-        else:
-            newText = self.encode_message(text)
+        # if isinstance(text, list):
+        #     newText = ""
+        #     for line in text:
+        #         newText += self.encode_message(line) + '<br />'
+        # else:
+        #     newText = self.encode_message(text)
 
         # Create body w stripped tags for reciptiens w/o xhtml-abilities
         # FIXME unescape &quot; etc.
         # message = xmpp.protocol.Message(body=text_plain)
-        message = xmpp.protocol.Message(body=newText)
+
         # Start creating a xhtml body
-        html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
+
         try:
-            newText = newText.replace('\n', '<br / >')
-            if self.text_color:
-                newContent = "<span style='color: #%s'>" % self.text_color + newText.encode('utf-8') + "</span>"
+            html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
+            body = xmpp.Node('body', {'xmlns': 'http://www.w3.org/1999/xhtml'})
+            span = xmpp.Node('span', {'style': 'color: #%s' % self.text_color })
+            message = xmpp.protocol.Message(body=text)
+
+            # newText = newText.replace('\n', '<br / >')
+            # if self.text_color:
+                # newContent = "<span style='color: #%s'>" % self.text_color + newText.encode('utf-8') + "</span>"
+
+            # else:
+            if isinstance(text, list):
+                # newText = ""
+                for line in text:
+                    # newText += self.encode_message(line) + '<br />'
+                    span.addChild(xmpp.Node('p', self.encode_message(line).encode('utf-8') + '<br />'))
             else:
-                newContent = newText.encode('utf-8')
-            html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
+                # newText = self.encode_message(text)
+
+                # newContent = newText.encode('utf-8')
+
+                span.addChild(xmpp.Node('p', self.encode_message(text).encode('utf-8')))
+
+            # html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
+            # html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
+            body.addChild(node=span)
+            html.addChild(node=body)
             message.addChild(node=html)
+
         except Exception, e:
             # Didn't work, incorrect markup or something.
             self.log.warning('Error while building XHTML message: %s' % e)
             # Fallback - don't sanitize invalid input. User is responsible!
             message = None
+
         if message is None:
         # Normal body
             if isinstance(text, list):
