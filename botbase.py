@@ -268,12 +268,12 @@ class BotBase(object):
 
     def send_simple_reply(self, mess, text, private=False):
         """Send a simple response to a message"""
-        self.send_message(self.build_reply(mess, text, private, True))
+        self.send_message(self.build_reply(mess, text, private))
 
-    def build_reply(self, mess, text=None, private=False, allowHtml=False):
+    def build_reply(self, mess, text=None, private=False):
         """Build a message for responding to another message.
         Message is NOT sent"""
-        response = self.build_message(text, allowHtml)
+        response = self.build_message(text)
         if private:
             response.setTo(mess.getFrom())
             response.setType('chat')
@@ -300,7 +300,7 @@ class BotBase(object):
         return unicode_content.encode('ascii', 'xmlcharrefreplace')
 
 
-    def build_message(self, text, allowHtml=False):
+    def build_message(self, text):
         """Builds an xhtml message without attributes.
         If input is not valid xhtml-im fallback to normal."""
         message = None # init message variable
@@ -311,9 +311,9 @@ class BotBase(object):
         if isinstance(text, list):
             newText = ""
             for line in text:
-                newText += self.encode_message(line, allowHtml) + '<br />'
+                newText += self.encode_message(line) + '<br />'
         else:
-            newText = self.encode_message(text, allowHtml)
+            newText = self.encode_message(text)
 
         print newText
         # Create body w stripped tags for reciptiens w/o xhtml-abilities
