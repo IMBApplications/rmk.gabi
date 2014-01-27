@@ -284,7 +284,7 @@ class BotBase(object):
             self.log.warning('Content is string: %s' % (content))
             unicode_content = content.decode('utf-8')
 
-        elif isinstance(s, unicode):
+        elif isinstance(content, unicode):
             self.log.warning('Content is unicode: %s' % (content))
             unicode_content = content
         else:
@@ -490,7 +490,7 @@ class BotBase(object):
                 else:
                     command, args = text_without_nickname, ''
 
-                # args = self.convert_from_unicode(args)
+                args = self.encode_message(args)
 
                 cmd = command.lower()
 
