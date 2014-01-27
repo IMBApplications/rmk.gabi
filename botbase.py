@@ -295,7 +295,7 @@ class BotBase(object):
             return content
 
         if allowHtml:
-            return unicode_content.encode('ascii')
+            return unicode_content.encode('ascii', 'replace')
         else:
             return unicode_content.encode('ascii', 'xmlcharrefreplace')
 
