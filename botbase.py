@@ -331,6 +331,7 @@ class BotBase(object):
             for line in text:
                 # newText += self.encode_message(line) + '<br />'
                 try:
+                    print line
                     span.addChild(xmpp.simplexml.XML2Node(self.encode_message(line + '<br />').encode('utf-8')))
                 except Exception, e:
                     self.log.warning('Error while building XHTML message with %s: %s' % (text, e))
