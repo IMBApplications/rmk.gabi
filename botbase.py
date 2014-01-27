@@ -480,7 +480,7 @@ class BotBase(object):
 
         if (jid_string != botname1) and (jid_string != botname2):
             if text[0] == '!':
-                text = self.__nickname + text[1:]
+                text = self.__nickname + ' ' + text[1:]
             if text[0] in ['@', '!']:
                 text = text[1:]
             if text[0:len(self.__nickname)].lower() == self.__nickname.lower():
