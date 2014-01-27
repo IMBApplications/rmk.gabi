@@ -313,7 +313,7 @@ class BotBase(object):
             for line in text:
                 newText += self.encode_message(line, allowHtml) + '<br />'
         else:
-            newText = self.encode_message(line, allowHtml)
+            newText = self.encode_message(text, allowHtml)
 
         print newText
         # Create body w stripped tags for reciptiens w/o xhtml-abilities
