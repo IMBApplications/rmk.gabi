@@ -31,12 +31,12 @@ class BotBase(object):
     DND, XA, OFFLINE = 'dnd', 'xa', 'unavailable'
 
     # UI-messages (overwrite to change content)
-    MSG_AUTHORIZE_ME = 'Hey there. You are not yet on my roster. Authorize my request and I will do the same.'
-    MSG_NOT_AUTHORIZED = 'You did not authorize my subscription request. Access denied.'
-    MSG_UNKNOWN_COMMAND = 'Unknown command: "%(command)s". Type "help" for available commands.'
-    MSG_HELP_TAIL = 'Type help <command name> to get more info about that specific command.'
-    MSG_HELP_UNDEFINED_COMMAND = 'That command is not defined.'
-    MSG_ERROR_OCCURRED = 'Sorry for your inconvenience. An unexpected error occurred.'
+    MSG_AUTHORIZE_ME = _('Hey there. You are not yet on my roster. Authorize my request and I will do the same.')
+    MSG_NOT_AUTHORIZED = _('You did not authorize my subscription request. Access denied.')
+    # MSG_UNKNOWN_COMMAND = 'Unknown command: "%(command)s". Type "help" for available commands.'
+    MSG_HELP_TAIL = _('Type help <command name> to get more info about that specific command.')
+    MSG_HELP_UNDEFINED_COMMAND = _('That command is not defined.')
+    # MSG_ERROR_OCCURRED = 'Sorry for your inconvenience. An unexpected error occurred.'
 
     PING_FREQUENCY = 0 # Set to the number of seconds, e.g. 60.
     PING_TIMEOUT = 2 # Seconds to wait for a response.
@@ -280,24 +280,21 @@ class BotBase(object):
         response.setThread(mess.getThread())
         return response
 
-    def encode_message(self, content, allowHtml=False):
+    def encode_message(self, content):
         """Encodes the text as needed"""
         # cgi.escape(unicode(str(line), "utf-8")).encode('ascii', 'xmlcharrefreplace')  #nohtml
         if isinstance(content, str):
-            self.log.warning('Content is string: %s (%s)' % (content, allowHtml))
+            self.log.warning('Content is string: %s' % (content))
             unicode_content = content.decode('utf-8')
 
         elif isinstance(s, unicode):
-            self.log.warning('Content is unicode: %s (%s)' % (content, allowHtml))
+            self.log.warning('Content is unicode: %s' % (content))
             unicode_content = content
         else:
-            self.log.warning('Content is no string: %s (%s)' % (content, allowHtml))
-            return content
+            self.log.warning('Content is no string: %s' % (content))
+            unicode_content = content
 
-        if allowHtml:
-            return unicode_content.encode('ascii', 'xmlcharrefreplace')
-        else:
-            return unicode_content.encode('ascii', 'xmlcharrefreplace')
+        return unicode_content.encode('ascii', 'xmlcharrefreplace')
 
 
     def build_message(self, text, allowHtml=False):
