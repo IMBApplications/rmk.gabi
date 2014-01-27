@@ -9,12 +9,24 @@ import csv
 class GabiLog(BotBase):
     @botcmd
     def urls (self, mess, args):
-        """Whispers you all URLs that where posted"""
-        jid = mess.getFrom()
-        """handler = self.get_handler_csv_urls_read()
-        msg = ""
-        for row in  csv.reader(handler, delimiter=';', quotechar='#'):
-                msg += '-\t' + str(row[0]) + " ( " + str(row[1]) + " ) " + row[2] + ' \n'
+        """Whispers you the last 20 URLs that where posted if no search term is supplied."""
+        # srcJid = mess.getFrom()
+        retUrls = []
+        retMsg = []
 
-        handler.close()"""
-        self.send(jid, "http://chat.mmojunkies.net/csv-viewer/index.php?file=urls.csv", None, 'chat')
+        count = 0
+        for (username, timestamp, url, title) in reversed(self.urlList):
+            if args in url or args in title:
+                retUrls.append((username, timestamp, url, title))
+                count += 1
+                if count <= 20:
+                    break
+
+        for (username, timestamp, url, title) in retUrls:
+            if not title:
+                title = url
+            retMsg.append(_("{0} {1}: <a href='{2}'>{3}</a>").format(username, timestamp, url, title))
+
+
+        # self.send(srcJid, "http://chat.mmojunkies.net/csv-viewer/index.php?file=urls.csv", None, 'chat')
+        self.send_simple_reply(mess, retMsg, True)

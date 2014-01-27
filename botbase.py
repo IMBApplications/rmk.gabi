@@ -309,7 +309,6 @@ class BotBase(object):
         else:
             newText = self.encode_message(text)
 
-        print newText
         # Create body w stripped tags for reciptiens w/o xhtml-abilities
         # FIXME unescape &quot; etc.
         # message = xmpp.protocol.Message(body=text_plain)

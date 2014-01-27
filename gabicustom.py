@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import re
-import csv
+# import csv
 import datetime
 import time
 import calendar
@@ -43,6 +43,9 @@ class GabiCustom(BotBase):
 
         self.cowntdownList = self.loadJSON('save_count.dat', [])
         atexit.register(self.saveJSON, 'save_count.dat', self.cowntdownList)
+
+        self.urlList = self.loadJSON('save_urls.dat', [])
+        atexit.register(self.saveJSON, 'save_urls.dat', self.urlList)
 
         self.afkRejoinTime = 900
 
@@ -133,11 +136,16 @@ class GabiCustom(BotBase):
 
             if htmlTitle:
                 self.send_simple_reply(mess, _("URL title from {0}: <a href='{2}' target='_blank'>{1}</a>").format(username, htmlTitle, url))
+            else:
+                htmlTitle = ""
 
-            if writer == None:
-                handler = self.get_handler_csv_urls_write()
-                writer = csv.writer(handler, delimiter=';', quotechar='#')
-                writer.writerow([username, str(datetime.datetime.now(pytz.timezone(self.timezone))) , url])
+            newUrl = True
+            for (oldUsername, timestamp, oldUrl, title) in self.urlList:
+                if url in oldUrl:
+                    newUrl = False
+
+            if newUrl:
+                self.urlList.append((usernamem, str(datetime.datetime.now(pytz.timezone(self.timezone))), url , htmlTitle))
 
         if writer != None:
             handler.close()
