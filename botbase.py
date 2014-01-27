@@ -319,7 +319,7 @@ class BotBase(object):
         html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
         body = xmpp.Node('body', {'xmlns': 'http://www.w3.org/1999/xhtml'})
         span = xmpp.Node('span', {'style': 'color: #%s' % self.text_color })
-        message = xmpp.protocol.Message(body=text)
+        # message = xmpp.protocol.Message(body=text)
 
         # newText = newText.replace('\n', '<br / >')
         # if self.text_color:
@@ -362,7 +362,8 @@ class BotBase(object):
         else:
             body.addChild(node=span)
             html.addChild(node=body)
-            message.addChild(node=html)
+            message = xmpp.protocol.Message(body=html)
+            # message.addChild(node=html)
         return message
 
     def broadcast(self, message, only_available=False):
