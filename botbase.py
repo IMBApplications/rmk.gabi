@@ -280,6 +280,26 @@ class BotBase(object):
         response.setThread(mess.getThread())
         return response
 
+    def encode_message(self, content, allowHtml=False):
+        """Encodes the text as needed"""
+        # cgi.escape(unicode(str(line), "utf-8")).encode('ascii', 'xmlcharrefreplace')  #nohtml
+        if isinstance(content, str):
+            self.log.warning('Content is string: %s' % content)
+            unicode_content = content.decode('utf-8')
+
+        elif isinstance(s, unicode):
+            self.log.warning('Content is unicode: %s' % content)
+            unicode_content = content
+        else:
+            self.log.warning('Content is no string: %s' % content)
+            return content
+
+        if allowHtml:
+            return unicode_content.encode('ascii')
+        else:
+            return unicode_content.encode('ascii', 'xmlcharrefreplace')
+
+
     def build_message(self, text, allowHtml=False):
         """Builds an xhtml message without attributes.
         If input is not valid xhtml-im fallback to normal."""
@@ -287,39 +307,34 @@ class BotBase(object):
         # Try to determine if text has xhtml-tags - TODO needs improvement
         # text_plain = re.sub(r'<[^>]+>', '', text)
         # if text_plain != text:
-        if self.text_color:
-            if isinstance(text, list):
-                newText = ""
-                if allowHtml:
-                    for line in text:
-                        newText += line + '<br />'
-                else:
-                    for line in text:
-                        newText += cgi.escape(unicode(str(line), "utf-8")).encode('ascii', 'xmlcharrefreplace') + '<br />'
-            else:
-                if allowHtml:
-                    newText = text
-                else:
-                    newText = cgi.escape(unicode(str(text), "utf-8")).encode('ascii', 'xmlcharrefreplace')
 
+        if isinstance(text, list):
+            newText = ""
+            for line in text:
+                newText += self.encode_message(line, allowHtml) + '<br />'
+        else:
+            newText = self.encode_message(line, allowHtml)
 
-            print newText
-            # Create body w stripped tags for reciptiens w/o xhtml-abilities
-            # FIXME unescape &quot; etc.
-            # message = xmpp.protocol.Message(body=text_plain)
-            message = xmpp.protocol.Message(body=newText)
-            # Start creating a xhtml body
-            html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
-            try:
-                newText = newText.replace('\n', '<br / >')
+        print newText
+        # Create body w stripped tags for reciptiens w/o xhtml-abilities
+        # FIXME unescape &quot; etc.
+        # message = xmpp.protocol.Message(body=text_plain)
+        message = xmpp.protocol.Message(body=newText)
+        # Start creating a xhtml body
+        html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
+        try:
+            newText = newText.replace('\n', '<br / >')
+            if self.text_color:
                 newContent = "<span style='color: #%s'>" % self.text_color + newText.encode('utf-8') + "</span>"
-                html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
-                message.addChild(node=html)
-            except Exception, e:
-                # Didn't work, incorrect markup or something.
-                self.log.warning('Error while building XHTML message: %s' % e)
-                # Fallback - don't sanitize invalid input. User is responsible!
-                message = None
+            else:
+                newContent = newText.encode('utf-8')
+            html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
+            message.addChild(node=html)
+        except Exception, e:
+            # Didn't work, incorrect markup or something.
+            self.log.warning('Error while building XHTML message: %s' % e)
+            # Fallback - don't sanitize invalid input. User is responsible!
+            message = None
         if message is None:
         # Normal body
             if isinstance(text, list):
