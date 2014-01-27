@@ -83,6 +83,16 @@ class GabiCustom(BotBase):
                            '.m4r' : 'Audio: Moving Picture Experts Group (M4R)',
                            '.mp4' : 'Video: Moving Picture Experts Group (MP4)',
                            '.mp3' : 'Audio: Moving Picture Experts Group (MP3)',
+                           '.pdf' : 'Document: Portable Document Format (PDF)',
+                           '.doc' : 'Document: Microsoft Word Format (DOC)',
+                           '.docx': 'Document: Microsoft Word Format (DOCX)',
+                           '.ppt' : 'Document: Microsoft Power Point Format (PPT)',
+                           '.xls' : 'Document: Microsoft Excel (XLS)',
+                           '.xlsx': 'Document: Microsoft Excel (XLSX)',
+                           '.odt' : 'Document: Open Document Format Text (ODT)',
+                           '.ods' : 'Document: Open Document Format Sheet (ODS)',
+                           '.odp' : 'Document: Open Document Format Presentation (ODP)',
+                           '.odg' : 'Document: Open Document Format Graphic (ODG)',
                            '.avi' : 'Video: Audio Video Interleave (AVI)' }
 
     def on_not_a_command(self, mess):
