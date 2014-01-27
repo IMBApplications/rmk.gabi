@@ -11,6 +11,10 @@ import json
 import collections
 import pytz
 import urllib2
+import socket
+
+timeout = 5
+socket.setdefaulttimeout(timeout)
 
 from botbase import BotBase, botcmd
 
@@ -54,6 +58,30 @@ class GabiCustom(BotBase):
         self.periodicCountCheckTs = {}
 
         self.countTopic = []
+
+        self.imgEndings = {'.gif' : 'Image: Graphics Interchange Format (GIF)', 
+                           '.jpg' : 'Image: Joint Photographic Experts Group (JPG)',
+                           '.jpeg': 'Image: Joint Photographic Experts Group (JPEG)',
+                           '.tiff': 'Image: Portable Network Graphics (TIFF)',
+                           '.png' : 'Image: Tagged Image File Format (PNG)',
+                           '.mkv' : 'Video: Matroska (MKV)',
+                           '.mk3d' : 'Video: Matroska (MK3D)',
+                           '.mka' : 'Audio: Matroska (MKA)',
+                           '.mks' : 'Video: Matroska (MKS)',
+                           '.ogg' : 'Audio: Ogg Vorbis (OGG)',
+                           '.oga' : 'Audio: Ogg Vorbis (OGA)',
+                           '.ogv' : 'Audio: Ogg Vorbis (OGV)',
+                           '.ogx' : 'Audio: Ogg Vorbis (OGX)',
+                           '.mpg' : 'Video: Moving Picture Experts Group (MPG)',
+                           '.mpeg' : 'Video: Moving Picture Experts Group (MPEG)',
+                           '.m4v' : 'Video: Moving Picture Experts Group (M4V)',
+                           '.m4a' : 'Audio: Moving Picture Experts Group (M4A)',
+                           '.m4b' : 'Audio: Moving Picture Experts Group (M4B)',
+                           '.m4p' : 'Audio: Moving Picture Experts Group (M4P)',
+                           '.m4r' : 'Audio: Moving Picture Experts Group (M4R)',
+                           '.mp4' : 'Video: Moving Picture Experts Group (MP4)',
+                           '.mp3' : 'Audio: Moving Picture Experts Group (MP3)',
+                           '.avi' : 'Video: Audio Video Interleave (AVI)' }
 
     def on_not_a_command(self, mess):
         type = mess.getType()
@@ -123,16 +151,28 @@ class GabiCustom(BotBase):
 
         
         for url in c.findall(text):
+            url = url.strip()
 
             htmlTitle = None
-            try:
-                response = urllib2.urlopen(url)
-                html = response.read()
+            for ending in self.imgEndings.keys():
+                if url.lower().endswith(ending):
+                    htmlTitle = self.imgEndings[ending]
 
-                titleRE = re.compile("<title>(.+?)</title>")
-                htmlTitle = titleRE.search(html).group(1)
-            except:
-                pass
+
+            if not htmlTitle:
+                req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"}) 
+
+                try:
+                    response = urllib2.urlopen(req)
+                    html = response.read()
+                    titleRE = re.compile("<title>(.+?)</title>")
+                    htmlTitle = titleRE.search(html).group(1)
+                except:
+                    self.log.warning("URL Error %s on URL: %s" % (e.code, url))
+                    if e.code == 404:
+                        continue
+                except:
+                    pass
 
             if htmlTitle:
                 self.send_simple_reply(mess, _("URL title from {0}: <a href='{2}' target='_blank'>{1}</a>").format(username, htmlTitle, url))
@@ -145,7 +185,7 @@ class GabiCustom(BotBase):
                     newUrl = False
 
             if newUrl:
-                self.urlList.append((username, str(datetime.datetime.now(pytz.timezone(self.timezone))), url , htmlTitle))
+                self.urlList.append((username, str(datetime.datetime.now(pytz.timezone(self.timezone))), url, htmlTitle))
 
         if writer != None:
             handler.close()
