@@ -145,7 +145,7 @@ class GabiCustom(BotBase):
                     newUrl = False
 
             if newUrl:
-                self.urlList.append((self.encode_message(username), str(datetime.datetime.now(pytz.timezone(self.timezone))), self.encode_message(url) , self.encode_message(htmlTitle)))
+                self.urlList.append((str(username), str(datetime.datetime.now(pytz.timezone(self.timezone))), str(url) , str(htmlTitle)))
 
         if writer != None:
             handler.close()
