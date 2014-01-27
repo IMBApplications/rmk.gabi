@@ -490,7 +490,7 @@ class BotBase(object):
                 else:
                     command, args = text_without_nickname, ''
 
-                args = self.convert_from_unicode(args)
+                # args = self.convert_from_unicode(args)
 
                 cmd = command.lower()
 
