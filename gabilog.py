@@ -19,7 +19,7 @@ class GabiLog(BotBase):
             if args in url or args in title:
                 retUrls.append((username, timestamp, url, title))
                 count += 1
-                if count <= 20:
+                if count >= 20:
                     break
 
         for (username, timestamp, url, title) in retUrls:
