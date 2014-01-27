@@ -31,12 +31,10 @@ class BotBase(object):
     DND, XA, OFFLINE = 'dnd', 'xa', 'unavailable'
 
     # UI-messages (overwrite to change content)
-    MSG_AUTHORIZE_ME = _('Hey there. You are not yet on my roster. Authorize my request and I will do the same.')
-    MSG_NOT_AUTHORIZED = _('You did not authorize my subscription request. Access denied.')
-    # MSG_UNKNOWN_COMMAND = 'Unknown command: "%(command)s". Type "help" for available commands.'
-    MSG_HELP_TAIL = _('Type help <command name> to get more info about that specific command.')
-    MSG_HELP_UNDEFINED_COMMAND = _('That command is not defined.')
-    # MSG_ERROR_OCCURRED = 'Sorry for your inconvenience. An unexpected error occurred.'
+    MSG_AUTHORIZE_ME = 'Hey there. You are not yet on my roster. Authorize my request and I will do the same.'
+    MSG_NOT_AUTHORIZED = 'You did not authorize my subscription request. Access denied.'
+    MSG_HELP_TAIL = 'Type help <command name> to get more info about that specific command.'
+    MSG_HELP_UNDEFINED_COMMAND = 'That command is not defined.'
 
     PING_FREQUENCY = 0 # Set to the number of seconds, e.g. 60.
     PING_TIMEOUT = 2 # Seconds to wait for a response.
@@ -83,6 +81,11 @@ class BotBase(object):
             self.localization = localization
         trans = gettext.translation("rmk.gabi", "locale", [localization]) 
         trans.install()
+
+        MSG_AUTHORIZE_ME = _('Hey there. You are not yet on my roster. Authorize my request and I will do the same.')
+        MSG_NOT_AUTHORIZED = _('You did not authorize my subscription request. Access denied.')
+        MSG_HELP_TAIL = _('Type help <command name> to get more info about that specific command.')
+        MSG_HELP_UNDEFINED_COMMAND = _('That command is not defined.')
 
     ########## Save / Load Functions ##########
     def saveJSON(self, filename, content):
