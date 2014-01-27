@@ -483,7 +483,7 @@ class BotBase(object):
                 text = self.__nickname + text[1:]
             if text[0] in ['@', '!']:
                 text = text[1:]
-            if text[0:len(self.__nickname)].lower() == self.__nickname.lower() or :
+            if text[0:len(self.__nickname)].lower() == self.__nickname.lower():
                 text_without_nickname = text[(len(self.__nickname) + 1):]
                 if ' ' in text_without_nickname:
                     command, args = text_without_nickname.split(' ', 1)
