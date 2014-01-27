@@ -288,7 +288,7 @@ class BotBase(object):
             self.log.debug('Content is unicode: %s' % (content))
             unicode_content = content
         else:
-            self.log.debug('Content is no string: %s' % (content))
+            self.log.warning('Content is no string: %s' % (content))
             unicode_content = content
 
         return unicode_content.encode('ascii', 'xmlcharrefreplace')
