@@ -298,7 +298,7 @@ class BotBase(object):
                         newText += cgi.escape(unicode(str(line), "utf-8")).encode('ascii', 'xmlcharrefreplace') + '<br />'
             else:
                 if allowHtml:
-                    ewText = cgi.escape(unicode(str(text), "utf-8"))
+                    newText = cgi.escape(unicode(str(text), "utf-8"))
                 else:
                     newText = cgi.escape(unicode(str(text), "utf-8")).encode('ascii', 'xmlcharrefreplace')
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
