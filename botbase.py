@@ -265,12 +265,12 @@ class BotBase(object):
 
     def send_simple_reply(self, mess, text, private=False):
         """Send a simple response to a message"""
-        self.send_message(self.build_reply(mess, text, private))
+        self.send_message(self.build_reply(mess, text, private, True))
 
-    def build_reply(self, mess, text=None, private=False):
+    def build_reply(self, mess, text=None, private=False, allowHtml=False):
         """Build a message for responding to another message.
         Message is NOT sent"""
-        response = self.build_message(text)
+        response = self.build_message(text, allowHtml)
         if private:
             response.setTo(mess.getFrom())
             response.setType('chat')
@@ -280,7 +280,7 @@ class BotBase(object):
         response.setThread(mess.getThread())
         return response
 
-    def build_message(self, text):
+    def build_message(self, text, allowHtml=False):
         """Builds an xhtml message without attributes.
         If input is not valid xhtml-im fallback to normal."""
         message = None # init message variable
@@ -290,10 +290,17 @@ class BotBase(object):
         if self.text_color:
             if isinstance(text, list):
                 newText = ""
-                for line in text:
-                    newText += cgi.escape(unicode(str(line), "utf-8")).encode('ascii', 'xmlcharrefreplace') + '<br />'
+                if allowHtml:
+                    for line in text:
+                        newText += cgi.escape(unicode(str(line), "utf-8")) + '<br />'
+                else:
+                    for line in text:
+                        newText += cgi.escape(unicode(str(line), "utf-8")).encode('ascii', 'xmlcharrefreplace') + '<br />'
             else:
-                newText = cgi.escape(unicode(str(text), "utf-8")).encode('ascii', 'xmlcharrefreplace')
+                if allowHtml:
+                    ewText = cgi.escape(unicode(str(text), "utf-8"))
+                else:
+                    newText = cgi.escape(unicode(str(text), "utf-8")).encode('ascii', 'xmlcharrefreplace')
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
             # message = xmpp.protocol.Message(body=text_plain)

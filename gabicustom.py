@@ -132,7 +132,7 @@ class GabiCustom(BotBase):
                 pass
 
             if htmlTitle:
-                self.send_simple_reply(mess, _("URL title from {0}: {1} ({2})").format(username, htmlTitle, url))
+                self.send_simple_reply(mess, _("URL title from {0}: <a href='{2}' target='_blank'>{1}</a>").format(username, htmlTitle, url))
 
             if writer == None:
                 handler = self.get_handler_csv_urls_write()

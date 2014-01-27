@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-24 15:23+0100\n"
+"POT-Creation-Date: 2014-01-27 08:42+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: English <aegnor@mittelerde.ch>\n"
@@ -16,56 +16,56 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: botbase.py:639
+#: botbase.py:646
 msgid "1 second"
 msgstr ""
 
-#: botbase.py:641 gabicustom.py:502
+#: botbase.py:648 gabicustom.py:502
 #, python-brace-format
 msgid "{0} seconds"
 msgstr ""
 
-#: botbase.py:644
+#: botbase.py:651
 msgid "1 minute"
 msgstr ""
 
-#: botbase.py:646
+#: botbase.py:653
 #, python-brace-format
 msgid "{0} minutes"
 msgstr ""
 
-#: botbase.py:649
+#: botbase.py:656
 msgid "1 hour"
 msgstr ""
 
-#: botbase.py:651
+#: botbase.py:658
 #, python-brace-format
 msgid "{0} hours"
 msgstr ""
 
-#: botbase.py:654
+#: botbase.py:661
 msgid "1 day"
 msgstr ""
 
-#: botbase.py:656
+#: botbase.py:663
 #, python-brace-format
 msgid "{0} days"
 msgstr ""
 
-#: botbase.py:659
+#: botbase.py:666
 msgid "1 week"
 msgstr ""
 
-#: botbase.py:661
+#: botbase.py:668
 #, python-brace-format
 msgid "{0} weeks"
 msgstr ""
 
-#: botbase.py:664
+#: botbase.py:671
 msgid "1 year"
 msgstr ""
 
-#: botbase.py:666
+#: botbase.py:673
 #, python-brace-format
 msgid "{0} years"
 msgstr ""
@@ -106,7 +106,7 @@ msgstr ""
 
 #: gabicustom.py:135
 #, python-brace-format
-msgid "URL title from {0}: {1} ({2})"
+msgid "URL title from {0}: <a href='{2}' target='_blank'>{1}</a>"
 msgstr ""
 
 #: gabicustom.py:180
