@@ -292,15 +292,18 @@ class BotBase(object):
                 newText = ""
                 if allowHtml:
                     for line in text:
-                        newText += cgi.escape(unicode(str(line), "utf-8")).encode('ascii') + '<br />'
+                        newText += line + '<br />'
                 else:
                     for line in text:
                         newText += cgi.escape(unicode(str(line), "utf-8")).encode('ascii', 'xmlcharrefreplace') + '<br />'
             else:
                 if allowHtml:
-                    newText = cgi.escape(unicode(str(text), "utf-8")).encode('ascii')
+                    newText = text
                 else:
                     newText = cgi.escape(unicode(str(text), "utf-8")).encode('ascii', 'xmlcharrefreplace')
+
+
+            print newText
             # Create body w stripped tags for reciptiens w/o xhtml-abilities
             # FIXME unescape &quot; etc.
             # message = xmpp.protocol.Message(body=text_plain)
