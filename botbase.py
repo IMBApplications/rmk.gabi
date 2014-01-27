@@ -281,14 +281,14 @@ class BotBase(object):
         """Encodes the text as needed"""
         # cgi.escape(unicode(str(line), "utf-8")).encode('ascii', 'xmlcharrefreplace')  #nohtml
         if isinstance(content, str):
-            self.log.warning('Content is string: %s' % (content))
+            self.log.debug('Content is string: %s' % (content))
             unicode_content = content.decode('utf-8')
 
         elif isinstance(content, unicode):
-            self.log.warning('Content is unicode: %s' % (content))
+            self.log.debug('Content is unicode: %s' % (content))
             unicode_content = content
         else:
-            self.log.warning('Content is no string: %s' % (content))
+            self.log.debug('Content is no string: %s' % (content))
             unicode_content = content
 
         return unicode_content.encode('ascii', 'xmlcharrefreplace')
