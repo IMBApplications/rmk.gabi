@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-27 09:48+0100\n"
+"POT-Creation-Date: 2014-01-27 09:54+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: English <aegnor@mittelerde.ch>\n"
@@ -16,74 +16,74 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: botbase.py:85
+#: botbase.py:79
 msgid ""
 "Hey there. You are not yet on my roster. Authorize my request and I will do "
 "the same."
 msgstr ""
 
-#: botbase.py:86
+#: botbase.py:80
 msgid "You did not authorize my subscription request. Access denied."
 msgstr ""
 
-#: botbase.py:87
+#: botbase.py:81
 msgid "Type help <command name> to get more info about that specific command."
 msgstr ""
 
-#: botbase.py:88
+#: botbase.py:82
 msgid "That command is not defined."
 msgstr ""
 
-#: botbase.py:664
+#: botbase.py:658
 msgid "1 second"
 msgstr ""
 
-#: botbase.py:666 gabicustom.py:502
+#: botbase.py:660 gabicustom.py:502
 #, python-brace-format
 msgid "{0} seconds"
 msgstr ""
 
-#: botbase.py:669
+#: botbase.py:663
 msgid "1 minute"
 msgstr ""
 
-#: botbase.py:671
+#: botbase.py:665
 #, python-brace-format
 msgid "{0} minutes"
 msgstr ""
 
-#: botbase.py:674
+#: botbase.py:668
 msgid "1 hour"
 msgstr ""
 
-#: botbase.py:676
+#: botbase.py:670
 #, python-brace-format
 msgid "{0} hours"
 msgstr ""
 
-#: botbase.py:679
+#: botbase.py:673
 msgid "1 day"
 msgstr ""
 
-#: botbase.py:681
+#: botbase.py:675
 #, python-brace-format
 msgid "{0} days"
 msgstr ""
 
-#: botbase.py:684
+#: botbase.py:678
 msgid "1 week"
 msgstr ""
 
-#: botbase.py:686
+#: botbase.py:680
 #, python-brace-format
 msgid "{0} weeks"
 msgstr ""
 
-#: botbase.py:689
+#: botbase.py:683
 msgid "1 year"
 msgstr ""
 
-#: botbase.py:691
+#: botbase.py:685
 #, python-brace-format
 msgid "{0} years"
 msgstr ""
