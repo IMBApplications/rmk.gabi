@@ -13,7 +13,7 @@ from gabihelp import GabiHelp
 import urllib
 import urllib2
 import json
-import locale
+
 
 # locale.format("%.2f", -2134.98, grouping = True)
 
@@ -37,7 +37,7 @@ class GabiStarCitizen(BotBase):
     @botcmd
     def fundstat(self, mess, args):
         """Star Citizen Crowdfunding stats"""
-        locale.setlocale(locale.LC_NUMERIC, self.localization)
+        locale.setlocale(locale.LC_ALL, '')
 
         url = 'https://robertsspaceindustries.com/api/stats/getCrowdfundStats'
         values = {'fans' : 'true',
