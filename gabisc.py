@@ -20,8 +20,8 @@ class GabiStarCitizen(BotBase):
         """Star Citizen Crowdfunding stats"""
 
         url = 'https://robertsspaceindustries.com/api/stats/getCrowdfundStats'
-        values = {'chart' : 'day',
-                  'fans' : 'true',
+        values = {'fans' : 'true',
+                  'funds' : 'true',
                   'alpha_slots' : 'true' }
 
         data = urllib.urlencode(values)
