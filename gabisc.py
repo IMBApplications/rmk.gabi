@@ -30,7 +30,7 @@ class GabiStarCitizen(BotBase):
         response = urllib2.urlopen(req)
 
         try:
-            data = json.reads(response.read())
+            data = json.dumps(response.read())
         except Exception as e:
             self.log.warning("ERROR fetching data from %s: %s" % (url, e))
             self.send_simple_reply(mess, "ERROR fetching data from %s" % url)
