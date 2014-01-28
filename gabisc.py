@@ -14,12 +14,22 @@ import urllib
 import urllib2
 import json
 import locale
-import feedparser
+
+try:
+    import feedparser
+except ImportError:
+    print >> sys.stderr, """
+    You need to install feedparser from https://code.google.com/p/feedparser/.
+    On Debian-based systems, install the python-feedparser package.
+    """
+    sys.exit(-1)
+
 import cgi
 from time import mktime
 from datetime import datetime
 
-# debian: apt-get install python-feedparser
+timeout = 5
+socket.setdefaulttimeout(timeout)
 
 from xml.dom.minidom import parse
 
@@ -59,6 +69,7 @@ class GabiStarCitizen(BotBase):
 
     @botcmd
     def scnews(self, mess, args):
+        """Star Citizen News"""
         url = 'https://robertsspaceindustries.com/comm-link/rss'
         feedData = []
         try:

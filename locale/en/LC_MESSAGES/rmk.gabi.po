@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-28 14:38+0100\n"
+"POT-Creation-Date: 2014-01-28 14:57+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: English <aegnor@mittelerde.ch>\n"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "1 second"
 msgstr ""
 
-#: botbase.py:650 gabicustom.py:562
+#: botbase.py:650 gabicustom.py:592
 #, python-brace-format
 msgid "{0} seconds"
 msgstr ""
@@ -251,110 +251,115 @@ msgstr ""
 msgid "{0}\t\"{1}\" set by \"{2}\" has been removed."
 msgstr ""
 
-#: gabicustom.py:474
+#: gabicustom.py:478
+#, python-brace-format
+msgid "{0} {1}: <a href='{2}'>{3}</a>"
+msgstr ""
+
+#: gabicustom.py:504
 #, python-brace-format
 msgid "Now: {0}"
 msgstr ""
 
-#: gabicustom.py:484 gabicustom.py:593
+#: gabicustom.py:514 gabicustom.py:623
 #, python-brace-format
 msgid "{0} ago: {1}"
 msgstr ""
 
-#: gabicustom.py:490
+#: gabicustom.py:520
 #, python-brace-format
 msgid "Today: {0} from {1}"
 msgstr ""
 
-#: gabicustom.py:495
+#: gabicustom.py:525
 #, python-brace-format
 msgid "{0} years ago: {1}"
 msgstr ""
 
-#: gabicustom.py:505
+#: gabicustom.py:535
 #, python-brace-format
 msgid "In {0} years: {1}"
 msgstr ""
 
-#: gabicustom.py:533
+#: gabicustom.py:563
 #, python-brace-format
 msgid "Tomorrow: {0}"
 msgstr ""
 
-#: gabicustom.py:535 gabicustom.py:541
+#: gabicustom.py:565 gabicustom.py:571
 #, python-brace-format
 msgid "In {0} days: {1}"
 msgstr ""
 
-#: gabicustom.py:537
+#: gabicustom.py:567
 #, python-brace-format
 msgid "In 1 week: {0}"
 msgstr ""
 
-#: gabicustom.py:539
+#: gabicustom.py:569
 #, python-brace-format
 msgid "In {0} weeks: {1}"
 msgstr ""
 
-#: gabicustom.py:564
+#: gabicustom.py:594
 msgid "minute"
 msgstr ""
 
-#: gabicustom.py:564
+#: gabicustom.py:594
 msgid "minutes"
 msgstr ""
 
-#: gabicustom.py:568
+#: gabicustom.py:598
 msgid "hour"
 msgstr ""
 
-#: gabicustom.py:568
+#: gabicustom.py:598
 msgid "hours"
 msgstr ""
 
-#: gabicustom.py:572
+#: gabicustom.py:602
 msgid "day"
 msgstr ""
 
-#: gabicustom.py:572
+#: gabicustom.py:602
 msgid "days"
 msgstr ""
 
-#: gabicustom.py:576
+#: gabicustom.py:606
 msgid "week"
 msgstr ""
 
-#: gabicustom.py:576
+#: gabicustom.py:606
 msgid "weeks"
 msgstr ""
 
-#: gabicustom.py:580
+#: gabicustom.py:610
 msgid "month"
 msgstr ""
 
-#: gabicustom.py:580
+#: gabicustom.py:610
 msgid "months"
 msgstr ""
 
-#: gabicustom.py:584
+#: gabicustom.py:614
 msgid "year"
 msgstr ""
 
-#: gabicustom.py:584
+#: gabicustom.py:614
 msgid "years"
 msgstr ""
 
-#: gabicustom.py:589
+#: gabicustom.py:619
 #, python-brace-format
 msgid "Now! {0}"
 msgstr ""
 
-#: gabicustom.py:591
+#: gabicustom.py:621
 #, python-brace-format
 msgid "In {0}: {1}"
 msgstr ""
 
-#: gabicustom.py:591 gabicustom.py:593
+#: gabicustom.py:621 gabicustom.py:623
 msgid " or "
 msgstr ""
 
@@ -437,22 +442,17 @@ msgstr ""
 msgid "Available commands:"
 msgstr ""
 
-#: gabilog.py:34
-#, python-brace-format
-msgid "{0} {1}: <a href='{2}'>{3}</a>"
-msgstr ""
-
-#: gabisc.py:57
+#: gabisc.py:67
 #, python-format, python-brace-format
 msgid "${0} ({1}%%) raised of {2} ({3}). {4} Star Citizens"
 msgstr ""
 
-#: gabisc.py:77
+#: gabisc.py:88
 #, python-brace-format
 msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2}</a>"
 msgstr ""
 
-#: gabisc.py:91
+#: gabisc.py:102
 #, python-brace-format
 msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2} {3}</a>"
 msgstr ""

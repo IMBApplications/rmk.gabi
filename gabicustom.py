@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import re
-# import csv
 import datetime
 import time
 import calendar
@@ -12,6 +11,7 @@ import collections
 import pytz
 import urllib2
 import socket
+import cgi
 
 timeout = 5
 socket.setdefaulttimeout(timeout)
@@ -449,8 +449,38 @@ class GabiCustom(BotBase):
             for (timestamp, longterm, user, message) in self.cowntdownList:
                 ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
 
-
         return ret_message
+
+    @botcmd
+    def urls (self, mess, args):
+        """Whispers you the last 20 URLs that where posted if no search term is supplied."""
+        retUrls = []
+        retMsg = []
+
+        count = 0
+        for (username, timestamp, url, title) in reversed(self.urlList):
+            if args in url or args in title:
+                retUrls.append((username, timestamp, url, title))
+                count += 1
+                if count >= 20:
+                    break
+
+        for (username, timestamp, url, title) in reversed(retUrls):
+            if not title:
+                title = cgi.escape(self.encode_message(url)).encode("ascii", "xmlcharrefreplace")
+            else:
+                title = self.encode_message(title).encode("ascii", "xmlcharrefreplace")
+            
+            username = self.encode_message(username).encode("ascii", "xmlcharrefreplace")
+            url = cgi.escape(self.encode_message(url)).encode("ascii", "xmlcharrefreplace")
+
+            try:
+                retMsg.append(_("{0} {1}: <a href='{2}'>{3}</a>").format(username, timestamp, url, title))
+            except Exception, e:
+                self.log.warning('Error while building URLS message with %s: %s' % (title, e))
+
+        self.send_simple_reply(mess, retMsg, True)
+
 
     """ Support Methods """
     def periodicCheckCount(self, mess):
