@@ -31,7 +31,9 @@ class GabiLog(BotBase):
             username = self.encode_message(username).encode("ascii", "xmlcharrefreplace")
             url = cgi.escape(self.encode_message(url)).encode("ascii", "xmlcharrefreplace")
 
-            print title
+            print "title: %s " % title
+            print "url:   %s " % url
+
             try:
                 #newTitle = cgi.escape(unicode(str(title), "utf-8"))
                 retMsg.append(_("{0} {1}: <a href='{2}'>{3}</a>").format(username, timestamp, url, title))
