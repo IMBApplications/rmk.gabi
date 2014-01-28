@@ -291,7 +291,7 @@ class BotBase(object):
             self.log.warning('Content is no string: %s' % (content))
             unicode_content = content
 
-        return unicode_content.encode('ascii', 'xmlcharrefreplace')
+        return unicode_content.encode('ascii', 'xmlcharrefreplace').encode('utf-8')
 
 
     def build_message(self, text):
@@ -322,7 +322,7 @@ class BotBase(object):
             # newText = self.encode_message(text)
             # newContent = newText.encode('utf-8')
             try:
-                span.addChild(xmpp.simplexml.XML2Node(text))
+                span.addChild(xmpp.simplexml.XML2Node(self.encode_message(text)))
                 # span.addChild(xmpp.simplexml.XML2Node(self.encode_message(text).encode('utf-8')))
             except Exception, e:
                 self.log.warning('Error while building XHTML message with %s: %s' % (text, e))
