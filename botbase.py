@@ -291,7 +291,7 @@ class BotBase(object):
             self.log.warning('Content is no string: %s' % (content))
             unicode_content = content
 
-        return unicode_content.encode('ascii', 'replace')
+        return unicode_content #.encode('ascii', 'replace')
 
 
     def build_message(self, text):
