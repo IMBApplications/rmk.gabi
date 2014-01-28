@@ -80,7 +80,7 @@ class GabiStarCitizen(BotBase):
             entryPublished = cgi.escape(self.encode_message(entry.published)).encode("ascii", "xmlcharrefreplace")
             entryTitle = cgi.escape(self.encode_message(entry.title)).encode("ascii", "xmlcharrefreplace")
 
-            feedData.append(_("<a href='{0}' alt='{1}'>{1} {2}</a>").format(entryLink, entryDescription, entryPublished, entryTitle))
+            feedData.append(_("<a href='{0}' alt='{1}'>{2} {3}</a>").format(entryLink, entryDescription, entryPublished, entryTitle))
 
         print len(rss.entries)
 
