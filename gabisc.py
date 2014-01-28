@@ -88,9 +88,11 @@ class GabiStarCitizen(BotBase):
 
             feedData.append(_("<a href='{0}' alt='{1}'>{2} {3}</a>").format(entryLink, entryDescription, entryPublished, entryTitle))
 
-        feedData = reversed(feedData)
+        revData = []
+        for data in reversed(feedData):
+            revData.append(data) 
 
-        self.send_simple_reply(mess, feedHead + feedData)
+        self.send_simple_reply(mess, feedHead + revData)
 
 # ideas: google, image (google)
 # count redacted
