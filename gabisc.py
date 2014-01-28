@@ -3,6 +3,7 @@
 
 
 # https://robertsspaceindustries.com/api/stats/getCrowdfundStats
+# '{"chart":"day","fans":true,"funds":true,"alpha_slots":true}'
 
 
 from botbase import BotBase,botcmd
@@ -17,9 +18,17 @@ class GabiStarCitizen(BotBase):
     @botcmd
     def fundstat(self, mess, args):
         """Star Citizen Crowdfunding stats"""
-        req = urllib2.Request('https://robertsspaceindustries.com/api/stats/getCrowdfundStats')
-        response = urllib2.urlopen(req, data)
+
+        url = 'https://robertsspaceindustries.com/api/stats/getCrowdfundStats'
+        values = {'chart' : 'day',
+                  'fans' : 'true',
+                  'alpha_slots' : 'true' }
+
+        data = urllib.urlencode(values)
+        req = urllib2.Request(url, data)
+        response = urllib2.urlopen(req)
         the_page = response.read()
+
         print the_page
         # self.send_simple_reply(mess, the_page)
 
