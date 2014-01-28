@@ -28,6 +28,7 @@ class GabiLog(BotBase):
             
                 # title = self.encode_message(title).encode('ascii', 'xmlcharrefreplace')
             title = self.encode_message(title).encode("ascii", "xmlcharrefreplace")
+            url = self.encode_message(url).encode("ascii", "xmlcharrefreplace")
             username = self.encode_message(username).encode("ascii", "xmlcharrefreplace")
 
             try:
