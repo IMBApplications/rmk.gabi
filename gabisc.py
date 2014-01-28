@@ -71,13 +71,11 @@ class GabiStarCitizen(BotBase):
 
     @botcmd
     def scnews(self, mess, args):
-        try:
-            rss = self.fetch_rss('https://robertsspaceindustries.com/comm-link/rss')
-        except Exception as e:
+        rss = self.fetch_rss('https://robertsspaceindustries.com/comm-link/rss')
+        if not rss:
             self.log.warning("ERROR fetching XML data (%s)" % e)
             self.send_simple_reply(mess, "ERROR fetching or parsing RSS feed")
             return
-
         
         item_node = rss.getElementsByTagName("title") 
         print item_node
