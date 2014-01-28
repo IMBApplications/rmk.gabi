@@ -56,11 +56,24 @@ class GabiStarCitizen(BotBase):
 
     @botcmd
     def scnews(self, mess, args):
-        rss = feedparser.parse('https://robertsspaceindustries.com/comm-link/rss')
+        url = 'https://robertsspaceindustries.com/comm-link/rss'
+        feedData = []
+        try:
+            rss = feedparser.parse(url)
+
+        except Exception as e:
+            self.log.warning("ERROR fetching RSS data from %s: %s" % (url, e))
+            self.send_simple_reply(mess, "ERROR fetching RSS data from %s" % url)
+            return
+
+        count = 0
+        feedData.append("<a href='{0}' alt='{1}'>{2}</a>").format(rss.feed.linkr, rss.feed.scription, ss.feed.title)
+        for feed.entries as entry:
+            feedData.append("<a href='{0}' alt='{1}'>{1} {2}</a>").format(entry.link, entry.description, entry.published, entry.title)
 
         print len(rss.entries)
 
-        pass
+        self.send_simple_reply(mess, feedData)
 
 # ideas: google, image (google)
 # count redacted
