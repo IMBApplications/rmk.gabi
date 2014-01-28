@@ -247,11 +247,11 @@ class BotBase(object):
 
     def send_message(self, mess):
         """Send an XMPP message"""
+        self.messageCount += 1
         self.connect().send(mess)
 
     def send(self, user, text, in_reply_to=None, message_type='chat'):
         """Sends a simple message to the specified user."""
-        self.messageCount += 1
         mess = self.build_message(text)
         mess.setTo(user)
 
