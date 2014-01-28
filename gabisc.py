@@ -83,9 +83,10 @@ class GabiStarCitizen(BotBase):
 
             entryLink = cgi.escape(self.encode_message(entry.link)).encode("ascii", "xmlcharrefreplace")
             entryDescription = cgi.escape(self.encode_message(entry.description)).encode("ascii", "xmlcharrefreplace")
-            entryPublished = cgi.escape(self.encode_message(entry.published)).encode("ascii", "xmlcharrefreplace")
             entryTitle = cgi.escape(self.encode_message(entry.title)).encode("ascii", "xmlcharrefreplace")
 
+            entryPublished = _("{0}.{1}.{2} {3}:{4}:{5}").format(entry.published_parsed)
+            
             feedData.append(_('<a href="{0}" alt="{1}">{2} {3}</a>').format(entryLink, entryDescription, entryPublished, entryTitle))
 
         revData = []
