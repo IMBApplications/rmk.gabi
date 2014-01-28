@@ -13,6 +13,11 @@ from gabihelp import GabiHelp
 import urllib
 import urllib2
 import json
+import locale
+
+# locale.setlocale(locale.LC_NUMERIC, "german")
+locale.format("%.2f", -2134.98, grouping = True)
+
 # from xml.dom.minidom import parse
 
 class GabiStarCitizen(BotBase):
@@ -40,13 +45,13 @@ class GabiStarCitizen(BotBase):
                   'alpha_slots' : 'true' }
         data = self.fetch_json(url, values)
 
-        raised = data['data']['funds']
+        raised = locale.format("%.0f", data['data']['funds'], grouping = True)
         percentage = data['data']['next_goal']['percentage']
         goal = data['data']['next_goal']['goal']
         goalTitle = data['data']['next_goal']['title']
         fans = data['data']['fans']
 
-        the_page = _('{0}$ raised {1}%% of {2} ({3}). Star Citizens: {4}').format(raised, percentage, goalTitle, goal, fans)
+        the_page = _('{0}$ raised! {1}%% of {2} ({3}). Star Citizens: {4}').format(raised, percentage, goalTitle, goal, fans)
         print data
         self.send_simple_reply(mess, the_page)
 
