@@ -16,15 +16,7 @@ import json
 # from xml.dom.minidom import parse
 
 class GabiStarCitizen(BotBase):
-    @botcmd
-    def fundstat(self, mess, args):
-        """Star Citizen Crowdfunding stats"""
-
-        url = 'https://robertsspaceindustries.com/api/stats/getCrowdfundStats'
-        values = {'fans' : 'true',
-                  'funds' : 'true',
-                  'alpha_slots' : 'true' }
-
+    def fetch_json(self, url, values):
         data = urllib.urlencode(values)
         req = urllib2.Request(url, data)
         response = urllib2.urlopen(req)
@@ -35,7 +27,26 @@ class GabiStarCitizen(BotBase):
             self.log.warning("ERROR fetching data from %s: %s" % (url, e))
             self.send_simple_reply(mess, "ERROR fetching data from %s" % url)
 
-        the_page = "<table width='100%'><tr><td width='40%' style='background-color:#40FF00'></td><td width='60%' style='background-color:#FF0000'></td></tr></table>"
+        return data        
+
+
+    @botcmd
+    def fundstat(self, mess, args):
+        """Star Citizen Crowdfunding stats"""
+
+        url = 'https://robertsspaceindustries.com/api/stats/getCrowdfundStats'
+        values = {'fans' : 'true',
+                  'funds' : 'true',
+                  'alpha_slots' : 'true' }
+        data = self.fetch_json(url, values)
+
+        raised = data['data']['funds']
+        percentage = data['data']['next_goal']['percentage']
+        goal = data['data']['next_goal']['goal']
+        goalTitle = data['data']['next_goal']['title']
+        fans = data['data']['fans']
+
+        the_page = _('{0}$ raised {1}%% of {2} ({3}). Star Citizens: {4}').format(raised, percentage, goalTitle, goal, fans)
         print data
         self.send_simple_reply(mess, the_page)
 
