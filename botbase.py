@@ -307,7 +307,7 @@ class BotBase(object):
         html_message = ""
 
         if isinstance(text, list):
-            html_message = '<br />\n'.join(text)
+            html_message = '<br />'.join(text)
         else:
             html_message = text
 
