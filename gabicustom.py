@@ -239,8 +239,8 @@ class GabiCustom(BotBase):
                     if (int(time.time()) - age) > self.afkRejoinTime:
                         hallo.append(_('Welcome back {0}, i saw you last {1} ago.').format(user, self.getAge(age)))
                 else:
-                    hallo.append(_('Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter.').format(user, self.__nickname))
-                    hallo.append(_('Enter "{0} help" for help.').format(self.__nickname))
+                    hallo.append(_('Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter.').format(user, self.nickname))
+                    hallo.append(_('Enter "{0} help" for help.').format(self.nickname))
 
                 if user in self.afkDict:
                     hallo.append(_("How was {0}?").format(self.afkDict[user]))
@@ -420,8 +420,8 @@ class GabiCustom(BotBase):
                 else:
                     args = []
                     ret_message.append(_("You have to enter time/date and an event. Examples:"))
-                    ret_message.append(_("{0} count add 18:15 It is a quarter past 6").format(self.__nickname))
-                    ret_message.append(_("{0} count add 31.12.2014 23:59 The old year is history").format(self.__nickname))
+                    ret_message.append(_("{0} count add 18:15 It is a quarter past 6").format(self.nickname))
+                    ret_message.append(_("{0} count add 31.12.2014 23:59 The old year is history").format(self.nickname))
         elif args[0].lower() == "list":
             ret_message = [_('The following counts are set:')]
             count = 0
@@ -433,7 +433,7 @@ class GabiCustom(BotBase):
             if count == 0:
                 ret_message = [_('There are no counts saved.')]
         elif args[0].lower() == "del":
-            ret_message = [_("Unknown index. Please specify a valid index: ({0} count list).").format(self.__nickname)]
+            ret_message = [_("Unknown index. Please specify a valid index: ({0} count list).").format(self.nickname)]
             try:
                 delIndex = int(args[1]) - 1
                 if delIndex >= 0:

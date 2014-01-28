@@ -40,7 +40,7 @@ class BotBase(object):
         self.log = logging.getLogger(__name__)
         self.__username = username
         self.__password = password
-        self.__nickname = nickname
+        self.nickname = nickname
         self.timezone = timezone
         self.jid = xmpp.JID(self.__username)
         self.res = (res or self.__class__.__name__)
@@ -85,7 +85,7 @@ class BotBase(object):
     ########## Save / Load Functions ##########
     def saveJSON(self, filename, content):
         """Saves the given content to the given filename as JSON"""
-        dstfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.__nickname.lower() + '_' + filename)
+        dstfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.nickname.lower() + '_' + filename)
         try:
             file = open(dstfile, 'w')
             file.write(json.dumps(content))
@@ -96,7 +96,7 @@ class BotBase(object):
 
     def loadJSON(self, filename, default):
         """Loads content from the given filename as JSON. If no file could be read, it returns the default."""
-        dstfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.__nickname.lower() + '_' + filename)
+        dstfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.nickname.lower() + '_' + filename)
         try:
             file = open(dstfile, 'r')
             # self.cron_list = self.utils.convert_from_unicode(json.loads(file.read()))
@@ -140,15 +140,15 @@ class BotBase(object):
 
     # This must become private!
     def get_csv_admin_users_handler(self):
-        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.__nickname.lower() + '_admins.csv'), 'rb')
+        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.nickname.lower() + '_admins.csv'), 'rb')
 
     # This must become private!
     def get_handler_csv_urls_write(self):
-        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.__nickname.lower() + '_urls.csv'), 'ab')
+        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.nickname.lower() + '_urls.csv'), 'ab')
 
     # This must become private!
     def get_handler_csv_urls_read(self):
-        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.__nickname.lower() + '_urls.csv'), 'rb')
+        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.nickname.lower() + '_urls.csv'), 'rb')
 
     status_message = property(fget=__get_status, fset=__set_status)
     status_type = property(fget=__get_show, fset=__set_show)
@@ -229,7 +229,7 @@ class BotBase(object):
         If username is NOT provided fallback to node part of JID"""
         # TODO fix namespacestrings and history settings
         NS_MUC = 'http://jabber.org/protocol/muc'
-        username = self.__nickname
+        username = self.nickname
         if username is None:
         # TODO use xmpppy function getNode
             username = self.__username.split('@')[0]
@@ -471,11 +471,11 @@ class BotBase(object):
 
         if (jid_string != botname1) and (jid_string != botname2):
             if text[0] == '!':
-                text = self.__nickname + ' ' + text[1:]
+                text = self.nickname + ' ' + text[1:]
             if text[0] in ['@', '!']:
                 text = text[1:]
-            if text[0:len(self.__nickname)].lower() == self.__nickname.lower():
-                text_without_nickname = text[(len(self.__nickname) + 1):]
+            if text[0:len(self.nickname)].lower() == self.nickname.lower():
+                text_without_nickname = text[(len(self.nickname) + 1):]
                 if ' ' in text_without_nickname:
                     command, args = text_without_nickname.split(' ', 1)
                 else:
@@ -637,7 +637,7 @@ class BotBase(object):
         self.log.debug("{0} gone offline".format(jid))
 
     def get_my_username(self):
-        return self.__nickname
+        return self.nickname
 
     ###### Helper methods (mostly taken from JamesII https://github.com/oxivanisher/JamesII/blob/master/src/james/jamesutils.py) ########
     def getAge(self, timestamp):
