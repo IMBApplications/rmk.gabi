@@ -35,7 +35,7 @@ class GabiStarCitizen(BotBase):
             self.log.warning("ERROR fetching data from %s: %s" % (url, e))
             self.send_simple_reply(mess, "ERROR fetching data from %s" % url)
 
-        the_page = "<table width='100%'><tr><td width='40%' style='background-color:##40FF00'>&nbsp;</td><td width='60%' style='background-color:#FF0000'>&nbsp;</td></tr></table>"
+        the_page = "<table width='100%'><tr><td width='40%' style='background-color:##40FF00'>&nbsp;aa</td><td width='60%' style='background-color:#FF0000'>&nbsp;bb</td></tr></table>"
         print data
         self.send_simple_reply(mess, the_page)
 
