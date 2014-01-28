@@ -78,7 +78,7 @@ class BotBase(object):
 
         self.MSG_AUTHORIZE_ME = _('Hey there. You are not yet on my roster. Authorize my request and I will do the same.')
         self.MSG_NOT_AUTHORIZED = _('You did not authorize my subscription request. Access denied.')
-        self.MSG_HELP_TAIL = _('Type help <command name> to get more info about that specific command.')
+        self.MSG_HELP_TAIL = _('Type help *command name* to get more info about that specific command.')
         self.MSG_HELP_UNDEFINED_COMMAND = _('That command is not defined.')
 
     ########## Save / Load Functions ##########
