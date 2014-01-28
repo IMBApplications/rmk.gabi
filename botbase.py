@@ -477,7 +477,7 @@ class BotBase(object):
                 else:
                     command, args = text_without_nickname, ''
 
-                args = self.encode_message(args).decode('utf-8')
+                args = args.decode('ascii', 'replace')
 
                 cmd = command.lower()
 
