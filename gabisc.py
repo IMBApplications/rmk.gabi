@@ -67,9 +67,19 @@ class GabiStarCitizen(BotBase):
             return
 
         count = 0
-        feedData.append(_("<a href='{0}' alt='{1}'>{2}</a>").format(rss.feed.link, rss.feed.description, rss.feed.title))
+
+        feedLink = cgi.escape(self.encode_message(rss.feed.link)).encode("ascii", "xmlcharrefreplace")
+        feedDescription = cgi.escape(self.encode_message(rss.feed.description)).encode("ascii", "xmlcharrefreplace")
+        feedTitle = cgi.escape(self.encode_message(rss.feed.title)).encode("ascii", "xmlcharrefreplace")
+
+        feedData.append(_("<a href='{0}' alt='{1}'>{2}</a>").format(feedLink, feedDescription, feedTitle))
         for entry in rss.entries:
-            feedData.append(_("<a href='{0}' alt='{1}'>{1} {2}</a>").format(entry.link, entry.description, entry.published, entry.title))
+            entryLink = cgi.escape(self.encode_message(entry.link)).encode("ascii", "xmlcharrefreplace")
+            entryDescription = cgi.escape(self.encode_message(entry.description)).encode("ascii", "xmlcharrefreplace")
+            entryPublished = cgi.escape(self.encode_message(entry.published)).encode("ascii", "xmlcharrefreplace")
+            entryTitle = cgi.escape(self.encode_message(entry.title)).encode("ascii", "xmlcharrefreplace")
+
+            feedData.append(_("<a href='{0}' alt='{1}'>{1} {2}</a>").format(entryLink, entryDescription, entryPublished, entryTitle))
 
         print len(rss.entries)
 
