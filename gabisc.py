@@ -43,7 +43,7 @@ class GabiStarCitizen(BotBase):
             self.log.warning("ERROR fetching XML data from %s: %s" % (url, e))
 
         try:
-            dom = parseString(data)
+            dom = parse(data)
             return dom
         except e as Exception:
             self.log.warning("ERROR parsing XML data from %s: %s" % (url, e))
