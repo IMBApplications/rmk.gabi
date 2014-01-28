@@ -26,7 +26,8 @@ class GabiLog(BotBase):
             if not title:
                 title = url
             try:
-                newTitle = cgi.escape(unicode(str(title), "utf-8")).encode('ascii', 'xmlcharrefreplace')
+                #newTitle = cgi.escape(unicode(str(title), "utf-8"))
+                newTitle = self.encode_message(title).encode('ascii', 'xmlcharrefreplace')
                 retMsg.append(_("{0} {1}: <a href='{2}'>{3}</a>").format(username, timestamp, url, newTitle))
             except Exception, e:
                 self.log.warning('Error while building URLS message with %s: %s' % (newTitle, e))
