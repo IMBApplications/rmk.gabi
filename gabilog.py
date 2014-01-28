@@ -10,7 +10,6 @@ class GabiLog(BotBase):
     @botcmd
     def urls (self, mess, args):
         """Whispers you the last 20 URLs that where posted if no search term is supplied."""
-        # srcJid = mess.getFrom()
         retUrls = []
         retMsg = []
 
@@ -31,15 +30,9 @@ class GabiLog(BotBase):
             username = self.encode_message(username).encode("ascii", "xmlcharrefreplace")
             url = cgi.escape(self.encode_message(url)).encode("ascii", "xmlcharrefreplace")
 
-            print "title: %s " % title
-            print "url:   %s " % url
-
             try:
-                #newTitle = cgi.escape(unicode(str(title), "utf-8"))
                 retMsg.append(_("{0} {1}: <a href='{2}'>{3}</a>").format(username, timestamp, url, title))
             except Exception, e:
                 self.log.warning('Error while building URLS message with %s: %s' % (title, e))
 
-
-        # self.send(srcJid, "http://chat.mmojunkies.net/csv-viewer/index.php?file=urls.csv", None, 'chat')
         self.send_simple_reply(mess, retMsg, True)
