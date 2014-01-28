@@ -316,10 +316,10 @@ class BotBase(object):
             html_message = "<span style='color: #%s'>" % self.text_color + html_message + "</span>"
             html_message = "<body xmlns='http://www.w3.org/1999/xhtml'>" + html_message.encode('utf-8') + "</body>"
             html.addChild(node=xmpp.simplexml.XML2Node(html_message))
+            message.addChild(node=html)
             print html_message
         except Exception, e:
             self.log.warning('Error while building XHTML message with %s: %s' % (text, e))
-            message.addChild(node=html)
 
         return message
 
