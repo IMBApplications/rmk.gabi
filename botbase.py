@@ -322,7 +322,7 @@ class BotBase(object):
             # newText = self.encode_message(text)
             # newContent = newText.encode('utf-8')
             try:
-                print "encode_message: %s " % $self.encode_message(text)
+                print "encode_message: %s " % self.encode_message(text)
                 span.addChild(xmpp.simplexml.XML2Node(self.encode_message(text)))
                 # span.addChild(xmpp.simplexml.XML2Node(self.encode_message(text).encode('utf-8')))
             except Exception, e:
