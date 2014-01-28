@@ -297,6 +297,7 @@ class BotBase(object):
     def build_message(self, text):
         """Builds an xhtml message without attributes.
         If input is not valid xhtml-im fallback to normal."""
+        plain_message = text
         if isinstance(text, list):
             plain_message = '\n'.join(text)
         plain_message = re.sub(r'<[^>]+>', '', plain_message)
