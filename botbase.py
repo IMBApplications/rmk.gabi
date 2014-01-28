@@ -318,9 +318,8 @@ class BotBase(object):
             html_message = html_message.encode('utf-8')
             html.addChild(node=xmpp.simplexml.XML2Node(html_message))
             message.addChild(node=html)
-            print html_message
         except Exception, e:
-            self.log.warning('Error while building XHTML message with %s: %s' % (text, e))
+            self.log.warning('Error while building XHTML message with %s: %s' % (html_message, e))
 
         return message
 
