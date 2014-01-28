@@ -15,8 +15,8 @@ import urllib2
 import json
 import locale
 
-# locale.setlocale(locale.LC_NUMERIC, "german")
-locale.format("%.2f", -2134.98, grouping = True)
+locale.setlocale(locale.LC_NUMERIC, "german")
+# locale.format("%.2f", -2134.98, grouping = True)
 
 # from xml.dom.minidom import parse
 
@@ -52,7 +52,6 @@ class GabiStarCitizen(BotBase):
         fans = data['data']['fans']
 
         the_page = _('{0}$ raised! {1}%% of {2} ({3}). Star Citizens: {4}').format(raised, percentage, goalTitle, goal, fans)
-        print data
         self.send_simple_reply(mess, the_page)
 
 # ideas: google, image (google)
