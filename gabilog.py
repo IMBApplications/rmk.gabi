@@ -25,7 +25,7 @@ class GabiLog(BotBase):
         for (username, timestamp, url, title) in retUrls:
             if not title:
                 title = url
-            retMsg.append(_("{0} {1}: <a href='{2}'>{3}</a>").format(self.encode_message(username), timestamp, url, self.encode_message(title)))
+            retMsg.append(_("{0} {1}: <a href='{2}'>{3}</a>").format(username, timestamp, url, title))
 
 
         # self.send(srcJid, "http://chat.mmojunkies.net/csv-viewer/index.php?file=urls.csv", None, 'chat')
