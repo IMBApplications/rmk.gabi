@@ -30,7 +30,7 @@ class BotBase(object):
     AVAILABLE, AWAY, CHAT = None, 'away', 'chat'
     DND, XA, OFFLINE = 'dnd', 'xa', 'unavailable'
 
-    PING_FREQUENCY = 0 # Set to the number of seconds, e.g. 60.
+    PING_FREQUENCY = 30 # Set to the number of seconds, e.g. 60.
     PING_TIMEOUT = 2 # Seconds to wait for a response.
 
     ########## Constructor ##########   
@@ -57,7 +57,6 @@ class BotBase(object):
         self.text_color = text_color
         self.currentTopic = ""
         self.localization = "en"
-        self.PING_FREQUENCY = 30
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
