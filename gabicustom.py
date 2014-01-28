@@ -481,6 +481,16 @@ class GabiCustom(BotBase):
 
         self.send_simple_reply(mess, retMsg, True)
 
+    @botcmd
+    def mute(self, mess, args):
+        if self.muted:
+            self.muted = False
+            self.log.warning("WARNING now unmuted")
+            self.send_simple_reply(mess, _("I am now unmuted"))
+        else:
+            self.muted = True
+            self.log.warning("WARNING now muted")
+            self.send_simple_reply(mess, _("I am now muted"))
 
     """ Support Methods """
     def periodicCheckCount(self, mess):

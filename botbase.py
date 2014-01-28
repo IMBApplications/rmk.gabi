@@ -57,6 +57,7 @@ class BotBase(object):
         self.text_color = text_color
         self.currentTopic = ""
         self.localization = "en"
+        self.muted = False
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
@@ -240,7 +241,7 @@ class BotBase(object):
         self.readyTs = time.time()
 
     def quit(self):
-       self.__finished = True
+        self.__finished = True
 
     def send_message(self, mess):
         """Send an XMPP message"""
@@ -262,7 +263,11 @@ class BotBase(object):
 
     def send_simple_reply(self, mess, text, private=False):
         """Send a simple response to a message"""
-        self.send_message(self.build_reply(mess, text, private))
+        if not self.muted:
+            self.send_message(self.build_reply(mess, text, private))
+        else:
+            if private:
+                self.send_message(self.build_reply(mess, text, private))
 
     def build_reply(self, mess, text=None, private=False):
         """Build a message for responding to another message.
