@@ -14,6 +14,7 @@ import urllib
 import urllib2
 import json
 import locale
+import socket
 
 try:
     import feedparser
