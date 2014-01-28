@@ -281,11 +281,11 @@ class BotBase(object):
         """Encodes the text as needed"""
         # cgi.escape(unicode(str(line), "utf-8")).encode('ascii', 'xmlcharrefreplace')  #nohtml
         if isinstance(content, str):
-            self.log.debug('Content is string: %s' % (content))
+            self.log.warning('Content is string: %s' % (content))
             unicode_content = content.decode('utf-8')
 
         elif isinstance(content, unicode):
-            self.log.debug('Content is unicode: %s' % (content))
+            self.log.warning('Content is unicode: %s' % (content))
             unicode_content = content
         else:
             self.log.warning('Content is no string: %s' % (content))
@@ -322,7 +322,7 @@ class BotBase(object):
             # newText = self.encode_message(text)
             # newContent = newText.encode('utf-8')
             try:
-                print "encode_message: %s " % self.encode_message(text)
+                print "encode_message: %s " % $self.encode_message(text)
                 span.addChild(xmpp.simplexml.XML2Node(self.encode_message(text)))
                 # span.addChild(xmpp.simplexml.XML2Node(self.encode_message(text).encode('utf-8')))
             except Exception, e:
