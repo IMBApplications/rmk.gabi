@@ -483,6 +483,7 @@ class GabiCustom(BotBase):
 
     @botcmd
     def mute(self, mess, args):
+        """Mute or unmute"""
         if self.muted:
             self.muted = False
             self.log.warning("WARNING now unmuted")
