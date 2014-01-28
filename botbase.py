@@ -297,39 +297,19 @@ class BotBase(object):
     def build_message(self, text):
         """Builds an xhtml message without attributes.
         If input is not valid xhtml-im fallback to normal."""
-        message = None # init message variable
-        # Try to determine if text has xhtml-tags - TODO needs improvement
-        # text_plain = re.sub(r'<[^>]+>', '', text)
-        # if text_plain != text:
+        plain_message = re.sub(r'<[^>]+>', '', text)
+        message = xmpp.protocol.Message(body='\n'.join(plain_message))
 
-        # if isinstance(text, list):
-        #     newText = ""
-        #     for line in text:
-        #         newText += self.encode_message(line) + '<br />'
-        # else:
-        #     newText = self.encode_message(text)
-
-        # Create body w stripped tags for reciptiens w/o xhtml-abilities
-        # FIXME unescape &quot; etc.
-        # message = xmpp.protocol.Message(body=text_plain)
-
-        # Start creating a xhtml body
-
-        # try:
         html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
         body = xmpp.Node('body', {'xmlns': 'http://www.w3.org/1999/xhtml'})
         span = xmpp.Node('span', {'style': 'color: #%s' % self.text_color })
-        # message = xmpp.protocol.Message(body=text)
 
         # newText = newText.replace('\n', '<br / >')
         # if self.text_color:
             # newContent = "<span style='color: #%s'>" % self.text_color + newText.encode('utf-8') + "</span>"
 
-        # else:
         if isinstance(text, list):
-            # newText = ""
             for line in text:
-                # newText += self.encode_message(line) + '<br />'
                 try:
                     print type(line)
                     span.addChild(xmpp.simplexml.XML2Node(self.encode_message(line + '<br />').encode('utf-8')))
@@ -345,25 +325,10 @@ class BotBase(object):
                 self.log.warning('Error while building XHTML message with %s: %s' % (text, e))
                 message = None
 
-        # html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
-        # html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
+        body.addChild(node=span)
+        html.addChild(node=body)
 
-        # except Exception, e:
-        #     # Didn't work, incorrect markup or something.
-        #     self.log.warning('Error while building XHTML message: %s' % e)
-        #     # Fallback - don't sanitize invalid input. User is responsible!
-        #     message = None
-
-        if message is None:
-        # Normal body
-            if isinstance(text, list):
-                text = '\n'.join(text)
-            message = xmpp.protocol.Message(body=text)
-        else:
-            body.addChild(node=span)
-            html.addChild(node=body)
-            message = xmpp.protocol.Message(body=html)
-            # message.addChild(node=html)
+        # html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
         return message
 
     def broadcast(self, message, only_available=False):
