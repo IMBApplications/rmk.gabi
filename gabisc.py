@@ -72,7 +72,7 @@ class GabiStarCitizen(BotBase):
         feedLink = cgi.escape(self.encode_message(rss.feed.link)).encode("ascii", "xmlcharrefreplace")
         feedDescription = cgi.escape(self.encode_message(rss.feed.description)).encode("ascii", "xmlcharrefreplace")
         feedTitle = cgi.escape(self.encode_message(rss.feed.title)).encode("ascii", "xmlcharrefreplace")
-        feedHead = [_("<a href='{0}' alt='{1}'>{2}</a>").format(feedLink, feedDescription, feedTitle)]
+        feedHead = [_('<a href="{0}" alt="{1}">{2}</a>').format(feedLink, feedDescription, feedTitle)]
 
         count = 0
         for entry in rss.entries:
@@ -86,7 +86,7 @@ class GabiStarCitizen(BotBase):
             entryPublished = cgi.escape(self.encode_message(entry.published)).encode("ascii", "xmlcharrefreplace")
             entryTitle = cgi.escape(self.encode_message(entry.title)).encode("ascii", "xmlcharrefreplace")
 
-            feedData.append(_("<a href='{0}' alt='{1}'>{2} {3}</a>").format(entryLink, entryDescription, entryPublished, entryTitle))
+            feedData.append(_('<a href="{0}" alt="{1}">{2} {3}</a>').format(entryLink, entryDescription, entryPublished, entryTitle))
 
         revData = []
         for data in reversed(feedData):
