@@ -14,8 +14,9 @@ import urllib
 import urllib2
 import json
 import locale
+import feedparser
 
-# locale.format("%.2f", -2134.98, grouping = True)
+# debian: apt-get install python-feedparser
 
 from xml.dom.minidom import parse
 
@@ -32,22 +33,6 @@ class GabiStarCitizen(BotBase):
             self.send_simple_reply(mess, "ERROR fetching JSON data from %s" % url)
 
         return data        
-
-    def fetch_rss(self, url):
-        req = urllib2.Request(url)
-        response = urllib2.urlopen(req)
-
-        try:
-            data = response.read()
-        except Exception as e:
-            self.log.warning("ERROR fetching XML data from %s: %s" % (url, e))
-
-        try:
-            dom = parse(data)
-            return dom
-        except Exception as e:
-            self.log.warning("ERROR parsing XML data from %s: %s" % (url, e))
-            return None
 
     @botcmd
     def scfunding(self, mess, args):
@@ -71,14 +56,10 @@ class GabiStarCitizen(BotBase):
 
     @botcmd
     def scnews(self, mess, args):
-        rss = self.fetch_rss('https://robertsspaceindustries.com/comm-link/rss')
-        if not rss:
-            self.log.warning("ERROR fetching XML data")
-            self.send_simple_reply(mess, "ERROR fetching or parsing RSS feed")
-            return
-        
-        item_node = rss.getElementsByTagName("title") 
-        print item_node
+        rss = feedparser.parse('https://robertsspaceindustries.com/comm-link/rss')
+
+        print len(rss.entries)
+
         pass
 
 # ideas: google, image (google)
