@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-28 21:44+0100\n"
+"POT-Creation-Date: 2014-01-28 22:21+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: German <aegnor@mittelerde.ch>\n"
@@ -60,8 +60,8 @@ msgstr ""
 "Kontakter."
 
 #: gabicustom.py:243
-msgid "Enter \"{0} help\" for help."
-msgstr "Gib \"{0} help\" ein für hilfe."
+msgid "Enter \"{0} help\" or \"!help\" for help."
+msgstr "Gib \"{0} help\" oder \"!help\" ein für hilfe."
 
 #: gabicustom.py:246
 msgid "How was {0}?"
@@ -168,103 +168,115 @@ msgstr "Ich bin jetzt Stumm."
 msgid "I am now muted."
 msgstr "Ich bin nicht mehr Stumm."
 
-#: gabicustom.py:515
+#: gabicustom.py:499
+msgid ""
+"I am {0}, a chatbot. If you like to know more, visit: <a href='https://"
+"github.com/IMBApplications/rmk.gabi' target='_blank'> https://github.com/"
+"IMBApplications/rmk.gabi</a>. My creator is oxi if you like to talk to him "
+"about me."
+msgstr ""
+"Ich bin {0}, ein Chatbot. Wenn du mehr wissen möchtest, besuche <a "
+"href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> https://"
+"github.com/IMBApplications/rmk.gabi</a>. Mein Erfinder ist oxi, falls du mit "
+"ihm über mich sprechen willst."
+
+#: gabicustom.py:521
 msgid "Now: {0}"
 msgstr "Jetzt: {0}"
 
-#: gabicustom.py:525 gabicustom.py:634
+#: gabicustom.py:531 gabicustom.py:640
 msgid "{0} ago: {1}"
 msgstr "Vor {0}: {1}"
 
-#: gabicustom.py:531
+#: gabicustom.py:537
 msgid "Today: {0} from {1}"
 msgstr "Heute: {0} von {1}"
 
-#: gabicustom.py:536
+#: gabicustom.py:542
 msgid "{0} years ago: {1}"
 msgstr "Vor {0} Jahren: {1}"
 
-#: gabicustom.py:546
+#: gabicustom.py:552
 msgid "In {0} years: {1}"
 msgstr "In {0} Jahren: {1}"
 
-#: gabicustom.py:574
+#: gabicustom.py:580
 msgid "Tomorrow: {0}"
 msgstr "Morgen: {0}"
 
-#: gabicustom.py:576 gabicustom.py:582
+#: gabicustom.py:582 gabicustom.py:588
 msgid "In {0} days: {1}"
 msgstr "In {0} Tagen: {1}"
 
-#: gabicustom.py:578
+#: gabicustom.py:584
 msgid "In 1 week: {0}"
 msgstr "In 1 Woche: {0}"
 
-#: gabicustom.py:580
+#: gabicustom.py:586
 msgid "In {0} weeks: {1}"
 msgstr "In {0} Wochen: {1}"
 
-#: gabicustom.py:603 botbase.py:655
+#: gabicustom.py:609 botbase.py:655
 msgid "{0} seconds"
 msgstr "{0} Sekunden"
 
-#: gabicustom.py:605
+#: gabicustom.py:611
 msgid "minute"
 msgstr "Minute"
 
-#: gabicustom.py:605
+#: gabicustom.py:611
 msgid "minutes"
 msgstr "Minuten"
 
-#: gabicustom.py:609
+#: gabicustom.py:615
 msgid "hour"
 msgstr "Stunde"
 
-#: gabicustom.py:609
+#: gabicustom.py:615
 msgid "hours"
 msgstr "Stunden"
 
-#: gabicustom.py:613
+#: gabicustom.py:619
 msgid "day"
 msgstr "Tag"
 
-#: gabicustom.py:613
+#: gabicustom.py:619
 msgid "days"
 msgstr "Tagen"
 
-#: gabicustom.py:617
+#: gabicustom.py:623
 msgid "week"
 msgstr "Woche"
 
-#: gabicustom.py:617
+#: gabicustom.py:623
 msgid "weeks"
 msgstr "Wochen"
 
-#: gabicustom.py:621
+#: gabicustom.py:627
 msgid "month"
 msgstr "Monat"
 
-#: gabicustom.py:621
+#: gabicustom.py:627
 msgid "months"
 msgstr "Monaten"
 
-#: gabicustom.py:625
+#: gabicustom.py:631
 msgid "year"
 msgstr "Jahr"
 
-#: gabicustom.py:625
+#: gabicustom.py:631
 msgid "years"
 msgstr "Jahre"
 
-#: gabicustom.py:630
+#: gabicustom.py:636
 msgid "Now! {0}"
 msgstr "Jetzt! {0}"
 
-#: gabicustom.py:632
+#: gabicustom.py:638
 msgid "In {0}: {1}"
 msgstr "In {0}: {1}"
 
-#: gabicustom.py:632 gabicustom.py:634
+#: gabicustom.py:638 gabicustom.py:640
 msgid " or "
 msgstr " oder "
 
@@ -364,7 +376,7 @@ msgstr "1 Jahr"
 msgid "{0} years"
 msgstr "{0} Jahre"
 
-#: gabiadmin.py:38
+#: gabiadmin.py:19
 msgid "Shutting down."
 msgstr "Fahre herunter."
 

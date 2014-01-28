@@ -240,7 +240,7 @@ class GabiCustom(BotBase):
                         hallo.append(_('Welcome back {0}, i saw you last {1} ago.').format(user, self.getAge(age)))
                 else:
                     hallo.append(_('Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter.').format(user, self.nickname))
-                    hallo.append(_('Enter "{0} help" for help.').format(self.nickname))
+                    hallo.append(_('Enter "{0} help" or "!help" for help.').format(self.nickname))
 
                 if user in self.afkDict:
                     hallo.append(_("How was {0}?").format(self.afkDict[user]))
