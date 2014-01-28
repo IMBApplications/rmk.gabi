@@ -74,7 +74,8 @@ class GabiStarCitizen(BotBase):
         try:
             data = self.fetch_rss('https://robertsspaceindustries.com/comm-link/rss')
         except Exception as e:
-            self.send_simple_reply(mess, "ERROR fetching XML data")
+            self.log.warning("ERROR fetching XML data (%s)" % e)
+            self.send_simple_reply(mess, "ERROR fetching or parsing RSS feed")
             return
 
         
