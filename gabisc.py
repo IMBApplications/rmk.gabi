@@ -43,7 +43,7 @@ class GabiStarCitizen(BotBase):
             self.log.warning("ERROR fetching XML data from %s: %s" % (url, e))
 
         try:
-            dom = parse(data)
+            dom = parseString(data)
             return dom
         except e as Exception:
             self.log.warning("ERROR parsing XML data from %s: %s" % (url, e))
@@ -77,7 +77,9 @@ class GabiStarCitizen(BotBase):
             self.send_simple_reply(mess, "ERROR fetching XML data")
             return
 
-        print data
+        
+        item_node = file_xml.getElementsByTagName("title") 
+        print item_node
         pass
 
 # ideas: google, image (google)
