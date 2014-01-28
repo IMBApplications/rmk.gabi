@@ -51,7 +51,7 @@ class GabiStarCitizen(BotBase):
         goalTitle = data['data']['next_goal']['title']
         fans = locale.format("%.0f", data['data']['fans'], grouping = True)
 
-        the_page = _('${0} raised! {1}%% of {2} ({3}). Star Citizens: {4}').format(raised, percentage, goalTitle, goal, fans)
+        the_page = _('${0} ({1}%%) raised of {2} ({3}). {4} Star Citizens').format(raised, percentage, goalTitle, goal, fans)
         self.send_simple_reply(mess, the_page)
 
 # ideas: google, image (google)
