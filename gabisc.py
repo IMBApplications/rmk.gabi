@@ -33,7 +33,7 @@ class GabiStarCitizen(BotBase):
 
         return data        
 
-    def fetch_rss(sef, url):
+    def fetch_rss(self, url):
         req = urllib2.Request(url)
         response = urllib2.urlopen(req)
 
