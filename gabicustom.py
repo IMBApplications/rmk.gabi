@@ -187,7 +187,8 @@ class GabiCustom(BotBase):
                     pass
 
             if htmlTitle:
-                self.send_simple_reply(mess, _("URL title from {0}: <a href='{2}' target='_blank'>{1}</a>").format(username, htmlTitle, url))
+                # self.send_simple_reply(mess, _("URL title from {0}: <a href='{2}' target='_blank'>{1}</a>").format(username, htmlTitle, url))
+                pass
             else:
                 htmlTitle = ""
 
@@ -289,9 +290,9 @@ class GabiCustom(BotBase):
                     userName = name
 
             if lastSeen > 0:
-                return _('{0} was last seen {1} ago.').format(userName, self.getAge(lastSeen))
+                self.send_simple_reply(mess, _('{0} was last seen {1} ago.').format(userName, self.getAge(lastSeen)), True)
             else:
-                return  _('{0}, I did never see {1}.').format(self.get_sender_username(mess), args)
+                self.send_simple_reply(mess, _('{0}, I did never see {1}.').format(self.get_sender_username(mess), args), True)
 
     # Memo Methods
     @botcmd
@@ -300,11 +301,11 @@ class GabiCustom(BotBase):
         username = self.get_sender_username(mess)
         if len(args) > 0:
             self.memDict[username] = args;
-            return _('I memorized now: "{0}".').format(args)
+            self.send_simple_reply(mess, _('I memorized now: "{0}".').format(args), True
         elif username in self.memDict:
-            return _('Your memo: "{0}".').format(self.memDict[username])
+            self.send_simple_reply(mess, _('Your memo: "{0}".').format(self.memDict[username]), True)
         else:
-            return _('What should i memorize?')
+            self.send_simple_reply(mess, _('What should i memorize?'), True)
 
     #AFK Methods
     @botcmd
@@ -321,7 +322,7 @@ class GabiCustom(BotBase):
             self.lastSeenDict[username] = int(time.time())
             self.usersNowOffline[username] = True
 
-        return _('See you later, {0}. Have fun at {1}.').format(username, message)
+        self.send_simple_reply(mess, _('See you later, {0}. Have fun at {1}.').format(username, message), False)
 
     @botcmd
     def whoafk (self, mess, args):
@@ -330,9 +331,9 @@ class GabiCustom(BotBase):
             ret = ''
             for username in self.afkDict.keys():
                 ret = ret + "\n%-10s: %s" % (username, self.afkDict[username])
-            return ret;
+            self.send_simple_reply(mess, ret, True)
         else:
-            return _('Nobody left any message.')
+            self.send_simple_reply(mess, _('Nobody left any message.'), True)
 
     #Reminder Methods
     @botcmd
@@ -353,7 +354,7 @@ class GabiCustom(BotBase):
 
         else:
             ret_message = _("You have to enter a name followed by the message.")
-        return ret_message
+        self.send_simple_reply(mess, ret_message, True)
 
     #Cowntdown Methods
     @botcmd
@@ -449,7 +450,7 @@ class GabiCustom(BotBase):
             for (timestamp, longterm, user, message) in self.cowntdownList:
                 ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
 
-        return ret_message
+        self.send_simple_reply(mess, ret_message, True)
 
     @botcmd
     def urls (self, mess, args):
@@ -496,7 +497,7 @@ class GabiCustom(BotBase):
     @botcmd
     def about(self, mess, args):
         """I tell you who I am"""
-        retMsg = _("I am {0}, a chatbot. If you like to know more, visit: <a href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> https://github.com/IMBApplications/rmk.gabi</a>. My creator is oxi if you like to talk to him about me.").format(self.nickname)
+        retMsg = _("I am {0}, a chatbot. If you like to know more, visit: <a href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> https://github.com/IMBApplications/rmk.gabi</a>. My creator is oxi if you like to talk to him about me. I delivered {1} messages since i last restarted {2}.").format(self.nickname, self.messageCount, str(time.ctime(int(time.time(self.startup)))))
         self.send_simple_reply(mess, retMsg, True)
 
     """ Support Methods """

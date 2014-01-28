@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-28 22:21+0100\n"
+"POT-Creation-Date: 2014-01-28 23:03+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: English <aegnor@mittelerde.ch>\n"
@@ -44,232 +44,228 @@ msgstr ""
 msgid "Good morning, {0}. Nice to see you here."
 msgstr ""
 
-#: gabicustom.py:190
-msgid "URL title from {0}: <a href='{2}' target='_blank'>{1}</a>"
-msgstr ""
-
-#: gabicustom.py:240
+#: gabicustom.py:241
 msgid "Welcome back {0}, i saw you last {1} ago."
 msgstr ""
 
-#: gabicustom.py:242
+#: gabicustom.py:243
 msgid ""
 "Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter."
 msgstr ""
 
-#: gabicustom.py:243
+#: gabicustom.py:244
 msgid "Enter \"{0} help\" or \"!help\" for help."
 msgstr ""
 
-#: gabicustom.py:246
+#: gabicustom.py:247
 msgid "How was {0}?"
 msgstr ""
 
-#: gabicustom.py:255
+#: gabicustom.py:256
 msgid "{0}, I have to tell you:"
 msgstr ""
 
-#: gabicustom.py:257
+#: gabicustom.py:258
 msgid "From {0} {1} ago: {2}"
 msgstr ""
 
-#: gabicustom.py:282
+#: gabicustom.py:283
 msgid "{0} {1} ago"
 msgstr ""
 
-#: gabicustom.py:292
+#: gabicustom.py:293
 msgid "{0} was last seen {1} ago."
 msgstr ""
 
-#: gabicustom.py:294
+#: gabicustom.py:295
 msgid "{0}, I did never see {1}."
 msgstr ""
 
-#: gabicustom.py:303
+#: gabicustom.py:304
 msgid "I memorized now: \"{0}\"."
 msgstr ""
 
-#: gabicustom.py:305
+#: gabicustom.py:306
 msgid "Your memo: \"{0}\"."
 msgstr ""
 
-#: gabicustom.py:307
+#: gabicustom.py:308
 msgid "What should i memorize?"
 msgstr ""
 
-#: gabicustom.py:324
+#: gabicustom.py:325
 msgid "See you later, {0}. Have fun at {1}."
 msgstr ""
 
-#: gabicustom.py:335
+#: gabicustom.py:336
 msgid "Nobody left any message."
 msgstr ""
 
-#: gabicustom.py:348
+#: gabicustom.py:349
 msgid "I will tell {0}: {1}"
 msgstr ""
 
-#: gabicustom.py:355
+#: gabicustom.py:356
 msgid "You have to enter a name followed by the message."
 msgstr ""
 
-#: gabicustom.py:365
+#: gabicustom.py:366
 msgid "Commands for count are: add, list, del"
 msgstr ""
 
-#: gabicustom.py:418
+#: gabicustom.py:419
 msgid "Count saved for '{0}' ({1})"
 msgstr ""
 
-#: gabicustom.py:422
+#: gabicustom.py:423
 msgid "You have to enter time/date and an event. Examples:"
 msgstr ""
 
-#: gabicustom.py:423
+#: gabicustom.py:424
 msgid "{0} count add 18:15 It is a quarter past 6"
 msgstr ""
 
-#: gabicustom.py:424
+#: gabicustom.py:425
 msgid "{0} count add 31.12.2014 23:59 The old year is history"
 msgstr ""
 
-#: gabicustom.py:426
+#: gabicustom.py:427
 msgid "The following counts are set:"
 msgstr ""
 
-#: gabicustom.py:431
+#: gabicustom.py:432
 msgid "{0}\t{1}\t\"{2}\" set by \"{3}\""
 msgstr ""
 
-#: gabicustom.py:434
+#: gabicustom.py:435
 msgid "There are no counts saved."
 msgstr ""
 
-#: gabicustom.py:436
+#: gabicustom.py:437
 msgid "Unknown index. Please specify a valid index: ({0} count list)."
 msgstr ""
 
-#: gabicustom.py:442
+#: gabicustom.py:443
 msgid "{0}\t\"{1}\" set by \"{2}\" has been removed."
 msgstr ""
 
-#: gabicustom.py:478
+#: gabicustom.py:479
 msgid "{0} {1}: <a href='{2}'>{3}</a>"
 msgstr ""
 
-#: gabicustom.py:490
+#: gabicustom.py:491
 msgid "I am now unmuted."
 msgstr ""
 
-#: gabicustom.py:493
+#: gabicustom.py:494
 msgid "I am now muted."
 msgstr ""
 
-#: gabicustom.py:499
+#: gabicustom.py:500
 msgid ""
 "I am {0}, a chatbot. If you like to know more, visit: <a href='https://"
 "github.com/IMBApplications/rmk.gabi' target='_blank'> https://github.com/"
 "IMBApplications/rmk.gabi</a>. My creator is oxi if you like to talk to him "
-"about me."
+"about me. I delivered {1} messages since i last restarted {2}."
 msgstr ""
 
-#: gabicustom.py:521
+#: gabicustom.py:522
 msgid "Now: {0}"
 msgstr ""
 
-#: gabicustom.py:531 gabicustom.py:640
+#: gabicustom.py:532 gabicustom.py:641
 msgid "{0} ago: {1}"
 msgstr ""
 
-#: gabicustom.py:537
+#: gabicustom.py:538
 msgid "Today: {0} from {1}"
 msgstr ""
 
-#: gabicustom.py:542
+#: gabicustom.py:543
 msgid "{0} years ago: {1}"
 msgstr ""
 
-#: gabicustom.py:552
+#: gabicustom.py:553
 msgid "In {0} years: {1}"
 msgstr ""
 
-#: gabicustom.py:580
+#: gabicustom.py:581
 msgid "Tomorrow: {0}"
 msgstr ""
 
-#: gabicustom.py:582 gabicustom.py:588
+#: gabicustom.py:583 gabicustom.py:589
 msgid "In {0} days: {1}"
 msgstr ""
 
-#: gabicustom.py:584
+#: gabicustom.py:585
 msgid "In 1 week: {0}"
 msgstr ""
 
-#: gabicustom.py:586
+#: gabicustom.py:587
 msgid "In {0} weeks: {1}"
 msgstr ""
 
-#: gabicustom.py:609 botbase.py:655
+#: gabicustom.py:610 botbase.py:658
 msgid "{0} seconds"
 msgstr ""
 
-#: gabicustom.py:611
+#: gabicustom.py:612
 msgid "minute"
 msgstr ""
 
-#: gabicustom.py:611
+#: gabicustom.py:612
 msgid "minutes"
 msgstr ""
 
-#: gabicustom.py:615
+#: gabicustom.py:616
 msgid "hour"
 msgstr ""
 
-#: gabicustom.py:615
+#: gabicustom.py:616
 msgid "hours"
 msgstr ""
 
-#: gabicustom.py:619
+#: gabicustom.py:620
 msgid "day"
 msgstr ""
 
-#: gabicustom.py:619
+#: gabicustom.py:620
 msgid "days"
 msgstr ""
 
-#: gabicustom.py:623
+#: gabicustom.py:624
 msgid "week"
 msgstr ""
 
-#: gabicustom.py:623
+#: gabicustom.py:624
 msgid "weeks"
 msgstr ""
 
-#: gabicustom.py:627
+#: gabicustom.py:628
 msgid "month"
 msgstr ""
 
-#: gabicustom.py:627
+#: gabicustom.py:628
 msgid "months"
 msgstr ""
 
-#: gabicustom.py:631
+#: gabicustom.py:632
 msgid "year"
 msgstr ""
 
-#: gabicustom.py:631
+#: gabicustom.py:632
 msgid "years"
 msgstr ""
 
-#: gabicustom.py:636
+#: gabicustom.py:637
 msgid "Now! {0}"
 msgstr ""
 
-#: gabicustom.py:638
+#: gabicustom.py:639
 msgid "In {0}: {1}"
 msgstr ""
 
-#: gabicustom.py:638 gabicustom.py:640
+#: gabicustom.py:639 gabicustom.py:641
 msgid " or "
 msgstr ""
 
@@ -302,65 +298,65 @@ msgstr ""
 msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2} {3}</a>"
 msgstr ""
 
-#: botbase.py:80
+#: botbase.py:82
 msgid ""
 "Hey there. You are not yet on my roster. Authorize my request and I will do "
 "the same."
 msgstr ""
 
-#: botbase.py:81
+#: botbase.py:83
 msgid "You did not authorize my subscription request. Access denied."
 msgstr ""
 
-#: botbase.py:82
+#: botbase.py:84
 msgid "Type help *command name* to get more info about that specific command."
 msgstr ""
 
-#: botbase.py:83
+#: botbase.py:85
 msgid "That command is not defined."
 msgstr ""
 
-#: botbase.py:653
+#: botbase.py:656
 msgid "1 second"
 msgstr ""
 
-#: botbase.py:658
+#: botbase.py:661
 msgid "1 minute"
 msgstr ""
 
-#: botbase.py:660
+#: botbase.py:663
 msgid "{0} minutes"
 msgstr ""
 
-#: botbase.py:663
+#: botbase.py:666
 msgid "1 hour"
 msgstr ""
 
-#: botbase.py:665
+#: botbase.py:668
 msgid "{0} hours"
 msgstr ""
 
-#: botbase.py:668
+#: botbase.py:671
 msgid "1 day"
 msgstr ""
 
-#: botbase.py:670
+#: botbase.py:673
 msgid "{0} days"
 msgstr ""
 
-#: botbase.py:673
+#: botbase.py:676
 msgid "1 week"
 msgstr ""
 
-#: botbase.py:675
+#: botbase.py:678
 msgid "{0} weeks"
 msgstr ""
 
-#: botbase.py:678
+#: botbase.py:681
 msgid "1 year"
 msgstr ""
 
-#: botbase.py:680
+#: botbase.py:683
 msgid "{0} years"
 msgstr ""
 

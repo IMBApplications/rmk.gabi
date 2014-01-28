@@ -38,4 +38,4 @@ class GabiChannelAdmin(BotBase):
             msg += '->\t' + str(row[1]) + " (" + str(row[0]) + ")" + '\n'
 
         handler.close()
-        return msg
+        self.send_simple_reply(mess, msg, True)

@@ -43,7 +43,7 @@ class GabiFun(BotBase):
     @botcmd
     def baby (self, mess, args):
         """Is nice to you"""
-        return _('Yes honey, what can i do for you?')
+        self.send_simple_reply(mess, _('Yes honey, what can i do for you?'), True)
 
     @botcmd
     def rage (self, mess, args):
@@ -56,7 +56,7 @@ class GabiFun(BotBase):
     @botcmd
     def how (self, mess, args):
         """How am I?"""
-        return _('All systems are in perfect condition, thanks for asking.')
+        self.send_simple_reply(mess, _('All systems are in perfect condition, thanks for asking.'), True)
         
     @botcmd
     def roll (self, mess, args):

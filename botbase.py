@@ -58,6 +58,8 @@ class BotBase(object):
         self.currentTopic = ""
         self.localization = "en"
         self.muted = False
+        self.messageCount = 0
+        self.startup = time.time()
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
@@ -249,6 +251,7 @@ class BotBase(object):
 
     def send(self, user, text, in_reply_to=None, message_type='chat'):
         """Sends a simple message to the specified user."""
+        self.messageCount += 1
         mess = self.build_message(text)
         mess.setTo(user)
 
