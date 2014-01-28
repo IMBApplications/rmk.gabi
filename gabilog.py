@@ -4,7 +4,7 @@
 from botbase import BotBase,botcmd
 from gabihelp import GabiHelp
 
-import csv
+import cgi
 
 class GabiLog(BotBase):
     @botcmd
@@ -25,7 +25,11 @@ class GabiLog(BotBase):
         for (username, timestamp, url, title) in retUrls:
             if not title:
                 title = url
-            retMsg.append(_("{0} {1}: <a href='{2}'>{3}</a>").format(username, timestamp, url, title))
+            try:
+                newTitle = cgi.escape(unicode(str(title), "utf-8")).encode('ascii', 'xmlcharrefreplace')
+                retMsg.append(_("{0} {1}: <a href='{2}'>{3}</a>").format(username, timestamp, url, newTitle))
+            except Exception, e:
+                self.log.warning('Error while building URLS message with %s: %s' % (newTitle, e))
 
 
         # self.send(srcJid, "http://chat.mmojunkies.net/csv-viewer/index.php?file=urls.csv", None, 'chat')
