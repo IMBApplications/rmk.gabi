@@ -29,7 +29,7 @@ class GabiLog(BotBase):
                 title = self.encode_message(title).encode("ascii", "replace")
             
             username = cgi.escape(self.encode_message(username)).encode("ascii", "replace")
-x            
+            
             print title
             try:
                 #newTitle = cgi.escape(unicode(str(title), "utf-8"))
