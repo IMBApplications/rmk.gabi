@@ -45,7 +45,7 @@ class GabiStarCitizen(BotBase):
                   'alpha_slots' : 'true' }
         data = self.fetch_json(url, values)
 
-        raised = locale.format("%.0f", data['data']['funds'], grouping = True)
+        raised = locale.format("%.2f", data['data']['funds'], grouping = True)
         percentage = data['data']['next_goal']['percentage']
         goal = data['data']['next_goal']['goal']
         goalTitle = data['data']['next_goal']['title']
