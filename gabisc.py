@@ -72,9 +72,9 @@ class GabiStarCitizen(BotBase):
         feedLink = cgi.escape(self.encode_message(rss.feed.link)).encode("ascii", "xmlcharrefreplace")
         feedDescription = cgi.escape(self.encode_message(rss.feed.description)).encode("ascii", "xmlcharrefreplace")
         feedTitle = cgi.escape(self.encode_message(rss.feed.title)).encode("ascii", "xmlcharrefreplace")
+        feedHead = [_("<a href='{0}' alt='{1}'>{2}</a>").format(feedLink, feedDescription, feedTitle)]
 
         count = 0
-        feedData.append(_("<a href='{0}' alt='{1}'>{2}</a>").format(feedLink, feedDescription, feedTitle))
         for entry in rss.entries:
             if count <= 9:
                 count += 1
@@ -88,9 +88,7 @@ class GabiStarCitizen(BotBase):
 
             feedData.append(_("<a href='{0}' alt='{1}'>{2} {3}</a>").format(entryLink, entryDescription, entryPublished, entryTitle))
 
-        print len(rss.entries)
-
-        self.send_simple_reply(mess, feedData)
+        self.send_simple_reply(mess, feedHead + reversed(feedData))
 
 # ideas: google, image (google)
 # count redacted
