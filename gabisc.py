@@ -16,6 +16,8 @@ import json
 import locale
 import feedparser
 import cgi
+from time import mktime
+from datetime import datetime
 
 # debian: apt-get install python-feedparser
 
@@ -86,7 +88,8 @@ class GabiStarCitizen(BotBase):
             entryTitle = cgi.escape(self.encode_message(entry.title)).encode("ascii", "xmlcharrefreplace")
 
             print entry.published_parsed
-            entryPublished = _("{0}.{1}.{2} {3}:{4}:{5}").format(entry.published_parsed)
+            # entryPublished = _("{0}.{1}.{2} {3}:{4}:{5}").format(entry.published_parsed)
+            entryPublished = datetime.fromtimestamp(mktime(entry.published_parsed))
             
             feedData.append(_('<a href="{0}" alt="{1}">{2} {3}</a>').format(entryLink, entryDescription, entryPublished, entryTitle))
 
