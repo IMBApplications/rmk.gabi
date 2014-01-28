@@ -32,7 +32,9 @@ class GabiStarCitizen(BotBase):
         try:
             data = json.reads(response.read())
         except Exception as e:
+            self.log.warning("ERROR fetching data from %s: %s" % (url, e))
             self.send_simple_reply(mess, "ERROR fetching data from %s" % url)
+
 
         print data
         # self.send_simple_reply(mess, the_page)
