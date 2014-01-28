@@ -18,10 +18,10 @@ class GabiStarCitizen(BotBase):
     def fundstat(self, mess, args):
         """Star Citizen Crowdfunding stats"""
         req = urllib2.Request('https://robertsspaceindustries.com/api/stats/getCrowdfundStats')
-        response = urllib2.urlopen(req)
+        response = urllib2.urlopen(req, data)
         the_page = response.read()
         print the_page
-        self.send_simple_reply(mess, the_page)
+        # self.send_simple_reply(mess, the_page)
 
 # ideas: google, image (google)
 # count redacted
