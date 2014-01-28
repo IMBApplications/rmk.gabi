@@ -17,7 +17,7 @@ import locale
 
 # locale.format("%.2f", -2134.98, grouping = True)
 
-# from xml.dom.minidom import parse
+from xml.dom.minidom import parse
 
 class GabiStarCitizen(BotBase):
     def fetch_json(self, url, values):
@@ -28,8 +28,8 @@ class GabiStarCitizen(BotBase):
         try:
             data = json.loads(response.read())
         except Exception as e:
-            self.log.warning("ERROR fetching data from %s: %s" % (url, e))
-            self.send_simple_reply(mess, "ERROR fetching data from %s" % url)
+            self.log.warning("ERROR fetching JSON data from %s: %s" % (url, e))
+            self.send_simple_reply(mess, "ERROR fetching JSON data from %s" % url)
 
         return data        
 
@@ -40,11 +40,14 @@ class GabiStarCitizen(BotBase):
         try:
             data = response.read()
         except Exception as e:
-            self.log.warning("ERROR fetching data from %s: %s" % (url, e))
-            self.send_simple_reply(mess, "ERROR fetching data from %s" % url)
+            self.log.warning("ERROR fetching XML data from %s: %s" % (url, e))
 
-        return data         
-
+        try:
+            dom = parse(data)
+            return dom
+        except e as Exception:
+            self.log.warning("ERROR parsing XML data from %s: %s" % (url, e))
+            return None
 
     @botcmd
     def scfunding(self, mess, args):
@@ -68,7 +71,12 @@ class GabiStarCitizen(BotBase):
 
     @botcmd
     def scnews(self, mess, args):
-        data = self.fetch_rss('https://robertsspaceindustries.com/comm-link/rss')
+        try:
+            data = self.fetch_rss('https://robertsspaceindustries.com/comm-link/rss')
+        except Exception as e:
+            self.send_simple_reply(mess, "ERROR fetching XML data")
+            return
+
         print data
         pass
 
