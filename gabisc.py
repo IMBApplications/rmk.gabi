@@ -67,14 +67,20 @@ class GabiStarCitizen(BotBase):
             self.send_simple_reply(mess, "ERROR fetching RSS data from %s" % url)
             return
 
-        count = 0
+
 
         feedLink = cgi.escape(self.encode_message(rss.feed.link)).encode("ascii", "xmlcharrefreplace")
         feedDescription = cgi.escape(self.encode_message(rss.feed.description)).encode("ascii", "xmlcharrefreplace")
         feedTitle = cgi.escape(self.encode_message(rss.feed.title)).encode("ascii", "xmlcharrefreplace")
 
+        count = 0
         feedData.append(_("<a href='{0}' alt='{1}'>{2}</a>").format(feedLink, feedDescription, feedTitle))
-        for entry in rss.entries:
+        for entry in reversed(rss.entries):
+            if count <= 9:
+                count += 1
+            else:
+                break
+                
             entryLink = cgi.escape(self.encode_message(entry.link)).encode("ascii", "xmlcharrefreplace")
             entryDescription = cgi.escape(self.encode_message(entry.description)).encode("ascii", "xmlcharrefreplace")
             entryPublished = cgi.escape(self.encode_message(entry.published)).encode("ascii", "xmlcharrefreplace")
