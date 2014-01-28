@@ -13,7 +13,7 @@ from gabihelp import GabiHelp
 import urllib
 import urllib2
 import json
-
+import locale
 
 # locale.format("%.2f", -2134.98, grouping = True)
 
