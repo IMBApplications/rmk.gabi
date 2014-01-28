@@ -33,6 +33,18 @@ class GabiStarCitizen(BotBase):
 
         return data        
 
+    def fetch_rss(sef, url):
+        req = urllib2.Request(url)
+        response = urllib2.urlopen(req)
+
+        try:
+            data = response.read()
+        except Exception as e:
+            self.log.warning("ERROR fetching data from %s: %s" % (url, e))
+            self.send_simple_reply(mess, "ERROR fetching data from %s" % url)
+
+        return data         
+
 
     @botcmd
     def scfunding(self, mess, args):
@@ -53,6 +65,12 @@ class GabiStarCitizen(BotBase):
 
         the_page = _('${0} ({1}%%) raised of {2} ({3}). {4} Star Citizens').format(raised, percentage, goalTitle, goal, fans)
         self.send_simple_reply(mess, the_page)
+
+    @botcmd
+    def scnews(self, mess, args):
+        data = self.fetch_rss('https://robertsspaceindustries.com/comm-link/rss')
+        print data
+        pass
 
 # ideas: google, image (google)
 # count redacted
