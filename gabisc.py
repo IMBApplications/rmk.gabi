@@ -15,7 +15,7 @@ import urllib2
 import json
 import locale
 
-locale.setlocale(locale.LC_NUMERIC, "german")
+# locale.setlocale(locale.LC_NUMERIC, "german")
 # locale.format("%.2f", -2134.98, grouping = True)
 
 # from xml.dom.minidom import parse
