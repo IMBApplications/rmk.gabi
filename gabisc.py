@@ -12,6 +12,7 @@ from gabihelp import GabiHelp
 
 import urllib
 import urllib2
+import json
 # from xml.dom.minidom import parse
 
 class GabiStarCitizen(BotBase):
@@ -27,9 +28,13 @@ class GabiStarCitizen(BotBase):
         data = urllib.urlencode(values)
         req = urllib2.Request(url, data)
         response = urllib2.urlopen(req)
-        the_page = response.read()
 
-        print the_page
+        try:
+            data = json.reads(response.read())
+        except Exception as e:
+            self.send_simple_reply(mess, "ERROR fetching data from %s" % url)
+
+        print data
         # self.send_simple_reply(mess, the_page)
 
 # ideas: google, image (google)
