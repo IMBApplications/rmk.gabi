@@ -45,11 +45,11 @@ class GabiStarCitizen(BotBase):
                   'alpha_slots' : 'true' }
         data = self.fetch_json(url, values)
 
-        raised = locale.format("%.2f", data['data']['funds'], grouping = True)
+        raised = locale.format("%.2f", data['data']['funds'] , grouping = True)
         percentage = data['data']['next_goal']['percentage']
         goal = data['data']['next_goal']['goal']
         goalTitle = data['data']['next_goal']['title']
-        fans = locale.format("%.2f", data['data']['fans'], grouping = True)
+        fans = locale.format("%.0f", data['data']['fans'], grouping = True)
 
         the_page = _('${0} raised! {1}%% of {2} ({3}). Star Citizens: {4}').format(raised, percentage, goalTitle, goal, fans)
         self.send_simple_reply(mess, the_page)
