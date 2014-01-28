@@ -493,6 +493,12 @@ class GabiCustom(BotBase):
             self.send_simple_reply(mess, _("I am now muted."))
             self.muted = True
 
+    @botcmd
+    def about(self, mess, args):
+        """I tell you who I am"""
+        retMsg = _("I am {0}, a chatbot. If you like to know more, visit: <a href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> https://github.com/IMBApplications/rmk.gabi</a>. My creator is oxi if you like to talk to him about me.").format(self.nickname)
+        self.send_simple_reply(mess, retMsg, True)
+
     """ Support Methods """
     def periodicCheckCount(self, mess):
         showMe = True
