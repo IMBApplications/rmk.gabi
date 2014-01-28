@@ -150,9 +150,9 @@ class GabiCustom(BotBase):
             if c.match(text) != None:
                 now = datetime.datetime.now(pytz.timezone(self.timezone))
                 if now.hour > 10:
-                    self.send_simple_reply(mess, _("Morning? Check your clock, {0}!").format(username))
+                    self.send_simple_reply(mess, _("Morning? Check your clock, {0}!").format(username), True)
                 else:
-                    self.send_simple_reply(mess, _("Good morning, {0}. Nice to see you here.").format(username))
+                    self.send_simple_reply(mess, _("Good morning, {0}. Nice to see you here.").format(username), True)
                     return
 
         #so jetzt alle URLS
