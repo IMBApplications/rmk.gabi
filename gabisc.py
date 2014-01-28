@@ -67,7 +67,7 @@ class GabiStarCitizen(BotBase):
             return
 
         count = 0
-        feedData.append(_("<a href='{0}' alt='{1}'>{2}</a>").format(rss.feed.link, rss.feed.scription, rss.feed.title))
+        feedData.append(_("<a href='{0}' alt='{1}'>{2}</a>").format(rss.feed.link, rss.feed.description, rss.feed.title))
         for entry in feed.entries:
             feedData.append(_("<a href='{0}' alt='{1}'>{1} {2}</a>").format(entry.link, entry.description, entry.published, entry.title))
 
