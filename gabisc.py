@@ -35,7 +35,7 @@ class GabiStarCitizen(BotBase):
 
 
     @botcmd
-    def fundstat(self, mess, args):
+    def scfunding(self, mess, args):
         """Star Citizen Crowdfunding stats"""
         locale.setlocale(locale.LC_ALL, '')
 
@@ -49,7 +49,7 @@ class GabiStarCitizen(BotBase):
         percentage = data['data']['next_goal']['percentage']
         goal = data['data']['next_goal']['goal']
         goalTitle = data['data']['next_goal']['title']
-        fans = data['data']['fans']
+        fans = locale.format("%.2f", data['data']['fans'], grouping = True)
 
         the_page = _('${0} raised! {1}%% of {2} ({3}). Star Citizens: {4}').format(raised, percentage, goalTitle, goal, fans)
         self.send_simple_reply(mess, the_page)
