@@ -301,7 +301,7 @@ class GabiCustom(BotBase):
         username = self.get_sender_username(mess)
         if len(args) > 0:
             self.memDict[username] = args;
-            self.send_simple_reply(mess, _('I memorized now: "{0}".').format(args), True
+            self.send_simple_reply(mess, _('I memorized now: "{0}".').format(args), True)
         elif username in self.memDict:
             self.send_simple_reply(mess, _('Your memo: "{0}".').format(self.memDict[username]), True)
         else:
