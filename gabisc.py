@@ -14,10 +14,6 @@ import urllib2
 # from xml.dom.minidom import parse
 
 class GabiStarCitizen(BotBase):
-    # @botcmd
-    # def sctest(self):
-    #     print "sc test ok"
-
     @botcmd
     def fundstat(self, mess, args):
         """Star Citizen Crowdfunding stats"""
@@ -25,6 +21,7 @@ class GabiStarCitizen(BotBase):
         response = urllib2.urlopen(req)
         the_page = response.read()
         print the_page
+        self.send_simple_reply(mess, the_page)
 
 # ideas: google, image (google)
 # count redacted
