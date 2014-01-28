@@ -291,7 +291,7 @@ class BotBase(object):
             self.log.warning('Content is no string: %s' % (content))
             unicode_content = content
 
-        return unicode_content.encode('ascii', 'xmlcharrefreplace')
+        return unicode_content.encode('ascii', 'replace')
 
 
     def build_message(self, text):
@@ -314,7 +314,8 @@ class BotBase(object):
 
         try:
             html_message = "<span style='color: #%s'>" % self.text_color + html_message + "</span>"
-            html_message = "<body xmlns='http://www.w3.org/1999/xhtml'>" + html_message.encode('utf-8') + "</body>"
+            html_message = self.encode_message("<body xmlns='http://www.w3.org/1999/xhtml'>" + html_message + "</body>")
+            html_message = html_message.encode('utf-8')
             html.addChild(node=xmpp.simplexml.XML2Node(html_message))
             message.addChild(node=html)
             print html_message
