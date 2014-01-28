@@ -15,6 +15,7 @@ import urllib2
 import json
 import locale
 import feedparser
+import cgi
 
 # debian: apt-get install python-feedparser
 
