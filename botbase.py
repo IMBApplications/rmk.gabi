@@ -304,34 +304,21 @@ class BotBase(object):
         message = xmpp.protocol.Message(body=plain_message)
 
         html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
-        body = xmpp.Node('body', {'xmlns': 'http://www.w3.org/1999/xhtml'})
-        span = xmpp.Node('span', {'style': 'color: #%s' % self.text_color })
-
-        # newText = newText.replace('\n', '<br / >')
-        # if self.text_color:
-            # newContent = "<span style='color: #%s'>" % self.text_color + newText.encode('utf-8') + "</span>"
+        html_message = ""
 
         if isinstance(text, list):
             for line in text:
-                try:
-                    print type(line)
-                    span.addChild(xmpp.simplexml.XML2Node(self.encode_message(line + '<br />').encode('utf-8')))
-                except Exception, e:
-                    self.log.warning('Error while building XHTML message with %s: %s' % (text, e))
+                html_message += line + '<br />'
         else:
-            # newText = self.encode_message(text)
-            # newContent = newText.encode('utf-8')
-            try:
-                print "encode_message: %s " % self.encode_message(text)
-                span.addChild(xmpp.simplexml.XML2Node("test message"))
-                # span.addChild(xmpp.simplexml.XML2Node(self.encode_message(text).encode('utf-8')))
-            except Exception, e:
-                self.log.warning('Error while building XHTML message with %s: %s' % (text, e))
+            html_message = text
 
-        body.addChild(node=span)
-        html.addChild(node=body)
+        try:
+            html_message += "<span style='color: #%s'>" % self.text_color + html_message + "</span>"
+            html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + html_message.encode('utf-8') + "</body>"))
+        except Exception, e:
+            self.log.warning('Error while building XHTML message with %s: %s' % (text, e))
+            message.addChild(node=html)
 
-        # html.addChild(node=xmpp.simplexml.XML2Node("<body xmlns='http://www.w3.org/1999/xhtml'>" + newContent + "</body>"))
         return message
 
     def broadcast(self, message, only_available=False):
