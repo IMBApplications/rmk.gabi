@@ -25,9 +25,11 @@ class GabiLog(BotBase):
         for (username, timestamp, url, title) in reversed(retUrls):
             if not title:
                 title = url
-            else:
+            
                 # title = self.encode_message(title).encode('ascii', 'xmlcharrefreplace')
-                title = self.encode_message(title).encode("ascii", "xmlcharrefreplace")
+            title = self.encode_message(title).encode("ascii", "xmlcharrefreplace")
+            username = self.encode_message(username).encode("ascii", "xmlcharrefreplace")
+
             try:
                 #newTitle = cgi.escape(unicode(str(title), "utf-8"))
                 retMsg.append(_("{0} {1}: <a href='{2}'>{3}</a>").format(username, timestamp, url, title))
