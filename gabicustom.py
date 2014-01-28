@@ -487,10 +487,10 @@ class GabiCustom(BotBase):
         if self.muted:
             self.muted = False
             self.log.warning("WARNING now unmuted")
-            self.send_simple_reply(mess, _("I am now unmuted"))
+            self.send_simple_reply(mess, _("I am now unmuted."))
         else:
             self.log.warning("WARNING now muted")
-            self.send_simple_reply(mess, _("I am now muted"))
+            self.send_simple_reply(mess, _("I am now muted."))
             self.muted = True
 
     """ Support Methods """
