@@ -25,12 +25,13 @@ class GabiLog(BotBase):
         for (username, timestamp, url, title) in retUrls:
             if not title:
                 title = url
+            else:
+                title = self.encode_message(title).encode('ascii', 'xmlcharrefreplace')
             try:
                 #newTitle = cgi.escape(unicode(str(title), "utf-8"))
-                newTitle = self.encode_message(title).encode('ascii', 'xmlcharrefreplace')
-                retMsg.append(_("{0} {1}: <a href='{2}'>{3}</a>").format(username, timestamp, url, newTitle))
+                retMsg.append(_("{0} {1}: <a href='{2}'>{3}</a>").format(username, timestamp, url, title))
             except Exception, e:
-                self.log.warning('Error while building URLS message with %s: %s' % (newTitle, e))
+                self.log.warning('Error while building URLS message with %s: %s' % (title, e))
 
 
         # self.send(srcJid, "http://chat.mmojunkies.net/csv-viewer/index.php?file=urls.csv", None, 'chat')
