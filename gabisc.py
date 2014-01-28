@@ -1,42 +1,55 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
+# https://robertsspaceindustries.com/api/stats/getCrowdfundStats
+
+
 from botbase import BotBase,botcmd
 from gabihelp import GabiHelp
 
 
 import urllib
-from xml.dom.minidom import parse
+import urllib2
+# from xml.dom.minidom import parse
 
 class GabiStarCitizen(BotBase):
+    # @botcmd
+    # def sctest(self):
+    #     print "sc test ok"
+
     @botcmd
-    def sctest(self):
-        print "sc test ok"
+    def fundstat(self):
+        """Star Citizen Crowdfunding stats"""
+        req = urllib2.Request('https://robertsspaceindustries.com/api/stats/getCrowdfundStats')
+        response = urllib2.urlopen(req)
+        the_page = response.read()
+        print the_page
 
 # ideas: google, image (google)
 # count redacted
 # with google api: http://stackoverflow.com/questions/4441812/get-the-first-10-google-results-using-googleapi
 # http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=Apple+Cake&start=4
 
-    @botcmd
-    def google(self):
-        """Google something"""
-        return 'nothing'
+    # @botcmd
+    # def google(self):
+    #     """Google something"""
+    #     return 'nothing'
 
-    def google_search(searchFor):
+    # def google_search(searchFor):
          
-        # &cx=00255077836266642015:u-scht7a-8i
-        # &start=10
-        xmlurl = 'http://www.google.com/search?'
-        xmlsearch = 'q=' + searchFor + '&hl=' + self.localization + '&num=1&output=xml_no_dtd&client=google-csbe'
+    #     # &cx=00255077836266642015:u-scht7a-8i
+    #     # &start=10
+    #     xmlurl = 'http://www.google.com/search?'
+    #     xmlsearch = 'q=' + searchFor + '&hl=' + self.localization + '&num=1&output=xml_no_dtd&client=google-csbe'
 
-        try:
-            xml = urllib.urlopen(xmlsearch)
-            dom = parse(xml)
-        except e as Exception:
-            print(e)
+    #     try:
+    #         xml = urllib.urlopen(xmlsearch)
+    #         dom = parse(xml)
+    #     except e as Exception:
+    #         print(e)
 
-        print dom
+    #     print dom
 
 # def print_usage():
 #     s = "usage: " + sys.argv[0] + " "
