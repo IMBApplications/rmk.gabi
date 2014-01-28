@@ -22,7 +22,7 @@ class GabiLog(BotBase):
                 if count >= 50:
                     break
 
-        for (username, timestamp, url, title) in retUrls:
+        for (username, timestamp, url, title) in reversed(retUrls):
             if not title:
                 title = url
             else:
