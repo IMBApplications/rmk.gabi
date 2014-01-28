@@ -297,8 +297,10 @@ class BotBase(object):
     def build_message(self, text):
         """Builds an xhtml message without attributes.
         If input is not valid xhtml-im fallback to normal."""
-        plain_message = re.sub(r'<[^>]+>', '', text)
-        message = xmpp.protocol.Message(body='\n'.join(plain_message))
+        if isinstance(text, list):
+            plain_message = '\n'.join(text)
+        plain_message = re.sub(r'<[^>]+>', '', plain_message)
+        message = xmpp.protocol.Message(body=plain_message)
 
         html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
         body = xmpp.Node('body', {'xmlns': 'http://www.w3.org/1999/xhtml'})
