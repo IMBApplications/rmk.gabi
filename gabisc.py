@@ -19,7 +19,7 @@ class GabiStarCitizen(BotBase):
     #     print "sc test ok"
 
     @botcmd
-    def fundstat(self):
+    def fundstat(self, mess, args):
         """Star Citizen Crowdfunding stats"""
         req = urllib2.Request('https://robertsspaceindustries.com/api/stats/getCrowdfundStats')
         response = urllib2.urlopen(req)
