@@ -18,19 +18,20 @@ class GabiAdmin(BotBase):
         self.messageCount = self.loadJSON('save_stats.dat', 0)
         atexit.register(self.saveJSON, 'save_stats.dat', self.messageCount)
 
-    def isAdmin(self, user):
+    def isAdmin(self, srcUsername, srcChannel):
         adminRights = False
-        for (username, since, comment) in self.adminList:
-            if user.lower() == username.lower():
+        for (username, channel, since, comment) in self.adminList:
+            if srcUser.lower() == username.lower() and channel.lower() == srcChannel.lower():
                 adminRights = True
         return adminRights
 
-    def createAdminList(self):
+    def createAdminList(self, srcChannel):
         msg = []
         if len(self.adminList):
             msg.append(_("The following administrators are registred:"))
-            for admin in adminList:
-                msg.append(_("{0} since {1}"))
+            for (username, channel, since, comment) in self.adminList:
+                if channel == srcChannel:
+                    msg.append(_("{0} since {1} ({2})").format(username, since, comment))
         return msg
 
     @botcmd
@@ -49,50 +50,20 @@ class GabiAdmin(BotBase):
     def admin (self, mess, args):
         """Administrative commands"""
         # admin add, list, remove, show
+        #self.muc_channels all connected rooms
         channel, srcNick = str(mess.getFrom()).split('/')
         print "channel, srcNick: %s %s" % (channel, srcNick)
-        realjid = None
-        if mess.__getitem__('type') == 'groupchat':
-            try:
-                # print "test: %s" % self.muc_users[message.getFrom()].split('/')[0]
-                realjid = self.muc_users[mess.getFrom()].split('/')[0]
-                self.log.debug("Recieved MUC message from user: %s" % str(mess.getFrom()))
-            except Exception:
-                self.log.info("Recieved MUC message from non online user: %s" % str(mess.getFrom()))
-        elif mess.__getitem__('type') == 'chat':
-            realjid = str(mess.getFrom()).split('/')[0]
-            self.log.debug("Recieved chat message from user: %s" % str(mess.getFrom()))
-#self.muc_channels
 
-        # check if it is a message from myself
-        # print "\n%s != %s" % (str(message.getFrom()), "%s/%s" % (self.muc_room, self.muc_nick))
-        # if realjid:
-        #     if str(mess.getFrom()) != "%s/%s" % (self.muc_room, self.muc_nick):
-        #         admin = False
-        #         # check if the user is a admin
-        #         for (userJid, username) in self.users:
-        #             # print "(userJid, username): %s %s" % (userJid, username)
-        #             # userJid = self.plugin.utils.convert_from_unicode(jid)
-        #             # print "userJid: %s" % userJid
-        #             if userJid == realjid.split('/')[0]:
-        #                 admin = True
-        #                 # print "admin found on %s" % userJid
-
-        #         if admin:
-
-
-
-
-
-        username = mess.getFrom()
-        if len(self.createAdminList()) == 0:
-            if args == 'add':
-                self.adminList.append((username, time.time(), "Initial administrator"))
-                self.log.warning("ACCESS '%s' was registred as initial administrator." % username)
+        if len(self.createAdminList(channel)) == 0:
+            if args == 'initial':
+                self.adminList.append((srcNick, channel, time.time(), "Initial administrator"))
+                self.log.warning("ACCESS '%s' was registred as initial administrator for channel %s." % (srcNick, channel))
             else:
-                self.send_simple_reply(mess, _("No administrators registred. Please register the first with '!admin add'"), True)
+                self.send_simple_reply(mess, _("No administrators registred. Please register the first with '!admin initial'"), True)
                 return
 
-        if not self.isAdmin(username):
-            self.send_simple_reply(mess, self.createAdminList(), True)
+        if not self.isAdmin(srcNick, channel):
+            self.send_simple_reply(mess, self.createAdminList(channel), True)
             return
+        else:
+            print args
