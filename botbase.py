@@ -199,7 +199,8 @@ class BotBase(object):
             # Send initial presence stanza (say hello to everyone)
             self.conn.sendInitPresence(requestRoster=1)
             # Save roster and log Items
-            self.roster = self.conn.Roster.getRoster()
+            self.roster = self.conn.getRoster()
+            # self.roster = self.conn.Roster.getRoster()
             self.log.info('*** roster ***')
             for contact in self.roster.getItems():
                 self.log.info('  %s' % contact)
