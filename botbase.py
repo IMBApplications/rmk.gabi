@@ -223,7 +223,7 @@ class BotBase(object):
 
         return self.conn
 
-    def quit(self):
+    def quitBot(self):
         self.__finished = True
 
     def join_room(self, room, username=None, password=None):
@@ -245,7 +245,7 @@ class BotBase(object):
             self.readyTs = time.time()
         except AttributeError:
             self.log.warning('No connection could be established. Exiting!')
-            self.__finished = True
+            self.quitBot()
 
     def send_message(self, mess):
         """Send an XMPP message"""
@@ -532,7 +532,7 @@ class BotBase(object):
 
     def on_ping_timeout(self):
         logging.info('Terminating due to PING timeout.')
-        self.__finished = True
+        self.quitBot()
 
     def shutdown(self):
         """This function will be called when we're done serving

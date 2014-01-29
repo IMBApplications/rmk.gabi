@@ -15,5 +15,5 @@ class GabiAdmin(BotBase):
     @botcmd
     def quit (self, mess, args):
         """Shut me down."""
-        exit()
-        return _('Shutting down.')
+        self.send_simple_reply(mess, _('Shutting down.'), False)
+        self.quitBot()
