@@ -210,7 +210,7 @@ class BotBase(object):
             # for i in my_roster.getItems():
             for i in self.roster.getItems():
                 self.myroster[i] = self.roster.getStatus(i)
-            if len(self.roster) > 0:
+            if len(self.myroster) > 0:
                 self.myroster = self.convert_from_unicode(self.roster)
 
             # Register given handlers (TODO move to own function)
