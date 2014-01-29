@@ -72,4 +72,4 @@ class GabiAdmin(BotBase):
             if arg[0] == "list":
                 self.send_simple_reply(mess, self.createAdminList(channel), True)
             if len(arg) > 1:
-
+                pass
