@@ -47,7 +47,7 @@ class GabiAdmin(BotBase):
         """Administrative commands"""
         # admin add, list, remove, show
         username = self.get_sender_username(mess)
-        if len(self.createAdminList) == 0 and args[0] == 'add':
+        if len(self.createAdminList()) == 0 and args[0] == 'add':
             self.adminList.append((username, time.time(), "Initial Administrator"))
 
         if not self.isAdmin(username):
