@@ -221,6 +221,12 @@ class BotBase(object):
                 self.conn.RegisterHandler(handler, callback)
                 self.log.debug('Registered handler: %s' % handler)
 
+            #lets get online
+            presence = xmpp.Presence()
+            presence.setShow('chat')
+            presence.setStatus("At your service.")
+            self.conn.send(presence)
+
         return self.conn
 
     def quitBot(self):
@@ -247,11 +253,6 @@ class BotBase(object):
         except AttributeError as e:
             self.log.warning('No connection could be established. Exiting! %s' % e)
             self.quitBot()
-
-        presence = xmpp.Presence()
-        presence.setShow('chat')
-        presence.setStatus("At your service.")
-        self.conn.send(presence)
 
     def send_message(self, mess):
         """Send an XMPP message"""
