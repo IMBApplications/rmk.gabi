@@ -60,7 +60,7 @@ class BotBase(object):
         self.muted = False
         self.muc_users = {}
         self.roster = None
-        # self.myroster = {}
+        self.myroster = {}
         self.muc_channels = []
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
@@ -207,12 +207,11 @@ class BotBase(object):
                 self.log.warning('  %s' % contact)
             self.log.warning('*** roster ***')
 
-            # my_roster = self.conn.getRoster()
-            # for i in my_roster.getItems():
-            # for i in self.roster.getItems():
-            #     self.myroster[i] = self.roster.getStatus(i)
-            # if len(self.myroster) > 0:
-            #     self.myroster = self.convert_from_unicode(self.roster)
+            my_roster = self.conn.getRoster()
+            for i in my_roster.getItems():
+                self.myroster[i] = my_roster.getStatus(i)
+            if len(self.myroster) > 0:
+                self.myroster = self.convert_from_unicode(self.myroster)
 
             # Register given handlers (TODO move to own function)
             for (handler, callback) in self.handlers:
@@ -445,7 +444,7 @@ class BotBase(object):
                 #     srcJid = False
                 # if srcJid:
                     # if srcJid != self.jid:
-                    print self.roster.getItems()
+                    print self.roster.Roster.getItems()
                     try:
                         status = self.roster.getShow(presence.getJid())
                         print "%s -> %s" % (who, status)
