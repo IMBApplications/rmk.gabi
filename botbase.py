@@ -336,6 +336,7 @@ class BotBase(object):
         jid, type_, show, status = presence.getFrom(), \
                 presence.getType(), presence.getShow(), \
                 presence.getStatus()
+        who = str(presence.getFrom())
 
         if self.jid.bareMatch(jid):
             # update internal status
@@ -422,21 +423,23 @@ class BotBase(object):
                 self.log.warning("Remove online user error: %s" % (e))
         else:
             if presence.getJid():
-                print "presence.getJid(): %s" % presence.getJid()
-                print "self.jid: %s" % self.jid
+                # print "presence.getJid(): %s" % presence.getJid()
+                # print "self.jid: %s" % self.jid
                 # if who != "%s/%s" % (self.muc_room, self.muc_nick):
-                # if who != "%s/%s" % (self.muc_room, self.muc_nick):
-                #     status = self.myroster.getShow(presence.getJid())
-                #     print "%s -> %s" % (who, status)
-                #     if status in [None, 'chat']:
-                #         self.log.warning("User now available (online, chat): %s" % (who))
-                #         self.muc_users[who] = presence.getJid()
-                #     elif status in ['xa', 'away', 'dnd']:
-                #         self.log.warning("User now unavailable (offline, afk, dnd): %s" % (who))
-                #         try:
-                #             del self.muc_users[who]
-                #         except Exception as e:
-                #             self.log.warning("Remove online user error: %s" % (e))
+                if presence.getJid().split('/')[0] != self.jid:
+                    status = self.myroster.getShow(presence.getJid())
+                    print "%s -> %s" % (who, status)
+                    if status in [None, 'chat']:
+                        self.log.warning("User now available (online, chat): %s" % (who))
+                        self.muc_users[who] = presence.getJid()
+                    elif status in ['xa', 'away', 'dnd']:
+                        self.log.warning("User now unavailable (offline, afk, dnd): %s" % (who))
+                        try:
+                            del self.muc_users[who]
+                        except Exception as e:
+                            self.log.warning("Remove online user error: %s" % (e))
+                else:
+                    self.log.warning("Ignoring myself")
         self.log.warning("Users online: %s" % (' '.join(self.muc_users)))
 
     def callback_message(self, conn, mess):
