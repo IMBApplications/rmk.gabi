@@ -106,7 +106,7 @@ class GabiCustom(BotBase):
             return
 
         #fangen wir mal an mit gucken ob der bb oder was sagen will
-        reg_ex_bb = (r".*?bb$", r".*?bin mal weg.*?", r".*?baba")
+        reg_ex_bb = (r".*?bb$", r".*?bin mal weg.*?", r".*?baba", r".*?good day")
         for reg in reg_ex_bb:
             c = re.compile(reg)
             if c.match(text) != None:
