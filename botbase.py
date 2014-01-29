@@ -85,6 +85,9 @@ class BotBase(object):
         self.MSG_HELP_TAIL = _('Type help *command name* to get more info about that specific command.')
         self.MSG_HELP_UNDEFINED_COMMAND = _('That command is not defined.')
 
+        self.stats = self.loadJSON('save_stats.dat', {})
+        atexit.register(self.saveJSON, 'save_stats.dat', self.stats)
+
     ########## Save / Load Functions ##########
     def saveJSON(self, filename, content):
         """Saves the given content to the given filename as JSON"""
@@ -247,7 +250,9 @@ class BotBase(object):
 
     def send_message(self, mess):
         """Send an XMPP message"""
-        self.messageCount += 1
+        if 'messageCount' not in self.stats.keys():
+            messageCount['messageCount'] = 0
+        self.stats['messageCount'] += 1
         self.connect().send(mess)
 
     def send(self, user, text, in_reply_to=None, message_type='chat'):

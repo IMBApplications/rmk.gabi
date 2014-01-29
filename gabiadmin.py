@@ -15,9 +15,6 @@ class GabiAdmin(BotBase):
         self.adminList = self.loadJSON('save_admins.dat', [])
         atexit.register(self.saveJSON, 'save_admins.dat', self.adminList)
 
-        self.messageCount = self.loadJSON('save_stats.dat', 0)
-        atexit.register(self.saveJSON, 'save_stats.dat', self.messageCount)
-
     def isAdmin(self, srcChannel, srcUsername):
         adminRights = False
         for (username, channel, since, comment) in self.adminList:
