@@ -58,7 +58,7 @@ class GabiAdmin(BotBase):
                 self.logger.debug("Recieved MUC message from user: %s" % str(mess.getFrom()))
             except Exception:
                 self.logger.info("Recieved MUC message from non online user: %s" % str(mess.getFrom()))
-        elif message.__getitem__('type') == 'chat':
+        elif mess.__getitem__('type') == 'chat':
             realjid = str(mess.getFrom()).split('/')[0]
             self.logger.debug("Recieved chat message from user: %s" % str(mess.getFrom()))
 #self.muc_channels
