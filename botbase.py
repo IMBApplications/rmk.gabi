@@ -240,8 +240,8 @@ class BotBase(object):
         try:
             self.connect().send(pres)
             self.readyTs = time.time()
-        except AttributeError:
-            self.log.warning('No connection could be established. Exiting!')
+        except AttributeError as e:
+            self.log.warning('No connection could be established. Exiting! %s' % e)
             self.quitBot()
 
     def send_message(self, mess):
