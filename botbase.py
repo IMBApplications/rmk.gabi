@@ -208,7 +208,7 @@ class BotBase(object):
             # my_roster = self.conn.getRoster()
             # for i in my_roster.getItems():
             for i in self.roster.getItems():
-                self.myroster[i] = my_roster.getStatus(i)
+                self.myroster[i] = self.roster.getStatus(i)
             if len(self.roster) > 0:
                 self.myroster = self.convert_from_unicode(self.roster)
 
