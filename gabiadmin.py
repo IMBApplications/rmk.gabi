@@ -29,7 +29,6 @@ class GabiAdmin(BotBase):
         msg = []
         initAdminExists = False
         for (username, channel, since, comment) in self.adminList:
-            print username, channel, since, comment
             if channel == srcChannel:
                 initAdminExists = True
         if initAdminExists:
@@ -57,8 +56,6 @@ class GabiAdmin(BotBase):
         # admin add, list, remove, show
         #self.muc_channels all connected rooms
         channel, srcNick = str(mess.getFrom()).split('/')
-        print "channel, srcNick: %s %s" % (channel, srcNick)
-
         if len(self.createAdminList(channel)) == 0:
             if args == 'initial':
                 self.adminList.append((srcNick, channel, time.time(), "Initial administrator"))
@@ -71,4 +68,8 @@ class GabiAdmin(BotBase):
             self.send_simple_reply(mess, self.createAdminList(channel), True)
             return
         else:
-            print args
+            arg = args.split()
+            if arg[0] == "list":
+                self.send_simple_reply(mess, self.createAdminList(channel), True)
+            if len(arg) > 1:
+
