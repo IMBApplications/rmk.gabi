@@ -59,7 +59,7 @@ class BotBase(object):
         self.localization = "en"
         self.muted = False
         self.muc_users = {}
-        self.myroster = None
+        self.roster = None
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
@@ -198,7 +198,6 @@ class BotBase(object):
 
             # Send initial presence stanza (say hello to everyone)
             self.conn.sendInitPresence(requestRoster=1)
-            self.myroster = self.conn.getRoster()
             # Save roster and log Items
             self.roster = self.conn.Roster.getRoster()
             self.log.info('*** roster ***')
@@ -432,20 +431,17 @@ class BotBase(object):
                     srcJid = False
                 if srcJid:
                     if srcJid != self.jid:
-                        try:
-                            status = self.myroster.getShow(presence.getJid())
-                            print "%s -> %s" % (who, status)
-                            if status in [None, 'chat']:
-                                self.log.warning("User now available (online, chat): %s" % (who))
-                                self.muc_users[who] = presence.getJid()
-                            elif status in ['xa', 'away', 'dnd']:
-                                self.log.warning("User now unavailable (offline, afk, dnd): %s" % (who))
-                                try:
-                                    del self.muc_users[who]
-                                except Exception as e:
-                                    self.log.warning("Remove online user error: %s" % (e))
-                        except KeyError as e:
-                            self.log.warning("Ignoring: %s" % (e))
+                        status = self.roster.getShow(presence.getJid())
+                        print "%s -> %s" % (who, status)
+                        if status in [None, 'chat']:
+                            self.log.warning("User now available (online, chat): %s" % (who))
+                            self.muc_users[who] = presence.getJid()
+                        elif status in ['xa', 'away', 'dnd']:
+                            self.log.warning("User now unavailable (offline, afk, dnd): %s" % (who))
+                            try:
+                                del self.muc_users[who]
+                            except Exception as e:
+                                self.log.warning("Remove online user error: %s" % (e))
                 else:
                     self.log.warning("Ignoring myself")
         self.log.warning("Users online: %s" % (' '.join(self.muc_users)))
