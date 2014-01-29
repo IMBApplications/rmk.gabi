@@ -21,14 +21,13 @@ class GabiAdmin(BotBase):
     def isAdmin(self, srcChannel, srcUsername):
         adminRights = False
         for (username, channel, since, comment) in self.adminList:
-            if srcUser.lower() == username.lower() and channel.lower() == srcChannel.lower():
+            if srcUsername.lower() == username.lower() and channel.lower() == srcChannel.lower():
                 adminRights = True
         return adminRights
 
     def createAdminList(self, srcChannel):
         msg = []
         initAdminExists = False
-        print self.adminList
         for (username, channel, since, comment) in self.adminList:
             print username, channel, since, comment
             if channel == srcChannel:
