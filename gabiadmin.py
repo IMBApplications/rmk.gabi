@@ -30,6 +30,7 @@ class GabiAdmin(BotBase):
         initAdminExists = False
         print self.adminList
         for (username, channel, since, comment) in self.adminList:
+            print username, channel, since, comment
             if channel == srcChannel:
                 initAdminExists = True
         if not initAdminExists:
