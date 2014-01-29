@@ -59,7 +59,6 @@ class BotBase(object):
         self.localization = "en"
         self.muted = False
         self.messageCount = 0
-        self.startup = time.time()
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
@@ -191,15 +190,15 @@ class BotBase(object):
             #connection attempt
             conres = conn.connect()
             if not conres:
-                self.log.error('unable to connect to server %s.' % self.jid.getDomain())
+                self.log.error('Unable to connect to server %s.' % self.jid.getDomain())
                 return None
             if conres != 'tls':
-                self.log.warning('unable to establish secure connection '\
+                self.log.warning('Unable to establish secure connection '\
                 '- TLS failed!')
 
             authres = conn.auth(self.jid.getNode(), self.__password, self.res)
             if not authres:
-                self.log.error('unable to authorize with server.')
+                self.log.error('Unable to authorize with server.')
                 return None
             if authres != 'sasl':
                 self.log.warning("unable to perform SASL auth on %s. "\
@@ -239,8 +238,12 @@ class BotBase(object):
         pres = xmpp.Presence(to=my_room_JID)
         if password is not None:
             pres.setTag('x',namespace=NS_MUC).setTagData('password',password)
-        self.connect().send(pres)
-        self.readyTs = time.time()
+        try:
+            self.connect().send(pres)
+            self.readyTs = time.time()
+        except AttributeError:
+            self.log.warning('No connection could be established. Exiting!')
+            self.quit()
 
     def quit(self):
         self.__finished = True
