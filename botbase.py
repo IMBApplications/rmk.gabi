@@ -415,11 +415,11 @@ class BotBase(object):
             self.send(jid, self.MSG_NOT_AUTHORIZED)
             self.roster.Unauthorize(jid)
         elif type_ == 'unavailable':
-            self.logger.warning("Remove online user: %s" % (who))
+            self.log.warning("Remove online user: %s" % (who))
             try:
                 del self.muc_users[who]
             except Exception as e:
-                self.logger.warning("Remove online user error: %s" % (e))
+                self.log.warning("Remove online user error: %s" % (e))
         else:
             if presence.getJid():
                 print "presence.getJid(): %s" % presence.getJid()
@@ -429,15 +429,15 @@ class BotBase(object):
                 #     status = self.myroster.getShow(presence.getJid())
                 #     print "%s -> %s" % (who, status)
                 #     if status in [None, 'chat']:
-                #         self.logger.warning("User now available (online, chat): %s" % (who))
+                #         self.log.warning("User now available (online, chat): %s" % (who))
                 #         self.muc_users[who] = presence.getJid()
                 #     elif status in ['xa', 'away', 'dnd']:
-                #         self.logger.warning("User now unavailable (offline, afk, dnd): %s" % (who))
+                #         self.log.warning("User now unavailable (offline, afk, dnd): %s" % (who))
                 #         try:
                 #             del self.muc_users[who]
                 #         except Exception as e:
-                #             self.logger.warning("Remove online user error: %s" % (e))
-        self.logger.warning("Users online: %s" % (' '.join(self.muc_users)))
+                #             self.log.warning("Remove online user error: %s" % (e))
+        self.log.warning("Users online: %s" % (' '.join(self.muc_users)))
 
     def callback_message(self, conn, mess):
         """Messages sent to the bot will arrive here.
