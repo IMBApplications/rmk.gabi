@@ -58,7 +58,6 @@ class BotBase(object):
         self.currentTopic = ""
         self.localization = "en"
         self.muted = False
-        self.messageCount = 0
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
@@ -138,18 +137,6 @@ class BotBase(object):
     def __get_show(self):
         """Get current show (status type like AWAY, DND etc.)."""
         return self.__show
-
-    # This must become private!
-    def get_csv_admin_users_handler(self):
-        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.nickname.lower() + '_admins.csv'), 'rb')
-
-    # This must become private!
-    def get_handler_csv_urls_write(self):
-        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.nickname.lower() + '_urls.csv'), 'ab')
-
-    # This must become private!
-    def get_handler_csv_urls_read(self):
-        return open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.nickname.lower() + '_urls.csv'), 'rb')
 
     status_message = property(fget=__get_status, fset=__set_status)
     status_type = property(fget=__get_show, fset=__set_show)

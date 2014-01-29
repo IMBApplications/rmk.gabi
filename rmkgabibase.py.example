@@ -11,13 +11,8 @@ from gabihate import GabiHate
 
 import logging
 
-#http://docs.python.org/library/csv.html
-import csv
-import re
-
 logging.basicConfig()
 #logging.basicConfig(filename='logs/gabi.log',level=logging.DEBUG)
 
 class GabiBase(GabiAdmin, GabiChannelAdmin, GabiCustom, GabiFun, GabiHelp, GabiLog, GabiHate):
-    def test(self):
-        print "test"
+    pass
