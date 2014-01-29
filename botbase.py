@@ -446,7 +446,8 @@ class BotBase(object):
                     # if srcJid != self.jid:
                     print "self.roster.getItems(): %s " % self.roster.getItems()
                     try:
-                        status = self.roster.getShow(presence.getJid())
+                        # status = self.roster.getShow(presence.getJid())
+                        status = presence.getShow()
                         print "%s -> %s" % (who, status)
                     except KeyError:
                         status = False
