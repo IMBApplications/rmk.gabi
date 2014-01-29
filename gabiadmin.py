@@ -28,11 +28,12 @@ class GabiAdmin(BotBase):
     def createAdminList(self, srcChannel):
         msg = []
         initAdminExists = False
+        print self.adminList
         for (username, channel, since, comment) in self.adminList:
             if channel == srcChannel:
                 initAdminExists = True
         if not initAdminExists:
-            msg.append(_("The following administrators are registred:"))
+            msg.append(_("The following administrators are registred for this channel:"))
             for (username, channel, since, comment) in self.adminList:
                 if channel == srcChannel:
                     msg.append(_("{0} since {1} ({2})").format(username, since, comment))
