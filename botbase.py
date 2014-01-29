@@ -245,7 +245,7 @@ class BotBase(object):
             self.readyTs = time.time()
         except AttributeError:
             self.log.warning('No connection could be established. Exiting!')
-            self.quit()
+            self.__finished = True
 
     def send_message(self, mess):
         """Send an XMPP message"""
@@ -532,7 +532,7 @@ class BotBase(object):
 
     def on_ping_timeout(self):
         logging.info('Terminating due to PING timeout.')
-        self.quit()
+        self.__finished = True
 
     def shutdown(self):
         """This function will be called when we're done serving
