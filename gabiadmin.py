@@ -49,7 +49,8 @@ class GabiAdmin(BotBase):
     def admin (self, mess, args):
         """Administrative commands"""
         # admin add, list, remove, show
-        print "mess.getFrom(): %s" % mess.getFrom()
+        channel, srcNick = mess.getFrom().split('/')
+        print "channel, srcNick: %s %s" % (channel, srcNick)
         realjid = None
         if mess.__getitem__('type') == 'groupchat':
             try:
