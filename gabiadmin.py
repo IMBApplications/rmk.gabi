@@ -66,7 +66,8 @@ class GabiAdmin(BotBase):
             return
         else:
             arg = args.split()
-            if arg[0] == "list":
-                self.send_simple_reply(mess, self.createAdminList(channel), True)
-            if len(arg) > 1:
+            if len(arg) > 0:
+                if arg[0] == "list":
+                    self.send_simple_reply(mess, self.createAdminList(channel), True)
+
                 pass
