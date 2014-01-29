@@ -38,17 +38,17 @@ class GabiAdmin(BotBase):
         """Shut me down."""
         if self.isAdmin(self.get_sender_username(mess)):
             self.send_simple_reply(mess, _('Shutting down.'), False)
-            self.log.warning("ACCESS '%s' issued shutdown command." % self.get_sender_username(mess))
+            self.log.warning("ACCESS '%s' issued shutdown command." % mess.getFrom().getStripped())
             self.quitBot()
         else:
             self.send_simple_reply(mess, _("Sorry, you have no administrative rights."), True)
-            self.log.warning("ACCESS '%s' tried admin command without permission." % self.get_sender_username(mess))
+            self.log.warning("ACCESS '%s' tried admin command without permission." % mess.getFrom().getStripped())
 
     @botcmd
     def admin (self, mess, args):
         """Administrative commands"""
         # admin add, list, remove, show
-        username = self.get_sender_username(mess)
+        username = mess.getFrom().getStripped()
         if len(self.createAdminList()) == 0:
             if args == 'add':
                 self.adminList.append((username, time.time(), "Initial administrator"))
