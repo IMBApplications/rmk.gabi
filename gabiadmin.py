@@ -33,7 +33,7 @@ class GabiAdmin(BotBase):
             print username, channel, since, comment
             if channel == srcChannel:
                 initAdminExists = True
-        if not initAdminExists:
+        if initAdminExists:
             msg.append(_("The following administrators are registred for this channel:"))
             for (username, channel, since, comment) in self.adminList:
                 if channel == srcChannel:
