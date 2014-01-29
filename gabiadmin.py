@@ -49,6 +49,40 @@ class GabiAdmin(BotBase):
     def admin (self, mess, args):
         """Administrative commands"""
         # admin add, list, remove, show
+        print "mess.getFrom(): %s" % mess.getFrom()
+        realjid = None
+        if mess.__getitem__('type') == 'groupchat':
+            try:
+                # print "test: %s" % self.muc_users[message.getFrom()].split('/')[0]
+                realjid = self.muc_users[mess.getFrom()].split('/')[0]
+                self.logger.debug("Recieved MUC message from user: %s" % str(mess.getFrom()))
+            except Exception:
+                self.logger.info("Recieved MUC message from non online user: %s" % str(mess.getFrom()))
+        elif message.__getitem__('type') == 'chat':
+            realjid = str(mess.getFrom()).split('/')[0]
+            self.logger.debug("Recieved chat message from user: %s" % str(mess.getFrom()))
+#self.muc_channels
+
+        # check if it is a message from myself
+        # print "\n%s != %s" % (str(message.getFrom()), "%s/%s" % (self.muc_room, self.muc_nick))
+        # if realjid:
+        #     if str(mess.getFrom()) != "%s/%s" % (self.muc_room, self.muc_nick):
+        #         admin = False
+        #         # check if the user is a admin
+        #         for (userJid, username) in self.users:
+        #             # print "(userJid, username): %s %s" % (userJid, username)
+        #             # userJid = self.plugin.utils.convert_from_unicode(jid)
+        #             # print "userJid: %s" % userJid
+        #             if userJid == realjid.split('/')[0]:
+        #                 admin = True
+        #                 # print "admin found on %s" % userJid
+
+        #         if admin:
+
+
+
+
+
         username = mess.getFrom()
         if len(self.createAdminList()) == 0:
             if args == 'add':
