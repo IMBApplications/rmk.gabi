@@ -445,8 +445,11 @@ class BotBase(object):
                 #     srcJid = False
                 # if srcJid:
                     # if srcJid != self.jid:
-                    status = self.roster.getShow(presence.getJid())
-                    print "%s -> %s" % (who, status)
+                    try:
+                        status = self.roster.getShow(presence.getJid())
+                        print "%s -> %s" % (who, status)
+                    except KeyError:
+                        status = False
                     if status in [None, 'chat']:
                         self.log.warning("User now available (online, chat): %s" % (who))
                         self.muc_users[who] = presence.getJid()
