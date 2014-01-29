@@ -223,6 +223,8 @@ class BotBase(object):
 
         return self.conn
 
+    def quit(self):
+        self.__finished = True
 
     def join_room(self, room, username=None, password=None):
         """Join the specified multi-user chat room
@@ -244,9 +246,6 @@ class BotBase(object):
         except AttributeError:
             self.log.warning('No connection could be established. Exiting!')
             self.quit()
-
-    def quit(self):
-        self.__finished = True
 
     def send_message(self, mess):
         """Send an XMPP message"""
