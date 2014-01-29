@@ -449,6 +449,7 @@ class BotBase(object):
                         # status = self.roster.getShow(presence.getJid())
                         status = presence.getShow()
                         print "%s -> %s" % (who, status)
+                        print "addiliation: %s" % presence.getAffiliation()
                     except KeyError:
                         status = False
                     if status in [None, 'chat']:
