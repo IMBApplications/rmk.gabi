@@ -58,6 +58,8 @@ class BotBase(object):
         self.currentTopic = ""
         self.localization = "en"
         self.muted = False
+        self.muc_users = {}
+        self.myroster = None
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
@@ -195,7 +197,8 @@ class BotBase(object):
             self.conn = conn
 
             # Send initial presence stanza (say hello to everyone)
-            self.conn.sendInitPresence()
+            self.conn.sendInitPresence(requestRoster=1)
+            self.myroster = self.conn.getRoster()
             # Save roster and log Items
             self.roster = self.conn.Roster.getRoster()
             self.log.info('*** roster ***')
@@ -411,7 +414,30 @@ class BotBase(object):
             # Authorization was not granted
             self.send(jid, self.MSG_NOT_AUTHORIZED)
             self.roster.Unauthorize(jid)
-
+        elif type_ == 'unavailable':
+            self.logger.warning("Remove online user: %s" % (who))
+            try:
+                del self.muc_users[who]
+            except Exception as e:
+                self.logger.warning("Remove online user error: %s" % (e))
+        else:
+            if presence.getJid():
+                print "presence.getJid(): %s" % presence.getJid()
+                print "self.jid: %s" % self.jid
+                # if who != "%s/%s" % (self.muc_room, self.muc_nick):
+                # if who != "%s/%s" % (self.muc_room, self.muc_nick):
+                #     status = self.myroster.getShow(presence.getJid())
+                #     print "%s -> %s" % (who, status)
+                #     if status in [None, 'chat']:
+                #         self.logger.warning("User now available (online, chat): %s" % (who))
+                #         self.muc_users[who] = presence.getJid()
+                #     elif status in ['xa', 'away', 'dnd']:
+                #         self.logger.warning("User now unavailable (offline, afk, dnd): %s" % (who))
+                #         try:
+                #             del self.muc_users[who]
+                #         except Exception as e:
+                #             self.logger.warning("Remove online user error: %s" % (e))
+        self.logger.warning("Users online: %s" % (' '.join(self.muc_users)))
 
     def callback_message(self, conn, mess):
         """Messages sent to the bot will arrive here.
