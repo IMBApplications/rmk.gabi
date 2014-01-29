@@ -10,8 +10,6 @@ class GabiAdmin(BotBase):
     def __init__(self, username, password, timezone='UTC', candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
         super(GabiAdmin, self).__init__(username, password, timezone, candy_colors, res, debug, privatedomain, acceptownmsgs, handlers)
 
-        self.userTopic = self.loadJSON('topic.dat', "")
-
         self.adminList = self.loadJSON('save_admins.dat', [])
         atexit.register(self.saveJSON, 'save_admins.dat', self.adminList)
 
@@ -32,12 +30,12 @@ class GabiAdmin(BotBase):
             msg.append(_("The following administrators are registred for this channel:"))
             for (username, channel, since, comment) in self.adminList:
                 if channel == srcChannel:
-                    msg.append(_("{0} since {1} ({2})").format(username, since, comment))
+                    msg.append(_("{0} since {1} ({2})").format(username, datetime.datetime.fromtimestamp(since).strftime('%Y-%m-%d %H:%M:%S'), comment))
         return msg
 
     @botcmd
     def quit (self, mess, args):
-        """Shut me down."""
+        """Shut me down (admin)."""
         channel, srcNick = str(mess.getFrom()).split('/')
         if self.isAdmin(channel, srcNick):
             self.send_simple_reply(mess, _('Shutting down.'), False)
@@ -66,10 +64,12 @@ class GabiAdmin(BotBase):
             return
         else:
             arg = args.split()
-            if len(arg) == 0:
-                self.send_simple_reply(mess, _("Please choose from: list, add, remove, show"), True)
-            else:
+            if len(arg) != 0:
                 if arg[0] == "list":
                     self.send_simple_reply(mess, self.createAdminList(channel), True)
-
-                pass
+                elif arg[0] == "add":
+                    pass
+                elif arg[0] == "remove":
+                    pass
+            else:
+                self.send_simple_reply(mess, _("Please choose from: list, add, remove"), True)
