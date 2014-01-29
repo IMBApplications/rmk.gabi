@@ -221,12 +221,6 @@ class BotBase(object):
                 self.conn.RegisterHandler(handler, callback)
                 self.log.debug('Registered handler: %s' % handler)
 
-            #lets get online
-            presence = xmpp.Presence()
-            presence.setShow('chat')
-            presence.setStatus("At your service.")
-            self.conn.send(presence)
-
         return self.conn
 
     def quitBot(self):
@@ -244,6 +238,8 @@ class BotBase(object):
             username = self.__username.split('@')[0]
         my_room_JID = '/'.join((room, username))
         pres = xmpp.Presence(to=my_room_JID)
+        pres.setShow(None)
+        pres.setStatus("At your service.")
         if password is not None:
             pres.setTag('x',namespace=NS_MUC).setTagData('password',password)
         try:
