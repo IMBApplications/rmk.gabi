@@ -436,7 +436,7 @@ class BotBase(object):
                 # print "self.jid: %s" % self.jid
                 myself = False
                 for room in self.muc_channels:
-                    if who == "%s/%s" % (room, self.muc_nick):
+                    if who == "%s/%s" % (room, self.nickname):
                         myself = True
                 if not myself:
                 # try:
