@@ -249,6 +249,7 @@ class BotBase(object):
             self.quitBot()
 
         presence = xmpp.Presence()
+        presence.setShow('chat')
         presence.setStatus("At your service.")
         self.conn.send(presence)
 
