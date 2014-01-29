@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-28 23:03+0100\n"
+"POT-Creation-Date: 2014-01-29 13:06+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: German <aegnor@mittelerde.ch>\n"
@@ -16,39 +16,146 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gabihelp.py:27
-msgid "Available commands:"
-msgstr "Verfügbare Befehle:"
+#: botbase.py:83
+msgid ""
+"Hey there. You are not yet on my roster. Authorize my request and I will do "
+"the same."
+msgstr ""
+"Hallo. Du bist noch nicht in meiner Freundesliste. Authorisiere mich und ich "
+"nehme dich auf."
+
+#: botbase.py:84
+msgid "You did not authorize my subscription request. Access denied."
+msgstr ""
+"Du hast meine Authorisierungsanfrage nicht akzeptiert. Zugriff verweigert."
+
+#: botbase.py:85
+msgid "Type help *command name* to get more info about that specific command."
+msgstr ""
+"Schreibe help *Befehlsname* um Hilfe zu einem spezifischen Befehl zu "
+"erhalten."
+
+#: botbase.py:86
+msgid "That command is not defined."
+msgstr "Dieser Befehl existiert nicht."
+
+#: botbase.py:698
+msgid "1 second"
+msgstr "1 Sekunde"
+
+#: botbase.py:700 gabicustom.py:610
+#, python-brace-format
+msgid "{0} seconds"
+msgstr "{0} Sekunden"
+
+#: botbase.py:703
+msgid "1 minute"
+msgstr "1 Minute"
+
+#: botbase.py:705
+#, python-brace-format
+msgid "{0} minutes"
+msgstr "{0} Minuten"
+
+#: botbase.py:708
+msgid "1 hour"
+msgstr "1 Stunde"
+
+#: botbase.py:710
+#, python-brace-format
+msgid "{0} hours"
+msgstr "{0} Stunden"
+
+#: botbase.py:713
+msgid "1 day"
+msgstr "1 Tag"
+
+#: botbase.py:715
+#, python-brace-format
+msgid "{0} days"
+msgstr "{0} Tage"
+
+#: botbase.py:718
+msgid "1 week"
+msgstr "1 Woche"
+
+#: botbase.py:720
+#, python-brace-format
+msgid "{0} weeks"
+msgstr "{0} Wochen"
+
+#: botbase.py:723
+msgid "1 year"
+msgstr "1 Jahr"
+
+#: botbase.py:725
+#, python-brace-format
+msgid "{0} years"
+msgstr "{0} Jahre"
+
+#: gabiadmin.py:30
+msgid "The following administrators are registred for this channel:"
+msgstr "Folgene Administratoren sind für den aktuellen channel registriert:"
+
+#: gabiadmin.py:33
+#, python-brace-format
+msgid "{0} since {1} ({2})"
+msgstr "{0} seit {1} ({2})"
+
+#: gabiadmin.py:41
+msgid "Shutting down."
+msgstr "Fahre herunter."
+
+#: gabiadmin.py:45
+msgid "Sorry, you have no administrative rights."
+msgstr "Entschuldigung, du hast keine Administratoren Rechte."
+
+#: gabiadmin.py:59
+msgid ""
+"No administrators registred. Please register the first with '!admin initial'"
+msgstr "Keine Administratoren registriert. Bitte registriere dich als ersten mit '!admin initial'"
+
+#: gabiadmin.py:75
+msgid "Please choose from: list, add, remove"
+msgstr "Bitte wähle aus: list, add, remove"
 
 #: gabicustom.py:113
+#, python-brace-format
 msgid "Have fun, {0}!"
 msgstr "Hau raus, {0}!"
 
 #: gabicustom.py:122
+#, python-brace-format
 msgid "wb {0}! How was {1}?"
 msgstr "wb {0}! Wie wars beim {1}?"
 
 #: gabicustom.py:134
+#, python-brace-format
 msgid "{0} wanted to say \"{1}\"."
 msgstr "{0} wollte \"{1}\" sagen."
 
 #: gabicustom.py:143
+#, python-brace-format
 msgid "Hihihi, {0} said penis!"
 msgstr "Gnihihi, {0} hat Penis gesagt!"
 
 #: gabicustom.py:153
+#, python-brace-format
 msgid "Morning? Check your clock, {0}!"
 msgstr "Morgen? Guck ma auf die Uhr, {0}!"
 
 #: gabicustom.py:155
+#, python-brace-format
 msgid "Good morning, {0}. Nice to see you here."
 msgstr "Guten Morgen, {0}. Schön, dass du da bist."
 
 #: gabicustom.py:241
+#, python-brace-format
 msgid "Welcome back {0}, i saw you last {1} ago."
 msgstr "Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen."
 
 #: gabicustom.py:243
+#, python-brace-format
 msgid ""
 "Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter."
 msgstr ""
@@ -56,38 +163,47 @@ msgstr ""
 "Kontakter."
 
 #: gabicustom.py:244
+#, python-brace-format
 msgid "Enter \"{0} help\" or \"!help\" for help."
 msgstr "Gib \"{0} help\" oder \"!help\" ein für hilfe."
 
 #: gabicustom.py:247
+#, python-brace-format
 msgid "How was {0}?"
 msgstr "Wie war es beim {0}?"
 
 #: gabicustom.py:256
+#, python-brace-format
 msgid "{0}, I have to tell you:"
 msgstr "{0}, ich soll dir folgendes ausrichten:"
 
 #: gabicustom.py:258
+#, python-brace-format
 msgid "From {0} {1} ago: {2}"
 msgstr "Von {0} vor {1}: {2}"
 
 #: gabicustom.py:283
+#, python-brace-format
 msgid "{0} {1} ago"
 msgstr "{0} vor {1}"
 
 #: gabicustom.py:293
+#, python-brace-format
 msgid "{0} was last seen {1} ago."
 msgstr "{0} habe ich zuletzt vor {1} gesehen."
 
 #: gabicustom.py:295
+#, python-brace-format
 msgid "{0}, I did never see {1}."
 msgstr "{0}, {1} habe ich noch nie gesehen."
 
 #: gabicustom.py:304
+#, python-brace-format
 msgid "I memorized now: \"{0}\"."
 msgstr "Ich habe mir jetzt gemerkt: \"{0}\"."
 
 #: gabicustom.py:306
+#, python-brace-format
 msgid "Your memo: \"{0}\"."
 msgstr "Dein Memo: \"{0}\"."
 
@@ -96,6 +212,7 @@ msgid "What should i memorize?"
 msgstr "Was soll ich mir merken?"
 
 #: gabicustom.py:325
+#, python-brace-format
 msgid "See you later, {0}. Have fun at {1}."
 msgstr "Bis später, {0}. Viel Spass beim {1}."
 
@@ -104,6 +221,7 @@ msgid "Nobody left any message."
 msgstr "Niemand hat eine Nachricht hinterlassen."
 
 #: gabicustom.py:349
+#, python-brace-format
 msgid "I will tell {0}: {1}"
 msgstr "Ich werde {0} ausrichten dass: {1}"
 
@@ -116,6 +234,7 @@ msgid "Commands for count are: add, list, del"
 msgstr "Befehle für count sind: add, list, del"
 
 #: gabicustom.py:419
+#, python-brace-format
 msgid "Count saved for '{0}' ({1})"
 msgstr "Count gespeichert für '{0}' ({1})"
 
@@ -124,10 +243,12 @@ msgid "You have to enter time/date and an event. Examples:"
 msgstr "Du musst Zeit/Datum und das Event angeben. Beispiele:"
 
 #: gabicustom.py:424
+#, python-brace-format
 msgid "{0} count add 18:15 It is a quarter past 6"
 msgstr "{0} count add 18:15 Es ist viertel nach 6"
 
 #: gabicustom.py:425
+#, python-brace-format
 msgid "{0} count add 31.12.2014 23:59 The old year is history"
 msgstr "{0} count add 31.12.2014 23:59 Das alte Jahr ist Geschichte"
 
@@ -136,6 +257,7 @@ msgid "The following counts are set:"
 msgstr "Die folgenden counts sind gesetzt:"
 
 #: gabicustom.py:432
+#, python-brace-format
 msgid "{0}\t{1}\t\"{2}\" set by \"{3}\""
 msgstr "{0}\t{1}\t\"{2}\" wurde gesetzt von \"{3}\""
 
@@ -144,15 +266,18 @@ msgid "There are no counts saved."
 msgstr "Es sind keine counts gespeichert."
 
 #: gabicustom.py:437
+#, python-brace-format
 msgid "Unknown index. Please specify a valid index: ({0} count list)."
 msgstr ""
 "Unbekannter Index. Bitte gib einen gültigen Index an: ({0} count list)."
 
 #: gabicustom.py:443
+#, python-brace-format
 msgid "{0}\t\"{1}\" set by \"{2}\" has been removed."
 msgstr "{0}\t\"{1}\" gesetzt von \"{2}\" wurde entfernt."
 
 #: gabicustom.py:479
+#, python-brace-format
 msgid "{0} {1}: <a href='{2}'>{3}</a>"
 msgstr "{0} {1}: <a href='{2}'>{3}</a>"
 
@@ -165,57 +290,63 @@ msgid "I am now muted."
 msgstr "Ich bin nicht mehr Stumm."
 
 #: gabicustom.py:500
+#, python-brace-format
 msgid ""
 "I am {0}, a chatbot. If you like to know more, visit: <a href='https://"
 "github.com/IMBApplications/rmk.gabi' target='_blank'> https://github.com/"
 "IMBApplications/rmk.gabi</a>. My creator is oxi if you like to talk to him "
-"about me. I delivered {1} messages since i last restarted {2}."
-msgstr "Ich bin {0}, ein Chatbot. Wenn du mehr wissen möchtest, besuche <a "
+"about me. I delivered {1} messages and was last last restarted {2}."
+msgstr ""
+"Ich bin {0}, ein Chatbot. Wenn du mehr wissen möchtest, besuche <a "
 "href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> "
 "https://github.com/IMBApplications/rmk.gabi</a>. Mein Erfinder ist oxi, "
 "falls du mit ihm über mich sprechen willst. Ich habe {1} Nachrichten "
-"übermittelt seit ich {2} gestartet wurde."
-
+"übermittelt und wurde {2} zum letzten mal neu gestartet."
 
 #: gabicustom.py:522
+#, python-brace-format
 msgid "Now: {0}"
 msgstr "Jetzt: {0}"
 
 #: gabicustom.py:532 gabicustom.py:641
+#, python-brace-format
 msgid "{0} ago: {1}"
 msgstr "Vor {0}: {1}"
 
 #: gabicustom.py:538
+#, python-brace-format
 msgid "Today: {0} from {1}"
 msgstr "Heute: {0} von {1}"
 
 #: gabicustom.py:543
+#, python-brace-format
 msgid "{0} years ago: {1}"
 msgstr "Vor {0} Jahren: {1}"
 
 #: gabicustom.py:553
+#, python-brace-format
 msgid "In {0} years: {1}"
 msgstr "In {0} Jahren: {1}"
 
 #: gabicustom.py:581
+#, python-brace-format
 msgid "Tomorrow: {0}"
 msgstr "Morgen: {0}"
 
 #: gabicustom.py:583 gabicustom.py:589
+#, python-brace-format
 msgid "In {0} days: {1}"
 msgstr "In {0} Tagen: {1}"
 
 #: gabicustom.py:585
+#, python-brace-format
 msgid "In 1 week: {0}"
 msgstr "In 1 Woche: {0}"
 
 #: gabicustom.py:587
+#, python-brace-format
 msgid "In {0} weeks: {1}"
 msgstr "In {0} Wochen: {1}"
-
-#: gabicustom.py:610 botbase.py:658
-msgid "{0} seconds"
-msgstr "{0} Sekunden"
 
 #: gabicustom.py:612
 msgid "minute"
@@ -266,10 +397,12 @@ msgid "years"
 msgstr "Jahre"
 
 #: gabicustom.py:637
+#, python-brace-format
 msgid "Now! {0}"
 msgstr "Jetzt! {0}"
 
 #: gabicustom.py:639
+#, python-brace-format
 msgid "In {0}: {1}"
 msgstr "In {0}: {1}"
 
@@ -277,107 +410,8 @@ msgstr "In {0}: {1}"
 msgid " or "
 msgstr " oder "
 
-#: gabihate.py:14
-msgid "{0}, shoot trough your throat!"
-msgstr "{0}, schiess dir in den Hals!"
-
-#: gabihate.py:16
-msgid "{0}, who should i shoot trough the throat?"
-msgstr "{0}, wem soll ich in den Hals schiessen?"
-
-#: gabihate.py:23
-msgid "{0}, get AIDS!"
-msgstr "{0}, krieg AIDS!"
-
-#: gabihate.py:25
-msgid "{0}, who should get AIDS?"
-msgstr "{0}, wem soll ich AIDS wünschen?"
-
-#: gabisc.py:68
-#, python-format
-msgid "${0} ({1}%%) raised of {2} ({3}). {4} Star Citizens"
-msgstr "${0} ({1}%%) aufgebracht of {2} ({3}). {4} Star Citizens"
-
-#: gabisc.py:89
-msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2}</a>"
-msgstr "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2}</a>"
-
-#: gabisc.py:103
-msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2} {3}</a>"
-msgstr "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2} {3}</a>"
-
-#: botbase.py:82
-msgid ""
-"Hey there. You are not yet on my roster. Authorize my request and I will do "
-"the same."
-msgstr ""
-"Hallo. Du bist noch nicht in meiner Freundesliste. Authorisiere mich und ich "
-"nehme dich auf."
-
-#: botbase.py:83
-msgid "You did not authorize my subscription request. Access denied."
-msgstr ""
-"Du hast meine Authorisierungsanfrage nicht akzeptiert. Zugriff verweigert."
-
-#: botbase.py:84
-msgid "Type help *command name* to get more info about that specific command."
-msgstr ""
-"Schreibe help *Befehlsname* um Hilfe zu einem spezifischen Befehl zu "
-"erhalten."
-
-#: botbase.py:85
-msgid "That command is not defined."
-msgstr "Dieser Befehl existiert nicht."
-
-#: botbase.py:656
-msgid "1 second"
-msgstr "1 Sekunde"
-
-#: botbase.py:661
-msgid "1 minute"
-msgstr "1 Minute"
-
-#: botbase.py:663
-msgid "{0} minutes"
-msgstr "{0} Minuten"
-
-#: botbase.py:666
-msgid "1 hour"
-msgstr "1 Stunde"
-
-#: botbase.py:668
-msgid "{0} hours"
-msgstr "{0} Stunden"
-
-#: botbase.py:671
-msgid "1 day"
-msgstr "1 Tag"
-
-#: botbase.py:673
-msgid "{0} days"
-msgstr "{0} Tage"
-
-#: botbase.py:676
-msgid "1 week"
-msgstr "1 Woche"
-
-#: botbase.py:678
-msgid "{0} weeks"
-msgstr "{0} Wochen"
-
-#: botbase.py:681
-msgid "1 year"
-msgstr "1 Jahr"
-
-#: botbase.py:683
-msgid "{0} years"
-msgstr "{0} Jahre"
-
-#: gabiadmin.py:19
-msgid "Shutting down."
-msgstr "Fahre herunter."
-
 #: gabifun.py:13
+#, python-brace-format
 msgid "Groovy? Did i hear groovy? {0} is groovy!"
 msgstr "Fetzig? Hab ich fetzig gehört? {0} ist fetzig!"
 
@@ -386,6 +420,7 @@ msgid "Groovy? Did i hear groovy? I am groovy!"
 msgstr "Fetzig? Hab ich fetzig gehört? ICH bin fetzig!"
 
 #: gabifun.py:21
+#, python-brace-format
 msgid "{0} is IMBA!"
 msgstr "{0} ist IMBA!"
 
@@ -394,18 +429,22 @@ msgid "I am IMBA!"
 msgstr "Ich bin IMBA!"
 
 #: gabifun.py:30
+#, python-brace-format
 msgid "{0} is so funny I'm gonna die!"
 msgstr "Hahahaha, {0} ist zum totlachen!"
 
 #: gabifun.py:32
+#, python-brace-format
 msgid "*ROFL* {0}, you are so funny I'm gonna die!"
 msgstr "Hahahaha! Man, {0}, du bist so witzig, ich lach mich tot!"
 
 #: gabifun.py:39
+#, python-brace-format
 msgid "/me slaps {0}"
 msgstr "/me ohrfeigt {0}"
 
 #: gabifun.py:41
+#, python-brace-format
 msgid "Who should i slap, {0}?"
 msgstr "Wen soll ich ohrfeigen, {0}?"
 
@@ -414,6 +453,7 @@ msgid "Yes honey, what can i do for you?"
 msgstr "Ja Schatz, was kann ich für dich tun?"
 
 #: gabifun.py:52
+#, python-brace-format
 msgid "Fuck {0}! Shit fuck crap!"
 msgstr "Scheiss {0}! Verkackter Mist, stinkiger!"
 
@@ -425,3 +465,42 @@ msgstr "AARRRGH! DRECKSVERWANZTEHURENSCHEISSMISTPIMMELKACKE!"
 msgid "All systems are in perfect condition, thanks for asking."
 msgstr ""
 "Alle Systeme arbeiten innerhalb optimaler Parameter, danke der Nachfrage."
+
+#: gabihate.py:14
+#, python-brace-format
+msgid "{0}, shoot trough your throat!"
+msgstr "{0}, schiess dir in den Hals!"
+
+#: gabihate.py:16
+#, python-brace-format
+msgid "{0}, who should i shoot trough the throat?"
+msgstr "{0}, wem soll ich in den Hals schiessen?"
+
+#: gabihate.py:23
+#, python-brace-format
+msgid "{0}, get AIDS!"
+msgstr "{0}, krieg AIDS!"
+
+#: gabihate.py:25
+#, python-brace-format
+msgid "{0}, who should get AIDS?"
+msgstr "{0}, wem soll ich AIDS wünschen?"
+
+#: gabihelp.py:27
+msgid "Available commands:"
+msgstr "Verfügbare Befehle:"
+
+#: gabisc.py:68
+#, python-format, python-brace-format
+msgid "${0} ({1}%%) raised of {2} ({3}). {4} Star Citizens"
+msgstr "${0} ({1}%%) aufgebracht of {2} ({3}). {4} Star Citizens"
+
+#: gabisc.py:89
+#, python-brace-format
+msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2}</a>"
+msgstr "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2}</a>"
+
+#: gabisc.py:103
+#, python-brace-format
+msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2} {3}</a>"
+msgstr "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2} {3}</a>"

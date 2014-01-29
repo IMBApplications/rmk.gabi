@@ -497,7 +497,7 @@ class GabiCustom(BotBase):
     @botcmd
     def about(self, mess, args):
         """I tell you who I am"""
-        retMsg = _("I am {0}, a chatbot. If you like to know more, visit: <a href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> https://github.com/IMBApplications/rmk.gabi</a>. My creator is oxi if you like to talk to him about me. I delivered {1} messages since i last restarted {2}.").format(self.nickname, self.stats['messageCount'], str(time.ctime(int(self.readyTs))))
+        retMsg = _("I am {0}, a chatbot. If you like to know more, visit: <a href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> https://github.com/IMBApplications/rmk.gabi</a>. My creator is oxi if you like to talk to him about me. I delivered {1} messages and was last last restarted {2}.").format(self.nickname, self.stats['messageCount'], str(time.ctime(int(self.readyTs))))
         self.send_simple_reply(mess, retMsg, True)
 
     """ Support Methods """
