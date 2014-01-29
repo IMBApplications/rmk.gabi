@@ -431,8 +431,8 @@ class BotBase(object):
                 self.log.warning("Remove online user error: %s" % (e))
         else:
             if presence.getJid():
-                print "presence.getJid(): %s" % presence.getJid()
-                print "self.jid: %s" % self.jid
+                # print "presence.getJid(): %s" % presence.getJid()
+                # print "self.jid: %s" % self.jid
                 myself = False
                 for room in self.muc_channels:
                     if who == "%s/%s" % (room, self.nickname):
