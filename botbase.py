@@ -248,6 +248,10 @@ class BotBase(object):
             self.log.warning('No connection could be established. Exiting! %s' % e)
             self.quitBot()
 
+        presence = xmpp.Presence()
+        presence.setStatus("At your service.")
+        self.conn.send(presence)
+
     def send_message(self, mess):
         """Send an XMPP message"""
         self.stats['messageCount'] += 1
