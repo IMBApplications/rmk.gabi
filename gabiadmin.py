@@ -18,7 +18,7 @@ class GabiAdmin(BotBase):
         self.messageCount = self.loadJSON('save_stats.dat', 0)
         atexit.register(self.saveJSON, 'save_stats.dat', self.messageCount)
 
-    def isAdmin(self, srcUsername, srcChannel):
+    def isAdmin(self, srcChannel, srcUsername):
         adminRights = False
         for (username, channel, since, comment) in self.adminList:
             if srcUser.lower() == username.lower() and channel.lower() == srcChannel.lower():
@@ -27,7 +27,11 @@ class GabiAdmin(BotBase):
 
     def createAdminList(self, srcChannel):
         msg = []
-        if len(self.adminList):
+        initAdminExists = False
+        for (username, channel, since, comment) in self.adminList:
+            if channel == srcChannel:
+                initAdminExists = True
+        if not initAdminExists:
             msg.append(_("The following administrators are registred:"))
             for (username, channel, since, comment) in self.adminList:
                 if channel == srcChannel:
@@ -37,14 +41,14 @@ class GabiAdmin(BotBase):
     @botcmd
     def quit (self, mess, args):
         """Shut me down."""
-        username = mess.getFrom()
-        if self.isAdmin(self.get_sender_username(mess)):
+        channel, srcNick = str(mess.getFrom()).split('/')
+        if self.isAdmin(channel, srcNick):
             self.send_simple_reply(mess, _('Shutting down.'), False)
-            self.log.warning("ACCESS '%s' issued shutdown command." % username)
+            self.log.warning("ACCESS '%s' issued shutdown command." % srcNick)
             self.quitBot()
         else:
             self.send_simple_reply(mess, _("Sorry, you have no administrative rights."), True)
-            self.log.warning("ACCESS '%s' tried admin command without permission." % username)
+            self.log.warning("ACCESS '%s' tried admin command without permission." % srcNick)
 
     @botcmd
     def admin (self, mess, args):
@@ -62,7 +66,7 @@ class GabiAdmin(BotBase):
                 self.send_simple_reply(mess, _("No administrators registred. Please register the first with '!admin initial'"), True)
                 return
 
-        if not self.isAdmin(srcNick, channel):
+        if not self.isAdmin(channel, srcNick):
             self.send_simple_reply(mess, self.createAdminList(channel), True)
             return
         else:
