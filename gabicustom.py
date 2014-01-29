@@ -442,7 +442,7 @@ class GabiCustom(BotBase):
                     target_time = datetime.datetime.fromtimestamp(timestamp)
                     ret_message = [_('{0}\t"{1}" set by "{2}" has been removed.').format(target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user)]
                     self.cowntdownList.pop(delIndex)
-            except IndexError:
+            except (IndexError, ValueError):
                 pass
         else:
             #do the counting and add to ret_message

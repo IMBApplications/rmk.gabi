@@ -42,5 +42,10 @@ class GabiHelp(BotBase):
             else:
                 usage = [self.MSG_HELP_UNDEFINED_COMMAND]
 
+        if isinstance(usage, str):
+            usage = [usage]
+        if isinstance(description, str):
+            description = [description]
+
         # return [description] + usage
-        self.send_simple_reply(mess, [description] + usage, True)
+        self.send_simple_reply(mess, description + usage, True)
