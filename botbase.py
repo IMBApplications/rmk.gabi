@@ -60,6 +60,7 @@ class BotBase(object):
         self.muted = False
         self.muc_users = {}
         self.roster = None
+        self.myroster = {}
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
@@ -71,7 +72,6 @@ class BotBase(object):
                 self.log.info('Registered command: %s' % name)
                 self.commands[name] = value
 
-        self.roster = None
         if not localization:
             localization = self.localization
         else:
@@ -204,6 +204,12 @@ class BotBase(object):
             for contact in self.roster.getItems():
                 self.log.info('  %s' % contact)
             self.log.info('*** roster ***')
+
+            my_roster = self.conn.getRoster()
+            for i in my_roster.getItems():
+                self.myroster[i] = my_roster.getStatus(i)
+            if len(self.roster) > 0:
+                self.myroster = self.convert_from_unicode(self.roster)
 
             # Register given handlers (TODO move to own function)
             for (handler, callback) in self.handlers:
