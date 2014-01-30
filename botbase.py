@@ -246,8 +246,8 @@ class BotBase(object):
             self.connect().send(pres)
             self.readyTs = time.time()
             self.muc_channels.append(room)
-        except AttributeError as e:
-            self.log.warning('No connection could be established. Exiting! %s' % e)
+        except AttributeError, ValueError as e:
+            self.log.warning('No connection could be established. ERROR:\n%s' % e)
             self.quitBot()
 
     def send_message(self, mess):
