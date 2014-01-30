@@ -292,9 +292,9 @@ class GabiCustom(BotBase):
                     userName = name
 
             if lastSeen > 0:
-                self.send_simple_reply(mess, _('{0} was last seen {1} ago.').format(userName, self.getAge(lastSeen)), True)
+                self.send_simple_reply(mess, _('{0} was last seen {1} ago.').format(userName, self.getAge(lastSeen)), False)
             else:
-                self.send_simple_reply(mess, _('{0}, I did never see {1}.').format(self.get_sender_username(mess), args), True)
+                self.send_simple_reply(mess, _('{0}, I did never see {1}.').format(self.get_sender_username(mess), args), False)
 
     # Memo Methods
     @botcmd
