@@ -54,26 +54,55 @@ class GabiAdmin(BotBase):
     @botcmd
     def suggestion (self, mess, args):
         """Report a suggestion or bug to the developer."""
-        self.log.warning("BUGREPORT: %s" % args)
-        pass
+        if not mess:
+            mess = xmpp.Message()
+
+        try:
+            channel, srcNick = str(mess.getFrom()).split('/')
+        except:
+            pass
+
+        if not srcNick:
+            srcNick = "Anonymous"
+            channel = "Unknown channel"
+
+        if args:
+            try:
+                emailMsg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args))
+                emailMsg['Subject'] = _('{0} Suggestion from {1}').format(self.nickname, srcNick)
+                emailMsg['From'] = self.adminSettings['emailFrom']
+                emailMsg['To'] = ', '.join(self.adminSettings['suggestionEmail'])
+                s = smtplib.SMTP(self.adminSettings['smtpServer'])
+                s.sendmail(emailMsg['From'], emailMsg['To'], emailMsg.as_string())
+                s.quit()
+                self.send_simple_reply(mess, _("Suggestion email sent."), True)
+                self.log.info("Sending suggestion email succeeded.")
+            except Exception as e:
+                self.send_simple_reply(mess, _("ERROR sending email: %s" % e), True)
+                self.log.warning("Sending suggestion email failed: %s" % e)
+        elif srcNick != "Anonymous":
+            self.send_simple_reply(mess, _("You have to supply a message"), True)
         
     @botcmd
     def notify (self, mess, args):
         """Notify admins via email about something."""
         channel, srcNick = str(mess.getFrom()).split('/')
-        try:
-            emailMsg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args))
-            emailMsg['Subject'] = _('{0} Notification from {1}').format(self.nickname, srcNick)
-            emailMsg['From'] = self.adminSettings['emailFrom']
-            emailMsg['To'] = ', '.join(self.adminSettings['notifyEmail'])
-            s = smtplib.SMTP(self.adminSettings['smtpServer'])
-            s.sendmail(emailMsg['From'], emailMsg['To'], emailMsg.as_string())
-            s.quit()
-            self.send_simple_reply(mess, _("Notification email sent."), True)
-            self.log.info("Sending notify email succeeded.")
-        except Exception as e:
-            self.send_simple_reply(mess, _("ERROR sending email: %s" % e), True)
-            self.log.warning("Sending notify email failed: %s" % e)
+        if args:
+            try:
+                emailMsg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args))
+                emailMsg['Subject'] = _('{0} Notification from {1}').format(self.nickname, srcNick)
+                emailMsg['From'] = self.adminSettings['emailFrom']
+                emailMsg['To'] = ', '.join(self.adminSettings['notifyEmail'])
+                s = smtplib.SMTP(self.adminSettings['smtpServer'])
+                s.sendmail(emailMsg['From'], emailMsg['To'], emailMsg.as_string())
+                s.quit()
+                self.send_simple_reply(mess, _("Notification email sent."), True)
+                self.log.info("Sending notify email succeeded.")
+            except Exception as e:
+                self.send_simple_reply(mess, _("ERROR sending email: %s" % e), True)
+                self.log.warning("Sending notify email failed: %s" % e)
+        else:
+            self.send_simple_reply(mess, _("You have to supply a message"), True)
 
     @botcmd
     def admin (self, mess, args):
