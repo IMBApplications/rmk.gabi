@@ -67,7 +67,7 @@ class GabiAdmin(BotBase):
             emailMsg['From'] = self.adminSettings['emailFrom']
             emailMsg['To'] = self.adminSettings['notifyEmail']
             s = smtplib.SMTP(self.adminSettings['smtpServer'])
-            s.sendmail(mailMsg['From'], emailMsg['To'], emailMsg.as_string())
+            s.sendmail(emailMsg['From'], emailMsg['To'], emailMsg.as_string())
             s.quit()
             self.send_simple_reply(mess, _("Notification email sent."), True)
             self.log.warning("EMAIL sending notify email succeeded.")
