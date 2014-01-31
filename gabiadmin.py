@@ -156,5 +156,12 @@ class GabiAdmin(BotBase):
                     for setting in sorted(self.adminSettings.keys()):
                         settingsRet.append(_("{0}: {1}").format(setting, self.adminSettings[setting]))
                     self.send_simple_reply(mess, settingsRet, True)
+                elif arg[0] == "lang":
+                    if arg[1] in self.localizations:
+                        self.loadLocalization(arg[1])
+                    else:
+                        message = _("Available languages: {0}").format(', '.join(self.localizations))
+                        self.send_simple_reply(mess, message, True)
+
             else:
-                self.send_simple_reply(mess, _("Please choose from: list, add, remove, set, showSettings, quit"), True)
+                self.send_simple_reply(mess, _("Please choose from: list, add, remove, set, lang, showSettings, quit"), True)
