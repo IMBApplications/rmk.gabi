@@ -222,6 +222,7 @@ class BotBase(object):
                 self.log.debug('Registered handler: %s' % handler)
 
             self.stats['starts'] += 1
+            self.log.info("Connection to %s established" % self.jid.getDomain())
 
         return self.conn
 
@@ -248,8 +249,9 @@ class BotBase(object):
             self.connect().send(pres)
             self.readyTs = time.time()
             self.muc_channels.append(room)
+            self.log.info("Room %s joned as %s" % (room, username))
         except (AttributeError, ValueError) as e:
-            self.log.warning('No connection could be established. ERROR:\n%s' % e)
+            self.log.error('No connection could be established: %s' % e)
             self.quitBot()
 
     def send_message(self, mess):
