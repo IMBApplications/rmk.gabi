@@ -8,7 +8,7 @@ class GabiHelp(BotBase):
     @botcmd
     def time( self, mess, args):
         """Shows the current time"""
-        self.send_simple_reply(mess, str(datetime.datetime.now()), True)
+        self.send_simple_reply(mess, str(datetime.datetime.now()))
         
     @botcmd
     def ping (self, mess, args):

@@ -66,7 +66,7 @@ class GabiStarCitizen(BotBase):
         fans = locale.format("%.0f", data['data']['fans'], grouping = True)
 
         the_page = _('${0} ({1}%%) raised of {2} ({3}). {4} Star Citizens').format(raised, percentage, goalTitle, goal, fans)
-        self.send_simple_reply(mess, the_page, True)
+        self.send_simple_reply(mess, the_page)
 
     @botcmd
     def scnews(self, mess, args):
@@ -106,7 +106,7 @@ class GabiStarCitizen(BotBase):
         for data in reversed(feedData):
             revData.append(data) 
 
-        self.send_simple_reply(mess, feedHead + revData, True)
+        self.send_simple_reply(mess, feedHead + revData)
 
 # ideas: google, image (google)
 # count redacted
