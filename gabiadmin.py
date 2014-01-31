@@ -87,7 +87,7 @@ class GabiAdmin(BotBase):
                 self.send_simple_reply(mess, _("Notification email sent."), True)
                 self.log.info("Sending notify email succeeded.")
             except Exception as e:
-                self.send_simple_reply(mess, _("Error sending notification email: {0}").format(e)), True)
+                self.send_simple_reply(mess, _("Error sending notification email: {0}").format(e), True)
                 self.log.warning("Sending notify email failed: %s" % e)
         else:
             self.send_simple_reply(mess, _("You have to supply a message"), True)
