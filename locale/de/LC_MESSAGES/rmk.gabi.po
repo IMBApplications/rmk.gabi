@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 09:20+0100\n"
+"POT-Creation-Date: 2014-01-31 13:10+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: German <aegnor@mittelerde.ch>\n"
@@ -39,87 +39,164 @@ msgstr ""
 msgid "That command is not defined."
 msgstr "Dieser Befehl existiert nicht."
 
-#: botbase.py:711
+#: botbase.py:713
 msgid "1 second"
 msgstr "1 Sekunde"
 
-#: botbase.py:713 gabicustom.py:626
+#: botbase.py:715 gabicustom.py:631
 #, python-brace-format
 msgid "{0} seconds"
 msgstr "{0} Sekunden"
 
-#: botbase.py:716
+#: botbase.py:718
 msgid "1 minute"
 msgstr "1 Minute"
 
-#: botbase.py:718
+#: botbase.py:720
 #, python-brace-format
 msgid "{0} minutes"
 msgstr "{0} Minuten"
 
-#: botbase.py:721
+#: botbase.py:723
 msgid "1 hour"
 msgstr "1 Stunde"
 
-#: botbase.py:723
+#: botbase.py:725
 #, python-brace-format
 msgid "{0} hours"
 msgstr "{0} Stunden"
 
-#: botbase.py:726
+#: botbase.py:728
 msgid "1 day"
 msgstr "1 Tag"
 
-#: botbase.py:728
+#: botbase.py:730
 #, python-brace-format
 msgid "{0} days"
 msgstr "{0} Tage"
 
-#: botbase.py:731
+#: botbase.py:733
 msgid "1 week"
 msgstr "1 Woche"
 
-#: botbase.py:733
+#: botbase.py:735
 #, python-brace-format
 msgid "{0} weeks"
 msgstr "{0} Wochen"
 
-#: botbase.py:736
+#: botbase.py:738
 msgid "1 year"
 msgstr "1 Jahr"
 
-#: botbase.py:738
+#: botbase.py:740
 #, python-brace-format
 msgid "{0} years"
 msgstr "{0} Jahre"
 
-#: gabiadmin.py:31
+#: gabiadmin.py:36
 msgid "The following administrators are registred for this channel:"
 msgstr "Folgene Administratoren sind für den aktuellen channel registriert:"
 
-#: gabiadmin.py:34
+#: gabiadmin.py:39
 #, python-brace-format
 msgid "{0} since {1} ({2})"
 msgstr "{0} seit {1} ({2})"
 
-#: gabiadmin.py:42
-msgid "Shutting down."
-msgstr "Fahre herunter."
+#: gabiadmin.py:59 gabiadmin.py:80
+#, python-brace-format
+msgid ""
+"{0} wanted you to know that:\n"
+"{1}"
+msgstr ""
+"{0} wollte dich wissen lassen dass:\n"
+"{1}"
 
-#: gabiadmin.py:46
-msgid "Sorry, you have no administrative rights."
-msgstr "Entschuldigung, du hast keine Administratoren Rechte."
+#: gabiadmin.py:60
+#, python-brace-format
+msgid "{0} Suggestion from {1}"
+msgstr "{0} Vorschlag von {1}"
 
-#: gabiadmin.py:70
+#: gabiadmin.py:66
+msgid "Suggestion email sent."
+msgstr "Vorschlags email versendet."
+
+#: gabiadmin.py:69
+#, python-brace-format
+msgid "Error sending suggestion email: {0}"
+msgstr "Fehler beim versenden der Vorschlags Email: {0}"
+
+#: gabiadmin.py:72 gabiadmin.py:93
+msgid "You have to supply a message"
+msgstr "Du musst eine Nachricht angeben"
+
+#: gabiadmin.py:81
+#, python-brace-format
+msgid "{0} Notification from {1}"
+msgstr "{0} Information von {1}"
+
+#: gabiadmin.py:87
+msgid "Notification email sent."
+msgstr "Informations Email verschickt."
+
+#: gabiadmin.py:90
+#, python-brace-format
+msgid "Error sending notification email: {0}"
+msgstr "Fehler beim versenden der Informations Email: {0}"
+
+#: gabiadmin.py:106
 msgid ""
 "No administrators registred. Please register the first with '!admin initial'"
 msgstr ""
 "Keine Administratoren registriert. Bitte registriere dich als ersten mit '!"
 "admin initial'"
 
-#: gabiadmin.py:86
-msgid "Please choose from: list, add, remove"
-msgstr "Bitte wähle aus: list, add, remove"
+#: gabiadmin.py:119
+#, python-brace-format
+msgid "{0} is already admin."
+msgstr "{0} ist bereits Administrator."
+
+#: gabiadmin.py:124
+#, python-brace-format
+msgid "{0} is now admin."
+msgstr "{0} ist jetzt Administrator."
+
+#: gabiadmin.py:131
+#, python-brace-format
+msgid "{0} is no longer admin."
+msgstr "{0} ist nun kein Administrator mehr."
+
+#: gabiadmin.py:136
+#, python-brace-format
+msgid "{0} not found in admin list."
+msgstr "{0} wurde nicht gefunden als Administrator."
+
+#: gabiadmin.py:142
+#, python-brace-format
+msgid "Setting {0} changed to {1}."
+msgstr "Einstellung {0} ist nun auf {1} gesetzt."
+
+#: gabiadmin.py:148
+#, python-brace-format
+msgid "Unknown setting: {0}. View available settings with: !admin showSettings"
+msgstr "Unbekannte Einstellung: {0}. Anzeigen der verfügbaren Einstellungen mit: !admin showSettings"
+
+#: gabiadmin.py:150
+#, python-brace-format
+msgid "{0} issued a shutdown."
+msgstr "{0} hat einen Shutdown ausgelöst."
+
+#: gabiadmin.py:155
+msgid "Available admin settings:"
+msgstr "Verfügbare administrations Einstellungen:"
+
+#: gabiadmin.py:157
+#, python-brace-format
+msgid "{0}: {1}"
+msgstr "{0}: {1}"
+
+#: gabiadmin.py:160
+msgid "Please choose from: list, add, remove, set, showSettings, quit"
+msgstr "Bitte wähle aus: list, add, remove, set, showSettings, quit"
 
 #: gabicustom.py:115
 #, python-brace-format
@@ -156,12 +233,12 @@ msgstr "Guten Morgen, {0}. Schön, dass du da bist."
 msgid "URL title from {0}: <a href='{2}' target='_blank'>{1}</a>"
 msgstr "URL Titel von {0}: <a href='{2}' target='_blank'>{1}</a>"
 
-#: gabicustom.py:243
+#: gabicustom.py:246
 #, python-brace-format
 msgid "Welcome back {0}, i saw you last {1} ago."
 msgstr "Welcome back {0}, dich habe ich schon seit {1} nicht mehr gesehen."
 
-#: gabicustom.py:245
+#: gabicustom.py:248
 #, python-brace-format
 msgid ""
 "Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter."
@@ -169,134 +246,134 @@ msgstr ""
 "Hallo {0}, dich sehe ich zum ersten mal hier. Ich bin {1} der Roboter-Mensch-"
 "Kontakter."
 
-#: gabicustom.py:246
+#: gabicustom.py:249
 #, python-brace-format
 msgid "Enter \"{0} help\" or \"!help\" for help."
 msgstr "Gib \"{0} help\" oder \"!help\" ein für hilfe."
 
-#: gabicustom.py:249
+#: gabicustom.py:252
 #, python-brace-format
 msgid "How was {0}?"
 msgstr "Wie war es beim {0}?"
 
-#: gabicustom.py:258
+#: gabicustom.py:261
 #, python-brace-format
 msgid "{0}, I have to tell you:"
 msgstr "{0}, ich soll dir folgendes ausrichten:"
 
-#: gabicustom.py:260
+#: gabicustom.py:263
 #, python-brace-format
 msgid "From {0} {1} ago: {2}"
 msgstr "Von {0} vor {1}: {2}"
 
-#: gabicustom.py:285
+#: gabicustom.py:290
 #, python-brace-format
 msgid "{0} {1} ago"
 msgstr "{0} vor {1}"
 
-#: gabicustom.py:295
+#: gabicustom.py:300
 #, python-brace-format
 msgid "{0} was last seen {1} ago."
 msgstr "{0} habe ich zuletzt vor {1} gesehen."
 
-#: gabicustom.py:297
+#: gabicustom.py:302
 #, python-brace-format
 msgid "{0}, I did never see {1}."
 msgstr "{0}, {1} habe ich noch nie gesehen."
 
-#: gabicustom.py:306
+#: gabicustom.py:311
 #, python-brace-format
 msgid "I memorized now: \"{0}\"."
 msgstr "Ich habe mir jetzt gemerkt: \"{0}\"."
 
-#: gabicustom.py:308
+#: gabicustom.py:313
 #, python-brace-format
 msgid "Your memo: \"{0}\"."
 msgstr "Dein Memo: \"{0}\"."
 
-#: gabicustom.py:310
+#: gabicustom.py:315
 msgid "What should i memorize?"
 msgstr "Was soll ich mir merken?"
 
-#: gabicustom.py:327
+#: gabicustom.py:332
 #, python-brace-format
 msgid "See you later, {0}. Have fun at {1}."
 msgstr "Bis später, {0}. Viel Spass beim {1}."
 
-#: gabicustom.py:338
+#: gabicustom.py:343
 msgid "Nobody left any message."
 msgstr "Niemand hat eine Nachricht hinterlassen."
 
-#: gabicustom.py:351
+#: gabicustom.py:356
 #, python-brace-format
 msgid "I will tell {0}: {1}"
 msgstr "Ich werde {0} ausrichten dass: {1}"
 
-#: gabicustom.py:358
+#: gabicustom.py:363
 msgid "You have to enter a name followed by the message."
 msgstr "Du musst einen Namen gefolgt von der Nachricht angeben."
 
-#: gabicustom.py:368
+#: gabicustom.py:373
 msgid "Commands for count are: add, list, del"
 msgstr "Befehle für count sind: add, list, del"
 
-#: gabicustom.py:421
+#: gabicustom.py:426
 #, python-brace-format
 msgid "Count saved for '{0}' ({1})"
 msgstr "Count gespeichert für '{0}' ({1})"
 
-#: gabicustom.py:425
+#: gabicustom.py:430
 msgid "You have to enter time/date and an event. Examples:"
 msgstr "Du musst Zeit/Datum und das Event angeben. Beispiele:"
 
-#: gabicustom.py:426
+#: gabicustom.py:431
 #, python-brace-format
 msgid "{0} count add 18:15 It is a quarter past 6"
 msgstr "{0} count add 18:15 Es ist viertel nach 6"
 
-#: gabicustom.py:427
+#: gabicustom.py:432
 #, python-brace-format
 msgid "{0} count add 31.12.2014 23:59 The old year is history"
 msgstr "{0} count add 31.12.2014 23:59 Das alte Jahr ist Geschichte"
 
-#: gabicustom.py:429
+#: gabicustom.py:434
 msgid "The following counts are set:"
 msgstr "Die folgenden counts sind gesetzt:"
 
-#: gabicustom.py:434
+#: gabicustom.py:439
 #, python-brace-format
 msgid "{0}\t{1}\t\"{2}\" set by \"{3}\""
 msgstr "{0}\t{1}\t\"{2}\" wurde gesetzt von \"{3}\""
 
-#: gabicustom.py:437
+#: gabicustom.py:442
 msgid "There are no counts saved."
 msgstr "Es sind keine counts gespeichert."
 
-#: gabicustom.py:439
+#: gabicustom.py:444
 #, python-brace-format
 msgid "Unknown index. Please specify a valid index: ({0} count list)."
 msgstr ""
 "Unbekannter Index. Bitte gib einen gültigen Index an: ({0} count list)."
 
-#: gabicustom.py:445
+#: gabicustom.py:450
 #, python-brace-format
 msgid "{0}\t\"{1}\" set by \"{2}\" has been removed."
 msgstr "{0}\t\"{1}\" gesetzt von \"{2}\" wurde entfernt."
 
-#: gabicustom.py:481
+#: gabicustom.py:486
 #, python-brace-format
 msgid "{0} {1}: <a href='{2}'>{3}</a>"
 msgstr "{0} {1}: <a href='{2}'>{3}</a>"
 
-#: gabicustom.py:493
+#: gabicustom.py:498
 msgid "I am now unmuted."
 msgstr "Ich bin jetzt Stumm."
 
-#: gabicustom.py:496
+#: gabicustom.py:501
 msgid "I am now muted."
 msgstr "Ich bin nicht mehr Stumm."
 
-#: gabicustom.py:502
+#: gabicustom.py:507
 #, python-brace-format
 msgid ""
 "I am {0}, a chatbot. If you like to know more, visit: <a href='https://"
@@ -307,150 +384,150 @@ msgstr ""
 "href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> https://"
 "github.com/IMBApplications/rmk.gabi</a>."
 
-#: gabicustom.py:509
+#: gabicustom.py:514
 #, python-brace-format
 msgid "Last startup: {0}"
 msgstr "Letzter Start: {0}"
 
-#: gabicustom.py:510
+#: gabicustom.py:515
 #, python-brace-format
 msgid "Messages sent: {0}"
 msgstr "Nachrichten gesendet: {0}"
 
-#: gabicustom.py:511
+#: gabicustom.py:516
 #, python-brace-format
 msgid "Users seen coming: {0}"
 msgstr "Benutzer kommen gesehen: {0}"
 
-#: gabicustom.py:512
+#: gabicustom.py:517
 #, python-brace-format
 msgid "Users seen going: {0}"
 msgstr "Benutzer gehen gesehen: {0}"
 
-#: gabicustom.py:513
+#: gabicustom.py:518
 #, python-brace-format
 msgid "Unique users seen: {0}"
 msgstr "Einzigartige Benutzer gesehen: {0}"
 
-#: gabicustom.py:514
+#: gabicustom.py:519
 #, python-brace-format
 msgid "Unique links seen: {0}"
 msgstr "Einzigartige Links gesehen: {0}"
 
-#: gabicustom.py:515
+#: gabicustom.py:520
 #, python-brace-format
 msgid "Messages seen: {0}"
 msgstr "Nachrichten gesehen: {0}"
 
-#: gabicustom.py:516
+#: gabicustom.py:521
 #, python-brace-format
 msgid "Startups: {0}"
 msgstr "Starts: {0}"
 
-#: gabicustom.py:538
+#: gabicustom.py:543
 #, python-brace-format
 msgid "Now: {0}"
 msgstr "Jetzt: {0}"
 
-#: gabicustom.py:548 gabicustom.py:657
+#: gabicustom.py:553 gabicustom.py:662
 #, python-brace-format
 msgid "{0} ago: {1}"
 msgstr "Vor {0}: {1}"
 
-#: gabicustom.py:554
+#: gabicustom.py:559
 #, python-brace-format
 msgid "Today: {0} from {1}"
 msgstr "Heute: {0} von {1}"
 
-#: gabicustom.py:559
+#: gabicustom.py:564
 #, python-brace-format
 msgid "{0} years ago: {1}"
 msgstr "Vor {0} Jahren: {1}"
 
-#: gabicustom.py:569
+#: gabicustom.py:574
 #, python-brace-format
 msgid "In {0} years: {1}"
 msgstr "In {0} Jahren: {1}"
 
-#: gabicustom.py:597
+#: gabicustom.py:602
 #, python-brace-format
 msgid "Tomorrow: {0}"
 msgstr "Morgen: {0}"
 
-#: gabicustom.py:599 gabicustom.py:605
+#: gabicustom.py:604 gabicustom.py:610
 #, python-brace-format
 msgid "In {0} days: {1}"
 msgstr "In {0} Tagen: {1}"
 
-#: gabicustom.py:601
+#: gabicustom.py:606
 #, python-brace-format
 msgid "In 1 week: {0}"
 msgstr "In 1 Woche: {0}"
 
-#: gabicustom.py:603
+#: gabicustom.py:608
 #, python-brace-format
 msgid "In {0} weeks: {1}"
 msgstr "In {0} Wochen: {1}"
 
-#: gabicustom.py:628
+#: gabicustom.py:633
 msgid "minute"
 msgstr "Minute"
 
-#: gabicustom.py:628
+#: gabicustom.py:633
 msgid "minutes"
 msgstr "Minuten"
 
-#: gabicustom.py:632
+#: gabicustom.py:637
 msgid "hour"
 msgstr "Stunde"
 
-#: gabicustom.py:632
+#: gabicustom.py:637
 msgid "hours"
 msgstr "Stunden"
 
-#: gabicustom.py:636
+#: gabicustom.py:641
 msgid "day"
 msgstr "Tag"
 
-#: gabicustom.py:636
+#: gabicustom.py:641
 msgid "days"
 msgstr "Tagen"
 
-#: gabicustom.py:640
+#: gabicustom.py:645
 msgid "week"
 msgstr "Woche"
 
-#: gabicustom.py:640
+#: gabicustom.py:645
 msgid "weeks"
 msgstr "Wochen"
 
-#: gabicustom.py:644
+#: gabicustom.py:649
 msgid "month"
 msgstr "Monat"
 
-#: gabicustom.py:644
+#: gabicustom.py:649
 msgid "months"
 msgstr "Monaten"
 
-#: gabicustom.py:648
+#: gabicustom.py:653
 msgid "year"
 msgstr "Jahr"
 
-#: gabicustom.py:648
+#: gabicustom.py:653
 msgid "years"
 msgstr "Jahre"
 
-#: gabicustom.py:653
+#: gabicustom.py:658
 #, python-brace-format
 msgid "Now! {0}"
 msgstr "Jetzt! {0}"
 
-#: gabicustom.py:655
+#: gabicustom.py:660
 #, python-brace-format
 msgid "In {0}: {1}"
 msgstr "In {0}: {1}"
 
-#: gabicustom.py:655 gabicustom.py:657
+#: gabicustom.py:660 gabicustom.py:662
 msgid " or "
 msgstr " oder "
 
@@ -548,3 +625,4 @@ msgstr "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2}</a>"
 #, python-brace-format
 msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2} {3}</a>"
 msgstr "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2} {3}</a>"
+
