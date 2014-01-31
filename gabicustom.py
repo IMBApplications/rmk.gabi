@@ -189,16 +189,15 @@ class GabiCustom(BotBase):
                 except:
                     pass
 
-            if htmlTitle:
-                # self.send_simple_reply(mess, _("URL title from {0}: <a href='{2}' target='_blank'>{1}</a>").format(username, htmlTitle, url))
-                pass
-            else:
-                htmlTitle = ""
-
             newUrl = True
             for (oldUsername, timestamp, oldUrl, title) in self.urlList:
                 if url == oldUrl or url + "/" == oldUrl or url == oldUrl + "/":
                     newUrl = False
+
+            if htmlTitle and newUrl:
+                self.send_simple_reply(mess, _("URL title from {0}: <a href='{2}' target='_blank'>{1}</a>").format(username, htmlTitle, url))
+            else:
+                htmlTitle = ""
 
             if newUrl:
                 self.urlList.append((username, str(datetime.datetime.now(pytz.timezone(self.timezone))), url, htmlTitle))

@@ -47,6 +47,16 @@ class GabiAdmin(BotBase):
             self.log.warning("ACCESS '%s' tried admin command without permission." % srcNick)
 
     @botcmd
+    def bug (self, mess, args):
+        """Report a bug to the developer."""
+        pass
+        
+    @botcmd
+    def notify (self, mess, args):
+        """Notify admins via email about something."""
+        pass
+
+    @botcmd
     def admin (self, mess, args):
         """Administrative commands"""
         # admin add, list, remove, show, status (away, dnd, online, invis), bug, notify
