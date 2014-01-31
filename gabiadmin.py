@@ -103,7 +103,7 @@ class GabiAdmin(BotBase):
                             self.adminSettings[arg[1]] = arg[2]
                             self.notify(mess, message)
                             self.send_simple_reply(mess, message, True)
-                    else
+                    else:
                         self.send_simple_reply(mess, _("Unknown setting: {0}. View available settings with: !admin showSettings").format(arg[1]), True)
                 elif arg[0] == "showSettings":
                     settingsRet = [_("Available admin settings:")]
