@@ -36,7 +36,7 @@ class GabiAdmin(BotBase):
             msg.append(_("The following administrators are registred for this channel:"))
             for (username, channel, since, comment) in self.adminList:
                 if channel == srcChannel:
-                    msg.append(_("{0} since {1} ({2})").format(username, datetime.datetime.fromtimestamp(since).strftime('%Y-%m-%d %H:%M:%S'), comment))
+                    msg.append(_("{0} since {1} ({2})").format(username, datetime.datetime.fromtimestamp(since).strftime('%Y-%m-%d %H:%M:%S'), ' '.join(comment)))
         return msg
 
     @botcmd
