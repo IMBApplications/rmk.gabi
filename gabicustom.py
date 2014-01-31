@@ -297,9 +297,9 @@ class GabiCustom(BotBase):
                     userName = name
 
             if lastSeen > 0:
-                self.send_simple_reply(mess, _('{0} was last seen {1} ago.').format(userName, self.getAge(lastSeen)), False)
+                self.send_simple_reply(mess, _('{0} was last seen {1} ago.').format(userName, self.getAge(lastSeen)))
             else:
-                self.send_simple_reply(mess, _('{0}, I did never see {1}.').format(self.get_sender_username(mess), args), False)
+                self.send_simple_reply(mess, _('{0}, I did never see {1}.').format(self.get_sender_username(mess), args))
 
     # Memo Methods
     @botcmd
@@ -308,11 +308,11 @@ class GabiCustom(BotBase):
         username = self.get_sender_username(mess)
         if len(args) > 0:
             self.memDict[username] = args;
-            self.send_simple_reply(mess, _('I memorized now: "{0}".').format(args), True)
+            self.send_simple_reply(mess, _('I memorized now: "{0}".').format(args))
         elif username in self.memDict:
-            self.send_simple_reply(mess, _('Your memo: "{0}".').format(self.memDict[username]), True)
+            self.send_simple_reply(mess, _('Your memo: "{0}".').format(self.memDict[username]))
         else:
-            self.send_simple_reply(mess, _('What should i memorize?'), True)
+            self.send_simple_reply(mess, _('What should i memorize?'))
 
     #AFK Methods
     @botcmd
@@ -340,7 +340,7 @@ class GabiCustom(BotBase):
                 ret = ret + "\n%-10s: %s" % (username, self.afkDict[username])
             self.send_simple_reply(mess, ret, True)
         else:
-            self.send_simple_reply(mess, _('Nobody left any message.'), True)
+            self.send_simple_reply(mess, _('Nobody left any message.'))
 
     #Reminder Methods
     @botcmd
@@ -361,7 +361,7 @@ class GabiCustom(BotBase):
 
         else:
             ret_message = _("You have to enter a name followed by the message.")
-        self.send_simple_reply(mess, ret_message, True)
+        self.send_simple_reply(mess, ret_message)
 
     #Cowntdown Methods
     @botcmd
@@ -457,7 +457,7 @@ class GabiCustom(BotBase):
             for (timestamp, longterm, user, message) in self.cowntdownList:
                 ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
 
-        self.send_simple_reply(mess, ret_message, True)
+        self.send_simple_reply(mess, ret_message)
 
     @botcmd
     def urls (self, mess, args):
@@ -505,7 +505,7 @@ class GabiCustom(BotBase):
     def about(self, mess, args):
         """I tell you who I am"""
         retMsg = _("I am {0}, a chatbot. If you like to know more, visit: <a href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> https://github.com/IMBApplications/rmk.gabi</a>.").format(self.nickname)
-        self.send_simple_reply(mess, retMsg, True)
+        self.send_simple_reply(mess, retMsg)
 
     @botcmd
     def stats(self, mess, args):
@@ -519,7 +519,7 @@ class GabiCustom(BotBase):
         retMsg.append(_("Unique links seen: {0}").format(len(self.urlList)))
         retMsg.append(_("Messages seen: {0}").format(self.stats['messagesSeen']))
         retMsg.append(_("Startups: {0}").format(self.stats['starts']))
-        self.send_simple_reply(mess, retMsg, True)
+        self.send_simple_reply(mess, retMsg)
 
     """ Support Methods """
     def periodicCheckCount(self, mess):

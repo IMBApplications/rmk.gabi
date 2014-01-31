@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 13:10+0100\n"
+"POT-Creation-Date: 2014-01-31 21:58+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: English <aegnor@mittelerde.ch>\n"
@@ -16,267 +16,80 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: botbase.py:83
-msgid ""
-"Hey there. You are not yet on my roster. Authorize my request and I will do "
-"the same."
-msgstr ""
-
-#: botbase.py:84
-msgid "You did not authorize my subscription request. Access denied."
-msgstr ""
-
-#: botbase.py:85
-msgid "Type help *command name* to get more info about that specific command."
-msgstr ""
-
-#: botbase.py:86
-msgid "That command is not defined."
-msgstr ""
-
-#: botbase.py:713
-msgid "1 second"
-msgstr ""
-
-#: botbase.py:715 gabicustom.py:631
-#, python-brace-format
-msgid "{0} seconds"
-msgstr ""
-
-#: botbase.py:718
-msgid "1 minute"
-msgstr ""
-
-#: botbase.py:720
-#, python-brace-format
-msgid "{0} minutes"
-msgstr ""
-
-#: botbase.py:723
-msgid "1 hour"
-msgstr ""
-
-#: botbase.py:725
-#, python-brace-format
-msgid "{0} hours"
-msgstr ""
-
-#: botbase.py:728
-msgid "1 day"
-msgstr ""
-
-#: botbase.py:730
-#, python-brace-format
-msgid "{0} days"
-msgstr ""
-
-#: botbase.py:733
-msgid "1 week"
-msgstr ""
-
-#: botbase.py:735
-#, python-brace-format
-msgid "{0} weeks"
-msgstr ""
-
-#: botbase.py:738
-msgid "1 year"
-msgstr ""
-
-#: botbase.py:740
-#, python-brace-format
-msgid "{0} years"
-msgstr ""
-
-#: gabiadmin.py:36
-msgid "The following administrators are registred for this channel:"
-msgstr ""
-
-#: gabiadmin.py:39
-#, python-brace-format
-msgid "{0} since {1} ({2})"
-msgstr ""
-
-#: gabiadmin.py:59 gabiadmin.py:80
-#, python-brace-format
-msgid ""
-"{0} wanted you to know that:\n"
-"{1}"
-msgstr ""
-
-#: gabiadmin.py:60
-#, python-brace-format
-msgid "{0} Suggestion from {1}"
-msgstr ""
-
-#: gabiadmin.py:66
-msgid "Suggestion email sent."
-msgstr ""
-
-#: gabiadmin.py:69
-#, python-brace-format
-msgid "Error sending suggestion email: {0}"
-msgstr ""
-
-#: gabiadmin.py:72 gabiadmin.py:93
-msgid "You have to supply a message"
-msgstr ""
-
-#: gabiadmin.py:81
-#, python-brace-format
-msgid "{0} Notification from {1}"
-msgstr ""
-
-#: gabiadmin.py:87
-msgid "Notification email sent."
-msgstr ""
-
-#: gabiadmin.py:90
-#, python-brace-format
-msgid "Error sending notification email: {0}"
-msgstr ""
-
-#: gabiadmin.py:106
-msgid ""
-"No administrators registred. Please register the first with '!admin initial'"
-msgstr ""
-
-#: gabiadmin.py:119
-#, python-brace-format
-msgid "{0} is already admin."
-msgstr ""
-
-#: gabiadmin.py:124
-#, python-brace-format
-msgid "{0} is now admin."
-msgstr ""
-
-#: gabiadmin.py:131
-#, python-brace-format
-msgid "{0} is no longer admin."
-msgstr ""
-
-#: gabiadmin.py:136
-#, python-brace-format
-msgid "{0} not found in admin list."
-msgstr ""
-
-#: gabiadmin.py:142
-#, python-brace-format
-msgid "Setting {0} changed to {1}."
-msgstr ""
-
-#: gabiadmin.py:148
-#, python-brace-format
-msgid "Unknown setting: {0}. View available settings with: !admin showSettings"
-msgstr ""
-
-#: gabiadmin.py:150
-#, python-brace-format
-msgid "{0} issued a shutdown."
-msgstr ""
-
-#: gabiadmin.py:155
-msgid "Available admin settings:"
-msgstr ""
-
-#: gabiadmin.py:157
-#, python-brace-format
-msgid "{0}: {1}"
-msgstr ""
-
-#: gabiadmin.py:160
-msgid "Please choose from: list, add, remove, set, showSettings, quit"
+#: gabihelp.py:27
+msgid "Available commands:"
 msgstr ""
 
 #: gabicustom.py:115
-#, python-brace-format
 msgid "Have fun, {0}!"
 msgstr ""
 
 #: gabicustom.py:124
-#, python-brace-format
 msgid "wb {0}! How was {1}?"
 msgstr ""
 
 #: gabicustom.py:136
-#, python-brace-format
 msgid "{0} wanted to say \"{1}\"."
 msgstr ""
 
 #: gabicustom.py:145
-#, python-brace-format
 msgid "Hihihi, {0} said penis!"
 msgstr ""
 
 #: gabicustom.py:156
-#, python-brace-format
 msgid "Morning? Check your clock, {0}!"
 msgstr ""
 
 #: gabicustom.py:158
-#, python-brace-format
 msgid "Good morning, {0}. Nice to see you here."
 msgstr ""
 
 #: gabicustom.py:198
-#, python-brace-format
 msgid "URL title from {0}: <a href='{2}' target='_blank'>{1}</a>"
 msgstr ""
 
 #: gabicustom.py:246
-#, python-brace-format
 msgid "Welcome back {0}, i saw you last {1} ago."
 msgstr ""
 
 #: gabicustom.py:248
-#, python-brace-format
 msgid ""
 "Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter."
 msgstr ""
 
 #: gabicustom.py:249
-#, python-brace-format
 msgid "Enter \"{0} help\" or \"!help\" for help."
 msgstr ""
 
 #: gabicustom.py:252
-#, python-brace-format
 msgid "How was {0}?"
 msgstr ""
 
 #: gabicustom.py:261
-#, python-brace-format
 msgid "{0}, I have to tell you:"
 msgstr ""
 
 #: gabicustom.py:263
-#, python-brace-format
 msgid "From {0} {1} ago: {2}"
 msgstr ""
 
 #: gabicustom.py:290
-#, python-brace-format
 msgid "{0} {1} ago"
 msgstr ""
 
 #: gabicustom.py:300
-#, python-brace-format
 msgid "{0} was last seen {1} ago."
 msgstr ""
 
 #: gabicustom.py:302
-#, python-brace-format
 msgid "{0}, I did never see {1}."
 msgstr ""
 
 #: gabicustom.py:311
-#, python-brace-format
 msgid "I memorized now: \"{0}\"."
 msgstr ""
 
 #: gabicustom.py:313
-#, python-brace-format
 msgid "Your memo: \"{0}\"."
 msgstr ""
 
@@ -285,7 +98,6 @@ msgid "What should i memorize?"
 msgstr ""
 
 #: gabicustom.py:332
-#, python-brace-format
 msgid "See you later, {0}. Have fun at {1}."
 msgstr ""
 
@@ -294,7 +106,6 @@ msgid "Nobody left any message."
 msgstr ""
 
 #: gabicustom.py:356
-#, python-brace-format
 msgid "I will tell {0}: {1}"
 msgstr ""
 
@@ -307,7 +118,6 @@ msgid "Commands for count are: add, list, del"
 msgstr ""
 
 #: gabicustom.py:426
-#, python-brace-format
 msgid "Count saved for '{0}' ({1})"
 msgstr ""
 
@@ -316,12 +126,10 @@ msgid "You have to enter time/date and an event. Examples:"
 msgstr ""
 
 #: gabicustom.py:431
-#, python-brace-format
 msgid "{0} count add 18:15 It is a quarter past 6"
 msgstr ""
 
 #: gabicustom.py:432
-#, python-brace-format
 msgid "{0} count add 31.12.2014 23:59 The old year is history"
 msgstr ""
 
@@ -330,7 +138,6 @@ msgid "The following counts are set:"
 msgstr ""
 
 #: gabicustom.py:439
-#, python-brace-format
 msgid "{0}\t{1}\t\"{2}\" set by \"{3}\""
 msgstr ""
 
@@ -339,17 +146,14 @@ msgid "There are no counts saved."
 msgstr ""
 
 #: gabicustom.py:444
-#, python-brace-format
 msgid "Unknown index. Please specify a valid index: ({0} count list)."
 msgstr ""
 
 #: gabicustom.py:450
-#, python-brace-format
 msgid "{0}\t\"{1}\" set by \"{2}\" has been removed."
 msgstr ""
 
 #: gabicustom.py:486
-#, python-brace-format
 msgid "{0} {1}: <a href='{2}'>{3}</a>"
 msgstr ""
 
@@ -362,7 +166,6 @@ msgid "I am now muted."
 msgstr ""
 
 #: gabicustom.py:507
-#, python-brace-format
 msgid ""
 "I am {0}, a chatbot. If you like to know more, visit: <a href='https://"
 "github.com/IMBApplications/rmk.gabi' target='_blank'> https://github.com/"
@@ -370,88 +173,75 @@ msgid ""
 msgstr ""
 
 #: gabicustom.py:514
-#, python-brace-format
 msgid "Last startup: {0}"
 msgstr ""
 
 #: gabicustom.py:515
-#, python-brace-format
 msgid "Messages sent: {0}"
 msgstr ""
 
 #: gabicustom.py:516
-#, python-brace-format
 msgid "Users seen coming: {0}"
 msgstr ""
 
 #: gabicustom.py:517
-#, python-brace-format
 msgid "Users seen going: {0}"
 msgstr ""
 
 #: gabicustom.py:518
-#, python-brace-format
 msgid "Unique users seen: {0}"
 msgstr ""
 
 #: gabicustom.py:519
-#, python-brace-format
 msgid "Unique links seen: {0}"
 msgstr ""
 
 #: gabicustom.py:520
-#, python-brace-format
 msgid "Messages seen: {0}"
 msgstr ""
 
 #: gabicustom.py:521
-#, python-brace-format
 msgid "Startups: {0}"
 msgstr ""
 
 #: gabicustom.py:543
-#, python-brace-format
 msgid "Now: {0}"
 msgstr ""
 
 #: gabicustom.py:553 gabicustom.py:662
-#, python-brace-format
 msgid "{0} ago: {1}"
 msgstr ""
 
 #: gabicustom.py:559
-#, python-brace-format
 msgid "Today: {0} from {1}"
 msgstr ""
 
 #: gabicustom.py:564
-#, python-brace-format
 msgid "{0} years ago: {1}"
 msgstr ""
 
 #: gabicustom.py:574
-#, python-brace-format
 msgid "In {0} years: {1}"
 msgstr ""
 
 #: gabicustom.py:602
-#, python-brace-format
 msgid "Tomorrow: {0}"
 msgstr ""
 
 #: gabicustom.py:604 gabicustom.py:610
-#, python-brace-format
 msgid "In {0} days: {1}"
 msgstr ""
 
 #: gabicustom.py:606
-#, python-brace-format
 msgid "In 1 week: {0}"
 msgstr ""
 
 #: gabicustom.py:608
-#, python-brace-format
 msgid "In {0} weeks: {1}"
+msgstr ""
+
+#: gabicustom.py:631 botbase.py:718
+msgid "{0} seconds"
 msgstr ""
 
 #: gabicustom.py:633
@@ -503,12 +293,10 @@ msgid "years"
 msgstr ""
 
 #: gabicustom.py:658
-#, python-brace-format
 msgid "Now! {0}"
 msgstr ""
 
 #: gabicustom.py:660
-#, python-brace-format
 msgid "In {0}: {1}"
 msgstr ""
 
@@ -516,8 +304,193 @@ msgstr ""
 msgid " or "
 msgstr ""
 
+#: gabihate.py:14
+msgid "{0}, shoot trough your throat!"
+msgstr ""
+
+#: gabihate.py:16
+msgid "{0}, who should i shoot trough the throat?"
+msgstr ""
+
+#: gabihate.py:23
+msgid "{0}, get AIDS!"
+msgstr ""
+
+#: gabihate.py:25
+msgid "{0}, who should get AIDS?"
+msgstr ""
+
+#: gabisc.py:68
+#, python-format
+msgid "${0} ({1}%%) raised of {2} ({3}). {4} Star Citizens"
+msgstr ""
+
+#: gabisc.py:89
+msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2}</a>"
+msgstr ""
+
+#: gabisc.py:103
+msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2} {3}</a>"
+msgstr ""
+
+#: botbase.py:81
+msgid ""
+"Hey there. You are not yet on my roster. Authorize my request and I will do "
+"the same."
+msgstr ""
+
+#: botbase.py:82
+msgid "You did not authorize my subscription request. Access denied."
+msgstr ""
+
+#: botbase.py:83
+msgid "Type help *command name* to get more info about that specific command."
+msgstr ""
+
+#: botbase.py:84
+msgid "That command is not defined."
+msgstr ""
+
+#: botbase.py:716
+msgid "1 second"
+msgstr ""
+
+#: botbase.py:721
+msgid "1 minute"
+msgstr ""
+
+#: botbase.py:723
+msgid "{0} minutes"
+msgstr ""
+
+#: botbase.py:726
+msgid "1 hour"
+msgstr ""
+
+#: botbase.py:728
+msgid "{0} hours"
+msgstr ""
+
+#: botbase.py:731
+msgid "1 day"
+msgstr ""
+
+#: botbase.py:733
+msgid "{0} days"
+msgstr ""
+
+#: botbase.py:736
+msgid "1 week"
+msgstr ""
+
+#: botbase.py:738
+msgid "{0} weeks"
+msgstr ""
+
+#: botbase.py:741
+msgid "1 year"
+msgstr ""
+
+#: botbase.py:743
+msgid "{0} years"
+msgstr ""
+
+#: gabiadmin.py:36
+msgid "The following administrators are registred for this channel:"
+msgstr ""
+
+#: gabiadmin.py:39
+msgid "{0} since {1} ({2})"
+msgstr ""
+
+#: gabiadmin.py:61 gabiadmin.py:88
+msgid ""
+"{0} wanted you to know that:\n"
+"{1}"
+msgstr ""
+
+#: gabiadmin.py:62
+msgid "{0} Suggestion from {1}"
+msgstr ""
+
+#: gabiadmin.py:72
+msgid "Suggestion email sent."
+msgstr ""
+
+#: gabiadmin.py:75
+msgid "Error sending suggestion email: {0}"
+msgstr ""
+
+#: gabiadmin.py:78 gabiadmin.py:105
+msgid "You have to supply a message"
+msgstr ""
+
+#: gabiadmin.py:89
+msgid "{0} Notification from {1}"
+msgstr ""
+
+#: gabiadmin.py:99
+msgid "Notification email sent."
+msgstr ""
+
+#: gabiadmin.py:102
+msgid "Error sending notification email: {0}"
+msgstr ""
+
+#: gabiadmin.py:118
+msgid ""
+"No administrators registred. Please register the first with '!admin initial'"
+msgstr ""
+
+#: gabiadmin.py:131
+msgid "{0} is already admin."
+msgstr ""
+
+#: gabiadmin.py:136
+msgid "{0} is now admin."
+msgstr ""
+
+#: gabiadmin.py:143
+msgid "{0} is no longer admin."
+msgstr ""
+
+#: gabiadmin.py:148
+msgid "{0} not found in admin list."
+msgstr ""
+
+#: gabiadmin.py:154
+msgid "Setting {0} changed to {1}."
+msgstr ""
+
+#: gabiadmin.py:160
+msgid "Unknown setting: {0}. View available settings with: !admin showSettings"
+msgstr ""
+
+#: gabiadmin.py:162
+msgid "{0} issued a shutdown."
+msgstr ""
+
+#: gabiadmin.py:167
+msgid "Available admin settings:"
+msgstr ""
+
+#: gabiadmin.py:169
+msgid "{0}: {1}"
+msgstr ""
+
+#: gabiadmin.py:172
+msgid "Available languages: {0}"
+msgstr ""
+
+#: gabiadmin.py:176
+msgid "Loaded languages: {0}"
+msgstr ""
+
+#: gabiadmin.py:180
+msgid "Please choose from: list, add, remove, set, lang, showSettings, quit"
+msgstr ""
+
 #: gabifun.py:13
-#, python-brace-format
 msgid "Groovy? Did i hear groovy? {0} is groovy!"
 msgstr ""
 
@@ -526,7 +499,6 @@ msgid "Groovy? Did i hear groovy? I am groovy!"
 msgstr ""
 
 #: gabifun.py:21
-#, python-brace-format
 msgid "{0} is IMBA!"
 msgstr ""
 
@@ -535,22 +507,18 @@ msgid "I am IMBA!"
 msgstr ""
 
 #: gabifun.py:30
-#, python-brace-format
 msgid "{0} is so funny I'm gonna die!"
 msgstr ""
 
 #: gabifun.py:32
-#, python-brace-format
 msgid "*ROFL* {0}, you are so funny I'm gonna die!"
 msgstr ""
 
 #: gabifun.py:39
-#, python-brace-format
 msgid "/me slaps {0}"
 msgstr ""
 
 #: gabifun.py:41
-#, python-brace-format
 msgid "Who should i slap, {0}?"
 msgstr ""
 
@@ -559,7 +527,6 @@ msgid "Yes honey, what can i do for you?"
 msgstr ""
 
 #: gabifun.py:52
-#, python-brace-format
 msgid "Fuck {0}! Shit fuck crap!"
 msgstr ""
 
@@ -569,43 +536,4 @@ msgstr ""
 
 #: gabifun.py:59
 msgid "All systems are in perfect condition, thanks for asking."
-msgstr ""
-
-#: gabihate.py:14
-#, python-brace-format
-msgid "{0}, shoot trough your throat!"
-msgstr ""
-
-#: gabihate.py:16
-#, python-brace-format
-msgid "{0}, who should i shoot trough the throat?"
-msgstr ""
-
-#: gabihate.py:23
-#, python-brace-format
-msgid "{0}, get AIDS!"
-msgstr ""
-
-#: gabihate.py:25
-#, python-brace-format
-msgid "{0}, who should get AIDS?"
-msgstr ""
-
-#: gabihelp.py:27
-msgid "Available commands:"
-msgstr ""
-
-#: gabisc.py:68
-#, python-format, python-brace-format
-msgid "${0} ({1}%%) raised of {2} ({3}). {4} Star Citizens"
-msgstr ""
-
-#: gabisc.py:89
-#, python-brace-format
-msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2}</a>"
-msgstr ""
-
-#: gabisc.py:103
-#, python-brace-format
-msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2} {3}</a>"
 msgstr ""
