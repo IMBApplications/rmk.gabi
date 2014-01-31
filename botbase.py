@@ -380,7 +380,7 @@ class BotBase(object):
             del self.__seen[jid]
             self.status_type_changed(jid, self.OFFLINE)
         else:
-            self.status_type_changed(jid, type_)
+            self.status_type_changed(jid, show)
 
         try:
             subscription = self.roster.getSubscription(unicode(jid.__str__()))
