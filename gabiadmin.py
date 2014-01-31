@@ -52,8 +52,8 @@ class GabiAdmin(BotBase):
             self.log.warning("ACCESS '%s' tried admin command without permission." % srcNick)
 
     @botcmd
-    def bug (self, mess, args):
-        """Report a bug to the developer."""
+    def suggestion (self, mess, args):
+        """Report a suggestion or bug to the developer."""
         self.log.warning("BUGREPORT: %s" % args)
         pass
         
@@ -98,9 +98,16 @@ class GabiAdmin(BotBase):
                 if arg[0] == "list":
                     self.send_simple_reply(mess, self.createAdminList(channel), True)
                 elif arg[0] == "add":
-                    pass
+                    if self.isAdmin(channel, arg[1]):
+                        self.send_simple_reply(mess, _("{0} is already admin."), True)
+                    else:
+                        self.adminList.append((arg[1], channel, time.time(), arg[2:]))
+                        self.send_simple_reply(mess, _("{0} is now admin.").format(arg[1]), True)
                 elif arg[0] == "remove":
-                    pass
+                    for (admin, channel, since, comment) in self.adminList:
+                        if arg[1].lower() == admin.lower():
+                            self.adminList.pop(self.adminList.index((admin, channel, since, comment)))
+                            self.send_simple_reply(mess, _("{0} is no longer admin.").format(arg[1]), True)
                 elif arg[0] == "set":
                     if arg[1] in self.adminSettings:
                         if arg[2]:
