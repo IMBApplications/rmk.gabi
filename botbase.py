@@ -78,7 +78,6 @@ class BotBase(object):
             localization = self.defaultLocalization
         self.loadLocalization(localization)
 
-
         self.MSG_AUTHORIZE_ME = _('Hey there. You are not yet on my roster. Authorize my request and I will do the same.')
         self.MSG_NOT_AUTHORIZED = _('You did not authorize my subscription request. Access denied.')
         self.MSG_HELP_TAIL = _('Type help *command name* to get more info about that specific command.')
@@ -702,6 +701,7 @@ class BotBase(object):
     def loadLocalization(self, localization):
         trans = gettext.translation("rmk.gabi", "locale", [localization]) 
         trans.install()
+        self.log.info("Loaded language {0}".format(localization))
 
     def getAge(self, timestamp):
         age = int(time.time() - timestamp)
