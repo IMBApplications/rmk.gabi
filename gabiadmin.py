@@ -76,6 +76,8 @@ class GabiAdmin(BotBase):
         """Notify admins via email about something."""
         channel, srcNick = str(mess.getFrom()).split('/')
         if args:
+            if isinstance(args, list):
+                args = ' '.join(args)
             try:
                 emailMsg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args))
                 emailMsg['Subject'] = _('{0} Notification from {1}').format(self.nickname, srcNick)
@@ -99,6 +101,8 @@ class GabiAdmin(BotBase):
         #self.muc_channels all connected rooms
         channel, srcNick = str(mess.getFrom()).split('/')
         if len(self.createAdminList(channel)) == 0:
+            if isinstance(args, list):
+                args = ' '.join(args)
             if args == 'initial':
                 self.adminList.append((srcNick, channel, time.time(), ["Initial", "administrator"]))
                 self.log.warning("%s was registred as initial administrator for channel %s." % (srcNick, channel))
