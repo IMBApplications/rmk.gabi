@@ -16,7 +16,7 @@ class GabiAdmin(BotBase):
         self.adminList = self.loadJSON('save_admins.dat', [])
         atexit.register(self.saveJSON, 'save_admins.dat', self.adminList)
 
-        self.adminSettings = self.loadJSON('save_admin_settings.dat', {'bugEmail': "", 'notifyEmail': "", 'emailFrom': "", 'smtpServer': ""})
+        self.adminSettings = self.loadJSON('save_admin_settings.dat', {'suggestionEmail': "", 'notifyEmail': "", 'emailFrom': "", 'smtpServer': ""})
         atexit.register(self.saveJSON, 'save_admin_settings.dat', self.adminSettings)
 
     def isAdmin(self, srcChannel, srcUsername):
@@ -40,20 +40,8 @@ class GabiAdmin(BotBase):
         return msg
 
     @botcmd
-    def quit (self, mess, args):
-        """Shut me down (admin)."""
-        channel, srcNick = str(mess.getFrom()).split('/')
-        if self.isAdmin(channel, srcNick):
-            self.send_simple_reply(mess, _('Shutting down.'), False)
-            self.log.warning("ACCESS '%s' issued shutdown command." % srcNick)
-            self.quitBot()
-        else:
-            self.send_simple_reply(mess, _("Sorry, you have no administrative rights."), True)
-            self.log.warning("ACCESS '%s' tried admin command without permission." % srcNick)
-
-    @botcmd
     def suggestion (self, mess, args):
-        """Report a suggestion or bug to the developer."""
+        """Report a suggestion or bug to the developer"""
         if not mess:
             mess = xmpp.Message()
 
@@ -107,7 +95,7 @@ class GabiAdmin(BotBase):
     @botcmd
     def admin (self, mess, args):
         """Administrative commands"""
-        # admin add, list, remove, show, status (away, dnd, online, invis), bug, notify
+        # admin add, list, remove, show, status (away, dnd, online, invis), bug, notify, quit
         #self.muc_channels all connected rooms
         channel, srcNick = str(mess.getFrom()).split('/')
         if len(self.createAdminList(channel)) == 0:
@@ -158,10 +146,15 @@ class GabiAdmin(BotBase):
                             self.send_simple_reply(mess, message, True)
                     else:
                         self.send_simple_reply(mess, _("Unknown setting: {0}. View available settings with: !admin showSettings").format(arg[1]), True)
+                elif arg[0] == "quit":
+                    message = _('{0} issued a shutdown.').format(srcNick)
+                    self.send_simple_reply(mess, message, False)
+                    self.log.warning(message)
+                    self.quitBot()
                 elif arg[0] == "showSettings":
                     settingsRet = [_("Available admin settings:")]
                     for setting in sorted(self.adminSettings.keys()):
                         settingsRet.append(_("{0}: {1}").format(setting, self.adminSettings[setting]))
                     self.send_simple_reply(mess, settingsRet, True)
             else:
-                self.send_simple_reply(mess, _("Please choose from: list, add, remove, set, showSettings"), True)
+                self.send_simple_reply(mess, _("Please choose from: list, add, remove, set, showSettings, quit"), True)
