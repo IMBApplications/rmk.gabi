@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 08:59+0100\n"
+"POT-Creation-Date: 2014-01-31 09:05+0100\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: German <aegnor@mittelerde.ch>\n"
@@ -299,8 +299,8 @@ msgid ""
 "IMBApplications/rmk.gabi</a>."
 msgstr ""
 "Ich bin {0}, ein Chatbot. Wenn du mehr wissen möchtest, besuche <a "
-"href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> "
-"https://github.com/IMBApplications/rmk.gabi</a>."
+"href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> https://"
+"github.com/IMBApplications/rmk.gabi</a>."
 
 #: gabicustom.py:510
 #, python-brace-format
@@ -543,4 +543,3 @@ msgstr "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2}</a>"
 #, python-brace-format
 msgid "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2} {3}</a>"
 msgstr "<a href=\"{0}\" alt=\"{1}\" target=\"_blank\">{2} {3}</a>"
-
