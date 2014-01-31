@@ -37,7 +37,7 @@ class BotBase(object):
     def __init__(self, username, password, nickname=None, timezone='UTC', text_color=None, localization=None, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
         # TODO sort this initialisation thematically
         self.__debug = debug
-        self.log = logging.getLogger(__name__)
+        self.log = logging.getLogger(__name__, level=logging.INFO)
         self.__username = username
         self.__password = password
         self.nickname = nickname
