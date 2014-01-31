@@ -665,14 +665,14 @@ class BotBase(object):
     def status_type_changed(self, jid, new_status_type):
         """Callback for tracking status types (dnd, away, offline, ...)"""
         self.log.debug('user %s changed status to %s' % (jid, new_status_type))
-        status = "{0}".format(new_status_type)
-        if status in [None, 'chat']:
+        # status = "{0}".format(new_status_type)
+        if new_status_type in [None, 'chat']:
             self.on_came_online(jid)
-        elif status in ['xa', 'away', 'dnd']:
+        elif new_status_type in ['xa', 'away', 'dnd']:
             self.on_gone_offline(jid)
         else:
             try:
-                self.bug(None, 'User %s changed to unknown status: %s' % (jid, status))
+                self.bug(None, 'User %s changed to unknown status: %s' % (jid, new_status_type))
             except:
                 pass
 
