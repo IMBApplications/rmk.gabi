@@ -105,7 +105,7 @@ class GabiAdmin(BotBase):
                     if arg[1] in self.adminSettings:
                         if arg[2]:
                             message = _("Setting {0} changed to {1}.").format(arg[1], arg[2])
-                            self.adminSettings[arg[1]] = arg[2]
+                            self.adminSettings[arg[1]] = arg[2:]
                             self.notify(mess, message)
                             self.send_simple_reply(mess, message, True)
                     else:
