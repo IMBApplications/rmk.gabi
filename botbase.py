@@ -435,11 +435,11 @@ class BotBase(object):
             self.send(jid, self.MSG_NOT_AUTHORIZED)
             self.roster.Unauthorize(jid)
         elif type_ == 'unavailable':
-            self.log.warning("Remove online user: %s" % (who))
+            self.log.info("Remove online user: %s" % (who))
             try:
                 del self.muc_users[who]
             except Exception as e:
-                self.log.warning("Remove online user error: %s" % (e))
+                self.log.info("Remove online user error: %s" % (e))
         else:
             if presence.getJid():
                 # print "presence.getJid(): %s" % presence.getJid()
@@ -610,8 +610,7 @@ class BotBase(object):
                 conn.Process(1)
                 self.idle_proc()
             except KeyboardInterrupt:
-                self.log.info('bot stopped by user request. '\
-                    'shutting down.')
+                self.log.info('Bot stopped by user request. Shutting down.')
                 break
 
         self.shutdown()
