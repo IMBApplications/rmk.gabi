@@ -6,6 +6,8 @@ from botbase import BotBase, botcmd
 import atexit
 import time
 import datetime
+import smtplib
+from email.mime.text import MIMEText
 
 class GabiAdmin(BotBase):
     def __init__(self, username, password, timezone='UTC', candy_colors=False, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
@@ -13,6 +15,9 @@ class GabiAdmin(BotBase):
 
         self.adminList = self.loadJSON('save_admins.dat', [])
         atexit.register(self.saveJSON, 'save_admins.dat', self.adminList)
+
+        self.adminSettings = self.loadJSON('save_admin_settings.dat', {'bugEmail': "", 'notifyEmail': "", 'emailFrom': ""})
+        atexit.register(self.saveJSON, 'save_admin_settings.dat', self.adminSettings)
 
     def isAdmin(self, srcChannel, srcUsername):
         adminRights = False
@@ -55,7 +60,15 @@ class GabiAdmin(BotBase):
     @botcmd
     def notify (self, mess, args):
         """Notify admins via email about something."""
-        pass
+        channel, srcNick = str(mess.getFrom()).split('/')
+        msg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args)
+        msg['Subject'] = _('{0} Notification from {1}').format(self.nickname, srcNick)
+        msg['From'] = me
+        msg['To'] = you
+        s = smtplib.SMTP('localhost')
+        s.sendmail(me, [you], msg.as_string())
+        s.quit()
+        self.send_simple_reply(mess, _("Notification email sent."), True)
 
     @botcmd
     def admin (self, mess, args):
@@ -83,5 +96,19 @@ class GabiAdmin(BotBase):
                     pass
                 elif arg[0] == "remove":
                     pass
+                elif arg[0] == "set":
+                    if arg[1] in self.adminSettings:
+                        if arg[2]:
+                            message = _("Setting {0} changed to {1}.").format(arg[1], arg[2])
+                            self.adminSettings[arg[1]] = arg[2]
+                            self.notify(mess, message)
+                            self.send_simple_reply(mess, message, True)
+                    else
+                        self.send_simple_reply(mess, _("Unknown setting: {0}. View available settings with: !admin showSettings").format(arg[1]), True)
+                elif arg[0] == "showSettings":
+                    settingsRet = [_("Available admin settings:")]
+                    for setting in sorted(self.adminSettings.keys()):
+                        settingsRet.append(_("{0}: {1}").format(setting, self.adminSettings[setting]))
+                    self.send_simple_reply(mess, settingsRet, True)
             else:
                 self.send_simple_reply(mess, _("Please choose from: list, add, remove"), True)
