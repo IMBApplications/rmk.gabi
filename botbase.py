@@ -379,6 +379,8 @@ class BotBase(object):
             # Notify of user offline status change
             del self.__seen[jid]
             self.status_type_changed(jid, self.OFFLINE)
+        else:
+            self.status_type_changed(jid, type_)
 
         try:
             subscription = self.roster.getSubscription(unicode(jid.__str__()))
