@@ -673,7 +673,7 @@ class BotBase(object):
             self.stats['usersSeenGoing'] += 1
             self.on_gone_offline(jid)
         else:
-            if jid.split('/')[1] != self.nickname:
+            if str(jid).split('/')[1] != self.nickname:
                 try:
                     self.bug(None, 'User %s changed to unknown status: %s' % (jid, new_status_type))
                 except:
