@@ -507,14 +507,14 @@ class GabiCustom(BotBase):
     def stats(self, mess, args):
         """Some statistics"""
         retMsg = []
-        retMsg.append("Last startup: {0}").format(str(time.ctime(int(self.readyTs))))
-        retMsg.append("Messages sent:     {0}").format(self.stats['messageCount'])
-        retMsg.append("Users seen coming: {0}").format(self.stats['usersSeenComing'])
-        retMsg.append("Users seen going:  {0}").format(self.stats['usersSeenGoing'])
-        retMsg.append("Unique users seen: {0}").format(len(self.lastSeenDict.keys()))
-        retMsg.append("Unique links seen: {0}").format(len(self.urlList))
-        retMsg.append("Messages seen:     {0}").format(self.stats['messagesSeen'])
-        retMsg.append("Startups:          {0}").format(self.stats['starts'])
+        retMsg.append(_("Last startup: {0}").format(str(time.ctime(int(self.readyTs)))))
+        retMsg.append(_("Messages sent:     {0}").format(self.stats['messageCount']))
+        retMsg.append(_("Users seen coming: {0}").format(self.stats['usersSeenComing']))
+        retMsg.append(_("Users seen going:  {0}").format(self.stats['usersSeenGoing']))
+        retMsg.append(_("Unique users seen: {0}").format(len(self.lastSeenDict.keys())))
+        retMsg.append(_("Unique links seen: {0}").format(len(self.urlList)))
+        retMsg.append(_("Messages seen:     {0}").format(self.stats['messagesSeen']))
+        retMsg.append(_("Startups:          {0}").format(self.stats['starts']))
         self.send_simple_reply(mess, retMsg, True)
 
     """ Support Methods """
