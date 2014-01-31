@@ -70,7 +70,7 @@ class BotBase(object):
         for name, value in inspect.getmembers(self, inspect.ismethod):
             if getattr(value, '_jabberbot_command', False):
                 name = getattr(value, '_jabberbot_command_name')
-                self.log.info('Registered command: %s' % name)
+                self.log.debug('Registered command: %s' % name)
                 self.commands[name] = value
 
         if not localization:
@@ -205,10 +205,10 @@ class BotBase(object):
             # Save roster and log Items
             self.roster = self.conn.getRoster()
             # self.roster = self.conn.Roster.getRoster()
-            self.log.info('*** roster ***')
+            self.log.debug('*** roster ***')
             for contact in self.roster.getItems():
-                self.log.info('  %s' % contact)
-            self.log.info('*** roster ***')
+                self.log.debug('  %s' % contact)
+            self.log.debug('*** roster ***')
 
             my_roster = self.conn.getRoster()
             for i in my_roster.getItems():
@@ -471,8 +471,8 @@ class BotBase(object):
                         except Exception as e:
                             self.log.info("Remove online user error: %s" % (e))
                 else:
-                    self.log.info("Ignoring myself")
-        self.log.info("Users online: %s" % (' '.join(self.muc_users)))
+                    self.log.debug("Ignoring myself")
+        self.log.debug("Users online: %s" % (' '.join(self.muc_users)))
 
     def callback_message(self, conn, mess):
         """Messages sent to the bot will arrive here.
@@ -508,7 +508,7 @@ class BotBase(object):
 
         # Ignore messages from users not seen by this bot
         if jid not in self.__seen:
-            self.log.info('Ignoring message from unseen guest: %s' % jid)
+            self.log.debug('Ignoring message from unseen guest: %s' % jid)
             self.log.debug("I've seen: %s" %
                 ["%s" % x for x in self.__seen.keys()])
             return
@@ -596,9 +596,9 @@ class BotBase(object):
         """Connects to the server and handles messages."""
         conn = self.connect()
         if conn:
-            self.log.info('bot connected. serving forever.')
+            self.log.info('Bot connected. serving forever.')
         else:
-            self.log.warn('could not connect to server - aborting.')
+            self.log.warn('Could not connect to server - aborting.')
             return
 
         if connect_callback:
