@@ -101,7 +101,7 @@ class GabiAdmin(BotBase):
         if len(self.createAdminList(channel)) == 0:
             if args == 'initial':
                 self.adminList.append((srcNick, channel, time.time(), "Initial administrator"))
-                self.log.warning("ACCESS '%s' was registred as initial administrator for channel %s." % (srcNick, channel))
+                self.log.warning("%s was registred as initial administrator for channel %s." % (srcNick, channel))
             else:
                 self.send_simple_reply(mess, _("No administrators registred. Please register the first with '!admin initial'"), True)
                 return
