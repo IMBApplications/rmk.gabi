@@ -237,9 +237,12 @@ class GabiCustom(BotBase):
             self.lastSeenDict[user] = int(time.time())
 
             if userWasOffline:
+                self.stats['usersSeenComing'] += 1
+                
                 hallo = []
                 if age > 0:
                     if (int(time.time()) - age) > self.afkRejoinTime:
+
                         hallo.append(_('Welcome back {0}, i saw you last {1} ago.').format(user, self.getAge(age)))
                 else:
                     hallo.append(_('Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter.').format(user, self.nickname))
@@ -267,8 +270,10 @@ class GabiCustom(BotBase):
         strJID = '%s' % jid
         # room = self.list_unicode_cleanup(strJID.split('/'))[0]
         user = self.list_unicode_cleanup(strJID.split('/'))[1]
-
+        
         if user != self.get_my_username():
+            self.stats['usersSeenGoing'] += 1
+
             self.lastSeenDict[user] = int(time.time())
             self.usersNowOffline[user] = True
 
