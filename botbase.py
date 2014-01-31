@@ -65,8 +65,6 @@ class BotBase(object):
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
-        logging.basicConfig(level=logging.INFO)
-        
         # Collect commands from source
         self.commands = {}
         for name, value in inspect.getmembers(self, inspect.ismethod):
