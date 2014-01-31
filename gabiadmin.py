@@ -49,7 +49,7 @@ class GabiAdmin(BotBase):
     @botcmd
     def admin (self, mess, args):
         """Administrative commands"""
-        # admin add, list, remove, show
+        # admin add, list, remove, show, status (away, dnd, online, invis), bug, notify
         #self.muc_channels all connected rooms
         channel, srcNick = str(mess.getFrom()).split('/')
         if len(self.createAdminList(channel)) == 0:

@@ -152,9 +152,10 @@ class GabiCustom(BotBase):
             if c.match(text) != None:
                 now = datetime.datetime.now(pytz.timezone(self.timezone))
                 if now.hour > 10:
-                    self.send_simple_reply(mess, _("Morning? Check your clock, {0}!").format(username), True)
+                    # TODO: if server sends location information, take timezone into calculation
+                    self.send_simple_reply(mess, _("Morning? Check your clock, {0}!").format(username), False)
                 else:
-                    self.send_simple_reply(mess, _("Good morning, {0}. Nice to see you here.").format(username), True)
+                    self.send_simple_reply(mess, _("Good morning, {0}. Nice to see you here.").format(username), False)
                     return
 
         #so jetzt alle URLS
@@ -196,7 +197,7 @@ class GabiCustom(BotBase):
 
             newUrl = True
             for (oldUsername, timestamp, oldUrl, title) in self.urlList:
-                if url in oldUrl:
+                if url == oldUrl or url + "/" == oldUrl or url == oldUrl + "/":
                     newUrl = False
 
             if newUrl:
@@ -499,7 +500,14 @@ class GabiCustom(BotBase):
     @botcmd
     def about(self, mess, args):
         """I tell you who I am"""
-        retMsg = _("I am {0}, a chatbot. If you like to know more, visit: <a href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> https://github.com/IMBApplications/rmk.gabi</a>. My creator is oxi if you like to talk to him about me. I delivered {1} messages and was last last restarted {2}.").format(self.nickname, self.stats['messageCount'], str(time.ctime(int(self.readyTs))))
+        retMsg = _("I am {0}, a chatbot. If you like to know more, visit: <a href='https://github.com/IMBApplications/rmk.gabi' target='_blank'> https://github.com/IMBApplications/rmk.gabi</a>.").format(self.nickname)
+        self.send_simple_reply(mess, retMsg, True)
+
+    @botcmd
+    def stats(self, mess, args):
+        """Some statistics"""
+        retMsg = _("Last startup: {0}\nMessages sent: {1}\nUsers seen coming: {2}\nUsers seen going: {3}\nUnique users seen: {4}\nUnique links seen: {5}\nMessages seen: {6}\nStartups: {7}").format(str(time.ctime(int(self.readyTs))),
+                 self.stats['messageCount'], self.stats['usersSeenComing'], self.stats['usersSeenGoing'], len(self.lastSeenDict.keys()), len(self.urlList), self.stats['messageCount'], self.stats['starts'])
         self.send_simple_reply(mess, retMsg, True)
 
     """ Support Methods """

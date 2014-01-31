@@ -85,7 +85,7 @@ class BotBase(object):
         self.MSG_HELP_TAIL = _('Type help *command name* to get more info about that specific command.')
         self.MSG_HELP_UNDEFINED_COMMAND = _('That command is not defined.')
 
-        self.stats = self.loadJSON('save_stats.dat', { 'messageCount': 0 })
+        self.stats = self.loadJSON('save_stats.dat', { 'messageCount': 0, 'usersSeenComing': 0, 'usersSeenGoing': 0, 'messagesSeen': 0, 'starts': 0 })
         atexit.register(self.saveJSON, 'save_stats.dat', self.stats)
 
     ########## Save / Load Functions ##########
@@ -220,6 +220,8 @@ class BotBase(object):
             for (handler, callback) in self.handlers:
                 self.conn.RegisterHandler(handler, callback)
                 self.log.debug('Registered handler: %s' % handler)
+
+            self.stats['starts'] += 1
 
         return self.conn
 
@@ -517,6 +519,8 @@ class BotBase(object):
         botname2 = '{0}/{1}'.format(channel, self.__username.split('@')[0]).lower()
 
         if (jid_string != botname1) and (jid_string != botname2):
+            self.stats['messagesSeen'] += 1
+
             if text[0] == '!':
                 text = self.nickname + ' ' + text[1:]
             if text[0] in ['@', '!']:
@@ -677,10 +681,12 @@ class BotBase(object):
 
     def on_came_online(self, jid):
         """plix overwrite me"""
+        self.stats['usersSeenComing'] += 1
         self.log.debug("{0} came online".format(jid))
 
     def on_gone_offline(self, jid):
         """plix overwrite me"""
+        self.stats['usersSeenGoing'] += 1
         self.log.debug("{0} gone offline".format(jid))
 
     def get_my_username(self):
