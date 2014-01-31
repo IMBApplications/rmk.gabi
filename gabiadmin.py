@@ -111,4 +111,4 @@ class GabiAdmin(BotBase):
                         settingsRet.append(_("{0}: {1}").format(setting, self.adminSettings[setting]))
                     self.send_simple_reply(mess, settingsRet, True)
             else:
-                self.send_simple_reply(mess, _("Please choose from: list, add, remove"), True)
+                self.send_simple_reply(mess, _("Please choose from: list, add, remove, set, showSettings"), True)
