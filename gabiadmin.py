@@ -61,7 +61,7 @@ class GabiAdmin(BotBase):
     def notify (self, mess, args):
         """Notify admins via email about something."""
         channel, srcNick = str(mess.getFrom()).split('/')
-        emailMsg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args)
+        emailMsg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args))
         emailMsg['Subject'] = _('{0} Notification from {1}').format(self.nickname, srcNick)
         emailMsg['From'] = me
         emailMsg['To'] = you
