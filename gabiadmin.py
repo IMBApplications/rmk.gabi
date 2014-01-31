@@ -74,7 +74,7 @@ class GabiAdmin(BotBase):
                 self.log.info("Sending suggestion email succeeded.")
             except Exception as e:
                 self.send_simple_reply(mess, _("Error sending suggestion email: {0}").format(e), True)
-                self.log.warning("Sending suggestion email failed: %s\n%s" % (e, traceback.format_exc()))
+                self.log.warning("Sending suggestion email failed: %s\n%s" % (e, traceback.format_exc(type_, value_, traceback_)))
         elif srcNick != "Anonymous":
             self.send_simple_reply(mess, _("You have to supply a message"), True)
         
@@ -101,7 +101,7 @@ class GabiAdmin(BotBase):
                 self.log.info("Sending notify email succeeded.")
             except Exception as e:
                 self.send_simple_reply(mess, _("Error sending notification email: {0}").format(e), True)
-                self.log.warning("Sending notify email failed: %s\n%s" % (e, traceback.format_exc()))
+                self.log.warning("Sending notify email failed: %s\n%s" % (e, traceback.format_exc(type_, value_, traceback_)))
         else:
             self.send_simple_reply(mess, _("You have to supply a message"), True)
 
