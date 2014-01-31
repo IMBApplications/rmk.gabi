@@ -7,7 +7,6 @@ import atexit
 import time
 import datetime
 import smtplib
-import traceback
 from email.mime.text import MIMEText
 
 class GabiAdmin(BotBase):
@@ -58,23 +57,23 @@ class GabiAdmin(BotBase):
         if args:
             if isinstance(args, list):
                 args = ' '.join(args)
-            try:
-                emailMsg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args))
-                emailMsg['Subject'] = _('{0} Suggestion from {1}').format(self.nickname, srcNick)
-                emailMsg['From'] = ''.join(self.adminSettings['emailFrom'])
-                if isinstance(self.adminSettings['suggestionEmail'], list):
-                    emailTo = ', '.join(self.adminSettings['suggestionEmail'])
-                else:
-                    emailTo = self.adminSettings['suggestionEmail']
-                emailMsg['To'] = emailTo
-                s = smtplib.SMTP(self.adminSettings['smtpServer'])
-                s.sendmail(emailMsg['From'], emailMsg['To'], emailMsg.as_string())
-                s.quit()
-                self.send_simple_reply(mess, _("Suggestion email sent."), True)
-                self.log.info("Sending suggestion email succeeded.")
-            except Exception as e:
-                self.send_simple_reply(mess, _("Error sending suggestion email: {0}").format(e), True)
-                self.log.warning("Sending suggestion email failed: %s\n%s" % (e, traceback.format_exc(type_, value_, traceback_)))
+            # try:
+            emailMsg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args))
+            emailMsg['Subject'] = _('{0} Suggestion from {1}').format(self.nickname, srcNick)
+            emailMsg['From'] = ''.join(self.adminSettings['emailFrom'])
+            if isinstance(self.adminSettings['suggestionEmail'], list):
+                emailTo = ', '.join(self.adminSettings['suggestionEmail'])
+            else:
+                emailTo = self.adminSettings['suggestionEmail']
+            emailMsg['To'] = emailTo
+            s = smtplib.SMTP(self.adminSettings['smtpServer'])
+            s.sendmail(emailMsg['From'], emailMsg['To'], emailMsg.as_string())
+            s.quit()
+            self.send_simple_reply(mess, _("Suggestion email sent."), True)
+            #     self.log.info("Sending suggestion email succeeded.")
+            # except Exception as e:
+            #     self.send_simple_reply(mess, _("Error sending suggestion email: {0}").format(e), True)
+            #     self.log.warning("Sending suggestion email failed: %s" % e)
         elif srcNick != "Anonymous":
             self.send_simple_reply(mess, _("You have to supply a message"), True)
         
@@ -101,7 +100,7 @@ class GabiAdmin(BotBase):
                 self.log.info("Sending notify email succeeded.")
             except Exception as e:
                 self.send_simple_reply(mess, _("Error sending notification email: {0}").format(e), True)
-                self.log.warning("Sending notify email failed: %s\n%s" % (e, traceback.format_exc(type_, value_, traceback_)))
+                self.log.warning("Sending notify email failed: %s" % e)
         else:
             self.send_simple_reply(mess, _("You have to supply a message"), True)
 
