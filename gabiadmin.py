@@ -58,7 +58,7 @@ class GabiAdmin(BotBase):
             try:
                 emailMsg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args))
                 emailMsg['Subject'] = _('{0} Suggestion from {1}').format(self.nickname, srcNick)
-                emailMsg['From'] = self.adminSettings['emailFrom']
+                emailMsg['From'] = ''.join(self.adminSettings['emailFrom'])
                 emailMsg['To'] = ', '.join(self.adminSettings['suggestionEmail'])
                 s = smtplib.SMTP(self.adminSettings['smtpServer'])
                 s.sendmail(emailMsg['From'], emailMsg['To'], emailMsg.as_string())
@@ -79,7 +79,7 @@ class GabiAdmin(BotBase):
             try:
                 emailMsg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args))
                 emailMsg['Subject'] = _('{0} Notification from {1}').format(self.nickname, srcNick)
-                emailMsg['From'] = self.adminSettings['emailFrom']
+                emailMsg['From'] = ''.join(self.adminSettings['emailFrom'])
                 emailMsg['To'] = ', '.join(self.adminSettings['notifyEmail'])
                 s = smtplib.SMTP(self.adminSettings['smtpServer'])
                 s.sendmail(emailMsg['From'], emailMsg['To'], emailMsg.as_string())
