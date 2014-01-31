@@ -56,7 +56,8 @@ class BotBase(object):
         self.__acceptownmsgs = acceptownmsgs
         self.text_color = text_color
         self.currentTopic = ""
-        self.localization = "en"
+        self.defaultLocalization = "en"
+        self.localizations = ["en", "de"]
         self.muted = False
         self.muc_users = {}
         self.roster = None
@@ -74,11 +75,9 @@ class BotBase(object):
                 self.commands[name] = value
 
         if not localization:
-            localization = self.localization
-        else:
-            self.localization = localization
-        trans = gettext.translation("rmk.gabi", "locale", [localization]) 
-        trans.install()
+            localization = self.defaultLocalization
+        self.loadLocalization(localization)
+
 
         self.MSG_AUTHORIZE_ME = _('Hey there. You are not yet on my roster. Authorize my request and I will do the same.')
         self.MSG_NOT_AUTHORIZED = _('You did not authorize my subscription request. Access denied.')
@@ -700,6 +699,10 @@ class BotBase(object):
         return self.nickname
 
     ###### Helper methods (mostly taken from JamesII https://github.com/oxivanisher/JamesII/blob/master/src/james/jamesutils.py) ########
+    def loadLocalization(self, localization):
+        trans = gettext.translation("rmk.gabi", "locale", [localization]) 
+        trans.install()
+
     def getAge(self, timestamp):
         age = int(time.time() - timestamp)
 
