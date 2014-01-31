@@ -61,14 +61,19 @@ class GabiAdmin(BotBase):
     def notify (self, mess, args):
         """Notify admins via email about something."""
         channel, srcNick = str(mess.getFrom()).split('/')
-        emailMsg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args))
-        emailMsg['Subject'] = _('{0} Notification from {1}').format(self.nickname, srcNick)
-        emailMsg['From'] = me
-        emailMsg['To'] = you
-        s = smtplib.SMTP('localhost')
-        s.sendmail(me, [you], emailMsg.as_string())
-        s.quit()
-        self.send_simple_reply(mess, _("Notification email sent."), True)
+        try:
+            emailMsg = MIMEText(_("{0} wanted you to know that:\n{1}").format(str(mess.getFrom()), args))
+            emailMsg['Subject'] = _('{0} Notification from {1}').format(self.nickname, srcNick)
+            emailMsg['From'] = self.adminSettings['emailFrom']
+            emailMsg['To'] = self.adminSettings['notifyEmail']
+            s = smtplib.SMTP('localhost')
+            s.sendmail(me, [you], emailMsg.as_string())
+            s.quit()
+            self.send_simple_reply(mess, _("Notification email sent."), True)
+            self.log.warning("EMAIL sending notify email succeeded.")
+        except Exception as e:
+            self.send_simple_reply(mess, _("ERROR sending email: %s" % e), True)
+            self.log.warning("EMAIL sending notify email failed.")
 
     @botcmd
     def admin (self, mess, args):
