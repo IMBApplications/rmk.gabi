@@ -16,7 +16,7 @@ class GabiAdmin(BotBase):
         self.adminList = self.loadJSON('save_admins.dat', [])
         atexit.register(self.saveJSON, 'save_admins.dat', self.adminList)
 
-        self.adminSettings = self.loadJSON('save_admin_settings.dat', {'bugEmail': "", 'notifyEmail': "", 'emailFrom': ""})
+        self.adminSettings = self.loadJSON('save_admin_settings.dat', {'bugEmail': "", 'notifyEmail': "", 'emailFrom': "", 'smtpServer': ""})
         atexit.register(self.saveJSON, 'save_admin_settings.dat', self.adminSettings)
 
     def isAdmin(self, srcChannel, srcUsername):
@@ -66,8 +66,8 @@ class GabiAdmin(BotBase):
             emailMsg['Subject'] = _('{0} Notification from {1}').format(self.nickname, srcNick)
             emailMsg['From'] = self.adminSettings['emailFrom']
             emailMsg['To'] = self.adminSettings['notifyEmail']
-            s = smtplib.SMTP('localhost')
-            s.sendmail(me, [you], emailMsg.as_string())
+            s = smtplib.SMTP(self.adminSettings['smtpServer'])
+            s.sendmail(mailMsg['From'], emailMsg['To'], emailMsg.as_string())
             s.quit()
             self.send_simple_reply(mess, _("Notification email sent."), True)
             self.log.warning("EMAIL sending notify email succeeded.")
