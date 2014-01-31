@@ -99,19 +99,31 @@ class GabiAdmin(BotBase):
                     self.send_simple_reply(mess, self.createAdminList(channel), True)
                 elif arg[0] == "add":
                     if self.isAdmin(channel, arg[1]):
-                        self.send_simple_reply(mess, _("{0} is already admin."), True)
+                        message = _("{0} is already admin.").format(arg[1])
+                        self.log.info(message)
+                        self.send_simple_reply(mess, message, True)
                     else:
+                        #i will NOT work with spaces in names...
+                        message = _("{0} is now admin.").format(arg[1])
+                        self.log.info(message)
                         self.adminList.append((arg[1], channel, time.time(), arg[2:]))
-                        self.send_simple_reply(mess, _("{0} is now admin.").format(arg[1]), True)
+                        self.send_simple_reply(mess, message, True)
                 elif arg[0] == "remove":
                     for (admin, channel, since, comment) in self.adminList:
                         if arg[1].lower() == admin.lower():
+                            message = _("{0} is no longer admin.").format(arg[1])
+                            self.log.info(message)
                             self.adminList.pop(self.adminList.index((admin, channel, since, comment)))
-                            self.send_simple_reply(mess, _("{0} is no longer admin.").format(arg[1]), True)
+                            self.send_simple_reply(mess, message, True)
+                        else:
+                            message = _("{0} not found in admin list.").format(arg[1])
+                            self.log.info(message)
+                            self.send_simple_reply(mess, message, True)
                 elif arg[0] == "set":
                     if arg[1] in self.adminSettings:
                         if arg[2]:
                             message = _("Setting {0} changed to {1}.").format(arg[1], arg[2:])
+                            self.log.info(message)
                             self.adminSettings[arg[1]] = arg[2:]
                             self.notify(mess, message)
                             self.send_simple_reply(mess, message, True)
