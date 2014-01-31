@@ -673,10 +673,11 @@ class BotBase(object):
             self.stats['usersSeenGoing'] += 1
             self.on_gone_offline(jid)
         else:
-            try:
-                self.bug(None, 'User %s changed to unknown status: %s' % (jid, new_status_type))
-            except:
-                pass
+            if jid.split('/')[1] != self.nickname:
+                try:
+                    self.bug(None, 'User %s changed to unknown status: %s' % (jid, new_status_type))
+                except:
+                    pass
 
     #FIXME rename!
     def status_message_changed(self, jid, new_status_message):
