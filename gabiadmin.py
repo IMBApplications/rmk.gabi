@@ -49,6 +49,7 @@ class GabiAdmin(BotBase):
     @botcmd
     def bug (self, mess, args):
         """Report a bug to the developer."""
+        self.log.warning("BUGREPORT: %s" % args)
         pass
         
     @botcmd
