@@ -667,8 +667,10 @@ class BotBase(object):
         self.log.debug('user %s changed status to %s' % (jid, new_status_type))
         # status = "{0}".format(new_status_type)
         if new_status_type in [None, 'chat']:
+            self.stats['usersSeenComing'] += 1
             self.on_came_online(jid)
         elif new_status_type in ['xa', 'away', 'dnd']:
+            self.stats['usersSeenGoing'] += 1
             self.on_gone_offline(jid)
         else:
             try:
@@ -688,12 +690,10 @@ class BotBase(object):
 
     def on_came_online(self, jid):
         """plix overwrite me"""
-        self.stats['usersSeenComing'] += 1
         self.log.debug("{0} came online".format(jid))
 
     def on_gone_offline(self, jid):
         """plix overwrite me"""
-        self.stats['usersSeenGoing'] += 1
         self.log.debug("{0} gone offline".format(jid))
 
     def get_my_username(self):
