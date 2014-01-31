@@ -668,7 +668,7 @@ class BotBase(object):
         # status = "{0}".format(new_status_type)
         if new_status_type in [None, 'chat']:
             self.on_came_online(jid)
-        elif new_status_type in ['xa', 'away', 'dnd']:
+        elif new_status_type in ['xa', 'away', 'dnd', 'unavailable']:
             self.on_gone_offline(jid)
         else:
             if str(jid).split('/')[1] != self.nickname:
