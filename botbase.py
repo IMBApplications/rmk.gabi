@@ -674,7 +674,7 @@ class BotBase(object):
         else:
             if str(jid).split('/')[1] != self.nickname:
                 try:
-                    self.bug(None, 'User %s changed to unknown status: %s' % (jid, new_status_type))
+                    self.suggestion(None, 'User %s changed to unknown status: %s' % (jid, new_status_type))
                 except:
                     pass
 
