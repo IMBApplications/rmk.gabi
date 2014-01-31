@@ -37,7 +37,7 @@ class BotBase(object):
     def __init__(self, username, password, nickname=None, timezone='UTC', text_color=None, localization=None, res=None, debug=False, privatedomain=False, acceptownmsgs=False, handlers=None):
         # TODO sort this initialisation thematically
         self.__debug = debug
-        self.log = logging.getLogger(__name__, level=logging.INFO)
+        self.log = logging.getLogger(__name__)
         self.__username = username
         self.__password = password
         self.nickname = nickname
@@ -65,6 +65,8 @@ class BotBase(object):
 
         self.handlers = (handlers or [('message', self.callback_message), ('presence', self.callback_presence)])
 
+        logging.basicConfig(level=logging.INFO)
+        
         # Collect commands from source
         self.commands = {}
         for name, value in inspect.getmembers(self, inspect.ismethod):
