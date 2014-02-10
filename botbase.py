@@ -316,7 +316,7 @@ class BotBase(object):
         if isinstance(text, list):
             plain_message = '\n'.join(text)
         plain_message = re.sub(r'<[^>]+>', '', plain_message)
-        message = xmpp.protocol.Message(body=plain_message.decode('latin1').encode("ascii", "replace"))
+        message = xmpp.protocol.Message(body=plain_message.decode('latin1').encode("ascii", "ignore"))
 
         html = xmpp.Node('html', {'xmlns': 'http://jabber.org/protocol/xhtml-im'})
         html_message = ""
