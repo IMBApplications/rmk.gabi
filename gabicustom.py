@@ -195,11 +195,11 @@ class GabiCustom(BotBase):
                     newUrl = False
 
             if htmlTitle and newUrl:
-                test = htmlTitle.encode('utf-8')
                 try:
+                    test = htmlTitle.encode('utf-8')
+                except UnicodeDecodeError:
                     htmlTitle = htmlTitle.decode('latin1').encode("ascii", "ignore")
-                except:
-                    pass
+
                 self.send_simple_reply(mess, _("URL title from {0}: <a href='{2}' target='_blank'>{1}</a>").format(username, htmlTitle, url))
             else:
                 htmlTitle = ""
