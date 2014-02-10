@@ -195,7 +195,12 @@ class GabiCustom(BotBase):
                     newUrl = False
 
             if htmlTitle and newUrl:
-                self.send_simple_reply(mess, _("URL title from {0}: <a href='{2}' target='_blank'>{1}</a>").format(username, htmlTitle.decode('latin1').encode("ascii", "ignore"), url))
+                test = htmlTitle.encode('utf-8')
+                try:
+                    htmlTitle = htmlTitle.decode('latin1').encode("ascii", "ignore")
+                except:
+                    pass
+                self.send_simple_reply(mess, _("URL title from {0}: <a href='{2}' target='_blank'>{1}</a>").format(username, htmlTitle, url))
             else:
                 htmlTitle = ""
 
