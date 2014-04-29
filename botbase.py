@@ -91,10 +91,13 @@ class BotBase(object):
         """Saves the given content to the given filename as JSON"""
         dstfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.nickname.lower() + '_' + filename)
         try:
-            file = open(dstfile, 'w')
-            file.write(json.dumps(content))
-            file.close()
-            self.log.debug("Saving to %s" % (dstfile))
+            if len(content) > 0:
+                file = open(dstfile, 'w')
+                file.write(json.dumps(content))
+                file.close()
+                self.log.debug("Saving to %s" % (dstfile))
+            else:
+                self.log.warning("Did not save to log %s becuase content was empty!" % (dstfile))
         except IOError:
             self.log.warning("Could not safe data to file %s!" % (dstfile))
 
