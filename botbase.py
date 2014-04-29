@@ -95,7 +95,7 @@ class BotBase(object):
                 file = open(dstfile, 'w')
                 file.write(json.dumps(content))
                 file.close()
-                self.log.debug("Saving to %s" % (dstfile))
+                self.log.info("Saving to %s" % (dstfile))
             else:
                 self.log.warning("Did not save to log %s becuase content was empty!" % (dstfile))
         except IOError:
