@@ -127,7 +127,7 @@ class GabiCustom(BotBase):
                 else:
                     self.send_simple_reply(mess, "wb {0}!".format(username))
 
-                self.reminder_check(username)
+                self.reminder_check(jid)
                 return
 
         #tippfehlerkontrolle
@@ -266,9 +266,13 @@ class GabiCustom(BotBase):
                     self.send(room, '\n'.join(hallo), None, 'groupchat')
 
             # Reminder
-            self.reminder_check(user)
+            self.reminder_check(jid)
 
-    def reminder_check(self, user):
+    def reminder_check(self, jid):
+        strJID = '%s' % jid
+        room = self.list_unicode_cleanup(strJID.split('/'))[0]
+        user = self.list_unicode_cleanup(strJID.split('/'))[1]
+
         if self.reminderDict.has_key(user.lower()):
             if len(self.reminderDict[user.lower()]) > 0:
                 reminderMessage = _('{0}, I have to tell you:').format(user) + '\n'
