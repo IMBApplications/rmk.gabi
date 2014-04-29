@@ -367,7 +367,7 @@ class GabiCustom(BotBase):
         """Remind a user with something when he comes back"""
         from_username = self.get_sender_username(mess)
         new_args = re.findall(r'(\w+|".*?")', args)
-        new_args = [w.replace('', '"') for w in new_args]
+        new_args = [w.replace('"', '') for w in new_args]
 
         if len(args) > 1:
             target_user = new_args[0]
