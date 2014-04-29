@@ -126,7 +126,7 @@ class GabiCustom(BotBase):
                     self.saveJSON('save_afk.dat', self.afkDict)
                 else:
                     self.send_simple_reply(mess, "wb {0}!".format(username))
-                    
+
                 self.reminder_check(username)
                 return
 
@@ -273,7 +273,7 @@ class GabiCustom(BotBase):
             if len(self.reminderDict[user.lower()]) > 0:
                 reminderMessage = _('{0}, I have to tell you:').format(user) + '\n'
                 for (sender, message, timestamp) in self.reminderDict[user.lower()]:
-                reminderMessage += _('From {0} {1} ago: {2}').format(sender, self.getAge(timestamp), message) + '\n'
+                    reminderMessage += _('From {0} {1} ago: {2}').format(sender, self.getAge(timestamp), message) + '\n'
 
                 self.reminderDict[user.lower()] = []
                 self.saveJSON('save_reminder.dat', self.reminderDict)
