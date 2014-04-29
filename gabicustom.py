@@ -123,6 +123,7 @@ class GabiCustom(BotBase):
                 if username in self.afkDict:
                     self.send_simple_reply(mess, _("wb {0}! How was {1}?").format(username, self.afkDict[username]))
                     del self.afkDict[username];
+                    self.saveJSON('save_afk.dat', self.afkDict)
                 else:
                     self.send_simple_reply(mess, "wb {0}!".format(username))
                 return
@@ -206,6 +207,7 @@ class GabiCustom(BotBase):
 
             if newUrl:
                 self.urlList.append((username, str(datetime.datetime.now(pytz.timezone(self.timezone))), url, htmlTitle))
+                self.saveJSON('save_urls.dat', self.urlList)
 
         if writer != None:
             handler.close()
@@ -256,6 +258,7 @@ class GabiCustom(BotBase):
                 if user in self.afkDict:
                     hallo.append(_("How was {0}?").format(self.afkDict[user]))
                     del self.afkDict[user];
+                    self.saveJSON('save_afk.dat', self.afkDict)
 
                 if len(hallo) > 0:
                     self.send(room, '\n'.join(hallo), None, 'groupchat')
@@ -268,6 +271,7 @@ class GabiCustom(BotBase):
                         reminderMessage += _('From {0} {1} ago: {2}').format(sender, self.getAge(timestamp), message) + '\n'
 
                     self.reminderDict[user.lower()] = []
+                    self.saveJSON('save_reminder.dat', self.reminderDict)
                     self.send(room, reminderMessage, None, 'groupchat')
                     
 
@@ -313,6 +317,7 @@ class GabiCustom(BotBase):
         username = self.get_sender_username(mess)
         if len(args) > 0:
             self.memDict[username] = args;
+            self.saveJSON('save_memo.dat', self.memDict)
             self.send_simple_reply(mess, _('I memorized now: "{0}".').format(args))
         elif username in self.memDict:
             self.send_simple_reply(mess, _('Your memo: "{0}".').format(self.memDict[username]))
@@ -329,6 +334,7 @@ class GabiCustom(BotBase):
         else:
             message = "AFK"
         self.afkDict[username] = message
+        self.saveJSON('save_afk.dat', self.afkDict)
 
         if username != self.get_my_username():
             self.lastSeenDict[username] = int(time.time())
@@ -352,7 +358,7 @@ class GabiCustom(BotBase):
     def remind (self, mess, args):
         """Remind a user with something when he comes back"""
         from_username = self.get_sender_username(mess)
-        new_args = args.split(" ")
+        new_args = re.findall(r'(\w+|".*?")', args)
 
         if len(args) > 1:
             target_user = new_args[0]
@@ -363,6 +369,7 @@ class GabiCustom(BotBase):
             if not self.reminderDict.has_key(target_user.lower()):
                 self.reminderDict[target_user.lower()] = []
             self.reminderDict[target_user.lower()].append((from_username, target_message, int(time.time())))
+            self.saveJSON('save_reminder.dat', self.reminderDict)
 
         else:
             ret_message = _("You have to enter a name followed by the message.")
@@ -428,6 +435,7 @@ class GabiCustom(BotBase):
                 if target_timestamp > 0 and len(args) > 0:
                     # return [self.timer_at(target_timestamp, args)]
                     self.cowntdownList.append((target_timestamp, longterm, from_username, ' '.join(args)))
+                    self.saveJSON('save_count.dat', self.cowntdownList)
                     ret_message.append(_("Count saved for '{0}' ({1})").format(' '.join(args), target_time.strftime("%a, %d %b %Y %H:%M:%S")))
                     # print target_time.strftime("%s")
                 else:
@@ -454,6 +462,7 @@ class GabiCustom(BotBase):
                     target_time = datetime.datetime.fromtimestamp(timestamp)
                     ret_message = [_('{0}\t"{1}" set by "{2}" has been removed.').format(target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user)]
                     self.cowntdownList.pop(delIndex)
+                    self.saveJSON('save_count.dat', self.cowntdownList)
             except (IndexError, ValueError):
                 pass
         else:
@@ -617,6 +626,7 @@ class GabiCustom(BotBase):
 
             if removeMe:
                 myIndex = [y[0] for y in self.cowntdownList].index(timestamp)
+                self.saveJSON('save_count.dat', self.cowntdownList)
                 # print myIndex
                 # print self.cowntdownList.pop(myIndex)
                 #newPeriodicCountLastCheck.append((timestamp, longterm, user, message))
