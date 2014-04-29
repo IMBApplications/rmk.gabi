@@ -91,7 +91,7 @@ class BotBase(object):
         """Saves the given content to the given filename as JSON"""
         dstfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'db', self.nickname.lower() + '_' + filename)
         try:
-            if len(content) > 0:
+            if len(content) > 0 or filename == 'save_afk.dat':
                 file = open(dstfile, 'w')
                 file.write(json.dumps(content))
                 file.close()
