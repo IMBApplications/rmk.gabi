@@ -26,5 +26,5 @@ class GabiChannelAdmin(BotBase):
         """Sets the current topic"""
         room = mess.getFrom().getStripped()
         self.userTopic = args
-        self.saveJSON('topic.dat', self.userTopic)
+        self.saveJSON('save_topic.dat', self.userTopic)
         self.do_topic(room)
