@@ -303,7 +303,7 @@ class GabiCustom(BotBase):
         """When was a user last seen"""
         if not args:
             ret = []
-            for name in self.lastSeenDict.keys():
+            for name in sorted(self.lastSeenDict.keys()):
                 ret.append(_('{0} {1} ago').format(name, self.getAge(self.lastSeenDict[name])))
             self.send_simple_reply(mess, ret, True)
         else:
