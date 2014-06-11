@@ -239,11 +239,11 @@ class GabiCustom(BotBase):
             self.usersNowOffline[user] = False
 
             try:
-                if self.lastSeenDict[user] > 0:
-                    age = self.lastSeenDict[user]
+                if self.lastSeenDict[user.lower()] > 0:
+                    age = self.lastSeenDict[user.lower()]
             except Exception:
                 pass
-            self.lastSeenDict[user] = int(time.time())
+            self.lastSeenDict[user.lower()] = int(time.time())
 
             if userWasOffline:
                 self.stats['usersSeenComing'] += 1
@@ -291,7 +291,7 @@ class GabiCustom(BotBase):
         if user != self.get_my_username():
             self.stats['usersSeenGoing'] += 1
 
-            self.lastSeenDict[user] = int(time.time())
+            self.lastSeenDict[user.lower()] = int(time.time())
             self.usersNowOffline[user] = True
 
             # hallo = 'Und da ist {0} weg'.format(user)
@@ -345,7 +345,7 @@ class GabiCustom(BotBase):
         self.saveJSON('save_afk.dat', self.afkDict)
 
         if username != self.get_my_username():
-            self.lastSeenDict[username] = int(time.time())
+            self.lastSeenDict[username.lower()] = int(time.time())
             self.usersNowOffline[username] = True
 
         self.send_simple_reply(mess, _('See you later, {0}. Have fun at {1}.').format(username, message), False)
