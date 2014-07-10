@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-11 09:51+0200\n"
+"POT-Creation-Date: 2014-07-10 14:47+0200\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: English <aegnor@mittelerde.ch>\n"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "1 second"
 msgstr ""
 
-#: botbase.py:721 gabicustom.py:655
+#: botbase.py:721 gabicustom.py:658
 #, python-brace-format
 msgid "{0} seconds"
 msgstr ""
@@ -199,179 +199,179 @@ msgstr ""
 msgid "Please choose from: list, add, remove, set, lang, showSettings, quit"
 msgstr ""
 
-#: gabicustom.py:115
-#, python-brace-format
-msgid "Have fun, {0}!"
-msgstr ""
-
-#: gabicustom.py:124
-#, python-brace-format
-msgid "wb {0}! How was {1}?"
-msgstr ""
-
-#: gabicustom.py:139
-#, python-brace-format
-msgid "{0} wanted to say \"{1}\"."
-msgstr ""
-
-#: gabicustom.py:148
-#, python-brace-format
-msgid "Hihihi, {0} said penis!"
-msgstr ""
-
-#: gabicustom.py:159
-#, python-brace-format
-msgid "Morning? Check your clock, {0}!"
-msgstr ""
-
-#: gabicustom.py:161
-#, python-brace-format
-msgid "Good morning, {0}. Nice to see you here."
-msgstr ""
-
-#: gabicustom.py:206
+#: gabicustom.py:154
 #, python-brace-format
 msgid "URL title from {0}: <a href='{2}' target='_blank'>{1}</a>"
 msgstr ""
 
-#: gabicustom.py:255
+#: gabicustom.py:171
+#, python-brace-format
+msgid "Have fun, {0}!"
+msgstr ""
+
+#: gabicustom.py:180
+#, python-brace-format
+msgid "wb {0}! How was {1}?"
+msgstr ""
+
+#: gabicustom.py:195
+#, python-brace-format
+msgid "{0} wanted to say \"{1}\"."
+msgstr ""
+
+#: gabicustom.py:204
+#, python-brace-format
+msgid "Hihihi, {0} said penis!"
+msgstr ""
+
+#: gabicustom.py:215
+#, python-brace-format
+msgid "Morning? Check your clock, {0}!"
+msgstr ""
+
+#: gabicustom.py:217
+#, python-brace-format
+msgid "Good morning, {0}. Nice to see you here."
+msgstr ""
+
+#: gabicustom.py:258
 #, python-brace-format
 msgid "Welcome back {0}, i saw you last {1} ago."
 msgstr ""
 
-#: gabicustom.py:257
+#: gabicustom.py:260
 #, python-brace-format
 msgid ""
 "Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter."
 msgstr ""
 
-#: gabicustom.py:258
+#: gabicustom.py:261
 #, python-brace-format
 msgid "Enter \"{0} help\" or \"!help\" for help."
 msgstr ""
 
-#: gabicustom.py:261
+#: gabicustom.py:264
 #, python-brace-format
 msgid "How was {0}?"
 msgstr ""
 
-#: gabicustom.py:278
+#: gabicustom.py:281
 #, python-brace-format
 msgid "{0}, I have to tell you:"
 msgstr ""
 
-#: gabicustom.py:280
+#: gabicustom.py:283
 #, python-brace-format
 msgid "From {0} {1} ago: {2}"
 msgstr ""
 
-#: gabicustom.py:307
+#: gabicustom.py:310
 #, python-brace-format
 msgid "{0} {1} ago"
 msgstr ""
 
-#: gabicustom.py:317
+#: gabicustom.py:320
 #, python-brace-format
 msgid "{0} was last seen {1} ago."
 msgstr ""
 
-#: gabicustom.py:319
+#: gabicustom.py:322
 #, python-brace-format
 msgid "{0}, I did never see {1}."
 msgstr ""
 
-#: gabicustom.py:329
+#: gabicustom.py:332
 #, python-brace-format
 msgid "I memorized now: \"{0}\"."
 msgstr ""
 
-#: gabicustom.py:331
+#: gabicustom.py:334
 #, python-brace-format
 msgid "Your memo: \"{0}\"."
 msgstr ""
 
-#: gabicustom.py:333
+#: gabicustom.py:336
 msgid "What should i memorize?"
 msgstr ""
 
-#: gabicustom.py:351
+#: gabicustom.py:354
 #, python-brace-format
 msgid "See you later, {0}. Have fun at {1}."
 msgstr ""
 
-#: gabicustom.py:362
+#: gabicustom.py:365
 msgid "Nobody left any message."
 msgstr ""
 
-#: gabicustom.py:376
+#: gabicustom.py:379
 #, python-brace-format
 msgid "I will tell {0}: {1}"
 msgstr ""
 
-#: gabicustom.py:384
+#: gabicustom.py:387
 msgid "You have to enter a name followed by the message."
 msgstr ""
 
-#: gabicustom.py:394
+#: gabicustom.py:397
 msgid "Commands for count are: add, list, del"
 msgstr ""
 
-#: gabicustom.py:448
+#: gabicustom.py:451
 #, python-brace-format
 msgid "Count saved for '{0}' ({1})"
 msgstr ""
 
-#: gabicustom.py:452
+#: gabicustom.py:455
 msgid "You have to enter time/date and an event. Examples:"
 msgstr ""
 
-#: gabicustom.py:453
+#: gabicustom.py:456
 #, python-brace-format
 msgid "{0} count add 18:15 It is a quarter past 6"
 msgstr ""
 
-#: gabicustom.py:454
+#: gabicustom.py:457
 #, python-brace-format
 msgid "{0} count add 31.12.2014 23:59 The old year is history"
 msgstr ""
 
-#: gabicustom.py:456
+#: gabicustom.py:459
 msgid "The following counts are set:"
 msgstr ""
 
-#: gabicustom.py:461
+#: gabicustom.py:464
 #, python-brace-format
 msgid "{0}\t{1}\t\"{2}\" set by \"{3}\""
 msgstr ""
 
-#: gabicustom.py:464
+#: gabicustom.py:467
 msgid "There are no counts saved."
 msgstr ""
 
-#: gabicustom.py:466
+#: gabicustom.py:469
 #, python-brace-format
 msgid "Unknown index. Please specify a valid index: ({0} count list)."
 msgstr ""
 
-#: gabicustom.py:472
+#: gabicustom.py:475
 #, python-brace-format
 msgid "{0}\t\"{1}\" set by \"{2}\" has been removed."
 msgstr ""
 
-#: gabicustom.py:509
+#: gabicustom.py:512
 #, python-brace-format
 msgid "{0} {1}: <a href='{2}'>{3}</a>"
 msgstr ""
 
-#: gabicustom.py:521
+#: gabicustom.py:524
 msgid "I am now unmuted."
 msgstr ""
 
-#: gabicustom.py:524
+#: gabicustom.py:527
 msgid "I am now muted."
 msgstr ""
 
-#: gabicustom.py:530
+#: gabicustom.py:533
 #, python-brace-format
 msgid ""
 "I am {0}, a chatbot. If you like to know more, visit: <a href='https://"
@@ -379,150 +379,150 @@ msgid ""
 "IMBApplications/rmk.gabi</a>."
 msgstr ""
 
-#: gabicustom.py:537
+#: gabicustom.py:540
 #, python-brace-format
 msgid "Last startup: {0}"
 msgstr ""
 
-#: gabicustom.py:538
+#: gabicustom.py:541
 #, python-brace-format
 msgid "Messages sent: {0}"
 msgstr ""
 
-#: gabicustom.py:539
+#: gabicustom.py:542
 #, python-brace-format
 msgid "Users seen coming: {0}"
 msgstr ""
 
-#: gabicustom.py:540
+#: gabicustom.py:543
 #, python-brace-format
 msgid "Users seen going: {0}"
 msgstr ""
 
-#: gabicustom.py:541
+#: gabicustom.py:544
 #, python-brace-format
 msgid "Unique users seen: {0}"
 msgstr ""
 
-#: gabicustom.py:542
+#: gabicustom.py:545
 #, python-brace-format
 msgid "Unique links seen: {0}"
 msgstr ""
 
-#: gabicustom.py:543
+#: gabicustom.py:546
 #, python-brace-format
 msgid "Messages seen: {0}"
 msgstr ""
 
-#: gabicustom.py:544
+#: gabicustom.py:547
 #, python-brace-format
 msgid "Startups: {0}"
 msgstr ""
 
-#: gabicustom.py:566
+#: gabicustom.py:569
 #, python-brace-format
 msgid "Now: {0}"
 msgstr ""
 
-#: gabicustom.py:576 gabicustom.py:686
+#: gabicustom.py:579 gabicustom.py:689
 #, python-brace-format
 msgid "{0} ago: {1}"
 msgstr ""
 
-#: gabicustom.py:582
+#: gabicustom.py:585
 #, python-brace-format
 msgid "Today: {0} from {1}"
 msgstr ""
 
-#: gabicustom.py:587
+#: gabicustom.py:590
 #, python-brace-format
 msgid "{0} years ago: {1}"
 msgstr ""
 
-#: gabicustom.py:597
+#: gabicustom.py:600
 #, python-brace-format
 msgid "In {0} years: {1}"
 msgstr ""
 
-#: gabicustom.py:625
+#: gabicustom.py:628
 #, python-brace-format
 msgid "Tomorrow: {0}"
 msgstr ""
 
-#: gabicustom.py:627 gabicustom.py:633
+#: gabicustom.py:630 gabicustom.py:636
 #, python-brace-format
 msgid "In {0} days: {1}"
 msgstr ""
 
-#: gabicustom.py:629
+#: gabicustom.py:632
 #, python-brace-format
 msgid "In 1 week: {0}"
 msgstr ""
 
-#: gabicustom.py:631
+#: gabicustom.py:634
 #, python-brace-format
 msgid "In {0} weeks: {1}"
 msgstr ""
 
-#: gabicustom.py:657
+#: gabicustom.py:660
 msgid "minute"
 msgstr ""
 
-#: gabicustom.py:657
+#: gabicustom.py:660
 msgid "minutes"
 msgstr ""
 
-#: gabicustom.py:661
+#: gabicustom.py:664
 msgid "hour"
 msgstr ""
 
-#: gabicustom.py:661
+#: gabicustom.py:664
 msgid "hours"
 msgstr ""
 
-#: gabicustom.py:665
+#: gabicustom.py:668
 msgid "day"
 msgstr ""
 
-#: gabicustom.py:665
+#: gabicustom.py:668
 msgid "days"
 msgstr ""
 
-#: gabicustom.py:669
+#: gabicustom.py:672
 msgid "week"
 msgstr ""
 
-#: gabicustom.py:669
+#: gabicustom.py:672
 msgid "weeks"
 msgstr ""
 
-#: gabicustom.py:673
+#: gabicustom.py:676
 msgid "month"
 msgstr ""
 
-#: gabicustom.py:673
+#: gabicustom.py:676
 msgid "months"
 msgstr ""
 
-#: gabicustom.py:677
+#: gabicustom.py:680
 msgid "year"
 msgstr ""
 
-#: gabicustom.py:677
+#: gabicustom.py:680
 msgid "years"
 msgstr ""
 
-#: gabicustom.py:682
+#: gabicustom.py:685
 #, python-brace-format
 msgid "Now! {0}"
 msgstr ""
 
-#: gabicustom.py:684
+#: gabicustom.py:687
 #, python-brace-format
 msgid "In {0}: {1}"
 msgstr ""
 
-#: gabicustom.py:684 gabicustom.py:686
+#: gabicustom.py:687 gabicustom.py:689
 msgid " or "
 msgstr ""
 

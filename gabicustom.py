@@ -107,68 +107,16 @@ class GabiCustom(BotBase):
         if username == self.get_my_username():
             return
 
-        #fangen wir mal an mit gucken ob der bb oder was sagen will
-        reg_ex_bb = (r".*?bb$", r".*?bin mal weg.*?", r".*?baba", r".*?good day")
-        for reg in reg_ex_bb:
-            c = re.compile(reg)
-            if c.match(text) != None:
-                self.send_simple_reply(mess, _("Have fun, {0}!").format(username))
-                return
 
-        #fangen wir mal an mit gucken ob wer re sagt        
-        reg_ex_re = (r"^\|c\:[0-9]\|re$", r"^rehor$", r"^\|c\:[0-9]\|rehor$", r"^re$")
-        for reg in reg_ex_re:
-            c = re.compile(reg)
-            if c.match(text) != None:
-                if username in self.afkDict:
-                    self.send_simple_reply(mess, _("wb {0}! How was {1}?").format(username, self.afkDict[username]))
-                    del self.afkDict[username];
-                    self.saveJSON('save_afk.dat', self.afkDict)
-                else:
-                    self.send_simple_reply(mess, "wb {0}!".format(username))
-
-                self.reminder_check(jid)
-                return
-
-        #tippfehlerkontrolle
-        reg_ex_ac = (r".*?amche", r".*?shcon", r".*?acuh", r".*?dsa", r".*?cih", r".*?ihc", r".*?psi", r".*?issue")
-        autoCorr = { '.*?amche' : 'mache', '.*?shcon': 'schon', '.*?acuh': 'auch', '.*?dsa': 'das', '.*?cih': 'ich', '.*?ihc': 'ich', '.*?psi' : 'gajim', '.*?issue' : 'skischuh' }
-        for reg in reg_ex_ac:
-            c = re.compile(reg)
-            if c.match(text) != None:
-                self.send_simple_reply(mess, _('{0} wanted to say "{1}".').format(username, autoCorr[reg]))                    
-                    
-                return
-
-        #fangen wir mal an mit gucken ob wer penis sagt
-        reg_ex_pn = (r".*?penis", r".*?Penis")
-        for reg in reg_ex_pn:
-            c = re.compile(reg)
-            if c.match(text) != None:
-                self.send_simple_reply(mess, _("Hihihi, {0} said penis!").format(username))
-                return
-                    
-        #fangen wir mal an mit gucken ob wer Guten Morgen sagt
-        reg_ex_pn = (r".*?Guten Morgen", r".*?guten morgen", r".*?Moinz", r".*?moinz", r".*?morning", r".*?good morning")
-        for reg in reg_ex_pn:
-            c = re.compile(reg)
-            if c.match(text) != None:
-                now = datetime.datetime.now(pytz.timezone(self.timezone))
-                if now.hour > 10:
-                    # TODO: if server sends location information, take timezone into calculation
-                    self.send_simple_reply(mess, _("Morning? Check your clock, {0}!").format(username), False)
-                else:
-                    self.send_simple_reply(mess, _("Good morning, {0}. Nice to see you here.").format(username), False)
-                    return
-
-        #so jetzt alle URLS
+        #so jetzt erst mal alle URLS suchen
         reg_ex_url = r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
         c = re.compile(reg_ex_url)
         writer = None
         handler = None
-
         
+        urlFound = False
         for url in c.findall(text):
+            urlFound = True
             url = url.strip()
 
             htmlTitle = None
@@ -213,6 +161,61 @@ class GabiCustom(BotBase):
 
         if writer != None:
             handler.close()
+
+        if not urlFound:
+            #fangen wir mal an mit gucken ob der bb oder was sagen will
+            reg_ex_bb = (r".*?bb$", r".*?bin mal weg.*?", r".*?baba", r".*?good day")
+            for reg in reg_ex_bb:
+                c = re.compile(reg)
+                if c.match(text) != None:
+                    self.send_simple_reply(mess, _("Have fun, {0}!").format(username))
+                    return
+
+            #fangen wir mal an mit gucken ob wer re sagt        
+            reg_ex_re = (r"^\|c\:[0-9]\|re$", r"^rehor$", r"^\|c\:[0-9]\|rehor$", r"^re$")
+            for reg in reg_ex_re:
+                c = re.compile(reg)
+                if c.match(text) != None:
+                    if username in self.afkDict:
+                        self.send_simple_reply(mess, _("wb {0}! How was {1}?").format(username, self.afkDict[username]))
+                        del self.afkDict[username];
+                        self.saveJSON('save_afk.dat', self.afkDict)
+                    else:
+                        self.send_simple_reply(mess, "wb {0}!".format(username))
+
+                    self.reminder_check(jid)
+                    return
+
+            #tippfehlerkontrolle
+            reg_ex_ac = (r".*?amche", r".*?shcon", r".*?acuh", r".*?dsa", r".*?cih", r".*?ihc", r".*?psi", r".*?issue")
+            autoCorr = { '.*?amche' : 'mache', '.*?shcon': 'schon', '.*?acuh': 'auch', '.*?dsa': 'das', '.*?cih': 'ich', '.*?ihc': 'ich', '.*?psi' : 'gajim', '.*?issue' : 'skischuh' }
+            for reg in reg_ex_ac:
+                c = re.compile(reg)
+                if c.match(text) != None:
+                    self.send_simple_reply(mess, _('{0} wanted to say "{1}".').format(username, autoCorr[reg]))                    
+                        
+                    return
+
+            #fangen wir mal an mit gucken ob wer penis sagt
+            reg_ex_pn = (r".*?penis", r".*?Penis")
+            for reg in reg_ex_pn:
+                c = re.compile(reg)
+                if c.match(text) != None:
+                    self.send_simple_reply(mess, _("Hihihi, {0} said penis!").format(username))
+                    return
+                        
+            #fangen wir mal an mit gucken ob wer Guten Morgen sagt
+            reg_ex_pn = (r".*?Guten Morgen", r".*?guten morgen", r".*?Moinz", r".*?moinz", r".*?morning", r".*?good morning")
+            for reg in reg_ex_pn:
+                c = re.compile(reg)
+                if c.match(text) != None:
+                    now = datetime.datetime.now(pytz.timezone(self.timezone))
+                    if now.hour > 10:
+                        # TODO: if server sends location information, take timezone into calculation
+                        self.send_simple_reply(mess, _("Morning? Check your clock, {0}!").format(username), False)
+                    else:
+                        self.send_simple_reply(mess, _("Good morning, {0}. Nice to see you here.").format(username), False)
+                        return
 
         # haben wir einen count zum anzeigen?
         periodicCount = self.periodicCheckCount(mess)
