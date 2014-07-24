@@ -566,7 +566,7 @@ class GabiCustom(BotBase):
         retMsg = []
 
         for range(tlen):
-        retMsg.append(random.choice(rndText))
+            retMsg.append(random.choice(rndText))
 
         self.send_simple_reply(mess, retMsg)
 
