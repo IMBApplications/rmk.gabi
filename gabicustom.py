@@ -551,9 +551,9 @@ class GabiCustom(BotBase):
     @botcmd
     def clear(self, mess, args):
         """Clears the screen"""
-        tlen = 10
+        tlen = 20
         try:
-            tLen = int(args)
+            tLen = int(args[0])
         except:
             pass
 
