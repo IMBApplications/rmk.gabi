@@ -554,6 +554,8 @@ class GabiCustom(BotBase):
         tlen = 20
         try:
             tLen = int(args[0])
+            if tLen > 100:
+                tLen = 100
         except:
             pass
 
