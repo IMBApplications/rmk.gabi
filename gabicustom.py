@@ -551,10 +551,11 @@ class GabiCustom(BotBase):
     @botcmd
     def clear(self, mess, args):
         """Clears the screen"""
+        tlen = 10
         try:
             tLen = int(args)
         except:
-            tlen = 10
+            pass
 
         rndText = []
         rndText.append("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.")
