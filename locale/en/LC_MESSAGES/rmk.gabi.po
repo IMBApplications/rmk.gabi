@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-10 14:47+0200\n"
+"POT-Creation-Date: 2014-07-24 10:10+0200\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: English <aegnor@mittelerde.ch>\n"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "1 second"
 msgstr ""
 
-#: botbase.py:721 gabicustom.py:658
+#: botbase.py:721 gabicustom.py:669
 #, python-brace-format
 msgid "{0} seconds"
 msgstr ""
@@ -419,110 +419,110 @@ msgstr ""
 msgid "Startups: {0}"
 msgstr ""
 
-#: gabicustom.py:569
+#: gabicustom.py:580
 #, python-brace-format
 msgid "Now: {0}"
 msgstr ""
 
-#: gabicustom.py:579 gabicustom.py:689
+#: gabicustom.py:590 gabicustom.py:700
 #, python-brace-format
 msgid "{0} ago: {1}"
 msgstr ""
 
-#: gabicustom.py:585
+#: gabicustom.py:596
 #, python-brace-format
 msgid "Today: {0} from {1}"
 msgstr ""
 
-#: gabicustom.py:590
+#: gabicustom.py:601
 #, python-brace-format
 msgid "{0} years ago: {1}"
 msgstr ""
 
-#: gabicustom.py:600
+#: gabicustom.py:611
 #, python-brace-format
 msgid "In {0} years: {1}"
 msgstr ""
 
-#: gabicustom.py:628
+#: gabicustom.py:639
 #, python-brace-format
 msgid "Tomorrow: {0}"
 msgstr ""
 
-#: gabicustom.py:630 gabicustom.py:636
+#: gabicustom.py:641 gabicustom.py:647
 #, python-brace-format
 msgid "In {0} days: {1}"
 msgstr ""
 
-#: gabicustom.py:632
+#: gabicustom.py:643
 #, python-brace-format
 msgid "In 1 week: {0}"
 msgstr ""
 
-#: gabicustom.py:634
+#: gabicustom.py:645
 #, python-brace-format
 msgid "In {0} weeks: {1}"
 msgstr ""
 
-#: gabicustom.py:660
+#: gabicustom.py:671
 msgid "minute"
 msgstr ""
 
-#: gabicustom.py:660
+#: gabicustom.py:671
 msgid "minutes"
 msgstr ""
 
-#: gabicustom.py:664
+#: gabicustom.py:675
 msgid "hour"
 msgstr ""
 
-#: gabicustom.py:664
+#: gabicustom.py:675
 msgid "hours"
 msgstr ""
 
-#: gabicustom.py:668
+#: gabicustom.py:679
 msgid "day"
 msgstr ""
 
-#: gabicustom.py:668
+#: gabicustom.py:679
 msgid "days"
 msgstr ""
 
-#: gabicustom.py:672
+#: gabicustom.py:683
 msgid "week"
 msgstr ""
 
-#: gabicustom.py:672
+#: gabicustom.py:683
 msgid "weeks"
 msgstr ""
 
-#: gabicustom.py:676
+#: gabicustom.py:687
 msgid "month"
 msgstr ""
 
-#: gabicustom.py:676
+#: gabicustom.py:687
 msgid "months"
 msgstr ""
 
-#: gabicustom.py:680
+#: gabicustom.py:691
 msgid "year"
 msgstr ""
 
-#: gabicustom.py:680
+#: gabicustom.py:691
 msgid "years"
 msgstr ""
 
-#: gabicustom.py:685
+#: gabicustom.py:696
 #, python-brace-format
 msgid "Now! {0}"
 msgstr ""
 
-#: gabicustom.py:687
+#: gabicustom.py:698
 #, python-brace-format
 msgid "In {0}: {1}"
 msgstr ""
 
-#: gabicustom.py:687 gabicustom.py:689
+#: gabicustom.py:698 gabicustom.py:700
 msgid " or "
 msgstr ""
 
