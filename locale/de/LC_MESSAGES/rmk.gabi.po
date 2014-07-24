@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-24 10:10+0200\n"
+"POT-Creation-Date: 2014-07-24 10:18+0200\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: German <aegnor@mittelerde.ch>\n"
@@ -43,7 +43,7 @@ msgstr "Dieser Befehl existiert nicht."
 msgid "1 second"
 msgstr "1 Sekunde"
 
-#: botbase.py:721 gabicustom.py:669
+#: botbase.py:721 gabicustom.py:677
 #, python-brace-format
 msgid "{0} seconds"
 msgstr "{0} Sekunden"
@@ -436,110 +436,110 @@ msgstr "Nachrichten gesehen: {0}"
 msgid "Startups: {0}"
 msgstr "Starts: {0}"
 
-#: gabicustom.py:580
+#: gabicustom.py:588
 #, python-brace-format
 msgid "Now: {0}"
 msgstr "Jetzt: {0}"
 
-#: gabicustom.py:590 gabicustom.py:700
+#: gabicustom.py:598 gabicustom.py:708
 #, python-brace-format
 msgid "{0} ago: {1}"
 msgstr "Vor {0}: {1}"
 
-#: gabicustom.py:596
+#: gabicustom.py:604
 #, python-brace-format
 msgid "Today: {0} from {1}"
 msgstr "Heute: {0} von {1}"
 
-#: gabicustom.py:601
+#: gabicustom.py:609
 #, python-brace-format
 msgid "{0} years ago: {1}"
 msgstr "Vor {0} Jahren: {1}"
 
-#: gabicustom.py:611
+#: gabicustom.py:619
 #, python-brace-format
 msgid "In {0} years: {1}"
 msgstr "In {0} Jahren: {1}"
 
-#: gabicustom.py:639
+#: gabicustom.py:647
 #, python-brace-format
 msgid "Tomorrow: {0}"
 msgstr "Morgen: {0}"
 
-#: gabicustom.py:641 gabicustom.py:647
+#: gabicustom.py:649 gabicustom.py:655
 #, python-brace-format
 msgid "In {0} days: {1}"
 msgstr "In {0} Tagen: {1}"
 
-#: gabicustom.py:643
+#: gabicustom.py:651
 #, python-brace-format
 msgid "In 1 week: {0}"
 msgstr "In 1 Woche: {0}"
 
-#: gabicustom.py:645
+#: gabicustom.py:653
 #, python-brace-format
 msgid "In {0} weeks: {1}"
 msgstr "In {0} Wochen: {1}"
 
-#: gabicustom.py:671
+#: gabicustom.py:679
 msgid "minute"
 msgstr "Minute"
 
-#: gabicustom.py:671
+#: gabicustom.py:679
 msgid "minutes"
 msgstr "Minuten"
 
-#: gabicustom.py:675
+#: gabicustom.py:683
 msgid "hour"
 msgstr "Stunde"
 
-#: gabicustom.py:675
+#: gabicustom.py:683
 msgid "hours"
 msgstr "Stunden"
 
-#: gabicustom.py:679
+#: gabicustom.py:687
 msgid "day"
 msgstr "Tag"
 
-#: gabicustom.py:679
+#: gabicustom.py:687
 msgid "days"
 msgstr "Tagen"
 
-#: gabicustom.py:683
+#: gabicustom.py:691
 msgid "week"
 msgstr "Woche"
 
-#: gabicustom.py:683
+#: gabicustom.py:691
 msgid "weeks"
 msgstr "Wochen"
 
-#: gabicustom.py:687
+#: gabicustom.py:695
 msgid "month"
 msgstr "Monat"
 
-#: gabicustom.py:687
+#: gabicustom.py:695
 msgid "months"
 msgstr "Monaten"
 
-#: gabicustom.py:691
+#: gabicustom.py:699
 msgid "year"
 msgstr "Jahr"
 
-#: gabicustom.py:691
+#: gabicustom.py:699
 msgid "years"
 msgstr "Jahre"
 
-#: gabicustom.py:696
+#: gabicustom.py:704
 #, python-brace-format
 msgid "Now! {0}"
 msgstr "Jetzt! {0}"
 
-#: gabicustom.py:698
+#: gabicustom.py:706
 #, python-brace-format
 msgid "In {0}: {1}"
 msgstr "In {0}: {1}"
 
-#: gabicustom.py:698 gabicustom.py:700
+#: gabicustom.py:706 gabicustom.py:708
 msgid " or "
 msgstr " oder "
 
