@@ -708,8 +708,8 @@ class GabiCustom(BotBase):
             ret_line.append(years)
 
         if timestamp == now:
-            return _('Now! {0}').format(message)
+            return _('Now! {0}').format(message.encode('utf8'))
         elif timestamp > now:
-            return _('In {0}: {1}').format(_(' or ').join(ret_line), message)
+            return _('In {0}: {1}').format(_(' or ').join(ret_line), message.encode('utf8'))
         else:
-            return _('{0} ago: {1}').format(_(' or ').join(ret_line), message)
+            return _('{0} ago: {1}').format(_(' or ').join(ret_line), message.encode('utf8'))
