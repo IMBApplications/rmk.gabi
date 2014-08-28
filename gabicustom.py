@@ -462,7 +462,7 @@ class GabiCustom(BotBase):
             for (timestamp, longterm, user, message) in self.cowntdownList:
                 count += 1
                 target_time = datetime.datetime.fromtimestamp(timestamp)
-                ret_message.append(_('{0}\t{1}\t"{2}" set by "{3}"').format(count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user))
+                ret_message.append(_('{0}\t{1}\t"{2}" set by "{3}"').format(count, target_time.strftime("%a, %d %b %Y %H:%M:%S"), message.encode('utf8'), user.encode('utf8')))
                 # print target_time.strftime("%s")
             if count == 0:
                 ret_message = [_('There are no counts saved.')]
