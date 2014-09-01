@@ -644,7 +644,7 @@ class BotBase(object):
 
         asciiTopic = []
         for topic in newTopic:
-            asciiTopic.append(topic.encode("ascii", "ignore"))
+            asciiTopic.append(topic.decode('utf8', 'ignore'))
 
         newTmpTopic = ' | '.join(asciiTopic)
         if newTmpTopic != self.currentTopic:
