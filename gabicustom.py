@@ -592,7 +592,7 @@ class GabiCustom(BotBase):
             if timestamp == now:
                 #NOW!
                 if showMe:
-                    ret_message.append(_("Now: {0}").format(message))
+                    ret_message.append(_("Now: {0}").format(message.encode('utf8')))
                     if not longterm:
                         removeMe = True
             elif timestamp < now:
@@ -608,12 +608,12 @@ class GabiCustom(BotBase):
                     if now_time.day == target_time.day and now_time.month == target_time.month:
                         yearsPast = now_time.year - target_time.year
                         if yearsPast == 0:
-                            countMessage = _("Today: {0} from {1}").format(message, user)
+                            countMessage = _("Today: {0} from {1}").format(message.encode('utf8'), user)
                             self.countTopic.append((timestamp, countMessage))
                             if showMe:
                                 ret_message.append(countMessage)
                         else:
-                            countMessage = _("{0} years ago: {1}").format(yearsPast, message)
+                            countMessage = _("{0} years ago: {1}").format(yearsPast, message.encode('utf8'))
                             self.countTopic.append((timestamp, countMessage))
                             if showMe:
                                 ret_message.append(countMessage)
@@ -623,7 +623,7 @@ class GabiCustom(BotBase):
                 if now_time.day == target_time.day and now_time.month == target_time.month:
                     yearsFuture = target_time.year - now_time.year
                     if longterm:
-                        tmpMessage = _("In {0} years: {1}").format(yearsFuture, message)
+                        tmpMessage = _("In {0} years: {1}").format(yearsFuture, message.encode('utf8'))
                         self.countTopic.append((timestamp, tmpMessage))
                         if showMe:
                             ret_message.append(tmpMessage)
