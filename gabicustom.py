@@ -609,12 +609,12 @@ class GabiCustom(BotBase):
                         yearsPast = now_time.year - target_time.year
                         if yearsPast == 0:
                             countMessage = _("Today: {0} from {1}").format(message, user)
-                            self.countTopic.append((timestamp, countMessage))
+                            self.countTopic.append((timestamp, countMessage.encode('utf8')))
                             if showMe:
                                 ret_message.append(countMessage)
                         else:
                             countMessage = _("{0} years ago: {1}").format(yearsPast, message)
-                            self.countTopic.append((timestamp, countMessage))
+                            self.countTopic.append((timestamp, countMessage.encode('utf8')))
                             if showMe:
                                 ret_message.append(countMessage)
                     # check for same date to check yearly stuff
@@ -624,7 +624,7 @@ class GabiCustom(BotBase):
                     yearsFuture = target_time.year - now_time.year
                     if longterm:
                         tmpMessage = _("In {0} years: {1}").format(yearsFuture, message)
-                        self.countTopic.append((timestamp, tmpMessage))
+                        self.countTopic.append((timestamp, tmpMessage.encode('utf8')))
                         if showMe:
                             ret_message.append(tmpMessage)
                     else:
@@ -651,15 +651,15 @@ class GabiCustom(BotBase):
                     futureTimeDiff = int(targetDate.strftime("%s")) - int(nowDate.strftime("%s"))
 
                     if futureTimeDiff < (dayInSecs * 2):
-                        self.countTopic.append((timestamp, _("Tomorrow: {0}").format(message)))
+                        self.countTopic.append((timestamp, _("Tomorrow: {0}").format(message).encode('utf8')))
                     elif futureTimeDiff < (dayInSecs * 7):
-                        self.countTopic.append((timestamp, _("In {0} days: {1}").format(int(futureTimeDiff / dayInSecs) + 1, message)))
+                        self.countTopic.append((timestamp, _("In {0} days: {1}").format(int(futureTimeDiff / dayInSecs) + 1, message).encode('utf8')))
                     elif futureTimeDiff < (dayInSecs * 8):
                         self.countTopic.append((timestamp, _("In 1 week: {0}").format(message)))
                     elif (futureTimeDiff % (dayInSecs * 7)) == 0 and (futureTimeDiff % (dayInSecs * 7)) < 9:
-                        self.countTopic.append((timestamp, _("In {0} weeks: {1}").format(int(futureTimeDiff / (dayInSecs * 7)), message)))
+                        self.countTopic.append((timestamp, _("In {0} weeks: {1}").format(int(futureTimeDiff / (dayInSecs * 7)), message).encode('utf8')))
                     elif futureTimeDiff < (dayInSecs * 50):
-                        self.countTopic.append((timestamp, _("In {0} days: {1}").format(int(futureTimeDiff / dayInSecs) + 1, message)))
+                        self.countTopic.append((timestamp, _("In {0} days: {1}").format(int(futureTimeDiff / dayInSecs) + 1, message).encode('utf8')))
 
 
             if removeMe:
