@@ -97,7 +97,7 @@ class BotBase(object):
                 file.close()
                 self.log.info("Saving to %s" % (dstfile))
             else:
-                self.log.warning("Did not save to log %s becuase content was empty!" % (dstfile))
+                self.log.warning("Did not save to log %s because content was empty!" % (dstfile))
         except IOError:
             self.log.warning("Could not safe data to file %s!" % (dstfile))
 
