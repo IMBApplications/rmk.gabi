@@ -644,7 +644,10 @@ class BotBase(object):
 
         asciiTopic = []
         for topic in newTopic:
-            asciiTopic.append(topic.decode('utf8', 'ignore'))
+            try:
+                asciiTopic.append(topic.decode('utf8', 'ignore'))
+            except UnicodeEncodeError as e:
+                self.log.warning("Error decoding topic: %s" % topic)
 
         newTmpTopic = ' | '.join(asciiTopic)
         if newTmpTopic != self.currentTopic:
