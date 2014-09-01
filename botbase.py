@@ -642,7 +642,7 @@ class BotBase(object):
                 break
             newTopic.append(topic)
 
-        newTmpTopic = ' | '.join(newTopic)
+        newTmpTopic = ' | '.join(newTopic).decode('utf-8')
         if newTmpTopic != self.currentTopic:
             self.currentTopic = newTmpTopic
 
