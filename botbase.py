@@ -642,7 +642,11 @@ class BotBase(object):
                 break
             newTopic.append(topic)
 
-        newTmpTopic = ' | '.join(newTopic).encode("ascii", "ignore")
+        asciiTopic = []
+        for topic in newTopic:
+            asciiTopic.append(topic.encode("ascii", "ignore"))
+
+        newTmpTopic = ' | '.join(asciiTopic)
         if newTmpTopic != self.currentTopic:
             self.currentTopic = newTmpTopic
 
