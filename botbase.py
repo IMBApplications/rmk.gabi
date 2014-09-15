@@ -15,6 +15,7 @@ import json
 import collections
 import cgi
 import gettext
+import linecache
 
 try:
     import xmpp
