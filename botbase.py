@@ -259,7 +259,7 @@ class BotBase(object):
             filename = f.f_code.co_filename
             linecache.checkcache(filename)
             line = linecache.getline(filename, lineno, f.f_globals)
-            self.log.error('No connection could be established: %s (%s)' % (e, 'EXCEPTION IN ({}, LINE {} "{}"): {}'.format(filename, lineno, line.strip(), exc_obj)))
+            self.log.error('No connection could be established: %s %s' % (e, '({}:{} "{}")'.format(filename, lineno, line.strip(), exc_obj)))
             self.quitBot()
 
     def send_message(self, mess):
