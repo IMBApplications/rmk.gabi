@@ -249,7 +249,7 @@ class BotBase(object):
         if password is not None:
             pres.setTag('x',namespace=NS_MUC).setTagData('password',password)
         try:
-            self.connect().send(pres)
+            self.connect().send(pres.encode('ascii', 'replace'))
             self.readyTs = time.time()
             self.muc_channels.append(room)
             self.log.info("Room %s joned as %s" % (room, username))
