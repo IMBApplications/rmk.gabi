@@ -242,6 +242,7 @@ class BotBase(object):
         # TODO use xmpppy function getNode
             username = self.__username.split('@')[0]
         my_room_JID = '/'.join((room, username))
+        self.log.debug("Room JID: %s" % my_room_JID)
         pres = xmpp.Presence(to=my_room_JID)
         pres.setShow(None)
         pres.setStatus("At your service.")
