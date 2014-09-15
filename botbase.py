@@ -252,7 +252,8 @@ class BotBase(object):
             self.muc_channels.append(room)
             self.log.info("Room %s joned as %s" % (room, username))
         except (AttributeError, ValueError) as e:
-            self.log.error('No connection could be established: %s' % e)
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            self.log.error('No connection could be established: %s (%S, %s)' % (e, exc_obj, exc_tb))
             self.quitBot()
 
     def send_message(self, mess):
