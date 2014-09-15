@@ -241,9 +241,9 @@ class BotBase(object):
         if username is None:
         # TODO use xmpppy function getNode
             username = self.__username.split('@')[0]
-        my_room_JID = '/'.join((room, username))
+        my_room_JID = '/'.join((room.encode('utf-8'), username))
         self.log.debug("Room JID: %s" % my_room_JID)
-        pres = xmpp.Presence(to=my_room_JID.encode('utf-8'))
+        pres = xmpp.Presence(to=my_room_JID)
         pres.setShow(None)
         pres.setStatus("At your service.")
         if password is not None:
