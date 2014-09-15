@@ -243,13 +243,13 @@ class BotBase(object):
             username = self.__username.split('@')[0]
         my_room_JID = '/'.join((room, username))
         self.log.debug("Room JID: %s" % my_room_JID)
-        pres = xmpp.Presence(to=my_room_JID)
+        pres = xmpp.Presence(to=my_room_JID.encode('utf-8'))
         pres.setShow(None)
         pres.setStatus("At your service.")
         if password is not None:
             pres.setTag('x',namespace=NS_MUC).setTagData('password',password)
         try:
-            self.connect().send(pres.encode('ascii', 'replace'))
+            self.connect().send(pres)
             self.readyTs = time.time()
             self.muc_channels.append(room)
             self.log.info("Room %s joned as %s" % (room, username))
