@@ -253,7 +253,7 @@ class BotBase(object):
             self.log.info("Room %s joned as %s" % (room, username))
         except (AttributeError, ValueError) as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
-            self.log.error('No connection could be established: %s (%S, %s)' % (e, exc_obj, exc_tb))
+            self.log.error('No connection could be established: %s (%s, %s)' % (e, exc_obj, exc_tb))
             self.quitBot()
 
     def send_message(self, mess):
