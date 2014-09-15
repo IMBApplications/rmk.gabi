@@ -260,7 +260,7 @@ class BotBase(object):
             filename = f.f_code.co_filename
             linecache.checkcache(filename)
             line = linecache.getline(filename, lineno, f.f_globals)
-            self.log.error('Unable to jim room %s as %s: %s %s: %s' % (room, username, '({}:{} "{}: {}")'.format(filename, lineno, line.strip(), exc_obj)))
+            self.log.error('Unable to jim room %s as %s: %s' % (room, username, '({}:{} "{}: {}")'.format(filename, lineno, line.strip(), exc_obj)))
             self.quitBot()
 
     def send_message(self, mess):
