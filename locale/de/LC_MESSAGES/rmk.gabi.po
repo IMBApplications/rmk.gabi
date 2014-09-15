@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1nReport-Msgid-Bugs-To: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-02 15:24+0200\n"
+"POT-Creation-Date: 2014-09-15 13:19+0200\n"
 "PO-Revision-Date: 2014-01-23 14:02+CET\n"
 "Last-Translator: Marc Urben <aegnor@mittelerde.ch>\n"
 "Language-Team: German <aegnor@mittelerde.ch>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: botbase.py:81
+#: botbase.py:82
 msgid ""
 "Hey there. You are not yet on my roster. Authorize my request and I will do "
 "the same."
@@ -24,71 +24,71 @@ msgstr ""
 "Hallo. Du bist noch nicht in meiner Freundesliste. Authorisiere mich und ich "
 "nehme dich auf."
 
-#: botbase.py:82
+#: botbase.py:83
 msgid "You did not authorize my subscription request. Access denied."
 msgstr ""
 "Du hast meine Authorisierungsanfrage nicht akzeptiert. Zugriff verweigert."
 
-#: botbase.py:83
+#: botbase.py:84
 msgid "Type help *command name* to get more info about that specific command."
 msgstr ""
 "Schreibe help *Befehlsname* um Hilfe zu einem spezifischen Befehl zu "
 "erhalten."
 
-#: botbase.py:84
+#: botbase.py:85
 msgid "That command is not defined."
 msgstr "Dieser Befehl existiert nicht."
 
-#: botbase.py:726
+#: botbase.py:734
 msgid "1 second"
 msgstr "1 Sekunde"
 
-#: botbase.py:728 gabicustom.py:684
+#: botbase.py:736 gabicustom.py:684
 #, python-brace-format
 msgid "{0} seconds"
 msgstr "{0} Sekunden"
 
-#: botbase.py:731
+#: botbase.py:739
 msgid "1 minute"
 msgstr "1 Minute"
 
-#: botbase.py:733
+#: botbase.py:741
 #, python-brace-format
 msgid "{0} minutes"
 msgstr "{0} Minuten"
 
-#: botbase.py:736
+#: botbase.py:744
 msgid "1 hour"
 msgstr "1 Stunde"
 
-#: botbase.py:738
+#: botbase.py:746
 #, python-brace-format
 msgid "{0} hours"
 msgstr "{0} Stunden"
 
-#: botbase.py:741
+#: botbase.py:749
 msgid "1 day"
 msgstr "1 Tag"
 
-#: botbase.py:743
+#: botbase.py:751
 #, python-brace-format
 msgid "{0} days"
 msgstr "{0} Tage"
 
-#: botbase.py:746
+#: botbase.py:754
 msgid "1 week"
 msgstr "1 Woche"
 
-#: botbase.py:748
+#: botbase.py:756
 #, python-brace-format
 msgid "{0} weeks"
 msgstr "{0} Wochen"
 
-#: botbase.py:751
+#: botbase.py:759
 msgid "1 year"
 msgstr "1 Jahr"
 
-#: botbase.py:753
+#: botbase.py:761
 #, python-brace-format
 msgid "{0} years"
 msgstr "{0} Jahre"
