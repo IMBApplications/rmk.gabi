@@ -476,7 +476,8 @@ class GabiCustom(BotBase):
                     ret_message = [_('{0}\t"{1}" set by "{2}" has been removed.').format(target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user)]
                     self.cowntdownList.pop(delIndex)
                     self.saveJSON('save_count.dat', self.cowntdownList)
-            except (IndexError, ValueError):
+            except (IndexError, ValueError) as e:
+                self.log.debug("Unable to remove count because: %s" % e)
                 pass
         else:
             #do the counting and add to ret_message
