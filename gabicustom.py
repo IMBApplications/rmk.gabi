@@ -473,7 +473,7 @@ class GabiCustom(BotBase):
                 if delIndex >= 0:
                     (timestamp, longterm, user, message) = self.cowntdownList[delIndex]
                     target_time = datetime.datetime.fromtimestamp(timestamp)
-                    ret_message = [_('{0}\t"{1}" set by "{2}" has been removed.').format(target_time.strftime("%a, %d %b %Y %H:%M:%S"), message, user)]
+                    ret_message = [_('{0}\t"{1}" set by "{2}" has been removed.').format(target_time.strftime("%a, %d %b %Y %H:%M:%S"), message.encode('utf8'), user.encode('utf8'))]
                     self.cowntdownList.pop(delIndex)
                     self.saveJSON('save_count.dat', self.cowntdownList)
             except (IndexError, ValueError) as e:
@@ -483,7 +483,7 @@ class GabiCustom(BotBase):
             #do the counting and add to ret_message
             now = int(time.time())
             for (timestamp, longterm, user, message) in self.cowntdownList:
-                ret_message.append(self.createTimeReturn(now, timestamp, longterm, user, message))
+                ret_message.append(self.createTimeReturn(now, timestamp, longterm, user.encode('utf8'), message.encode('utf8')))
 
         self.send_simple_reply(mess, ret_message)
 
