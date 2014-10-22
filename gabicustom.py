@@ -255,7 +255,7 @@ class GabiCustom(BotBase):
                 hallo = []
                 if age > 0:
                     if (int(time.time()) - age) > self.afkRejoinTime:
-                        if not self.muted
+                        if not self.muted:
                             hallo.append(_('Welcome back {0}, i saw you last {1} ago.').format(user, self.getAge(age)))
                 else:
                     hallo.append(_('Hello {0}, i see you for the first time. I am {1} the Robot-Human-Contacter.').format(user, self.nickname))
