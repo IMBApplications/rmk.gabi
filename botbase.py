@@ -59,7 +59,6 @@ class BotBase(object):
         self.currentTopic = ""
         self.defaultLocalization = "en"
         self.localizations = ["en", "de"]
-        self.muted = False
         self.muc_users = {}
         self.roster = None
         self.myroster = {}
@@ -86,6 +85,9 @@ class BotBase(object):
 
         self.stats = self.loadJSON('save_stats.dat', { 'messageCount': 0, 'usersSeenComing': 0, 'usersSeenGoing': 0, 'messagesSeen': 0, 'starts': 0 })
         atexit.register(self.saveJSON, 'save_stats.dat', self.stats)
+
+        self.muted = self.loadJSON('save_muted.dat', False)
+        atexit.register(self.saveJSON, 'save_muted.dat', self.muted)
 
     ########## Save / Load Functions ##########
     def saveJSON(self, filename, content):
