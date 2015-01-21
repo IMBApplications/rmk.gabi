@@ -233,6 +233,9 @@ class GabiCustom(BotBase):
         room = self.list_unicode_cleanup(strJID.split('/'))[0]
         user = self.list_unicode_cleanup(strJID.split('/'))[1]
 
+        if not room in self.muc_channels:
+            user = room
+
         if user != self.get_my_username():
 
             # LastSeen
