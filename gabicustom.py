@@ -52,6 +52,9 @@ class GabiCustom(BotBase):
         self.urlList = self.loadJSON('save_urls.dat', [])
         atexit.register(self.saveJSON, 'save_urls.dat', self.urlList)
 
+        self.muted = self.loadJSON('save_muted.dat', False)
+        atexit.register(self.saveJSON, 'save_muted.dat', self.muted)
+
         self.userTopic = self.loadJSON('save_topic.dat', "")
 
         self.afkRejoinTime = 900
