@@ -93,6 +93,8 @@ class BotBase(object):
         try:
             if isinstance(content, (bool)) or len(content) > 0 or filename == 'save_afk.dat':
                 file = open(dstfile, 'w')
+                if isinstance(content, (bool)):
+                    print "writing content %s" % content
                 file.write(json.dumps(content))
                 file.close()
                 self.log.info("Saving to %s" % (dstfile))
