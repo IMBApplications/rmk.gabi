@@ -86,9 +86,6 @@ class BotBase(object):
         self.stats = self.loadJSON('save_stats.dat', { 'messageCount': 0, 'usersSeenComing': 0, 'usersSeenGoing': 0, 'messagesSeen': 0, 'starts': 0 })
         atexit.register(self.saveJSON, 'save_stats.dat', self.stats)
 
-        self.muted = self.loadJSON('save_muted.dat', False)
-        atexit.register(self.saveJSON, 'save_muted.dat', self.muted)
-
     ########## Save / Load Functions ##########
     def saveJSON(self, filename, content):
         """Saves the given content to the given filename as JSON"""
@@ -286,6 +283,10 @@ class BotBase(object):
 
     def send_simple_reply(self, mess, text, private=False):
         """Send a simple response to a message"""
+        try:
+            self.muted
+        except Exception:
+            self.muted = False
         if not self.muted:
             self.send_message(self.build_reply(mess, text, private))
         else:
