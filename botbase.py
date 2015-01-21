@@ -288,10 +288,6 @@ class BotBase(object):
 
     def send_simple_reply(self, mess, text, private=False):
         """Send a simple response to a message"""
-        try:
-            self.muted
-        except Exception:
-            self.muted = False
         if not self.muted:
             self.send_message(self.build_reply(mess, text, private))
         else:
