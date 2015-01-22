@@ -270,7 +270,8 @@ class GabiCustom(BotBase):
                     self.saveJSON('save_afk.dat', self.afkDict)
 
                 if len(hallo) > 0:
-                    self.send(room, '\n'.join(hallo), None, 'groupchat')
+                    if room in self.muc_channels:
+                        self.send(room, '\n'.join(hallo), None, 'groupchat')
 
             # Reminder
             self.reminder_check(jid)
