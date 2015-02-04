@@ -96,3 +96,8 @@ class GabiFun(BotBase):
     def gun (self, mess, args):
         """ASCII Gun"""
         return '︻デ┳═ー'
+
+    @botcmd
+    def yay (self, mess, args):
+        """ASCII YAY"""
+        return '\(._. )/'
