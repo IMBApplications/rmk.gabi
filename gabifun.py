@@ -71,3 +71,8 @@ class GabiFun(BotBase):
     def zoidberg (self, mess, args):
         """Drawing Zoidberg"""
         return '(\/) (^,,,^) (\/)'
+
+    @botcmd
+    def boobs (self, mess, args):
+        """Flashing her boobies"""
+        return '( . ) ( . )'
