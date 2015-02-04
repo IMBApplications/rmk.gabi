@@ -78,6 +78,11 @@ class GabiFun(BotBase):
         return '( . )( . )'
 
     @botcmd
+    def emma (self, mess, args):
+        """ASCII Flash emmas boobies"""
+        return '( . )||( . )'
+
+    @botcmd
     def flip (self, mess, args):
         """ASCII Flip table"""
         return '(╯°□°）╯︵ ┻━┻'
