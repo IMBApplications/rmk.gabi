@@ -75,4 +75,4 @@ class GabiFun(BotBase):
     @botcmd
     def boobs (self, mess, args):
         """Flashing her boobies"""
-        return '( . ) ( . )'
+        return '( . )( . )'
