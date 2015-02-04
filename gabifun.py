@@ -69,10 +69,25 @@ class GabiFun(BotBase):
 
     @botcmd
     def zoidberg (self, mess, args):
-        """Drawing Zoidberg"""
+        """ASCII Zoidberg"""
         return '(\/) (^,,,^) (\/)'
 
     @botcmd
     def boobs (self, mess, args):
-        """Flashing her boobies"""
+        """ASCII Flash boobies"""
         return '( . )( . )'
+
+    @botcmd
+    def flip (self, mess, args):
+        """ASCII Flip table"""
+        return '(╯°□°）╯︵ ┻━┻'
+
+    @botcmd
+    def gimme (self, mess, args):
+        """ASCII Give me!"""
+        return '༼ つ ◕_◕ ༽つ'
+
+    @botcmd
+    def gun (self, mess, args):
+        """ASCII Gun"""
+        return '︻デ┳═ー'
