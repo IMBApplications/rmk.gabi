@@ -206,7 +206,7 @@ class GabiCustom(BotBase):
                     return
                         
             #fangen wir mal an mit gucken ob wer Guten Morgen sagt
-            reg_ex_pn = (r".*?Guten Morgen", r".*?guten morgen", r".*?Moinz", r".*?moinz", r".*?morning", r".*?good morning")
+            reg_ex_pn = (r".*?Guten Morgen", r".*?guten morgen", r".*?Moinz", r".*?moinz", r".*?morning", r".*?good morning", r".*?ullu")
             for reg in reg_ex_pn:
                 c = re.compile(reg)
                 if c.match(text) != None:
