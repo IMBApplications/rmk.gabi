@@ -591,7 +591,7 @@ class GabiCustom(BotBase):
         else:
             retMsg = usage
 
-        self.send_simple_reply(mess, retMsg, True)
+        self.send_simple_reply(mess, retMsg)
 
     @botcmd
     def about(self, mess, args):
