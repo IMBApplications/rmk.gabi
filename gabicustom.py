@@ -579,7 +579,7 @@ class GabiCustom(BotBase):
             if len(args) < 2:
                 retMsg = usage
             found = 0
-            for index, (what, start, end) in enumerate(reversed(self.timerList)):
+            for index, (what, start, end) in reversed(enumerate(self.timerList)):
                 if what.lower() == args[1].lower() and end == 0:
                     self.timerList[index] = (what, start, int(time.time()))
                     found = start
