@@ -573,21 +573,23 @@ class GabiCustom(BotBase):
         elif args[0].lower() == "start":
             if len(args) < 2:
                 etMsg = usage
-            self.timerList.append((args[1], int(time.time()), 0))
-            retMsg = "started timer for %s" % args[1]
+            else:
+                self.timerList.append((args[1], int(time.time()), 0))
+                retMsg = "started timer for %s" % args[1]
         elif args[0].lower() == "stop":
             if len(args) < 2:
                 retMsg = usage
-            found = 0
-            for index, (what, start, end) in self.r_enumerate(self.timerList):
-                if what.lower() == args[1].lower() and end == 0:
-                    self.timerList[index] = (what, start, int(time.time()))
-                    found = start
-                    break
-            if found > 0:
-                retMsg = "Stopped timer for %s. Duration was: %s" % (args[1], self.get_long_duration(int(time.time()) - start))
             else:
-                retMsg = "No matching timer found for %s" % args[1]
+                found = 0
+                for index, (what, start, end) in self.r_enumerate(self.timerList):
+                    if what.lower() == args[1].lower() and end == 0:
+                        self.timerList[index] = (what, start, int(time.time()))
+                        found = start
+                        break
+                if found > 0:
+                    retMsg = "Stopped timer for %s. Duration was: %s" % (args[1], self.get_long_duration(int(time.time()) - start))
+                else:
+                    retMsg = "No matching timer found for %s" % args[1]
         elif args[0].lower() == "clean":
             count = 0
             for index, (what, start, end) in enumerate(self.timerList):
