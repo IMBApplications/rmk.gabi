@@ -52,6 +52,9 @@ class GabiCustom(BotBase):
         self.urlList = self.loadJSON('save_urls.dat', [])
         atexit.register(self.saveJSON, 'save_urls.dat', self.urlList)
 
+        self.timerList = self.loadJSON('save_timer.dat', [])
+        atexit.register(self.saveJSON, 'save_timer.dat', self.timerList)
+
         self.userTopic = self.loadJSON('save_topic.dat', "")
 
         self.afkRejoinTime = 900
@@ -535,6 +538,59 @@ class GabiCustom(BotBase):
             self.log.warning("WARNING now muted")
             self.send_simple_reply(mess, _("I am now muted."))
             self.muted = True
+
+    @botcmd
+    def timer(self, mess, args):
+        """Takes the time of something"""
+        usage = "Plese use it like this: !timer start|stop|list what"
+        args = args.split(" ")
+        self.timerList
+        if len(args) < 0:
+            return usage
+        if args[0].lower() == "list":
+            ret = ["what: duration (start / end)"]
+            for (what, start, end) in self.timerList:
+                if len(args) > 1:
+                    if what.lower() != args[1].lower():
+                        continue
+                if end > 0 and start > 0:
+                    duration = self.get_long_duration(end - start)
+                    strStart = self.timestampToString(start)
+                    strEnd = self.timestampToString(end)
+                else:
+                    duration = "-"
+                    if start > 0:
+                        strStart = self.timestampToString(start)
+                    else:
+                        strStart = "-"
+                    if end > 0:
+                        strEnd = self.timestampToString(end)
+                    else:
+                        strEnd = "-"
+                    strEnd = "-"
+                ret.append("%s: %s (%s / %s)" % (what, duration, strStart, strEnd))
+            return "\n".join(ret)
+        elif args[0].lower() == "start":
+            if len(args) < 2:
+                return usage
+            self.timerList.append((args[1], int(time.time()), 0))
+            return "started timer for %s" % args[1]
+        elif args[0].lower() == "stop":
+            if len(args) < 2:
+                return usage
+            found = 0
+            for (what, start, end) in reversed(self.timerList):
+                if what.lower() == args[1].lower() and end == 0:
+                    index = self.timerList.index((what, start, end))
+                    self.timerList[index] = (what, start, int(time.time()))
+                    found = start
+                    break
+            if found > 0:
+                return "Stopped timer for %s. Duration was: %s" % (args[1], self.get_long_duration(int(time.time()) - start))
+            else:
+                return "No matching timer found for %s" % args[1]
+        else:
+            return usage
 
     @botcmd
     def about(self, mess, args):

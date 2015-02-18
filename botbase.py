@@ -809,6 +809,28 @@ class BotBase(object):
         except Exception as e:
             return False
 
+    def get_long_duration(self, age):
+        intervals = (
+            ('y', 220752000),  # 60 * 60 * 24 * 7 * 365
+            ('w', 604800),  # 60 * 60 * 24 * 7
+            ('d', 86400),    # 60 * 60 * 24
+            ('h', 3600),    # 60 * 60
+            ('m', 60),
+            ('s', 1),
+            )
+
+        result = []
+
+        for name, count in intervals:
+            value = age // count
+            if value:
+                age -= value * count
+                result.append("%s%s" % (int(value), name))
+        return ' '.join(result)
+
+    def timestampToString(self, ts):
+        return datetime.datetime.fromtimestamp(int(ts)).strftime('%d.%m.%Y %H:%M:%S')
+
 ########## Decorator for Bot Command Functions ##########
 def botcmd(*args, **kwargs):
     """Decorator for bot command functions"""
