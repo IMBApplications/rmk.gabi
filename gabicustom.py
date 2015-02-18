@@ -579,9 +579,9 @@ class GabiCustom(BotBase):
             if len(args) < 2:
                 return usage
             found = 0
-            for (what, start, end) in reversed(self.timerList):
+            for index, (what, start, end) in enumerate(reversed(self.timerList)):
                 if what.lower() == args[1].lower() and end == 0:
-                    index = self.timerList.index((what, start, end))
+                    # index = self.timerList.index((what, start, end))
                     self.timerList[index] = (what, start, int(time.time()))
                     found = start
                     break
