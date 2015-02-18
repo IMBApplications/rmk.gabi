@@ -495,7 +495,7 @@ class GabiCustom(BotBase):
             for (timestamp, longterm, user, message) in self.cowntdownList:
                 ret_message.append(self.createTimeReturn(now, timestamp, longterm, user.encode('utf8'), message.encode('utf8')))
 
-        self.send_simple_reply(mess, ret_message)
+        self.send_simple_reply(mess, ret_message, True)
 
     @botcmd
     def urls (self, mess, args):
@@ -546,7 +546,7 @@ class GabiCustom(BotBase):
         args = args.split(" ")
         self.timerList
         if len(args) < 0:
-            return usage
+            retMsg = usage
         if args[0].lower() == "list":
             ret = ["what: duration (start / end)"]
             for (what, start, end) in self.timerList:
@@ -569,15 +569,15 @@ class GabiCustom(BotBase):
                         strEnd = "-"
                     strEnd = "-"
                 ret.append("%s: %s (%s / %s)" % (what, duration, strStart, strEnd))
-            return ret
+            retMsg = ret
         elif args[0].lower() == "start":
             if len(args) < 2:
-                return usage
+                etMsg = usage
             self.timerList.append((args[1], int(time.time()), 0))
-            return "started timer for %s" % args[1]
+            retMsg = "started timer for %s" % args[1]
         elif args[0].lower() == "stop":
             if len(args) < 2:
-                return usage
+                retMsg = usage
             found = 0
             for index, (what, start, end) in enumerate(reversed(self.timerList)):
                 if what.lower() == args[1].lower() and end == 0:
@@ -585,11 +585,13 @@ class GabiCustom(BotBase):
                     found = start
                     break
             if found > 0:
-                return "Stopped timer for %s. Duration was: %s" % (args[1], self.get_long_duration(int(time.time()) - start))
+                retMsg = "Stopped timer for %s. Duration was: %s" % (args[1], self.get_long_duration(int(time.time()) - start))
             else:
-                return "No matching timer found for %s" % args[1]
+                retMsg = "No matching timer found for %s" % args[1]
         else:
-            return usage
+            retMsg = usage
+
+        self.send_simple_reply(mess, retMsg, True)
 
     @botcmd
     def about(self, mess, args):
