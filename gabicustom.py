@@ -600,7 +600,7 @@ class GabiCustom(BotBase):
         elif args[0].lower() == "stats":
             stats = {}
             ret = ["what: count / average"]
-            for (whatStr, start, end) in sel.timerList:
+            for (whatStr, start, end) in self.timerList:
                 what = whatStr.lower()
                 if what not in stats.keys():
                     stats[what] = { 'count': 0, 'duration': 0 }
