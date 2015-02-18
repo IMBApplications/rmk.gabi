@@ -569,7 +569,7 @@ class GabiCustom(BotBase):
                         strEnd = "-"
                     strEnd = "-"
                 ret.append("%s: %s (%s / %s)" % (what, duration, strStart, strEnd))
-            return "\n".join(ret)
+            return ret
         elif args[0].lower() == "start":
             if len(args) < 2:
                 return usage
