@@ -572,7 +572,7 @@ class GabiCustom(BotBase):
             retMsg = ret
         elif args[0].lower() == "start":
             if len(args) < 2:
-                etMsg = usage
+                retMsg = usage
             else:
                 self.timerList.append((args[1], int(time.time()), 0))
                 retMsg = "started timer for %s" % args[1]
