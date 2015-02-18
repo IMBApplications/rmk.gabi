@@ -292,8 +292,7 @@ class BotBase(object):
         if not self.muted:
             self.send_message(self.build_reply(mess, text, private))
         else:
-            if private:
-                self.send_message(self.build_reply(mess, text, private))
+            self.send_message(self.build_reply(mess, text, True))
 
     def build_reply(self, mess, text=None, private=False):
         """Build a message for responding to another message.
