@@ -542,7 +542,7 @@ class GabiCustom(BotBase):
     @botcmd
     def timer(self, mess, args):
         """Takes the time of something"""
-        usage = "Plese use it like this: !timer start|stop|list what"
+        usage = "Plese use it like this: !timer start|stop|list|clean|stats what"
         args = args.split(" ")
         self.timerList
         if len(args) < 0:
@@ -588,6 +588,26 @@ class GabiCustom(BotBase):
                 retMsg = "Stopped timer for %s. Duration was: %s" % (args[1], self.get_long_duration(int(time.time()) - start))
             else:
                 retMsg = "No matching timer found for %s" % args[1]
+        elif args[0].lower() == "clean":
+            count = 0
+            for index, (what, start, end) in enumerate(self.timerList):
+                if end == 0:
+                    count += 1
+                    self.timerList.pop(index)
+            retMsg = "Cleaned %s items" % count
+        elif args[0].lower() == "stats":
+            stats = {}
+            ret = ["what: count / average"]
+            for (whatStr, start, end) in sel.timerList:
+                what = whatStr.lower()
+                if what not in stats.keys():
+                    stats[what] = { 'count': 0, 'duration': 0 }
+                stats[what]['count'] += 1
+                stats[what]['duration'] += end - start
+            for key in stats.keys():
+                item = stats[key]
+                ret.append("%s: %s / %s" % (key, item['count'], self.get_long_duration(int(item['duration'] / item['count']))))
+                retMsg = ret
         else:
             retMsg = usage
 
