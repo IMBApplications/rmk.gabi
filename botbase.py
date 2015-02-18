@@ -16,6 +16,7 @@ import collections
 import cgi
 import gettext
 import linecache
+import datetime
 
 try:
     import xmpp
