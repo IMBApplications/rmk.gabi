@@ -579,7 +579,7 @@ class GabiCustom(BotBase):
             if len(args) < 2:
                 retMsg = usage
             found = 0
-            for index, (what, start, end) in reversed(enumerate(self.timerList)):
+            for index, (what, start, end) in self.r_enumerate(self.timerList):
                 if what.lower() == args[1].lower() and end == 0:
                     self.timerList[index] = (what, start, int(time.time()))
                     found = start
@@ -778,3 +778,9 @@ class GabiCustom(BotBase):
             return _('In {0}: {1}').format(_(' or ').join(ret_line), message.encode('utf8'))
         else:
             return _('{0} ago: {1}').format(_(' or ').join(ret_line), message.encode('utf8'))
+
+    def r_enumerate(self, iterable):
+        """enumerator for reverse iteration of an iterable"""
+        enum = enumerate(reversed(iterable))
+        last = len(iterable)-1
+        return ((last - i, x) for i,x in enum)
