@@ -596,7 +596,7 @@ class GabiCustom(BotBase):
                 if found > 0:
                     retMsg = "Stopped timer for %s. Duration was: %s" % (args[1], self.get_long_duration(int(time.time()) - start))
                 else:
-                    retMsg = "No matching timer found for %s" % args[1]
+                    retMsg = "No matching timer found"
         elif args[0].lower() == "clean":
             count = 0
             for index, (what, start, end) in enumerate(self.timerList):
