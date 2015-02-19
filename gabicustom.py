@@ -542,7 +542,7 @@ class GabiCustom(BotBase):
     @botcmd
     def timer(self, mess, args):
         """Takes the time of something"""
-        usage = "Plese use it like this: !timer start|stop|list|clean|stats what"
+        usage = "Plese use it like this: !timer start|stop|list|clean|del|stats what"
         args = args.split(" ")
         self.timerList
         if len(args) < 0:
@@ -577,26 +577,23 @@ class GabiCustom(BotBase):
                 self.timerList.append((args[1], int(time.time()), 0))
                 retMsg = "started timer for %s" % args[1]
         elif args[0].lower() == "stop":
-            if len(args) < 1:
-                retMsg = usage
-            else:
-                found = 0
-                for index, (what, start, end) in self.r_enumerate(self.timerList):
-                    name = what
-                    if len(args) > 1: 
-                        if what.lower() == args[1].lower() and end == 0:
-                            self.timerList[index] = (what, start, int(time.time()))
-                            found = start
-                            break
-                    else:
-                        if end == 0:
-                            self.timerList[index] = (what, start, int(time.time()))
-                            found = start
-                            break
-                if found > 0:
-                    retMsg = "Stopped timer for %s. Duration was: %s" % (name, self.get_long_duration(int(time.time()) - start))
+            found = 0
+            for index, (what, start, end) in self.r_enumerate(self.timerList):
+                name = what
+                if len(args) > 1: 
+                    if what.lower() == args[1].lower() and end == 0:
+                        self.timerList[index] = (what, start, int(time.time()))
+                        found = start
+                        break
                 else:
-                    retMsg = "No matching timer found"
+                    if end == 0:
+                        self.timerList[index] = (what, start, int(time.time()))
+                        found = start
+                        break
+            if found > 0:
+                retMsg = "Stopped timer for %s. Duration was: %s" % (name, self.get_long_duration(int(time.time()) - start))
+            else:
+                retMsg = "No matching timer found"
         elif args[0].lower() == "clean":
             count = 0
             for index, (what, start, end) in enumerate(self.timerList):
@@ -604,6 +601,15 @@ class GabiCustom(BotBase):
                     count += 1
                     self.timerList.pop(index)
             retMsg = "Cleaned %s items" % count
+        elif args[0].lower() == "del":
+            if len(args) < 2:
+                retMsg = usage
+            count = 0
+            for index, (what, start, end) in enumerate(self.timerList):
+                if what.lower() == args[1].lower():
+                    count += 1
+                    self.timerList.pop(index)
+            retMsg = "Deleted %s items" % count 
         elif args[0].lower() == "stats":
             stats = {}
             ret = ["what: count / average"]
