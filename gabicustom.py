@@ -591,6 +591,7 @@ class GabiCustom(BotBase):
                         if end == 0:
                             self.timerList[index] = (what, start, int(time.time()))
                             found = start
+                            args[1] = what
                             break
                 if found > 0:
                     retMsg = "Stopped timer for %s. Duration was: %s" % (args[1], self.get_long_duration(int(time.time()) - start))
