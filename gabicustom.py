@@ -596,19 +596,19 @@ class GabiCustom(BotBase):
                 retMsg = "No matching timer found"
         elif args[0].lower() == "clean":
             count = 0
-            for index, (what, start, end) in enumerate(self.timerList):
+            for (what, start, end) in list(self.timerList):
                 if end == 0:
                     count += 1
-                    self.timerList.pop(index)
+                    self.timerList.remove((what, start, end))
             retMsg = "Cleaned %s items" % count
         elif args[0].lower() == "del":
             if len(args) < 2:
                 retMsg = usage
             count = 0
-            for index, (what, start, end) in enumerate(self.timerList):
+            for (what, start, end) in list(self.timerList):
                 if what.lower() == args[1].lower():
                     count += 1
-                    self.timerList.pop(index)
+                    self.timerList.remove((what, start, end))
             retMsg = "Deleted %s items" % count 
         elif args[0].lower() == "stats":
             stats = {}
