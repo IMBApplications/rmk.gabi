@@ -577,15 +577,22 @@ class GabiCustom(BotBase):
                 self.timerList.append((args[1], int(time.time()), 0))
                 retMsg = "started timer for %s" % args[1]
         elif args[0].lower() == "stop":
-            if len(args) < 2:
+            if len(args) < 1:
                 retMsg = usage
             else:
                 found = 0
-                for index, (what, start, end) in self.r_enumerate(self.timerList):
-                    if what.lower() == args[1].lower() and end == 0:
-                        self.timerList[index] = (what, start, int(time.time()))
-                        found = start
-                        break
+                if len(args) > 1:
+                    for index, (what, start, end) in self.r_enumerate(self.timerList):
+                        if len(args) > 1: 
+                            if what.lower() == args[1].lower() and end == 0:
+                                self.timerList[index] = (what, start, int(time.time()))
+                                found = start
+                                break
+                        else:
+                            if end == 0:
+                                self.timerList[index] = (what, start, int(time.time()))
+                                found = start
+                                break
                 if found > 0:
                     retMsg = "Stopped timer for %s. Duration was: %s" % (args[1], self.get_long_duration(int(time.time()) - start))
                 else:
