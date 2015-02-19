@@ -606,6 +606,7 @@ class GabiCustom(BotBase):
                 retMsg = usage
             count = 0
             for (what, start, end) in list(self.timerList):
+                print "%s %s %s" % (what, start, end)
                 if what.lower() == args[1].lower():
                     count += 1
                     self.timerList.remove((what, start, end))
