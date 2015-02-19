@@ -605,11 +605,12 @@ class GabiCustom(BotBase):
             if len(args) < 2:
                 retMsg = usage
             count = 0
+            print "self.timerList", self.timerList
             for (what, start, end) in list(self.timerList):
                 print "%s %s %s" % (what, start, end)
                 if what.lower() == args[1].lower():
                     count += 1
-                    self.timerList.pop(self.timerList.index((what, start, end)))
+                    self.timerList.remove((what, start, end))
             retMsg = "Deleted %s items" % count 
         elif args[0].lower() == "stats":
             stats = {}
