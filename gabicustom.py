@@ -582,6 +582,7 @@ class GabiCustom(BotBase):
             else:
                 found = 0
                 for index, (what, start, end) in self.r_enumerate(self.timerList):
+                    name = what
                     if len(args) > 1: 
                         if what.lower() == args[1].lower() and end == 0:
                             self.timerList[index] = (what, start, int(time.time()))
@@ -591,10 +592,9 @@ class GabiCustom(BotBase):
                         if end == 0:
                             self.timerList[index] = (what, start, int(time.time()))
                             found = start
-                            args[1] = what
                             break
                 if found > 0:
-                    retMsg = "Stopped timer for %s. Duration was: %s" % (args[1], self.get_long_duration(int(time.time()) - start))
+                    retMsg = "Stopped timer for %s. Duration was: %s" % (name, self.get_long_duration(int(time.time()) - start))
                 else:
                     retMsg = "No matching timer found"
         elif args[0].lower() == "clean":
