@@ -612,7 +612,7 @@ class GabiCustom(BotBase):
             retMsg = "Deleted %s items" % count 
         elif args[0].lower() == "stats":
             stats = {}
-            ret = ["what: count | average | total"]
+            ret = ["what: count | average | total"]
             for (whatStr, start, end) in self.timerList:
                 what = whatStr.lower()
                 if what not in stats.keys():
