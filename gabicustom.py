@@ -542,7 +542,7 @@ class GabiCustom(BotBase):
     @botcmd
     def timer(self, mess, args):
         """Takes the time of something"""
-        usage = "Plese use it like this: !timer start|stop|list|clean|del|stats what"
+        usage = "Please use it like this: !timer start|stop|list|clean|del|stats what"
         args = args.split(" ")
         self.timerList
         if len(args) < 0:
