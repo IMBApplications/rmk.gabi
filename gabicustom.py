@@ -548,7 +548,7 @@ class GabiCustom(BotBase):
         if len(args) < 0:
             retMsg = usage
         if args[0].lower() == "list":
-            ret = ["what: duration (start / end)"]
+            ret = ["what: duration (start | end)"]
             for (what, start, end) in self.timerList:
                 if len(args) > 1:
                     if what.lower() != args[1].lower():
@@ -568,7 +568,7 @@ class GabiCustom(BotBase):
                     else:
                         strEnd = "-"
                     strEnd = "-"
-                ret.append("%s: %s (%s / %s)" % (what, duration, strStart, strEnd))
+                ret.append("%s: %s (%s | %s)" % (what, duration, strStart, strEnd))
             retMsg = ret
         elif args[0].lower() == "start":
             if len(args) < 2:
@@ -612,7 +612,7 @@ class GabiCustom(BotBase):
             retMsg = "Deleted %s items" % count 
         elif args[0].lower() == "stats":
             stats = {}
-            ret = ["what: count / average"]
+            ret = ["what: count | average | total"]
             for (whatStr, start, end) in self.timerList:
                 what = whatStr.lower()
                 if what not in stats.keys():
@@ -621,7 +621,7 @@ class GabiCustom(BotBase):
                 stats[what]['duration'] += end - start
             for key in stats.keys():
                 item = stats[key]
-                ret.append("%s: %s / %s" % (key, item['count'], self.get_long_duration(int(item['duration'] / item['count']))))
+                ret.append("%s: %s | %s | %s" % (key, item['count'], self.get_long_duration(int(item['duration'] / item['count'])), self.get_long_duration(int(item['duration']))))
                 retMsg = ret
         else:
             retMsg = usage
