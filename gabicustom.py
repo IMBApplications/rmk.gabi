@@ -599,7 +599,7 @@ class GabiCustom(BotBase):
             for (what, start, end) in list(self.timerList):
                 if end == 0:
                     count += 1
-                    self.timerList.remove((what, start, end))
+                    self.timerList.remove([what, start, 0])
             retMsg = "Cleaned %s items" % count
         elif args[0].lower() == "del":
             if len(args) < 2:
