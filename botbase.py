@@ -534,7 +534,10 @@ class BotBase(object):
         # FIXME i am not threadsafe
         self.__threads[jid] = mess.getThread()
 
-        jid_string = '{0}'.format(jid).lower()
+        try:
+            jid_string = '{0}'.format(jid).lower()
+        except UnicodeEncodeError:
+            jid_string = '{0}'.format(jid).encode('ascii', 'ignore').lower()
         channel = jid_string.split('/')[0]
         botname1 = '{0}/{1}'.format(channel, self.__username).lower()
         botname2 = '{0}/{1}'.format(channel, self.__username.split('@')[0]).lower()
