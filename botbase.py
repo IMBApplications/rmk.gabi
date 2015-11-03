@@ -370,7 +370,7 @@ class BotBase(object):
             who = str(presence.getFrom())
         except UnicodeEncodeError as e:
             self.log.warning("Catched UNICODE ERROR! type: %s" % type(presence.getFrom()))
-            who = self.utils.convert_from_unicode(presence.getFrom())
+            who = self.convert_from_unicode(presence.getFrom())
                 
         if self.jid.bareMatch(jid):
             # update internal status
