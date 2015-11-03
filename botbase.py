@@ -369,7 +369,7 @@ class BotBase(object):
         try:
             who = str(presence.getFrom())
         except UnicodeEncodeError as e:
-            who = str(unicode(presence.getFrom()))
+            who = str(presence.getFrom().encode('utf-8'))
                 
         if self.jid.bareMatch(jid):
             # update internal status
