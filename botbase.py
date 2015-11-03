@@ -367,7 +367,11 @@ class BotBase(object):
                 presence.getType(), presence.getShow(), \
                 presence.getStatus()
         who = str(presence.getFrom())
-
+        try:
+            who = str(presence.getFrom().decode('utf8', 'ignore'))
+        except UnicodeEncodeError as e:
+            who = str(presence.getFrom())
+                
         if self.jid.bareMatch(jid):
             # update internal status
             if type_ != self.OFFLINE:
